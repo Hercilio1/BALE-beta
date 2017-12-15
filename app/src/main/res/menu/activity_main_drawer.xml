@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cadastrar_usuario"
+            android:title="Cadastrar Novo Usuário"/>
+        <item
+            android:id="@+id/nav_lista_usuarios"
+            android:title="Lista de Usuários" />
+        <item
+            android:id="@+id/nav_pesquisas"
+            android:title="Pesquisas" />
+
+    </group>
+    <group android:id="@+id/group2" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Logout"/>
+    </group>
+</menu>

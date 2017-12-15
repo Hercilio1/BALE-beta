@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "5035432910",
+    "firebase_url": "https://praias-test.firebaseio.com",
+    "project_id": "praias-test",
+    "storage_bucket": "praias-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5035432910:android:0e94f20fda77e0ca",
+        "android_client_info": {
+          "package_name": "com.example.hercilio.appwithfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5035432910-e78rc7aoi8ia7cl12qem4vohq15vp9nm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEe13sPwkzjO9PnR7Y_s3bveKQqzA3xes"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
