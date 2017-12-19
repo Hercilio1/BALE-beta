@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding = "16dp"
+    tools:context=".CadastroParticipanteActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/participante_nome_completo_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="Nome Completo:" />
+
+            <!--  Name Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText android:id="@+id/input_participante_nome_completo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:hint="Nome Completo" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--  Date of Birth Label -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="left"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="20dp"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/participante_data_nasc_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Data de Nascimento:"
+                    android:paddingRight="30dp" />
+
+                <TextView
+                    android:id="@+id/input_participante_data_nasc_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Medium Text"
+                    android:onClick="showDatePickerDialog"/>
+
+            </LinearLayout>
+
+            <!-- Gender Label -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/participante_sexo_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Sexo"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/radio_participante_sexo" >
+
+                    <RadioButton
+                        android:id="@+id/participante_radio_feminino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Feminino"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <RadioButton
+                        android:id="@+id/participante_radio_masculino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Masculino"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <!-- Phone Label -->
+            <TextView
+                android:id="@+id/participante_telefone_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="Celular:"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/input_participante_telefone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:hint="Celular" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Schooling Label -->
+            <TextView
+                android:id="@+id/participante_escolaridade_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="Escolaridade:"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_participante_escolariade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="Escolaridade"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Handedness Label -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/participante_dinamica_mao_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Dinâmica de mão:"
+
+                    android:layout_marginBottom="8dp" />
+
+                <RadioGroup
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/radio_participante_dinamica_mao">
+
+                    <RadioButton android:id="@+id/participante_radio_esquerda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Direita"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <RadioButton android:id="@+id/participante_radio_direita"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Esquerda"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <RadioButton android:id="@+id/participante_radio_ambidestro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ambas"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <!-- Profession Label -->
+            <TextView
+                android:id="@+id/participante_profissao_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="Profissão:" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText android:id="@+id/input_participante_profissao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:hint="Profissão"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Retired Label -->
+            <CheckBox
+                android:id="@+id/checkBox_participante_aposentado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aposentado"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="8dp" />
+
+            <!-- Mother Tongue Label -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:id="@+id/dialogMotherTongue" >
+
+                <TextView
+                    android:id="@+id/participante_idioma_materno_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Idioma Materno:"
+                    android:layout_marginBottom="8dp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <EditText android:id="@+id/input_participante_idioma_materno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:hint="Idioma Materno"/>
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Other Idioms Label -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:id="@+id/dialogIdioms" >
+
+                <TextView
+                    android:id="@+id/participante_outros_idiomas_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Outros idiomas:"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText android:id="@+id/input_participante_outros_idiomas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:hint="Outros Idiomas" />
+
+            </LinearLayout>
+
+            <!-- Sign Up Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_participante_register"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="12dp"
+                android:text="Cadastrar Participante" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -19,13 +19,17 @@
             android:label="Admin" >
         </activity>
         <activity
-            android:name="com.example.hercilio.appwithfirebase.Login.LoginActivity"
+            android:name=".Funcionalidades.Login.LoginActivity"
             android:label="LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".CadastroParticipanteActivity"
+            android:label="Cadastrar Participante" >
         </activity>
 
     </application>

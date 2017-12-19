@@ -1,4 +1,4 @@
-package com.example.hercilio.appwithfirebase.Login;
+package com.example.hercilio.appwithfirebase.Funcionalidades.Login;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.AdminActivity;
-import com.example.hercilio.appwithfirebase.UsersActivity;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
