@@ -1,4 +1,4 @@
-package com.example.hercilio.appwithfirebase.Pesquisas;
+package com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.hercilio.appwithfirebase.R;
 
-import com.example.hercilio.appwithfirebase.Pesquisas.PesquisasFragment.OnListFragmentInteractionListener;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment.OnListFragmentInteractionListener;
 
 import java.util.ArrayList;
 
