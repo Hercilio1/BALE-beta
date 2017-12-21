@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment;
+import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -108,7 +109,7 @@ public class AdminActivity extends AppCompatActivity
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment, title);
+            ft.replace(R.id.content_frame_menu, fragment, title);
             ft.commit();
         }
 
@@ -124,11 +125,11 @@ public class AdminActivity extends AppCompatActivity
     }
 
     @Override
-    public void onListFragmentInteraction(String item) {
+    public void onListFragmentInteraction(Participante item) {
         Toast.makeText(this, "Listinha!", Toast.LENGTH_SHORT);
     }
 
-//    public void onListFragmentInteraction(Pesquisa item) {
+    //    public void onListFragmentInteraction(Pesquisa item) {
 //        Intent intent = new Intent(getApplicationContext(), BateriaActivity.class);
 //        intent.putExtra(EXTRA_PK_PESQUISA, Integer.toString(item.getPk_pesquisa()));
 //        intent.putExtra(EXTRA_PESQUISA, item);

@@ -1,0 +1,17 @@
+Afazeres:
+1 - Arrumar activity_cadastro_participante.
+	- Escolaridade
+	- EditTex deve aceitar acentos.
+2 - Contruir transição de cadastro para uma nova activity que estara a bateria.
+	- Contruir elementos de uma bateria.
+	- Bateria deve conter uma lista de objetos que serao os testes (pegar do willian).
+	- Construir a intereação com a recycler view de pesquisas
+	- Mais tarde:
+		. Separar entre concluídos e ainda não concluídos.
+		. Colocar uma opção de busca.	
+3 - ADMIN
+	- Mudar na pesquisa de participates a consunta para admins para pesquisar todos os participantes
+		. Na verdade:
+			. Pesquisas permanece igual.
+			. Em usuarios quando clicamos podemos selcionar "PERFIL" ou "Pesquisa desse USUÁRIO"
+	- Mudar LoginActivity para verificar se ta autenticado com admin ou nao.

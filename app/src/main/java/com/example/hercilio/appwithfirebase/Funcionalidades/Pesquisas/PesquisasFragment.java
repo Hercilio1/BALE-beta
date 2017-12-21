@@ -15,7 +15,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.CadastroParticipanteActivity;
+import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -27,11 +34,14 @@ public class PesquisasFragment extends Fragment {
 
     //Responsavel pela recyclerView
     private PesquisasAdapter mPesquisasAdapter;
-    private ArrayList<String> items = new ArrayList<>();
+    private ArrayList<Participante> items = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private OnListFragmentInteractionListener mListener;
     //Responsavel pelo btn de cadastro de participante
     private FloatingActionButton btnCadastrarParticipante;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mParticipanteDatabaseReference;
+    private ChildEventListener mChildEventListener;
 
 
     @Override
@@ -54,14 +64,45 @@ public class PesquisasFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        items.add("Ricardo1");
-        items.add("Ricardo2");
-        items.add("Ricardo3");
-        items.add("Ricardo4");
+        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
-        mPesquisasAdapter = new PesquisasAdapter(getActivity(), items, mListener);
+        //Responsavel por ler o banco de dados
+        mChildEventListener = new ChildEventListener() {
+            //Método que lê os valores de determinada key
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Participante participante = dataSnapshot.getValue(Participante.class);
+                items.add(participante);
+                mPesquisasAdapter = new PesquisasAdapter(getActivity(), items, mListener);
 
-        mRecyclerView.setAdapter(mPesquisasAdapter);
+                mRecyclerView.setAdapter(mPesquisasAdapter);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mParticipanteDatabaseReference.addChildEventListener(mChildEventListener);
+        //-------------------------------
 
         //Realiza função de cadastrar participante
         btnCadastrarParticipante = (FloatingActionButton) view.findViewById(R.id.btn_cadastrar_participante);
@@ -74,28 +115,27 @@ public class PesquisasFragment extends Fragment {
             }
         });
 
+
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof OnListFragmentInteractionListener) {
+//            mListener = (OnListFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnListFragmentInteractionListener");
+//        }
+//    }
+//
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        mListener = null;
+//    }
 
     public interface OnListFragmentInteractionListener {
-        // MUDAR STRING POR PESQUISA
-        void onListFragmentInteraction(String item);
+        void onListFragmentInteraction(Participante item);
     }
-
 }

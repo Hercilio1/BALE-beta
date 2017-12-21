@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment.OnListFragmentInteractionListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import at.grabner.circleprogress.CircleProgressView;
 
@@ -22,7 +24,7 @@ import at.grabner.circleprogress.CircleProgressView;
 public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.PesquisaItemView> {
 
     private Activity activity;
-    private ArrayList<String> items = new ArrayList<>();
+    private List<Participante> items = new ArrayList<>();
     private OnListFragmentInteractionListener mListener;
 
     /**
@@ -32,7 +34,7 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
      * @param items recebe a lista de pesquisas
      * @param listener
      */
-    public PesquisasAdapter(Activity activity, ArrayList<String> items, OnListFragmentInteractionListener listener) {
+    public PesquisasAdapter(Activity activity, ArrayList<Participante> items, OnListFragmentInteractionListener listener) {
         this.activity = activity;
         this.items = items;
         this.mListener = listener;
@@ -60,9 +62,9 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
     @Override
     public void onBindViewHolder(final PesquisaItemView holder, int position) {
         holder.mItem = items.get(position);
-        holder.mIdView.setText(items.get(position));
+        holder.mIdView.setText(items.get(position).getNomeCompleto());
         //holder.mContentView.setText(mValues.get(position).nomeExaminador);
-        holder.mContentView.setText(items.get(position));
+        holder.mContentView.setText(items.get(position).getCpf());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,12 +83,15 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
         return items.size();
     }
 
+    /**
+     * Classe que irá criar o visual da recyclerview
+     */
     class PesquisaItemView extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
         public final CircleProgressView mCircleProgressView;
-        public String mItem;
+        public Participante mItem;
 
         PesquisaItemView(View view) {
             super(view);

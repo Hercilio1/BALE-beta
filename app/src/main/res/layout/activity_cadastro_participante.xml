@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding = "16dp"
-    tools:context=".CadastroParticipanteActivity">
+    tools:context=".CadastroParticipanteActivity" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+            <!--  Name Label -->
             <TextView
                 android:id="@+id/participante_nome_completo_tv"
                 android:layout_width="wrap_content"
@@ -24,7 +26,6 @@
                 android:layout_marginTop="20dp"
                 android:text="Nome Completo:" />
 
-            <!--  Name Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
@@ -34,6 +35,27 @@
                     android:layout_height="wrap_content"
                     android:inputType="textCapWords"
                     android:hint="Nome Completo" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- CPF: -->
+            <TextView
+                android:id="@+id/participante_cpf_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="CPF:" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText android:id="@+id/input_participante_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:hint="xxx.xxx.xxx-xx" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -145,7 +167,6 @@
                     android:id="@+id/input_participante_escolariade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
                     android:hint="Escolaridade"/>
 
             </android.support.design.widget.TextInputLayout>
