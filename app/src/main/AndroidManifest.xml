@@ -28,8 +28,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CadastroParticipanteActivity"
+            android:name=".Funcionalidades.Pesquisas.CadastroParticipanteActivity"
             android:label="Cadastrar Participante" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.BaleLobbyActivity"
+            android:label="Bateria" >
         </activity>
 
     </application>

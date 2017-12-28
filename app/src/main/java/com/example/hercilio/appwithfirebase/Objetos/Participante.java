@@ -18,6 +18,8 @@ public class Participante {
     private String outrasLinguas;
     private String observacaoPosAvaliacao;
 
+    private HabitosLeituraEscritaObject hleObject;
+
 //    private String dataDaAvaliacao;
 //    private String exercidaPor;
 
@@ -44,6 +46,7 @@ public class Participante {
         this.linguaMaterna = linguaMaterna;
         this.outrasLinguas = outrasLinguas;
         this.observacaoPosAvaliacao = observacaoPosAvaliacao;
+        hleObject = null;
 //        this.dataDaAvaliacao = dataDaAvaliacao;
 //        this.exercidaPor = exercidaPor;
 //        this.bateria = new Bateria(null);
@@ -170,4 +173,11 @@ public class Participante {
 //    }
 
 
+    public HabitosLeituraEscritaObject getHleObject() {
+        return hleObject;
+    }
+
+    public void setHleObject(HabitosLeituraEscritaObject hleObject) {
+        this.hleObject = hleObject;
+    }
 }

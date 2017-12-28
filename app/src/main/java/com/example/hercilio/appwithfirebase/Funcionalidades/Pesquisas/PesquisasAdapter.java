@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment.OnListFragmentInteractionListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +26,19 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
     private List<Participante> items = new ArrayList<>();
     private OnListFragmentInteractionListener mListener;
 
+    public void setListener(OnListFragmentInteractionListener onListener) {
+        mListener = onListener;
+    }
+
     /**
      * Contrutor.
      *
      * @param activity recebe o contexto
      * @param items recebe a lista de pesquisas
-     * @param listener
      */
-    public PesquisasAdapter(Activity activity, ArrayList<Participante> items, OnListFragmentInteractionListener listener) {
+    public PesquisasAdapter(Activity activity, ArrayList<Participante> items) {
         this.activity = activity;
         this.items = items;
-        this.mListener = listener;
     }
 
     /**
@@ -66,16 +67,16 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
         //holder.mContentView.setText(mValues.get(position).nomeExaminador);
         holder.mContentView.setText(items.get(position).getCpf());
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
+//        holder.mView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (null != mListener) {
+//                    // Notify the active callbacks interface (the activity, if the
+//                    // fragment is attached to one) that an item has been selected.
+//                    mListener.onListFragmentInteraction(holder.mItem);
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -108,13 +109,13 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
 //                }
 //            });
 //
-//            rlCell.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Menor menorItem = items.get(getAdapterPosition());
-//                    mOnMenorSelectedListener.OnMenorItemSelected(menorItem, getAdapterPosition());
-//                }
-//            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Participante menorItem = items.get(getAdapterPosition());
+                    mListener.onListFragmentInteraction(menorItem);
+                }
+            });
         }
 
         @Override

@@ -1,6 +1,5 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -11,10 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.hercilio.appwithfirebase.CadastroParticipanteActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,7 +34,7 @@ public class PesquisasFragment extends Fragment {
     private PesquisasAdapter mPesquisasAdapter;
     private ArrayList<Participante> items = new ArrayList<>();
     private RecyclerView mRecyclerView;
-    private OnListFragmentInteractionListener mListener;
+//    private OnListFragmentInteractionListener mListener;
     //Responsavel pelo btn de cadastro de participante
     private FloatingActionButton btnCadastrarParticipante;
     private FirebaseDatabase mFirebaseDatabase;
@@ -64,6 +62,14 @@ public class PesquisasFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
+        final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
+            @Override
+            public void onListFragmentInteraction(Participante item) {
+                Intent intent = new Intent(getActivity(), BaleLobbyActivity.class);
+                startActivity(intent);
+            }
+        };
+
         //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -76,8 +82,8 @@ public class PesquisasFragment extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Participante participante = dataSnapshot.getValue(Participante.class);
                 items.add(participante);
-                mPesquisasAdapter = new PesquisasAdapter(getActivity(), items, mListener);
-
+                mPesquisasAdapter = new PesquisasAdapter(getActivity(), items);
+                mPesquisasAdapter.setListener(selecionarItemView);
                 mRecyclerView.setAdapter(mPesquisasAdapter);
             }
 
@@ -115,7 +121,6 @@ public class PesquisasFragment extends Fragment {
             }
         });
 
-
     }
 
 //    @Override
@@ -134,8 +139,4 @@ public class PesquisasFragment extends Fragment {
 //        super.onDetach();
 //        mListener = null;
 //    }
-
-    public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Participante item);
-    }
 }

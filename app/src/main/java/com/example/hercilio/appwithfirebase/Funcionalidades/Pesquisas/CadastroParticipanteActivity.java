@@ -1,4 +1,4 @@
-package com.example.hercilio.appwithfirebase;
+package com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -22,10 +22,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginFragment;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
+import com.example.hercilio.appwithfirebase.R;
 import com.google.android.gms.internal.kx;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -102,10 +104,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 cadatrarParticipante();
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frame_menu, new PesquisasFragment())
-                        .commit();
+
             }
         });
     }
@@ -160,6 +159,8 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Participante " + nomeCompleto + " cadastrado com sucesso!", Toast.LENGTH_SHORT);
 
+        Intent intent = new Intent(this, BaleLobbyActivity.class);
+        startActivity(intent);
     }
 
     /**

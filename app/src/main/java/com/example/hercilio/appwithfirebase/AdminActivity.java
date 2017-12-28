@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 
 public class AdminActivity extends AppCompatActivity
-    implements PesquisasFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +41,6 @@ public class AdminActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        Fragment fragment = new PesquisasFragment();
     }
 
     @Override
@@ -90,10 +88,10 @@ public class AdminActivity extends AppCompatActivity
 
         switch (viewId) {
             case 1:
-                Toast.makeText(this,"Cadastra o user", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Cadastra o user", Toast.LENGTH_SHORT);
                 break;
             case 2:
-                Toast.makeText(this,"Lista os users", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Lista os users", Toast.LENGTH_SHORT);
                 break;
             case 3:
                 fragment = new PesquisasFragment();
@@ -122,11 +120,6 @@ public class AdminActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
 
-    }
-
-    @Override
-    public void onListFragmentInteraction(Participante item) {
-        Toast.makeText(this, "Listinha!", Toast.LENGTH_SHORT);
     }
 
     //    public void onListFragmentInteraction(Pesquisa item) {
