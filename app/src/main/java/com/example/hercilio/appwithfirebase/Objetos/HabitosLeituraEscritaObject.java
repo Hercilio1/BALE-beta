@@ -82,10 +82,10 @@ public class HabitosLeituraEscritaObject {
         perguntas = new ArrayList<>();
     }
 
-//    public void criaPergunta(String descricao, boolean opcaoUmSelecionada, boolean opcaoDoisSelecionada, boolean opcaoTresSelecionada, boolean opcaoQuatroSelecionada) {
-//        Perguntas pergunta = new Perguntas(descricao, opcaoUmSelecionada, opcaoDoisSelecionada, opcaoTresSelecionada, opcaoQuatroSelecionada);
-//        perguntas.add(pergunta);
-//    }
+    public void criaPergunta(String descricao, boolean opcaoUmSelecionada, boolean opcaoDoisSelecionada, boolean opcaoTresSelecionada, boolean opcaoQuatroSelecionada, boolean opcaoCincoSelecionada) {
+        Perguntas pergunta = new Perguntas(descricao, opcaoUmSelecionada, opcaoDoisSelecionada, opcaoTresSelecionada, opcaoQuatroSelecionada, opcaoCincoSelecionada);
+        perguntas.add(pergunta);
+    }
 
     public ArrayList<Perguntas> getPerguntas() {
         return perguntas;

@@ -35,6 +35,10 @@
             android:name=".Funcionalidades.Bateria.BaleLobbyActivity"
             android:label="Bateria" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.HabitosLeituraEscritaActivity"
+            android:label="Hábitos de Leitura e Escrita" >
+        </activity>
 
     </application>
 

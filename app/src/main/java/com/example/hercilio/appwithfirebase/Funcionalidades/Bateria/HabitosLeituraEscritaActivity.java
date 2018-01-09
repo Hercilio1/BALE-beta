@@ -5,6 +5,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
  * Created by Hercilio on 26/12/2017.
  */
 
+        import android.support.design.widget.FloatingActionButton;
         import android.support.v7.app.AppCompatActivity;
         import android.view.View;
 
@@ -26,11 +27,18 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
         import android.widget.Toast;
 
         import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
+        import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
         import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
         import com.example.hercilio.appwithfirebase.Objetos.Participante;
         import com.example.hercilio.appwithfirebase.Objetos.Pesquisa;
         import com.example.hercilio.appwithfirebase.R;
         import com.google.android.gms.common.api.GoogleApiClient;
+        import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.database.ChildEventListener;
+        import com.google.firebase.database.DataSnapshot;
+        import com.google.firebase.database.DatabaseError;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
 
         import java.util.ArrayList;
 
@@ -115,23 +123,23 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
     private int checkedEscrNaoLiterariosPassadoFreq;
     private int checkedEscrOutrosPassadoFreq;
     /* Atual */
-    private String checkedLeitRevistasAtual;
-    private String checkedLeitJornaisAtual;
-    private String checkedLeitLivrosAtual;
-    private String checkedLeitRedesAtual;
-    private String checkedEscrMensagensAtual;
-    private String checkedEscrLiterariosAtual;
-    private String checkedEscrNaoLiterariosAtual;
-    private String checkedEscrOutrosAtual;
+    private int checkedLeitRevistasAtual;
+    private int checkedLeitJornaisAtual;
+    private int checkedLeitLivrosAtual;
+    private int checkedLeitRedesAtual;
+    private int checkedEscrMensagensAtual;
+    private int checkedEscrLiterariosAtual;
+    private int checkedEscrNaoLiterariosAtual;
+    private int checkedEscrOutrosAtual;
     /* Passado */
-    private String checkedLeitRevistasPassado;
-    private String checkedLeitJornaisPassado;
-    private String checkedLeitLivrosPassado;
-    private String checkedLeitRedesPassado;
-    private String checkedEscrMensagensPassado;
-    private String checkedEscrLiterariosPassado;
-    private String checkedEscrNaoLiterariosPassado;
-    private String checkedEscrOutrosPassado;
+    private int checkedLeitRevistasPassado;
+    private int checkedLeitJornaisPassado;
+    private int checkedLeitLivrosPassado;
+    private int checkedLeitRedesPassado;
+    private int checkedEscrMensagensPassado;
+    private int checkedEscrLiterariosPassado;
+    private int checkedEscrNaoLiterariosPassado;
+    private int checkedEscrOutrosPassado;
 
     /* Totais */
     private TextView totalLeituraAtual;
@@ -226,14 +234,6 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         /*Botão de continuar*/
         mBtnContinuar = (Button) findViewById(R.id.btn_continuar);
 
-
-        mBtnContinuar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registrar();
-            }
-        });
-
         /* Totais */
         totalLeituraAtual = (TextView) findViewById(R.id.habitos_leit_total_atual_participante);
         totalLeituraPassado = (TextView) findViewById(R.id.habitos_leit_total_passado_participante);
@@ -256,6 +256,13 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
             if(participante.getHleObject() != null) {
                 autoComplete(participante.getHleObject());
+            } else {
+                mBtnContinuar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        registrar(participante.getHleObject());
+                    }
+                });
             }
         }
 
@@ -1191,77 +1198,110 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         pesquisa.calculaPorcentagemTotal();
     }
 
-    public void registrar() {
+    public void registrar(HabitosLeituraEscritaObject habitosLeituraEscritaObject) {
         try {
         /* Leitura */
         /* Talvez valha a pena criar uma classe "Resposta" */
             checkedLeitRevistasAtualFreq = onFrequenciaRadioButtonClicked(mRadioRevistasAtualFreq);
-            // respostas.add(Integer.toString(checkedLeitRevistasAtualFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRevistasAtualFreq", checkedLeitRevistasAtualFreq);
+
             checkedLeitRevistasPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRevistasPassadoFreq);
-            // respostas.add(Integer.toString(checkedLeitRevistasPassadoFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRevistasPassadoFreq", checkedLeitRevistasPassadoFreq);
+
             checkedLeitJornaisAtualFreq = onFrequenciaRadioButtonClicked(mRadioJornaisAtualFreq);
-            // respostas.add(Integer.toString(checkedLeitJornaisAtualFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioJornaisAtualFreq", checkedLeitJornaisAtualFreq);
+
             checkedLeitJornaisPassadoFreq = onFrequenciaRadioButtonClicked(mRadioJornaisPassadoFreq);
-            // respostas.add(Integer.toString(checkedLeitJornaisPassadoFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioJornaisPassadoFreq", checkedLeitJornaisPassadoFreq);
+
             checkedLeitLivrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLivrosAtualFreq);
-            // respostas.add(Integer.toString(checkedLeitLivrosAtualFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLivrosAtualFreq", checkedLeitLivrosAtualFreq);
+
             checkedLeitLivrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLivrosPassadoFreq);
-            // respostas.add(Integer.toString(checkedLeitLivrosPassadoFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLivrosPassadoFreq", checkedLeitLivrosPassadoFreq);
+
             checkedLeitRedesAtualFreq = onFrequenciaRadioButtonClicked(mRadioRedesAtualFreq);
-            // respostas.add(Integer.toString(checkedLeitRedesAtualFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRedesAtualFreq", checkedLeitRedesAtualFreq);
+
             checkedLeitRedesPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRedesPassadoFreq);
-            // respostas.add(Integer.toString(checkedLeitRedesPassadoFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRedesPassadoFreq", checkedLeitRedesPassadoFreq);
+
         /* Escrita */
             checkedEscrMensagensAtualFreq = onFrequenciaRadioButtonClicked(mRadioMensagensAtualFreq);
-            // respostas.add(Integer.toString(checkedEscrMensagensAtualFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioMensagensAtualFreq", checkedEscrMensagensAtualFreq);
+
             checkedEscrMensagensPassadoFreq = onFrequenciaRadioButtonClicked(mRadioMensagensPassadoFreq);
-            // respostas.add(Integer.toString(checkedEscrMensagensPassadoFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioMensagensPassadoFreq", checkedEscrMensagensPassadoFreq);
+
             checkedEscrLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosAtualFreq);
-            // respostas.add(Integer.toString(checkedEscrLiterariosAtualFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLiterariosAtualFreq", checkedEscrLiterariosAtualFreq);
+
             checkedEscrLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosPassadoFreq);
-            // respostas.add(Integer.toString(checkedEscrLiterariosPassadoFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLiterariosPassadoFreq", checkedEscrLiterariosPassadoFreq);
+
             checkedEscrNaoLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtualFreq);
-            // respostas.add(Integer.toString(checkedEscrNaoLiterariosAtualFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioNaoLiterariosAtualFreq", checkedEscrNaoLiterariosAtualFreq);
+
             checkedEscrNaoLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassadoFreq);
-            // respostas.add(Integer.toString(checkedEscrNaoLiterariosPassadoFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioNaoLiterariosPassadoFreq", checkedEscrNaoLiterariosPassadoFreq);
+
             checkedEscrOutrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioOutrosAtualFreq);
-            // respostas.add(Integer.toString(checkedEscrOutrosAtualFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioOutrosAtualFreq", checkedEscrOutrosAtualFreq);
+
             checkedEscrOutrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioOutrosPassadoFreq);
-            // respostas.add(Integer.toString(checkedEscrOutrosPassadoFreq));
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioOutrosPassadoFreq", checkedEscrOutrosPassadoFreq);
+
         /* Atual */
-            checkedLeitRevistasAtual = onFormatoRadioButtonClicked(mRadioRevistasAtual);
-            // respostas.add(checkedLeitRevistasAtual);
-            checkedLeitJornaisAtual = onFormatoRadioButtonClicked(mRadioJornaisAtual);
-            // respostas.add(checkedLeitJornaisAtual);
-            checkedLeitLivrosAtual = onFormatoRadioButtonClicked(mRadioLivrosAtual);
-            // respostas.add(checkedLeitLivrosAtual);
-            checkedLeitRedesAtual = onFormatoRadioButtonClicked(mRadioRedesAtual);
-            // respostas.add(checkedLeitRedesAtual);
-            checkedEscrMensagensAtual = onFormatoRadioButtonClicked(mRadioMensagensAtual);
-            // respostas.add(checkedEscrMensagensAtual);
-            checkedEscrLiterariosAtual = onFormatoRadioButtonClicked(mRadioLiterariosAtual);
-            // respostas.add(checkedEscrLiterariosAtual);
-            checkedEscrNaoLiterariosAtual = onFormatoRadioButtonClicked(mRadioNaoLiterariosAtual);
-            // respostas.add(checkedEscrNaoLiterariosAtual);
-            checkedEscrOutrosAtual = onFormatoRadioButtonClicked(mRadioOutrosAtual);
-            // respostas.add(checkedEscrOutrosAtual);
+            checkedLeitRevistasAtual = onFrequenciaRadioButtonClicked(mRadioRevistasAtual);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRevistasAtual", checkedLeitRevistasAtual);
+
+            checkedLeitJornaisAtual = onFrequenciaRadioButtonClicked(mRadioJornaisAtual);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioJornaisAtual", checkedLeitJornaisAtual);
+
+            checkedLeitLivrosAtual = onFrequenciaRadioButtonClicked(mRadioLivrosAtual);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLivrosAtual", checkedLeitLivrosAtual);
+
+            checkedLeitRedesAtual = onFrequenciaRadioButtonClicked(mRadioRedesAtual);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRedesAtual", checkedLeitRedesAtual);
+
+            checkedEscrMensagensAtual = onFrequenciaRadioButtonClicked(mRadioMensagensAtual);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioMensagensAtual", checkedEscrMensagensAtual);
+
+            checkedEscrLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioLiterariosAtual);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLiterariosAtual", checkedEscrLiterariosAtual);
+
+            checkedEscrNaoLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtual);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioNaoLiterariosAtual", checkedEscrNaoLiterariosAtual);
+
+            checkedEscrOutrosAtual = onFrequenciaRadioButtonClicked(mRadioOutrosAtual);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioOutrosAtual", checkedEscrOutrosAtual);
+
         /* Passado */
-            checkedLeitRevistasPassado = onFormatoRadioButtonClicked(mRadioRevistasPassado);
-            // respostas.add(checkedLeitRevistasPassado);
-            checkedLeitJornaisPassado = onFormatoRadioButtonClicked(mRadioJornaisPassado);
-            // respostas.add(checkedLeitJornaisPassado);
-            checkedLeitLivrosPassado = onFormatoRadioButtonClicked(mRadioLivrosPassado);
-            // respostas.add(checkedLeitLivrosPassado);
-            checkedLeitRedesPassado = onFormatoRadioButtonClicked(mRadioRedesPassado);
-            // respostas.add(checkedLeitRedesPassado);
-            checkedEscrMensagensPassado = onFormatoRadioButtonClicked(mRadioMensagensPassado);
-            // respostas.add(checkedEscrMensagensPassado);
-            checkedEscrLiterariosPassado = onFormatoRadioButtonClicked(mRadioLiterariosPassado);
-            // respostas.add(checkedEscrLiterariosPassado);
-            checkedEscrNaoLiterariosPassado = onFormatoRadioButtonClicked(mRadioNaoLiterariosPassado);
-            // respostas.add(checkedEscrNaoLiterariosPassado);
-            checkedEscrOutrosPassado = onFormatoRadioButtonClicked(mRadioOutrosPassado);
-            // respostas.add(checkedEscrOutrosPassado);
+            checkedLeitRevistasPassado = onFrequenciaRadioButtonClicked(mRadioRevistasPassado);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRevistasPassado", checkedLeitRevistasPassado);
+
+            checkedLeitJornaisPassado = onFrequenciaRadioButtonClicked(mRadioJornaisPassado);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioJornaisPassado", checkedLeitJornaisPassado);
+
+            checkedLeitLivrosPassado = onFrequenciaRadioButtonClicked(mRadioLivrosPassado);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLivrosPassado", checkedLeitLivrosPassado);
+
+            checkedLeitRedesPassado = onFrequenciaRadioButtonClicked(mRadioRedesPassado);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRedesPassado", checkedLeitRedesPassado);
+
+            checkedEscrMensagensPassado = onFrequenciaRadioButtonClicked(mRadioMensagensPassado);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioMensagensPassado", checkedEscrMensagensPassado);
+
+            checkedEscrLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioLiterariosPassado);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLiterariosPassado", checkedEscrLiterariosPassado);
+
+            checkedEscrNaoLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassado);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioNaoLiterariosPassado", checkedEscrNaoLiterariosPassado);
+
+            checkedEscrOutrosPassado = onFrequenciaRadioButtonClicked(mRadioOutrosPassado);
+            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioOutrosPassado", checkedEscrOutrosPassado);
+
+
         } catch (Exception e) {
             Toast.makeText(HabitosLeituraEscritaActivity.this, R.string.toast_radiobutton, Toast.LENGTH_LONG).show();
             return;
@@ -1275,6 +1315,70 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 //            progressDialog.dismiss();
 //            Toast.makeText(HabitosLeituraEscritaActivity.this, R.string.toast_registrar, Toast.LENGTH_LONG).show();
 //        }
+    }
+
+    public void traduzRadioButtonSelecionado(HabitosLeituraEscritaObject habitosLeituraEscritaObject, String descricao, int selecao) {
+        switch (selecao) {
+            case 0:
+                habitosLeituraEscritaObject.criaPergunta(descricao, true, false, false, false, false);
+                break;
+            case 1:
+                habitosLeituraEscritaObject.criaPergunta(descricao, false, true, false, false, false);
+                break;
+            case 2:
+                habitosLeituraEscritaObject.criaPergunta(descricao, false, false,true,false, false);
+                break;
+            case 3:
+                habitosLeituraEscritaObject.criaPergunta(descricao, false, false,false,true, false);
+                break;
+            case 4:
+                habitosLeituraEscritaObject.criaPergunta(descricao, false, false,false,false, true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void alteraDadosFirebase(HabitosLeituraEscritaObject habitosLeituraEscritaObject) {
+        final HabitosLeituraEscritaObject hleObject = habitosLeituraEscritaObject;
+        FirebaseDatabase mFirebaseDatabase;
+        DatabaseReference mParticipanteDatabaseReference;
+        ChildEventListener mChildEventListener;
+        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+
+        //Responsavel por ler o banco de dados
+        mChildEventListener = new ChildEventListener() {
+            //Método que lê os valores de determinada key
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Participante participante = dataSnapshot.getValue(Participante.class);
+                participante.setHleObject(hleObject);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mParticipanteDatabaseReference.addChildEventListener(mChildEventListener);
+        //-------------------------------
     }
 }
 
