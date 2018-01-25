@@ -32,7 +32,7 @@
             android:label="Cadastrar Participante" >
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.BaleLobbyActivity"
+            android:name=".Funcionalidades.Bateria.Lobby.BaleLobbyActivity"
             android:label="Bateria" >
         </activity>
         <activity

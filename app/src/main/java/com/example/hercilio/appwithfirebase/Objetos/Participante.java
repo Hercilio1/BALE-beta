@@ -1,10 +1,12 @@
 package com.example.hercilio.appwithfirebase.Objetos;
 
+import java.io.Serializable;
+
 /**
  * Created by Hercilio on 19/12/2017.
  */
 
-public class Participante {
+public class Participante implements Serializable {
     private String nomeCompleto;
     private String cpf;
     private String dataNasc;

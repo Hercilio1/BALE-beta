@@ -3,13 +3,8 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,25 +17,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.BaleLobbyActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginFragment;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
-import com.google.android.gms.internal.kx;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Timer;
 
 /**
  * Created by Hercilio on 19/12/2017.
@@ -160,6 +146,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
         Toast.makeText(this, "Participante " + nomeCompleto + " cadastrado com sucesso!", Toast.LENGTH_SHORT);
 
         Intent intent = new Intent(this, BaleLobbyActivity.class);
+        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
         startActivity(intent);
     }
 

@@ -26,6 +26,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
         import android.widget.TextView;
         import android.widget.Toast;
 
+        import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
         import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
         import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
         import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
@@ -39,10 +40,13 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
         import com.google.firebase.database.DatabaseError;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
+        import com.google.firebase.database.ValueEventListener;
 
         import java.util.ArrayList;
 
 public class HabitosLeituraEscritaActivity extends AppCompatActivity {
+
+
 
     /*ArrayList<String> frequencias;
     ArrayList<String> tipoTempo;
@@ -182,6 +186,10 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
     private static String pk_usuario = null;
     private static Pesquisa pesquisa = null;
 
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mParticipanteDatabaseReference;
+
     /**
      * Necessário para capturar o Participante da vez
      * @param savedInstanceState
@@ -252,7 +260,7 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
-            final Participante participante = (Participante) intentFromList.getSerializableExtra(EXTRA_PARTICIPANTE);
+            final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
             if(participante.getHleObject() != null) {
                 autoComplete(participante.getHleObject());
@@ -265,6 +273,8 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
                 });
             }
         }
+
+
 
     }
 

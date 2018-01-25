@@ -1,69 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.v4.widget.DrawerLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    tools:context=".Funcionalidades.Bateria.BaleLobbyActivity" >
+    android:orientation="vertical"
+    tools:context=".Funcionalidades.Bateria.Lobby.BaleLobbyActivity" >
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/fragment_container_bale_lobby"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/circleView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                CircleProgressView:cpv_value="0"
-                CircleProgressView:cpv_maxValue="100"
-                CircleProgressView:cpv_barColor="@color/colorPrimaryDark"
-                CircleProgressView:cpv_rimColor="@color/colorPrimary"
-                CircleProgressView:cpv_textColor="@color/colorPrimaryDark"
-                CircleProgressView:cpv_unitColor="@color/colorPrimaryDark"
-                CircleProgressView:cpv_spinColor="@color/colorPrimary"
-                CircleProgressView:cpv_barWidth="7dp"
-                CircleProgressView:cpv_rimWidth="7dp"
-                CircleProgressView:cpv_contourSize="0dp"
-                CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_seekMode="false"
-                CircleProgressView:cpv_unit="%"
-                CircleProgressView:cpv_unitPosition="right_top"
-                CircleProgressView:cpv_unitScale="1"
-                CircleProgressView:cpv_textScale="1"
-                CircleProgressView:cpv_showUnit="true"
-                android:padding="10dp"
-                android:layout_alignParentLeft="true" />
-
-            <TextView
-                android:id="@+id/bl_habitos_leitura_escrita_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_toEndOf="@+id/circleView"
-                android:layout_toRightOf="@+id/circleView"
-                android:gravity="center_vertical"
-                android:paddingTop="8dp"
-                android:text="Habitos de Leitura e Escrita"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
+</RelativeLayout>
 
 
-
-    </LinearLayout>
-
-</android.support.v4.widget.DrawerLayout>

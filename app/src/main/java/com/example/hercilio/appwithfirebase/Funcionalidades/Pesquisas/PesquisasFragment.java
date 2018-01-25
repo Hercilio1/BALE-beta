@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,18 +62,48 @@ public class PesquisasFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
-            @Override
-            public void onListFragmentInteraction(Participante item) {
-                Intent intent = new Intent(getActivity(), BaleLobbyActivity.class);
-                startActivity(intent);
-            }
-        };
-
         //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+
+        final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
+            @Override
+            public void onListFragmentInteraction(Participante item) {
+                Intent intent = new Intent(getActivity(), BaleLobbyActivity.class);
+                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, (item));
+                startActivity(intent);
+            }
+        };
+
+        //Realiza função de cadastrar participante
+        btnCadastrarParticipante = (FloatingActionButton) view.findViewById(R.id.btn_cadastrar_participante);
+        btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mParticipanteDatabaseReference.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        final Participante participante = dataSnapshot.getValue(Participante.class);
+                        Toast.makeText(getActivity(),"CLASUDHAIOSHD", Toast.LENGTH_SHORT);
+                        Intent intent = new Intent(getActivity(), CadastroParticipanteActivity.class);
+                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, (participante));
+                        startActivity(intent);
+                    }
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {}
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                });
+
+
+            }
+        });
+        //-------------------------------
 
         //Responsavel por ler o banco de dados
         mChildEventListener = new ChildEventListener() {
@@ -108,20 +138,8 @@ public class PesquisasFragment extends Fragment {
             }
         };
         mParticipanteDatabaseReference.addChildEventListener(mChildEventListener);
-        //-------------------------------
-
-        //Realiza função de cadastrar participante
-        btnCadastrarParticipante = (FloatingActionButton) view.findViewById(R.id.btn_cadastrar_participante);
-        btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(),"CLASUDHAIOSHD", Toast.LENGTH_SHORT);
-                Intent intent = new Intent(getActivity(), CadastroParticipanteActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
+
 
 //    @Override
 //    public void onAttach(Context context) {
