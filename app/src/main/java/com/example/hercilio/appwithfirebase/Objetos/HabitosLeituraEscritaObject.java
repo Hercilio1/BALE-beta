@@ -17,7 +17,7 @@ public class HabitosLeituraEscritaObject implements Serializable {
     private long total;
 
     public HabitosLeituraEscritaObject() {
-        this.perguntas = null;
+        this.perguntas = new ArrayList<>();
     }
 
     public void criaPergunta(String descricao, boolean opcaoUmSelecionada, boolean opcaoDoisSelecionada, boolean opcaoTresSelecionada, boolean opcaoQuatroSelecionada, boolean opcaoCincoSelecionada) {
@@ -27,5 +27,11 @@ public class HabitosLeituraEscritaObject implements Serializable {
 
     public List<Perguntas> getPerguntas() {
         return perguntas;
+    }
+
+    public void setPerguntas(int i, String descricao, boolean opcaoUmSelecionada, boolean opcaoDoisSelecionada, boolean opcaoTresSelecionada, boolean opcaoQuatroSelecionada, boolean opcaoCincoSelecionada) {
+        Perguntas pergunta = new Perguntas(descricao, opcaoUmSelecionada, opcaoDoisSelecionada, opcaoTresSelecionada, opcaoQuatroSelecionada, opcaoCincoSelecionada);
+        perguntas.set(i, pergunta);
+        return;
     }
 }

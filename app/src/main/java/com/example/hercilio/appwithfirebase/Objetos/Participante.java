@@ -48,8 +48,8 @@ public class Participante implements Serializable {
         this.linguaMaterna = linguaMaterna;
         this.outrasLinguas = outrasLinguas;
         this.observacaoPosAvaliacao = observacaoPosAvaliacao;
-        this.hleObject = new HabitosLeituraEscritaObject();
-        this.hleObject.criaPergunta("ola", true, false, false, false, false);
+        this.hleObject = null;
+//        this.hleObject.criaPergunta("ola", true, false, false, false, false);
 //        this.dataDaAvaliacao = dataDaAvaliacao;
 //        this.exercidaPor = exercidaPor;
 //        this.bateria = new Bateria(null);

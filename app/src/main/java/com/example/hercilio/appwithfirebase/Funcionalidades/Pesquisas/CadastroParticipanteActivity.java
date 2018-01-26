@@ -141,7 +141,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         DatabaseReference userRef = rootRef.child("users/" + auth.getCurrentUser().getUid() + "/participantes");
-        userRef.push().setValue(participante);
+        userRef.child(cpf).setValue(participante);
 
         Toast.makeText(this, "Participante " + nomeCompleto + " cadastrado com sucesso!", Toast.LENGTH_SHORT);
 

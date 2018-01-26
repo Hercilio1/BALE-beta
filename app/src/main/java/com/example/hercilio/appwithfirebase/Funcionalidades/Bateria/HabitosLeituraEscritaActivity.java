@@ -41,10 +41,13 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
         import com.google.firebase.database.DatabaseError;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
+        import com.google.firebase.database.Query;
         import com.google.firebase.database.ValueEventListener;
 
         import java.util.ArrayList;
+        import java.util.HashMap;
         import java.util.List;
+        import java.util.Map;
 
 public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
@@ -266,17 +269,17 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
             if(participante.getHleObject() != null) {
                 autoComplete(participante.getHleObject());
-            } else {
-                mBtnContinuar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        registrar();
-                        Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
-                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                        startActivity(intent);
-                    }
-                });
             }
+
+            mBtnContinuar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    registrar(participante);
+                    Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    startActivity(intent);
+                }
+            });
         }
 
 
@@ -288,100 +291,100 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         for(Perguntas x : perguntas) {
             switch (x.getDescricao()) {
                 case "mRadioRevistasAtualFreq":
-                    mRadioRevistasAtualFreq.check(isCheckedAutoComplete(x));
+                    mRadioRevistasAtualFreq.check(mRadioRevistasAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioRevistasPassadoFreq":
-                    mRadioRevistasPassadoFreq.check(isCheckedAutoComplete(x));
+                    mRadioRevistasPassadoFreq.check(mRadioRevistasPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioJornaisAtualFreq":
-                    mRadioJornaisAtualFreq.check(isCheckedAutoComplete(x));
+                    mRadioJornaisAtualFreq.check(mRadioJornaisAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioJornaisPassadoFreq":
-                    mRadioJornaisPassadoFreq.check(isCheckedAutoComplete(x));
+                    mRadioJornaisPassadoFreq.check(mRadioJornaisPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioLivrosAtualFreq":
-                    mRadioLivrosAtualFreq.check(isCheckedAutoComplete(x));
+                    mRadioLivrosAtualFreq.check(mRadioLivrosAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioLivrosPassadoFreq":
-                    mRadioLivrosPassadoFreq.check(isCheckedAutoComplete(x));
+                    mRadioLivrosPassadoFreq.check(mRadioLivrosPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioRedesAtualFreq":
-                    mRadioRedesAtualFreq.check(isCheckedAutoComplete(x));
+                    mRadioRedesAtualFreq.check(mRadioRedesAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioRedesPassadoFreq":
-                    mRadioRedesPassadoFreq.check(isCheckedAutoComplete(x));
+                    mRadioRedesPassadoFreq.check(mRadioRedesPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioMensagensAtualFreq":
-                    mRadioMensagensAtualFreq.check(isCheckedAutoComplete(x));
+                    mRadioMensagensAtualFreq.check(mRadioMensagensAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioMensagensPassadoFreq":
-                    mRadioMensagensPassadoFreq.check(isCheckedAutoComplete(x));
+                    mRadioMensagensPassadoFreq.check(mRadioMensagensPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioLiterariosAtualFreq":
-                    mRadioLiterariosAtualFreq.check(isCheckedAutoComplete(x));
+                    mRadioLiterariosAtualFreq.check(mRadioLiterariosAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioLiterariosPassadoFreq":
-                    mRadioLiterariosPassadoFreq.check(isCheckedAutoComplete(x));
+                    mRadioLiterariosPassadoFreq.check(mRadioLiterariosPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioNaoLiterariosAtualFreq":
-                    mRadioNaoLiterariosAtualFreq.check(isCheckedAutoComplete(x));
+                    mRadioNaoLiterariosAtualFreq.check(mRadioNaoLiterariosAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioNaoLiterariosPassadoFreq":
-                    mRadioNaoLiterariosPassadoFreq.check(isCheckedAutoComplete(x));
+                    mRadioNaoLiterariosPassadoFreq.check(mRadioNaoLiterariosPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioOutrosAtualFreq":
-                    mRadioOutrosAtualFreq.check(isCheckedAutoComplete(x));
+                    mRadioOutrosAtualFreq.check(mRadioOutrosAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioOutrosPassadoFreq":
-                    mRadioOutrosPassadoFreq.check(isCheckedAutoComplete(x));
+                    mRadioOutrosPassadoFreq.check(mRadioOutrosPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioRevistasAtual":
-                    mRadioRevistasAtual.check(isCheckedAutoComplete(x));
+                    mRadioRevistasAtual.check(mRadioRevistasAtual.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioJornaisAtual":
-                    mRadioJornaisAtual.check(isCheckedAutoComplete(x));
+                    mRadioJornaisAtual.check(mRadioJornaisAtual.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioLivrosAtual":
-                    mRadioLivrosAtual.check(isCheckedAutoComplete(x));
+                    mRadioLivrosAtual.check(mRadioLivrosAtual.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioRedesAtual":
-                    mRadioRedesAtual.check(isCheckedAutoComplete(x));
+                    mRadioRedesAtual.check(mRadioRedesAtual.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioMensagensAtual":
-                    mRadioMensagensAtual.check(isCheckedAutoComplete(x));
+                    mRadioMensagensAtual.check(mRadioMensagensAtual.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioLiterariosAtual":
-                    mRadioLiterariosAtual.check(isCheckedAutoComplete(x));
+                    mRadioLiterariosAtual.check(mRadioLiterariosAtual.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioNaoLiterariosAtual":
-                    mRadioNaoLiterariosAtual.check(isCheckedAutoComplete(x));
+                    mRadioNaoLiterariosAtual.check(mRadioNaoLiterariosAtual.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioOutrosAtual":
-                    mRadioOutrosAtual.check(isCheckedAutoComplete(x));
+                    mRadioOutrosAtual.check(mRadioOutrosAtual.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioRevistasPassado":
-                    mRadioRevistasPassado.check(isCheckedAutoComplete(x));
+                    mRadioRevistasPassado.check(mRadioRevistasPassado.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioJornaisPassado":
-                    mRadioJornaisPassado.check(isCheckedAutoComplete(x));
+                    mRadioJornaisPassado.check(mRadioJornaisPassado.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioLivrosPassado":
-                    mRadioLivrosPassado.check(isCheckedAutoComplete(x));
+                    mRadioLivrosPassado.check(mRadioLivrosPassado.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioRedesPassado":
-                    mRadioRedesPassado.check(isCheckedAutoComplete(x));
+                    mRadioRedesPassado.check(mRadioRedesPassado.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioMensagensPassado":
-                    mRadioMensagensPassado.check(isCheckedAutoComplete(x));
+                    mRadioMensagensPassado.check(mRadioMensagensPassado.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioLiterariosPassado":
-                    mRadioLiterariosPassado.check(isCheckedAutoComplete(x));
+                    mRadioLiterariosPassado.check(mRadioLiterariosPassado.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioNaoLiterariosPassado":
-                    mRadioNaoLiterariosPassado.check(isCheckedAutoComplete(x));
+                    mRadioNaoLiterariosPassado.check(mRadioNaoLiterariosPassado.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 case "mRadioOutrosPassado":
-                    mRadioOutrosPassado.check(isCheckedAutoComplete(x));
+                    mRadioOutrosPassado.check(mRadioOutrosPassado.getChildAt(isCheckedAutoComplete(x)).getId());
                     break;
                 default: break;
             }
@@ -1174,22 +1177,28 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
     /* Método criado desta forma uma vez que necessita de um parâmetro */
     public int onFrequenciaRadioButtonClicked(RadioGroup mRadio) {
-        int checkedHabito = 0;
+
+        int checkedHabito = 4;
         String checkedFrequencia;
         int selectedRadioId = mRadio.getCheckedRadioButtonId();
+        Log.d("ERROOOOOOOOOOOO ====> ", ""+selectedRadioId);
         if (selectedRadioId != -1) {
             RadioButton selectedRadioButton = (RadioButton) findViewById(selectedRadioId);
             checkedFrequencia = selectedRadioButton.getText().toString();
             if (checkedFrequencia.equals(getResources().getString(R.string.habitos_freq_4))) {
-                checkedHabito = 4;
+                checkedHabito = 0;
             } else {
                 if (checkedFrequencia.equals(getResources().getString(R.string.habitos_freq_3))) {
-                    checkedHabito = 3;
+                    checkedHabito = 1;
                 } else {
                     if (checkedFrequencia.equals(getResources().getString(R.string.habitos_freq_2))) {
                         checkedHabito = 2;
                     } else {
                         if (checkedFrequencia.equals(getResources().getString(R.string.habitos_freq_1))) {
+                            checkedHabito = 3;
+                        } else if (checkedFrequencia.equals(getResources().getString(R.string.habitos_digital))){
+                            checkedHabito = 0;
+                        } else if (checkedFrequencia.equals(getResources().getString(R.string.habitos_impresso))){
                             checkedHabito = 1;
                         }
                     }
@@ -1213,111 +1222,115 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         pesquisa.calculaPorcentagemTotal();
     }
 
-    public void registrar() {
+    public void registrar(Participante participante) {
         try {
         /* Leitura */
         /* Talvez valha a pena criar uma classe "Resposta" */
-            checkedLeitRevistasAtualFreq = onFrequenciaRadioButtonClicked(mRadioRevistasAtualFreq);
-            traduzRadioButtonSelecionado( "mRadioRevistasAtualFreq", checkedLeitRevistasAtualFreq);
+//            Intent intentFromList = getIntent();
+//            if (intentFromList != null) {
+//                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            checkedLeitRevistasPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRevistasPassadoFreq);
-            traduzRadioButtonSelecionado( "mRadioRevistasPassadoFreq", checkedLeitRevistasPassadoFreq);
+                checkedLeitRevistasAtualFreq = onFrequenciaRadioButtonClicked(mRadioRevistasAtualFreq);
+                traduzRadioButtonSelecionado("mRadioRevistasAtualFreq", checkedLeitRevistasAtualFreq, participante);
 
-            checkedLeitJornaisAtualFreq = onFrequenciaRadioButtonClicked(mRadioJornaisAtualFreq);
-            traduzRadioButtonSelecionado( "mRadioJornaisAtualFreq", checkedLeitJornaisAtualFreq);
+                checkedLeitRevistasPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRevistasPassadoFreq);
+                traduzRadioButtonSelecionado("mRadioRevistasPassadoFreq", checkedLeitRevistasPassadoFreq, participante);
 
-            checkedLeitJornaisPassadoFreq = onFrequenciaRadioButtonClicked(mRadioJornaisPassadoFreq);
-            traduzRadioButtonSelecionado( "mRadioJornaisPassadoFreq", checkedLeitJornaisPassadoFreq);
+                checkedLeitJornaisAtualFreq = onFrequenciaRadioButtonClicked(mRadioJornaisAtualFreq);
+                traduzRadioButtonSelecionado("mRadioJornaisAtualFreq", checkedLeitJornaisAtualFreq, participante);
 
-            checkedLeitLivrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLivrosAtualFreq);
-            traduzRadioButtonSelecionado( "mRadioLivrosAtualFreq", checkedLeitLivrosAtualFreq);
+                checkedLeitJornaisPassadoFreq = onFrequenciaRadioButtonClicked(mRadioJornaisPassadoFreq);
+                traduzRadioButtonSelecionado("mRadioJornaisPassadoFreq", checkedLeitJornaisPassadoFreq, participante);
 
-            checkedLeitLivrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLivrosPassadoFreq);
-            traduzRadioButtonSelecionado( "mRadioLivrosPassadoFreq", checkedLeitLivrosPassadoFreq);
+                checkedLeitLivrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLivrosAtualFreq);
+                traduzRadioButtonSelecionado("mRadioLivrosAtualFreq", checkedLeitLivrosAtualFreq, participante);
 
-            checkedLeitRedesAtualFreq = onFrequenciaRadioButtonClicked(mRadioRedesAtualFreq);
-            traduzRadioButtonSelecionado( "mRadioRedesAtualFreq", checkedLeitRedesAtualFreq);
+                checkedLeitLivrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLivrosPassadoFreq);
+                traduzRadioButtonSelecionado("mRadioLivrosPassadoFreq", checkedLeitLivrosPassadoFreq, participante);
 
-            checkedLeitRedesPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRedesPassadoFreq);
-            traduzRadioButtonSelecionado( "mRadioRedesPassadoFreq", checkedLeitRedesPassadoFreq);
+                checkedLeitRedesAtualFreq = onFrequenciaRadioButtonClicked(mRadioRedesAtualFreq);
+                traduzRadioButtonSelecionado("mRadioRedesAtualFreq", checkedLeitRedesAtualFreq, participante);
+
+                checkedLeitRedesPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRedesPassadoFreq);
+                traduzRadioButtonSelecionado("mRadioRedesPassadoFreq", checkedLeitRedesPassadoFreq, participante);
 
         /* Escrita */
-            checkedEscrMensagensAtualFreq = onFrequenciaRadioButtonClicked(mRadioMensagensAtualFreq);
-            traduzRadioButtonSelecionado( "mRadioMensagensAtualFreq", checkedEscrMensagensAtualFreq);
+                checkedEscrMensagensAtualFreq = onFrequenciaRadioButtonClicked(mRadioMensagensAtualFreq);
+                traduzRadioButtonSelecionado("mRadioMensagensAtualFreq", checkedEscrMensagensAtualFreq, participante);
 
-            checkedEscrMensagensPassadoFreq = onFrequenciaRadioButtonClicked(mRadioMensagensPassadoFreq);
-            traduzRadioButtonSelecionado( "mRadioMensagensPassadoFreq", checkedEscrMensagensPassadoFreq);
+                checkedEscrMensagensPassadoFreq = onFrequenciaRadioButtonClicked(mRadioMensagensPassadoFreq);
+                traduzRadioButtonSelecionado("mRadioMensagensPassadoFreq", checkedEscrMensagensPassadoFreq, participante);
 
-            checkedEscrLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosAtualFreq);
-            traduzRadioButtonSelecionado( "mRadioLiterariosAtualFreq", checkedEscrLiterariosAtualFreq);
+                checkedEscrLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosAtualFreq);
+                traduzRadioButtonSelecionado("mRadioLiterariosAtualFreq", checkedEscrLiterariosAtualFreq, participante);
 
-            checkedEscrLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosPassadoFreq);
-            traduzRadioButtonSelecionado( "mRadioLiterariosPassadoFreq", checkedEscrLiterariosPassadoFreq);
+                checkedEscrLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosPassadoFreq);
+                traduzRadioButtonSelecionado("mRadioLiterariosPassadoFreq", checkedEscrLiterariosPassadoFreq, participante);
 
-            checkedEscrNaoLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtualFreq);
-            traduzRadioButtonSelecionado( "mRadioNaoLiterariosAtualFreq", checkedEscrNaoLiterariosAtualFreq);
+                checkedEscrNaoLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtualFreq);
+                traduzRadioButtonSelecionado("mRadioNaoLiterariosAtualFreq", checkedEscrNaoLiterariosAtualFreq, participante);
 
-            checkedEscrNaoLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassadoFreq);
-            traduzRadioButtonSelecionado( "mRadioNaoLiterariosPassadoFreq", checkedEscrNaoLiterariosPassadoFreq);
+                checkedEscrNaoLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassadoFreq);
+                traduzRadioButtonSelecionado("mRadioNaoLiterariosPassadoFreq", checkedEscrNaoLiterariosPassadoFreq, participante);
 
-            checkedEscrOutrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioOutrosAtualFreq);
-            traduzRadioButtonSelecionado( "mRadioOutrosAtualFreq", checkedEscrOutrosAtualFreq);
+                checkedEscrOutrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioOutrosAtualFreq);
+                traduzRadioButtonSelecionado("mRadioOutrosAtualFreq", checkedEscrOutrosAtualFreq, participante);
 
-            checkedEscrOutrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioOutrosPassadoFreq);
-            traduzRadioButtonSelecionado( "mRadioOutrosPassadoFreq", checkedEscrOutrosPassadoFreq);
+                checkedEscrOutrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioOutrosPassadoFreq);
+                traduzRadioButtonSelecionado("mRadioOutrosPassadoFreq", checkedEscrOutrosPassadoFreq, participante);
 
         /* Atual */
-            checkedLeitRevistasAtual = onFrequenciaRadioButtonClicked(mRadioRevistasAtual);
-            traduzRadioButtonSelecionado( "mRadioRevistasAtual", checkedLeitRevistasAtual);
+                checkedLeitRevistasAtual = onFrequenciaRadioButtonClicked(mRadioRevistasAtual);
+                traduzRadioButtonSelecionado("mRadioRevistasAtual", checkedLeitRevistasAtual, participante);
 
-            checkedLeitJornaisAtual = onFrequenciaRadioButtonClicked(mRadioJornaisAtual);
-            traduzRadioButtonSelecionado( "mRadioJornaisAtual", checkedLeitJornaisAtual);
+                checkedLeitJornaisAtual = onFrequenciaRadioButtonClicked(mRadioJornaisAtual);
+                traduzRadioButtonSelecionado("mRadioJornaisAtual", checkedLeitJornaisAtual, participante);
 
-            checkedLeitLivrosAtual = onFrequenciaRadioButtonClicked(mRadioLivrosAtual);
-            traduzRadioButtonSelecionado( "mRadioLivrosAtual", checkedLeitLivrosAtual);
+                checkedLeitLivrosAtual = onFrequenciaRadioButtonClicked(mRadioLivrosAtual);
+                traduzRadioButtonSelecionado("mRadioLivrosAtual", checkedLeitLivrosAtual, participante);
 
-            checkedLeitRedesAtual = onFrequenciaRadioButtonClicked(mRadioRedesAtual);
-            traduzRadioButtonSelecionado( "mRadioRedesAtual", checkedLeitRedesAtual);
+                checkedLeitRedesAtual = onFrequenciaRadioButtonClicked(mRadioRedesAtual);
+                traduzRadioButtonSelecionado("mRadioRedesAtual", checkedLeitRedesAtual, participante);
 
-            checkedEscrMensagensAtual = onFrequenciaRadioButtonClicked(mRadioMensagensAtual);
-            traduzRadioButtonSelecionado( "mRadioMensagensAtual", checkedEscrMensagensAtual);
+                checkedEscrMensagensAtual = onFrequenciaRadioButtonClicked(mRadioMensagensAtual);
+                traduzRadioButtonSelecionado("mRadioMensagensAtual", checkedEscrMensagensAtual, participante);
 
-            checkedEscrLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioLiterariosAtual);
-            traduzRadioButtonSelecionado( "mRadioLiterariosAtual", checkedEscrLiterariosAtual);
+                checkedEscrLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioLiterariosAtual);
+                traduzRadioButtonSelecionado("mRadioLiterariosAtual", checkedEscrLiterariosAtual, participante);
 
-            checkedEscrNaoLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtual);
-            traduzRadioButtonSelecionado( "mRadioNaoLiterariosAtual", checkedEscrNaoLiterariosAtual);
+                checkedEscrNaoLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtual);
+                traduzRadioButtonSelecionado("mRadioNaoLiterariosAtual", checkedEscrNaoLiterariosAtual, participante);
 
-            checkedEscrOutrosAtual = onFrequenciaRadioButtonClicked(mRadioOutrosAtual);
-            traduzRadioButtonSelecionado( "mRadioOutrosAtual", checkedEscrOutrosAtual);
+                checkedEscrOutrosAtual = onFrequenciaRadioButtonClicked(mRadioOutrosAtual);
+                traduzRadioButtonSelecionado("mRadioOutrosAtual", checkedEscrOutrosAtual, participante);
 
         /* Passado */
-            checkedLeitRevistasPassado = onFrequenciaRadioButtonClicked(mRadioRevistasPassado);
-            traduzRadioButtonSelecionado( "mRadioRevistasPassado", checkedLeitRevistasPassado);
+                checkedLeitRevistasPassado = onFrequenciaRadioButtonClicked(mRadioRevistasPassado);
+                traduzRadioButtonSelecionado("mRadioRevistasPassado", checkedLeitRevistasPassado, participante);
 
-            checkedLeitJornaisPassado = onFrequenciaRadioButtonClicked(mRadioJornaisPassado);
-            traduzRadioButtonSelecionado( "mRadioJornaisPassado", checkedLeitJornaisPassado);
+                checkedLeitJornaisPassado = onFrequenciaRadioButtonClicked(mRadioJornaisPassado);
+                traduzRadioButtonSelecionado("mRadioJornaisPassado", checkedLeitJornaisPassado, participante);
 
-            checkedLeitLivrosPassado = onFrequenciaRadioButtonClicked(mRadioLivrosPassado);
-            traduzRadioButtonSelecionado( "mRadioLivrosPassado", checkedLeitLivrosPassado);
+                checkedLeitLivrosPassado = onFrequenciaRadioButtonClicked(mRadioLivrosPassado);
+                traduzRadioButtonSelecionado("mRadioLivrosPassado", checkedLeitLivrosPassado, participante);
 
-            checkedLeitRedesPassado = onFrequenciaRadioButtonClicked(mRadioRedesPassado);
-            traduzRadioButtonSelecionado( "mRadioRedesPassado", checkedLeitRedesPassado);
+                checkedLeitRedesPassado = onFrequenciaRadioButtonClicked(mRadioRedesPassado);
+                traduzRadioButtonSelecionado("mRadioRedesPassado", checkedLeitRedesPassado, participante);
 
-            checkedEscrMensagensPassado = onFrequenciaRadioButtonClicked(mRadioMensagensPassado);
-            traduzRadioButtonSelecionado( "mRadioMensagensPassado", checkedEscrMensagensPassado);
+                checkedEscrMensagensPassado = onFrequenciaRadioButtonClicked(mRadioMensagensPassado);
+                traduzRadioButtonSelecionado("mRadioMensagensPassado", checkedEscrMensagensPassado, participante);
 
-            checkedEscrLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioLiterariosPassado);
-            traduzRadioButtonSelecionado( "mRadioLiterariosPassado", checkedEscrLiterariosPassado);
+                checkedEscrLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioLiterariosPassado);
+                traduzRadioButtonSelecionado("mRadioLiterariosPassado", checkedEscrLiterariosPassado, participante);
 
-            checkedEscrNaoLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassado);
-            traduzRadioButtonSelecionado( "mRadioNaoLiterariosPassado", checkedEscrNaoLiterariosPassado);
+                checkedEscrNaoLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassado);
+                traduzRadioButtonSelecionado("mRadioNaoLiterariosPassado", checkedEscrNaoLiterariosPassado, participante);
 
-            checkedEscrOutrosPassado = onFrequenciaRadioButtonClicked(mRadioOutrosPassado);
-            traduzRadioButtonSelecionado("mRadioOutrosPassado", checkedEscrOutrosPassado);
+                checkedEscrOutrosPassado = onFrequenciaRadioButtonClicked(mRadioOutrosPassado);
+                traduzRadioButtonSelecionado("mRadioOutrosPassado", checkedEscrOutrosPassado, participante);
 
-            alteraDadosFirebase();
-
+                alteraDadosFirebase(participante);
+//            }
         } catch (Exception e) {
             Toast.makeText(HabitosLeituraEscritaActivity.this, R.string.toast_radiobutton, Toast.LENGTH_LONG).show();
             return;
@@ -1333,79 +1346,71 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 //        }
     }
 
-    public void traduzRadioButtonSelecionado(String descricao, int selecao) {
+    public void traduzRadioButtonSelecionado(String descricao, int selecao, Participante participante) {
         switch (selecao) {
             case 0:
-                criaPerguntaNoHLEObject(descricao, true, false, false, false, false);
+                criaPerguntaNoHLEObject(participante, descricao, true, false, false, false, false);
                 break;
             case 1:
-                criaPerguntaNoHLEObject(descricao, false, true, false, false, false);
+                criaPerguntaNoHLEObject(participante, descricao, false, true, false, false, false);
                 break;
             case 2:
-                criaPerguntaNoHLEObject(descricao, false, false,true,false, false);
+                criaPerguntaNoHLEObject(participante, descricao, false, false,true,false, false);
                 break;
             case 3:
-                criaPerguntaNoHLEObject(descricao, false, false,false,true, false);
+                criaPerguntaNoHLEObject(participante, descricao, false, false,false,true, false);
                 break;
             case 4:
-                criaPerguntaNoHLEObject(descricao, false, false,false,false, true);
+                criaPerguntaNoHLEObject(participante, descricao, false, false,false,false, true);
                 break;
             default:
                 break;
         }
     }
 
-    public void criaPerguntaNoHLEObject(String descricao, boolean selecao1, boolean selecao2, boolean selecao3, boolean selecao4, boolean selecao5) {
-        Intent intentFromList = getIntent();
-        if (intentFromList != null) {
-            final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+    public void criaPerguntaNoHLEObject(Participante participante, String descricao, boolean selecao1, boolean selecao2, boolean selecao3, boolean selecao4, boolean selecao5) {
 
-            if(participante.getHleObject() != null) {
-                participante.getHleObject().criaPergunta(descricao, selecao1, selecao2, selecao3, selecao4, selecao5);
-            } else {
-                participante.setHleObject();
-                participante.getHleObject().criaPergunta(descricao, selecao1, selecao2, selecao3, selecao4, selecao5);
+        if (participante.getHleObject() != null) {
+            for (int i = 0; i < participante.getHleObject().getPerguntas().size(); i++) {
+                if (participante.getHleObject().getPerguntas().get(i).getDescricao().equals(descricao)) {
+                    participante.getHleObject().setPerguntas(i, descricao, selecao1, selecao2, selecao3, selecao4, selecao5);
+                    return;
+                }
             }
+            participante.getHleObject().criaPergunta(descricao, selecao1, selecao2, selecao3, selecao4, selecao5);
+        } else {
+            participante.setHleObject();
+            participante.getHleObject().criaPergunta(descricao, selecao1, selecao2, selecao3, selecao4, selecao5);
         }
     }
 
-    public void alteraDadosFirebase() {
-
-        Intent intentFromList = getIntent();
-        if (intentFromList != null) {
-            final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
-
-            FirebaseDatabase mFirebaseDatabase;
-            final DatabaseReference mParticipanteDatabaseReference;
-            ChildEventListener mChildEventListener;
-            //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
-            mFirebaseDatabase = FirebaseDatabase.getInstance();
-            FirebaseAuth auth = FirebaseAuth.getInstance();
-            mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
-
-            mParticipanteDatabaseReference.addValueEventListener( new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-//                    if (participante2.equals(dataSnapshot.getValue(Participante.class))) {
-                        mParticipanteDatabaseReference.child(dataSnapshot.getValue().toString()).setValue(participante);
-                        int z = 5;
-//                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+    public void alteraDadosFirebase(Participante participante) {
 
 
-            //Responsavel por ler o banco de dados
+        FirebaseDatabase mFirebaseDatabase;
+        final DatabaseReference mParticipanteDatabaseReference;
+        ChildEventListener mChildEventListener;
+        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        final FirebaseAuth auth = FirebaseAuth.getInstance();
+        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
-            //-------------------------------
-        }
+        final Participante partAux = participante;
+
+        mParticipanteDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                mParticipanteDatabaseReference.child(partAux.getCpf()).setValue(partAux);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 }
+
 
 //    public class RegistrarBancoTask extends AsyncTask<Void, Void, Boolean> {
 //
