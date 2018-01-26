@@ -81,26 +81,28 @@ public class PesquisasFragment extends Fragment {
         btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mParticipanteDatabaseReference.addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        final Participante participante = dataSnapshot.getValue(Participante.class);
-                        Toast.makeText(getActivity(),"CLASUDHAIOSHD", Toast.LENGTH_SHORT);
-                        Intent intent = new Intent(getActivity(), CadastroParticipanteActivity.class);
-                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, (participante));
-                        startActivity(intent);
-                    }
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {}
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {}
-                });
 
+                Intent intent = new Intent(getActivity(), CadastroParticipanteActivity.class);
+                startActivity(intent);
 
+//                mParticipanteDatabaseReference.addChildEventListener(new ChildEventListener() {
+//                    @Override
+//                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                        final Participante participante = dataSnapshot.getValue(Participante.class);
+//                        Toast.makeText(getActivity(),"CLASUDHAIOSHD", Toast.LENGTH_SHORT);
+//                        Intent intent = new Intent(getActivity(), CadastroParticipanteActivity.class);
+//                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, (participante));
+//                        startActivity(intent);
+//                    }
+//                    @Override
+//                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+//                    @Override
+//                    public void onChildRemoved(DataSnapshot dataSnapshot) {}
+//                    @Override
+//                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {}
+//                });
             }
         });
         //-------------------------------

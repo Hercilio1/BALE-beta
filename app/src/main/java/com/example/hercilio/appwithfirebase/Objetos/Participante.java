@@ -33,7 +33,7 @@ public class Participante implements Serializable {
                         , String sexo, String celular
                         , String escolaridade, String dinamicaManual
                         , String profissao, boolean ehAposentado
-                        , String linguaMaterna, String outrasLinguas
+                        , String linguaMaterna, String outrasLinguas, HabitosLeituraEscritaObject hleObject
 //            , String observacaoPosAvaliacao, String dataDaAvaliacao, String exercidaPor
                         ) {
         this.nomeCompleto = nomeCompleto;
@@ -48,7 +48,8 @@ public class Participante implements Serializable {
         this.linguaMaterna = linguaMaterna;
         this.outrasLinguas = outrasLinguas;
         this.observacaoPosAvaliacao = observacaoPosAvaliacao;
-        hleObject = null;
+        this.hleObject = new HabitosLeituraEscritaObject();
+        this.hleObject.criaPergunta("ola", true, false, false, false, false);
 //        this.dataDaAvaliacao = dataDaAvaliacao;
 //        this.exercidaPor = exercidaPor;
 //        this.bateria = new Bateria(null);
@@ -179,7 +180,7 @@ public class Participante implements Serializable {
         return hleObject;
     }
 
-    public void setHleObject(HabitosLeituraEscritaObject hleObject) {
-        this.hleObject = hleObject;
+    public void setHleObject() {
+        hleObject = new HabitosLeituraEscritaObject();
     }
 }

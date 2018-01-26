@@ -31,6 +31,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
         import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
         import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
         import com.example.hercilio.appwithfirebase.Objetos.Participante;
+        import com.example.hercilio.appwithfirebase.Objetos.Perguntas;
         import com.example.hercilio.appwithfirebase.Objetos.Pesquisa;
         import com.example.hercilio.appwithfirebase.R;
         import com.google.android.gms.common.api.GoogleApiClient;
@@ -43,6 +44,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
         import com.google.firebase.database.ValueEventListener;
 
         import java.util.ArrayList;
+        import java.util.List;
 
 public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
@@ -268,7 +270,10 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
                 mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        registrar(participante.getHleObject());
+                        registrar();
+                        Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
+                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                        startActivity(intent);
                     }
                 });
             }
@@ -279,8 +284,8 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
     }
 
     public void autoComplete(HabitosLeituraEscritaObject hleObject) {
-        ArrayList<HabitosLeituraEscritaObject.Perguntas> perguntas = hleObject.getPerguntas();
-        for(HabitosLeituraEscritaObject.Perguntas x : perguntas) {
+        List<Perguntas> perguntas = hleObject.getPerguntas();
+        for(Perguntas x : perguntas) {
             switch (x.getDescricao()) {
                 case "mRadioRevistasAtualFreq":
                     mRadioRevistasAtualFreq.check(isCheckedAutoComplete(x));
@@ -383,12 +388,12 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         }
     }
 
-    public int isCheckedAutoComplete(HabitosLeituraEscritaObject.Perguntas alternativa) {
+    public int isCheckedAutoComplete(Perguntas alternativa) {
         if(alternativa.isOpcaoUmSelecionada())
             return 0;
         else if(alternativa.isOpcaoDoisSelecionada())
             return 1;
-        else if(alternativa.isOpcaoDoisSelecionada())
+        else if(alternativa.isOpcaoTresSelecionada())
             return 2;
         else if(alternativa.isOpcaoQuatroSelecionada())
             return 3;
@@ -1208,109 +1213,110 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         pesquisa.calculaPorcentagemTotal();
     }
 
-    public void registrar(HabitosLeituraEscritaObject habitosLeituraEscritaObject) {
+    public void registrar() {
         try {
         /* Leitura */
         /* Talvez valha a pena criar uma classe "Resposta" */
             checkedLeitRevistasAtualFreq = onFrequenciaRadioButtonClicked(mRadioRevistasAtualFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRevistasAtualFreq", checkedLeitRevistasAtualFreq);
+            traduzRadioButtonSelecionado( "mRadioRevistasAtualFreq", checkedLeitRevistasAtualFreq);
 
             checkedLeitRevistasPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRevistasPassadoFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRevistasPassadoFreq", checkedLeitRevistasPassadoFreq);
+            traduzRadioButtonSelecionado( "mRadioRevistasPassadoFreq", checkedLeitRevistasPassadoFreq);
 
             checkedLeitJornaisAtualFreq = onFrequenciaRadioButtonClicked(mRadioJornaisAtualFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioJornaisAtualFreq", checkedLeitJornaisAtualFreq);
+            traduzRadioButtonSelecionado( "mRadioJornaisAtualFreq", checkedLeitJornaisAtualFreq);
 
             checkedLeitJornaisPassadoFreq = onFrequenciaRadioButtonClicked(mRadioJornaisPassadoFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioJornaisPassadoFreq", checkedLeitJornaisPassadoFreq);
+            traduzRadioButtonSelecionado( "mRadioJornaisPassadoFreq", checkedLeitJornaisPassadoFreq);
 
             checkedLeitLivrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLivrosAtualFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLivrosAtualFreq", checkedLeitLivrosAtualFreq);
+            traduzRadioButtonSelecionado( "mRadioLivrosAtualFreq", checkedLeitLivrosAtualFreq);
 
             checkedLeitLivrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLivrosPassadoFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLivrosPassadoFreq", checkedLeitLivrosPassadoFreq);
+            traduzRadioButtonSelecionado( "mRadioLivrosPassadoFreq", checkedLeitLivrosPassadoFreq);
 
             checkedLeitRedesAtualFreq = onFrequenciaRadioButtonClicked(mRadioRedesAtualFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRedesAtualFreq", checkedLeitRedesAtualFreq);
+            traduzRadioButtonSelecionado( "mRadioRedesAtualFreq", checkedLeitRedesAtualFreq);
 
             checkedLeitRedesPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRedesPassadoFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRedesPassadoFreq", checkedLeitRedesPassadoFreq);
+            traduzRadioButtonSelecionado( "mRadioRedesPassadoFreq", checkedLeitRedesPassadoFreq);
 
         /* Escrita */
             checkedEscrMensagensAtualFreq = onFrequenciaRadioButtonClicked(mRadioMensagensAtualFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioMensagensAtualFreq", checkedEscrMensagensAtualFreq);
+            traduzRadioButtonSelecionado( "mRadioMensagensAtualFreq", checkedEscrMensagensAtualFreq);
 
             checkedEscrMensagensPassadoFreq = onFrequenciaRadioButtonClicked(mRadioMensagensPassadoFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioMensagensPassadoFreq", checkedEscrMensagensPassadoFreq);
+            traduzRadioButtonSelecionado( "mRadioMensagensPassadoFreq", checkedEscrMensagensPassadoFreq);
 
             checkedEscrLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosAtualFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLiterariosAtualFreq", checkedEscrLiterariosAtualFreq);
+            traduzRadioButtonSelecionado( "mRadioLiterariosAtualFreq", checkedEscrLiterariosAtualFreq);
 
             checkedEscrLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosPassadoFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLiterariosPassadoFreq", checkedEscrLiterariosPassadoFreq);
+            traduzRadioButtonSelecionado( "mRadioLiterariosPassadoFreq", checkedEscrLiterariosPassadoFreq);
 
             checkedEscrNaoLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtualFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioNaoLiterariosAtualFreq", checkedEscrNaoLiterariosAtualFreq);
+            traduzRadioButtonSelecionado( "mRadioNaoLiterariosAtualFreq", checkedEscrNaoLiterariosAtualFreq);
 
             checkedEscrNaoLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassadoFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioNaoLiterariosPassadoFreq", checkedEscrNaoLiterariosPassadoFreq);
+            traduzRadioButtonSelecionado( "mRadioNaoLiterariosPassadoFreq", checkedEscrNaoLiterariosPassadoFreq);
 
             checkedEscrOutrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioOutrosAtualFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioOutrosAtualFreq", checkedEscrOutrosAtualFreq);
+            traduzRadioButtonSelecionado( "mRadioOutrosAtualFreq", checkedEscrOutrosAtualFreq);
 
             checkedEscrOutrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioOutrosPassadoFreq);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioOutrosPassadoFreq", checkedEscrOutrosPassadoFreq);
+            traduzRadioButtonSelecionado( "mRadioOutrosPassadoFreq", checkedEscrOutrosPassadoFreq);
 
         /* Atual */
             checkedLeitRevistasAtual = onFrequenciaRadioButtonClicked(mRadioRevistasAtual);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRevistasAtual", checkedLeitRevistasAtual);
+            traduzRadioButtonSelecionado( "mRadioRevistasAtual", checkedLeitRevistasAtual);
 
             checkedLeitJornaisAtual = onFrequenciaRadioButtonClicked(mRadioJornaisAtual);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioJornaisAtual", checkedLeitJornaisAtual);
+            traduzRadioButtonSelecionado( "mRadioJornaisAtual", checkedLeitJornaisAtual);
 
             checkedLeitLivrosAtual = onFrequenciaRadioButtonClicked(mRadioLivrosAtual);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLivrosAtual", checkedLeitLivrosAtual);
+            traduzRadioButtonSelecionado( "mRadioLivrosAtual", checkedLeitLivrosAtual);
 
             checkedLeitRedesAtual = onFrequenciaRadioButtonClicked(mRadioRedesAtual);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRedesAtual", checkedLeitRedesAtual);
+            traduzRadioButtonSelecionado( "mRadioRedesAtual", checkedLeitRedesAtual);
 
             checkedEscrMensagensAtual = onFrequenciaRadioButtonClicked(mRadioMensagensAtual);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioMensagensAtual", checkedEscrMensagensAtual);
+            traduzRadioButtonSelecionado( "mRadioMensagensAtual", checkedEscrMensagensAtual);
 
             checkedEscrLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioLiterariosAtual);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLiterariosAtual", checkedEscrLiterariosAtual);
+            traduzRadioButtonSelecionado( "mRadioLiterariosAtual", checkedEscrLiterariosAtual);
 
             checkedEscrNaoLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtual);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioNaoLiterariosAtual", checkedEscrNaoLiterariosAtual);
+            traduzRadioButtonSelecionado( "mRadioNaoLiterariosAtual", checkedEscrNaoLiterariosAtual);
 
             checkedEscrOutrosAtual = onFrequenciaRadioButtonClicked(mRadioOutrosAtual);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioOutrosAtual", checkedEscrOutrosAtual);
+            traduzRadioButtonSelecionado( "mRadioOutrosAtual", checkedEscrOutrosAtual);
 
         /* Passado */
             checkedLeitRevistasPassado = onFrequenciaRadioButtonClicked(mRadioRevistasPassado);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRevistasPassado", checkedLeitRevistasPassado);
+            traduzRadioButtonSelecionado( "mRadioRevistasPassado", checkedLeitRevistasPassado);
 
             checkedLeitJornaisPassado = onFrequenciaRadioButtonClicked(mRadioJornaisPassado);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioJornaisPassado", checkedLeitJornaisPassado);
+            traduzRadioButtonSelecionado( "mRadioJornaisPassado", checkedLeitJornaisPassado);
 
             checkedLeitLivrosPassado = onFrequenciaRadioButtonClicked(mRadioLivrosPassado);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLivrosPassado", checkedLeitLivrosPassado);
+            traduzRadioButtonSelecionado( "mRadioLivrosPassado", checkedLeitLivrosPassado);
 
             checkedLeitRedesPassado = onFrequenciaRadioButtonClicked(mRadioRedesPassado);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioRedesPassado", checkedLeitRedesPassado);
+            traduzRadioButtonSelecionado( "mRadioRedesPassado", checkedLeitRedesPassado);
 
             checkedEscrMensagensPassado = onFrequenciaRadioButtonClicked(mRadioMensagensPassado);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioMensagensPassado", checkedEscrMensagensPassado);
+            traduzRadioButtonSelecionado( "mRadioMensagensPassado", checkedEscrMensagensPassado);
 
             checkedEscrLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioLiterariosPassado);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioLiterariosPassado", checkedEscrLiterariosPassado);
+            traduzRadioButtonSelecionado( "mRadioLiterariosPassado", checkedEscrLiterariosPassado);
 
             checkedEscrNaoLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassado);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioNaoLiterariosPassado", checkedEscrNaoLiterariosPassado);
+            traduzRadioButtonSelecionado( "mRadioNaoLiterariosPassado", checkedEscrNaoLiterariosPassado);
 
             checkedEscrOutrosPassado = onFrequenciaRadioButtonClicked(mRadioOutrosPassado);
-            traduzRadioButtonSelecionado(habitosLeituraEscritaObject, "mRadioOutrosPassado", checkedEscrOutrosPassado);
+            traduzRadioButtonSelecionado("mRadioOutrosPassado", checkedEscrOutrosPassado);
 
+            alteraDadosFirebase();
 
         } catch (Exception e) {
             Toast.makeText(HabitosLeituraEscritaActivity.this, R.string.toast_radiobutton, Toast.LENGTH_LONG).show();
@@ -1327,68 +1333,77 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 //        }
     }
 
-    public void traduzRadioButtonSelecionado(HabitosLeituraEscritaObject habitosLeituraEscritaObject, String descricao, int selecao) {
+    public void traduzRadioButtonSelecionado(String descricao, int selecao) {
         switch (selecao) {
             case 0:
-                habitosLeituraEscritaObject.criaPergunta(descricao, true, false, false, false, false);
+                criaPerguntaNoHLEObject(descricao, true, false, false, false, false);
                 break;
             case 1:
-                habitosLeituraEscritaObject.criaPergunta(descricao, false, true, false, false, false);
+                criaPerguntaNoHLEObject(descricao, false, true, false, false, false);
                 break;
             case 2:
-                habitosLeituraEscritaObject.criaPergunta(descricao, false, false,true,false, false);
+                criaPerguntaNoHLEObject(descricao, false, false,true,false, false);
                 break;
             case 3:
-                habitosLeituraEscritaObject.criaPergunta(descricao, false, false,false,true, false);
+                criaPerguntaNoHLEObject(descricao, false, false,false,true, false);
                 break;
             case 4:
-                habitosLeituraEscritaObject.criaPergunta(descricao, false, false,false,false, true);
+                criaPerguntaNoHLEObject(descricao, false, false,false,false, true);
                 break;
             default:
                 break;
         }
     }
 
-    public void alteraDadosFirebase(HabitosLeituraEscritaObject habitosLeituraEscritaObject) {
-        final HabitosLeituraEscritaObject hleObject = habitosLeituraEscritaObject;
-        FirebaseDatabase mFirebaseDatabase;
-        DatabaseReference mParticipanteDatabaseReference;
-        ChildEventListener mChildEventListener;
-        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+    public void criaPerguntaNoHLEObject(String descricao, boolean selecao1, boolean selecao2, boolean selecao3, boolean selecao4, boolean selecao5) {
+        Intent intentFromList = getIntent();
+        if (intentFromList != null) {
+            final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-        //Responsavel por ler o banco de dados
-        mChildEventListener = new ChildEventListener() {
-            //Método que lê os valores de determinada key
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            if(participante.getHleObject() != null) {
+                participante.getHleObject().criaPergunta(descricao, selecao1, selecao2, selecao3, selecao4, selecao5);
+            } else {
+                participante.setHleObject();
+                participante.getHleObject().criaPergunta(descricao, selecao1, selecao2, selecao3, selecao4, selecao5);
             }
+        }
+    }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Participante participante = dataSnapshot.getValue(Participante.class);
-                participante.setHleObject(hleObject);
-            }
+    public void alteraDadosFirebase() {
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+        Intent intentFromList = getIntent();
+        if (intentFromList != null) {
+            final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            }
+            FirebaseDatabase mFirebaseDatabase;
+            final DatabaseReference mParticipanteDatabaseReference;
+            ChildEventListener mChildEventListener;
+            //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
+            mFirebaseDatabase = FirebaseDatabase.getInstance();
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            mParticipanteDatabaseReference.addValueEventListener( new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-            }
+//                    if (participante2.equals(dataSnapshot.getValue(Participante.class))) {
+                        mParticipanteDatabaseReference.child(dataSnapshot.getValue().toString()).setValue(participante);
+                        int z = 5;
+//                    }
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        };
-        mParticipanteDatabaseReference.addChildEventListener(mChildEventListener);
-        //-------------------------------
+                }
+            });
+
+
+            //Responsavel por ler o banco de dados
+
+            //-------------------------------
+        }
     }
 }
 
