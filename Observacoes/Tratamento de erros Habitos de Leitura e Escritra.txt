@@ -1,0 +1,4 @@
+1 - tratamento de erros Habitos de Leitura e Escrita:
+	Lidar com o não click em um dos radio buttons
+	O não preenchimento de algum dado do idoso
+	

@@ -5,6 +5,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
  * Created by Hercilio on 26/12/2017.
  */
 
+        import android.provider.MediaStore;
         import android.support.design.widget.FloatingActionButton;
         import android.support.v7.app.AppCompatActivity;
         import android.view.View;
@@ -292,51 +293,67 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
             switch (x.getDescricao()) {
                 case "mRadioRevistasAtualFreq":
                     mRadioRevistasAtualFreq.check(mRadioRevistasAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalLeituraAtual(mRadioRevistasAtualFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioRevistasAtualFreq)));
                     break;
                 case "mRadioRevistasPassadoFreq":
                     mRadioRevistasPassadoFreq.check(mRadioRevistasPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalLeituraPassado(mRadioRevistasPassadoFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioRevistasPassadoFreq)));
                     break;
                 case "mRadioJornaisAtualFreq":
                     mRadioJornaisAtualFreq.check(mRadioJornaisAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalLeituraAtual(mRadioJornaisAtualFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioJornaisAtualFreq)));
                     break;
                 case "mRadioJornaisPassadoFreq":
                     mRadioJornaisPassadoFreq.check(mRadioJornaisPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalLeituraPassado(mRadioJornaisPassadoFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioJornaisPassadoFreq)));
                     break;
                 case "mRadioLivrosAtualFreq":
                     mRadioLivrosAtualFreq.check(mRadioLivrosAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalLeituraAtual(mRadioLivrosAtualFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioLivrosAtualFreq)));
                     break;
                 case "mRadioLivrosPassadoFreq":
                     mRadioLivrosPassadoFreq.check(mRadioLivrosPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalLeituraPassado(mRadioLivrosPassadoFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioLivrosPassadoFreq)));
                     break;
                 case "mRadioRedesAtualFreq":
                     mRadioRedesAtualFreq.check(mRadioRedesAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalLeituraAtual(mRadioRedesAtualFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioRedesAtualFreq)));
                     break;
                 case "mRadioRedesPassadoFreq":
                     mRadioRedesPassadoFreq.check(mRadioRedesPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalLeituraPassado(mRadioRedesPassadoFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioRedesPassadoFreq)));
                     break;
                 case "mRadioMensagensAtualFreq":
                     mRadioMensagensAtualFreq.check(mRadioMensagensAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalEscritaAtual(mRadioMensagensAtualFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioMensagensAtualFreq)));
                     break;
                 case "mRadioMensagensPassadoFreq":
                     mRadioMensagensPassadoFreq.check(mRadioMensagensPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalEscritaPassado(mRadioMensagensPassadoFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioMensagensPassadoFreq)));
                     break;
                 case "mRadioLiterariosAtualFreq":
                     mRadioLiterariosAtualFreq.check(mRadioLiterariosAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalEscritaAtual(mRadioLiterariosAtualFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioLiterariosAtualFreq)));
                     break;
                 case "mRadioLiterariosPassadoFreq":
                     mRadioLiterariosPassadoFreq.check(mRadioLiterariosPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalEscritaPassado(mRadioLiterariosPassadoFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioLiterariosPassadoFreq)));
                     break;
                 case "mRadioNaoLiterariosAtualFreq":
                     mRadioNaoLiterariosAtualFreq.check(mRadioNaoLiterariosAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalEscritaAtual(mRadioNaoLiterariosAtualFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtualFreq)));
                     break;
                 case "mRadioNaoLiterariosPassadoFreq":
                     mRadioNaoLiterariosPassadoFreq.check(mRadioNaoLiterariosPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalEscritaPassado(mRadioNaoLiterariosPassadoFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassadoFreq)));
                     break;
                 case "mRadioOutrosAtualFreq":
                     mRadioOutrosAtualFreq.check(mRadioOutrosAtualFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalEscritaAtual(mRadioOutrosAtualFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioOutrosAtualFreq)));
                     break;
                 case "mRadioOutrosPassadoFreq":
                     mRadioOutrosPassadoFreq.check(mRadioOutrosPassadoFreq.getChildAt(isCheckedAutoComplete(x)).getId());
+                    alteraTotalEscritaPassado(mRadioOutrosPassadoFreq.getChildAt(onFrequenciaRadioButtonClicked(mRadioOutrosPassadoFreq)));
                     break;
                 case "mRadioRevistasAtual":
                     mRadioRevistasAtual.check(mRadioRevistasAtual.getChildAt(isCheckedAutoComplete(x)).getId());
@@ -389,6 +406,7 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
                 default: break;
             }
         }
+
     }
 
     public int isCheckedAutoComplete(Perguntas alternativa) {
@@ -1196,6 +1214,8 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
                     } else {
                         if (checkedFrequencia.equals(getResources().getString(R.string.habitos_freq_1))) {
                             checkedHabito = 3;
+                        } else if (checkedFrequencia.equals(getResources().getString(R.string.habitos_freq_0))) {
+                            checkedHabito = 4;
                         } else if (checkedFrequencia.equals(getResources().getString(R.string.habitos_digital))){
                             checkedHabito = 0;
                         } else if (checkedFrequencia.equals(getResources().getString(R.string.habitos_impresso))){
@@ -1330,20 +1350,10 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
                 traduzRadioButtonSelecionado("mRadioOutrosPassado", checkedEscrOutrosPassado, participante);
 
                 alteraDadosFirebase(participante);
-//            }
         } catch (Exception e) {
             Toast.makeText(HabitosLeituraEscritaActivity.this, R.string.toast_radiobutton, Toast.LENGTH_LONG).show();
             return;
         }
-
-//        try {
-//            progressDialog = ProgressDialog.show(HabitosLeituraEscritaActivity.this, null,
-//                    getResources().getText(R.string.examinador_progress_message), true, false);
-//            new RegistrarBancoTask().execute((Void) null);
-//        } catch (Exception e) {
-//            progressDialog.dismiss();
-//            Toast.makeText(HabitosLeituraEscritaActivity.this, R.string.toast_registrar, Toast.LENGTH_LONG).show();
-//        }
     }
 
     public void traduzRadioButtonSelecionado(String descricao, int selecao, Participante participante) {
@@ -1384,7 +1394,7 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         }
     }
 
-    public void alteraDadosFirebase(Participante participante) {
+    public void alteraDadosFirebase(final Participante participante) {
 
 
         FirebaseDatabase mFirebaseDatabase;
@@ -1395,13 +1405,15 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         final FirebaseAuth auth = FirebaseAuth.getInstance();
         mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
-        final Participante partAux = participante;
+//        Criar uma váriavel final estava criando um loop no onDataChange
+//        final Participante partAux = participante;
 
-        mParticipanteDatabaseReference.addValueEventListener(new ValueEventListener() {
+        mParticipanteDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                mParticipanteDatabaseReference.child(partAux.getCpf()).setValue(partAux);
+                mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+
             }
 
             @Override

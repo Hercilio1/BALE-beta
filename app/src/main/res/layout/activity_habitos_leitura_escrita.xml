@@ -180,7 +180,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_revistas_atual_i"
@@ -202,7 +201,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_jornais_atual_i"
@@ -224,7 +222,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_livros_atual_i"
@@ -246,7 +243,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_redes_atual_i"
@@ -323,7 +319,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalLeituraAtual"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -369,7 +364,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalLeituraAtual"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -420,7 +414,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
+
                         android:onClick="alteraTotalLeituraAtual"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -472,7 +466,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalLeituraAtual"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -579,7 +572,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_revistas_passado_i"
@@ -601,7 +593,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_jornais_passado_i"
@@ -623,7 +614,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -646,7 +636,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_redes_passado_i"
@@ -723,7 +712,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalLeituraPassado"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -769,7 +757,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalLeituraPassado"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -820,7 +807,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalLeituraPassado"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -871,7 +857,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalLeituraPassado"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -950,7 +935,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/valor_total_20"
+                        android:text="@string/valor_total_16"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginBottom="8dp"/>
                 </LinearLayout>
@@ -988,7 +973,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/valor_total_20"
+                        android:text="@string/valor_total_16"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginBottom="8dp"/>
                 </LinearLayout>
@@ -998,18 +983,19 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:textColor="#000">
+                    android:textColor="#000" >
+
                     <TextView
+                        android:id="@+id/habitos_leit_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/total"
-                        android:id="@+id/habitos_leit_total"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_margin="2dp"
+                        android:layout_marginBottom="8dp"
                         android:paddingLeft="4dp"
                         android:paddingStart="4dp"
-                        android:layout_margin="2dp"
-                        android:layout_marginBottom="8dp"/>
+                        android:text="@string/total"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorPrimaryDark" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1026,16 +1012,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/valor_total_40"
+                        android:text="@string/valor_total_32"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginBottom="8dp"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:textColor="#000" />
             </TableRow>
             <!-- 2. Hábitos de Escrita -->
             <TableRow
@@ -1194,7 +1174,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_mensagens_atual_i"
@@ -1216,7 +1195,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_literarios_atual_i"
@@ -1238,7 +1216,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_naolietrarios_atual_i"
@@ -1260,7 +1237,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_outros_atual_i"
@@ -1337,7 +1313,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalEscritaAtual"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -1383,7 +1358,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalEscritaAtual"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -1434,7 +1408,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalEscritaAtual"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -1485,7 +1458,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalEscritaAtual"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -1589,7 +1561,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_mensagens_passado_i"
@@ -1611,7 +1582,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_literarios_passado_i"
@@ -1633,7 +1603,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_naoliterarios_passado_i"
@@ -1655,7 +1624,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:text="@string/habitos_digital"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                     <RadioButton android:id="@+id/radio_outros_passado_i"
@@ -1732,7 +1700,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalEscritaPassado"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -1778,7 +1745,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalEscritaPassado"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -1829,7 +1795,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalEscritaPassado"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -1880,7 +1845,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:checked="true"
                         android:onClick="alteraTotalEscritaPassado"
                         android:text="@string/habitos_freq_4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -1957,7 +1921,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/valor_total_20"
+                        android:text="@string/valor_total_16"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginBottom="8dp"/>
                 </LinearLayout>
@@ -1995,7 +1959,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/valor_total_20"
+                        android:text="@string/valor_total_16"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginBottom="8dp"/>
                 </LinearLayout>
@@ -2033,16 +1997,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/valor_total_40"
+                        android:text="@string/valor_total_32"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginBottom="8dp"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:textColor="#000" />
             </TableRow>
             <!-- Continuar -->
             <Button
