@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Funcionalidades.Bateria.Lobby.BaleLobbyActivity" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true" >
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/fragment_container_bale_lobby"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
-</RelativeLayout>
-
+</ScrollView>
 

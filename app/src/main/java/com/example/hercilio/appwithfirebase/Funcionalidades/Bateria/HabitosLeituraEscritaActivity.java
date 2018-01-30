@@ -5,50 +5,53 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
  * Created by Hercilio on 26/12/2017.
  */
 
-        import android.provider.MediaStore;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.View;
+import android.os.Parcelable;
+import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
-        import android.app.ProgressDialog;
-        import android.content.ContentValues;
-        import android.content.Intent;
-        import android.database.Cursor;
-        import android.os.AsyncTask;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.LinearLayout;
-        import android.widget.ProgressBar;
-        import android.widget.RadioButton;
-        import android.widget.RadioGroup;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
-        import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
-        import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
-        import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
-        import com.example.hercilio.appwithfirebase.Objetos.Participante;
-        import com.example.hercilio.appwithfirebase.Objetos.Perguntas;
-        import com.example.hercilio.appwithfirebase.Objetos.Pesquisa;
-        import com.example.hercilio.appwithfirebase.R;
-        import com.google.android.gms.common.api.GoogleApiClient;
-        import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.database.ChildEventListener;
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.Query;
-        import com.google.firebase.database.ValueEventListener;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
+import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
+import com.example.hercilio.appwithfirebase.Objetos.Participante;
+import com.example.hercilio.appwithfirebase.Objetos.Perguntas;
+import com.example.hercilio.appwithfirebase.Objetos.Pesquisa;
+import com.example.hercilio.appwithfirebase.R;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
@@ -174,21 +177,9 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
     private int[] vetorTotalEscritaPassado;
     private int[] vetorTotalEscrita;
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-    private ProgressDialog progressDialog;
-
-    private ArrayList<String> respostas;
-    private static String pk_pesquisa = null;
-    private static String pk_usuario = null;
     private static Pesquisa pesquisa = null;
 
 
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mParticipanteDatabaseReference;
 
     /**
      * Necessário para capturar o Participante da vez
@@ -257,7 +248,6 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         vetorTotalEscritaPassado = new int[4];
         vetorTotalEscrita = new int[2]; // Esse vetor possui 2 posições: [0] total atual e [1] total passado
 
-
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
@@ -276,9 +266,6 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-
     }
 
     public void autoComplete(HabitosLeituraEscritaObject hleObject) {
@@ -1244,106 +1231,106 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 //            if (intentFromList != null) {
 //                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-                checkedLeitRevistasAtualFreq = onFrequenciaRadioButtonClicked(mRadioRevistasAtualFreq);
-                traduzRadioButtonSelecionado("mRadioRevistasAtualFreq", checkedLeitRevistasAtualFreq, participante);
+            checkedLeitRevistasAtualFreq = onFrequenciaRadioButtonClicked(mRadioRevistasAtualFreq);
+            traduzRadioButtonSelecionado("mRadioRevistasAtualFreq", checkedLeitRevistasAtualFreq, participante);
 
-                checkedLeitRevistasPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRevistasPassadoFreq);
-                traduzRadioButtonSelecionado("mRadioRevistasPassadoFreq", checkedLeitRevistasPassadoFreq, participante);
+            checkedLeitRevistasPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRevistasPassadoFreq);
+            traduzRadioButtonSelecionado("mRadioRevistasPassadoFreq", checkedLeitRevistasPassadoFreq, participante);
 
-                checkedLeitJornaisAtualFreq = onFrequenciaRadioButtonClicked(mRadioJornaisAtualFreq);
-                traduzRadioButtonSelecionado("mRadioJornaisAtualFreq", checkedLeitJornaisAtualFreq, participante);
+            checkedLeitJornaisAtualFreq = onFrequenciaRadioButtonClicked(mRadioJornaisAtualFreq);
+            traduzRadioButtonSelecionado("mRadioJornaisAtualFreq", checkedLeitJornaisAtualFreq, participante);
 
-                checkedLeitJornaisPassadoFreq = onFrequenciaRadioButtonClicked(mRadioJornaisPassadoFreq);
-                traduzRadioButtonSelecionado("mRadioJornaisPassadoFreq", checkedLeitJornaisPassadoFreq, participante);
+            checkedLeitJornaisPassadoFreq = onFrequenciaRadioButtonClicked(mRadioJornaisPassadoFreq);
+            traduzRadioButtonSelecionado("mRadioJornaisPassadoFreq", checkedLeitJornaisPassadoFreq, participante);
 
-                checkedLeitLivrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLivrosAtualFreq);
-                traduzRadioButtonSelecionado("mRadioLivrosAtualFreq", checkedLeitLivrosAtualFreq, participante);
+            checkedLeitLivrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLivrosAtualFreq);
+            traduzRadioButtonSelecionado("mRadioLivrosAtualFreq", checkedLeitLivrosAtualFreq, participante);
 
-                checkedLeitLivrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLivrosPassadoFreq);
-                traduzRadioButtonSelecionado("mRadioLivrosPassadoFreq", checkedLeitLivrosPassadoFreq, participante);
+            checkedLeitLivrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLivrosPassadoFreq);
+            traduzRadioButtonSelecionado("mRadioLivrosPassadoFreq", checkedLeitLivrosPassadoFreq, participante);
 
-                checkedLeitRedesAtualFreq = onFrequenciaRadioButtonClicked(mRadioRedesAtualFreq);
-                traduzRadioButtonSelecionado("mRadioRedesAtualFreq", checkedLeitRedesAtualFreq, participante);
+            checkedLeitRedesAtualFreq = onFrequenciaRadioButtonClicked(mRadioRedesAtualFreq);
+            traduzRadioButtonSelecionado("mRadioRedesAtualFreq", checkedLeitRedesAtualFreq, participante);
 
-                checkedLeitRedesPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRedesPassadoFreq);
-                traduzRadioButtonSelecionado("mRadioRedesPassadoFreq", checkedLeitRedesPassadoFreq, participante);
+            checkedLeitRedesPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRedesPassadoFreq);
+            traduzRadioButtonSelecionado("mRadioRedesPassadoFreq", checkedLeitRedesPassadoFreq, participante);
 
         /* Escrita */
-                checkedEscrMensagensAtualFreq = onFrequenciaRadioButtonClicked(mRadioMensagensAtualFreq);
-                traduzRadioButtonSelecionado("mRadioMensagensAtualFreq", checkedEscrMensagensAtualFreq, participante);
+            checkedEscrMensagensAtualFreq = onFrequenciaRadioButtonClicked(mRadioMensagensAtualFreq);
+            traduzRadioButtonSelecionado("mRadioMensagensAtualFreq", checkedEscrMensagensAtualFreq, participante);
 
-                checkedEscrMensagensPassadoFreq = onFrequenciaRadioButtonClicked(mRadioMensagensPassadoFreq);
-                traduzRadioButtonSelecionado("mRadioMensagensPassadoFreq", checkedEscrMensagensPassadoFreq, participante);
+            checkedEscrMensagensPassadoFreq = onFrequenciaRadioButtonClicked(mRadioMensagensPassadoFreq);
+            traduzRadioButtonSelecionado("mRadioMensagensPassadoFreq", checkedEscrMensagensPassadoFreq, participante);
 
-                checkedEscrLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosAtualFreq);
-                traduzRadioButtonSelecionado("mRadioLiterariosAtualFreq", checkedEscrLiterariosAtualFreq, participante);
+            checkedEscrLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosAtualFreq);
+            traduzRadioButtonSelecionado("mRadioLiterariosAtualFreq", checkedEscrLiterariosAtualFreq, participante);
 
-                checkedEscrLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosPassadoFreq);
-                traduzRadioButtonSelecionado("mRadioLiterariosPassadoFreq", checkedEscrLiterariosPassadoFreq, participante);
+            checkedEscrLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosPassadoFreq);
+            traduzRadioButtonSelecionado("mRadioLiterariosPassadoFreq", checkedEscrLiterariosPassadoFreq, participante);
 
-                checkedEscrNaoLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtualFreq);
-                traduzRadioButtonSelecionado("mRadioNaoLiterariosAtualFreq", checkedEscrNaoLiterariosAtualFreq, participante);
+            checkedEscrNaoLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtualFreq);
+            traduzRadioButtonSelecionado("mRadioNaoLiterariosAtualFreq", checkedEscrNaoLiterariosAtualFreq, participante);
 
-                checkedEscrNaoLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassadoFreq);
-                traduzRadioButtonSelecionado("mRadioNaoLiterariosPassadoFreq", checkedEscrNaoLiterariosPassadoFreq, participante);
+            checkedEscrNaoLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassadoFreq);
+            traduzRadioButtonSelecionado("mRadioNaoLiterariosPassadoFreq", checkedEscrNaoLiterariosPassadoFreq, participante);
 
-                checkedEscrOutrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioOutrosAtualFreq);
-                traduzRadioButtonSelecionado("mRadioOutrosAtualFreq", checkedEscrOutrosAtualFreq, participante);
+            checkedEscrOutrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioOutrosAtualFreq);
+            traduzRadioButtonSelecionado("mRadioOutrosAtualFreq", checkedEscrOutrosAtualFreq, participante);
 
-                checkedEscrOutrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioOutrosPassadoFreq);
-                traduzRadioButtonSelecionado("mRadioOutrosPassadoFreq", checkedEscrOutrosPassadoFreq, participante);
+            checkedEscrOutrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioOutrosPassadoFreq);
+            traduzRadioButtonSelecionado("mRadioOutrosPassadoFreq", checkedEscrOutrosPassadoFreq, participante);
 
         /* Atual */
-                checkedLeitRevistasAtual = onFrequenciaRadioButtonClicked(mRadioRevistasAtual);
-                traduzRadioButtonSelecionado("mRadioRevistasAtual", checkedLeitRevistasAtual, participante);
+            checkedLeitRevistasAtual = onFrequenciaRadioButtonClicked(mRadioRevistasAtual);
+            traduzRadioButtonSelecionado("mRadioRevistasAtual", checkedLeitRevistasAtual, participante);
 
-                checkedLeitJornaisAtual = onFrequenciaRadioButtonClicked(mRadioJornaisAtual);
-                traduzRadioButtonSelecionado("mRadioJornaisAtual", checkedLeitJornaisAtual, participante);
+            checkedLeitJornaisAtual = onFrequenciaRadioButtonClicked(mRadioJornaisAtual);
+            traduzRadioButtonSelecionado("mRadioJornaisAtual", checkedLeitJornaisAtual, participante);
 
-                checkedLeitLivrosAtual = onFrequenciaRadioButtonClicked(mRadioLivrosAtual);
-                traduzRadioButtonSelecionado("mRadioLivrosAtual", checkedLeitLivrosAtual, participante);
+            checkedLeitLivrosAtual = onFrequenciaRadioButtonClicked(mRadioLivrosAtual);
+            traduzRadioButtonSelecionado("mRadioLivrosAtual", checkedLeitLivrosAtual, participante);
 
-                checkedLeitRedesAtual = onFrequenciaRadioButtonClicked(mRadioRedesAtual);
-                traduzRadioButtonSelecionado("mRadioRedesAtual", checkedLeitRedesAtual, participante);
+            checkedLeitRedesAtual = onFrequenciaRadioButtonClicked(mRadioRedesAtual);
+            traduzRadioButtonSelecionado("mRadioRedesAtual", checkedLeitRedesAtual, participante);
 
-                checkedEscrMensagensAtual = onFrequenciaRadioButtonClicked(mRadioMensagensAtual);
-                traduzRadioButtonSelecionado("mRadioMensagensAtual", checkedEscrMensagensAtual, participante);
+            checkedEscrMensagensAtual = onFrequenciaRadioButtonClicked(mRadioMensagensAtual);
+            traduzRadioButtonSelecionado("mRadioMensagensAtual", checkedEscrMensagensAtual, participante);
 
-                checkedEscrLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioLiterariosAtual);
-                traduzRadioButtonSelecionado("mRadioLiterariosAtual", checkedEscrLiterariosAtual, participante);
+            checkedEscrLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioLiterariosAtual);
+            traduzRadioButtonSelecionado("mRadioLiterariosAtual", checkedEscrLiterariosAtual, participante);
 
-                checkedEscrNaoLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtual);
-                traduzRadioButtonSelecionado("mRadioNaoLiterariosAtual", checkedEscrNaoLiterariosAtual, participante);
+            checkedEscrNaoLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtual);
+            traduzRadioButtonSelecionado("mRadioNaoLiterariosAtual", checkedEscrNaoLiterariosAtual, participante);
 
-                checkedEscrOutrosAtual = onFrequenciaRadioButtonClicked(mRadioOutrosAtual);
-                traduzRadioButtonSelecionado("mRadioOutrosAtual", checkedEscrOutrosAtual, participante);
+            checkedEscrOutrosAtual = onFrequenciaRadioButtonClicked(mRadioOutrosAtual);
+            traduzRadioButtonSelecionado("mRadioOutrosAtual", checkedEscrOutrosAtual, participante);
 
         /* Passado */
-                checkedLeitRevistasPassado = onFrequenciaRadioButtonClicked(mRadioRevistasPassado);
-                traduzRadioButtonSelecionado("mRadioRevistasPassado", checkedLeitRevistasPassado, participante);
+            checkedLeitRevistasPassado = onFrequenciaRadioButtonClicked(mRadioRevistasPassado);
+            traduzRadioButtonSelecionado("mRadioRevistasPassado", checkedLeitRevistasPassado, participante);
 
-                checkedLeitJornaisPassado = onFrequenciaRadioButtonClicked(mRadioJornaisPassado);
-                traduzRadioButtonSelecionado("mRadioJornaisPassado", checkedLeitJornaisPassado, participante);
+            checkedLeitJornaisPassado = onFrequenciaRadioButtonClicked(mRadioJornaisPassado);
+            traduzRadioButtonSelecionado("mRadioJornaisPassado", checkedLeitJornaisPassado, participante);
 
-                checkedLeitLivrosPassado = onFrequenciaRadioButtonClicked(mRadioLivrosPassado);
-                traduzRadioButtonSelecionado("mRadioLivrosPassado", checkedLeitLivrosPassado, participante);
+            checkedLeitLivrosPassado = onFrequenciaRadioButtonClicked(mRadioLivrosPassado);
+            traduzRadioButtonSelecionado("mRadioLivrosPassado", checkedLeitLivrosPassado, participante);
 
-                checkedLeitRedesPassado = onFrequenciaRadioButtonClicked(mRadioRedesPassado);
-                traduzRadioButtonSelecionado("mRadioRedesPassado", checkedLeitRedesPassado, participante);
+            checkedLeitRedesPassado = onFrequenciaRadioButtonClicked(mRadioRedesPassado);
+            traduzRadioButtonSelecionado("mRadioRedesPassado", checkedLeitRedesPassado, participante);
 
-                checkedEscrMensagensPassado = onFrequenciaRadioButtonClicked(mRadioMensagensPassado);
-                traduzRadioButtonSelecionado("mRadioMensagensPassado", checkedEscrMensagensPassado, participante);
+            checkedEscrMensagensPassado = onFrequenciaRadioButtonClicked(mRadioMensagensPassado);
+            traduzRadioButtonSelecionado("mRadioMensagensPassado", checkedEscrMensagensPassado, participante);
 
-                checkedEscrLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioLiterariosPassado);
-                traduzRadioButtonSelecionado("mRadioLiterariosPassado", checkedEscrLiterariosPassado, participante);
+            checkedEscrLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioLiterariosPassado);
+            traduzRadioButtonSelecionado("mRadioLiterariosPassado", checkedEscrLiterariosPassado, participante);
 
-                checkedEscrNaoLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassado);
-                traduzRadioButtonSelecionado("mRadioNaoLiterariosPassado", checkedEscrNaoLiterariosPassado, participante);
+            checkedEscrNaoLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassado);
+            traduzRadioButtonSelecionado("mRadioNaoLiterariosPassado", checkedEscrNaoLiterariosPassado, participante);
 
-                checkedEscrOutrosPassado = onFrequenciaRadioButtonClicked(mRadioOutrosPassado);
-                traduzRadioButtonSelecionado("mRadioOutrosPassado", checkedEscrOutrosPassado, participante);
+            checkedEscrOutrosPassado = onFrequenciaRadioButtonClicked(mRadioOutrosPassado);
+            traduzRadioButtonSelecionado("mRadioOutrosPassado", checkedEscrOutrosPassado, participante);
 
-                alteraDadosFirebase(participante);
+            alteraDadosFirebase(participante);
         } catch (Exception e) {
             Toast.makeText(HabitosLeituraEscritaActivity.this, R.string.toast_radiobutton, Toast.LENGTH_LONG).show();
             return;

@@ -9,14 +9,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
         <activity
             android:name=".UsersActivity"
-            android:label="Users" >
+            android:label="Users"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".AdminActivity"
-            android:label="Admin" >
+            android:label="Admin"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".Funcionalidades.Login.LoginActivity"
