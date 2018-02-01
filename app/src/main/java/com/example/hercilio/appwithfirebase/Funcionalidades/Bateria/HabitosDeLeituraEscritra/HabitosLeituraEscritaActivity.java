@@ -1,57 +1,38 @@
 
-package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria;
+package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra;
 
 /**
  * Created by Hercilio on 26/12/2017.
  */
 
-import android.os.Parcelable;
-import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
-import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
 import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.Objetos.Perguntas;
 import com.example.hercilio.appwithfirebase.Objetos.Pesquisa;
 import com.example.hercilio.appwithfirebase.R;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 

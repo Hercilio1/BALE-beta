@@ -1,24 +1,17 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.RelativeLayout;
 
 import com.example.hercilio.appwithfirebase.AdminActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosLeituraEscritaActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginFragment;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Created by Hercilio on 26/12/2017.

@@ -39,8 +39,16 @@
             android:label="Bateria" >
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.HabitosLeituraEscritaActivity"
+            android:name=".Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity"
             android:label="Hábitos de Leitura e Escrita" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrasesActivity"
+            android:label="Compreensão de Frases" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.CompreensaoFrases.FraseExpandidaActivity"
+            android:label="Compreensão de Frases" >
         </activity>
 
     </application>
