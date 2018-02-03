@@ -28,10 +28,6 @@ public class BaleLobbyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bale_lobby);
 
-        final ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 //        getSupportActionBar().hide();
 //        getSupportFragmentManager()
 //                .beginTransaction()

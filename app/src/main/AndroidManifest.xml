@@ -50,7 +50,10 @@
             android:name=".Funcionalidades.Bateria.CompreensaoFrases.FraseExpandidaActivity"
             android:label="Compreensão de Frases" >
         </activity>
-
+        <activity
+            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFraseRelogioActivity"
+            android:label="Compreensão de Frases" >
+        </activity>
     </application>
 
 </manifest>

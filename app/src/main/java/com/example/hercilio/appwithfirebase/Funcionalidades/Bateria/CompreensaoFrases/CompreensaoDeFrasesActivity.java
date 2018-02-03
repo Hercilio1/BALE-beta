@@ -55,7 +55,7 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     registrar(participante);
-                    Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
+                    Intent intent = new Intent(getBaseContext(), CompreensaoFraseRelogioActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
                 }

@@ -48,7 +48,7 @@
             android:layout_toRightOf="@+id/circleView"
             android:gravity="center_vertical"
             android:paddingTop="8dp"
-            android:text="Compreensão de Frases"
+            android:text="Habitos de Leitura e Escrita"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
             android:layout_toRightOf="@+id/circleView_comp_frases"
             android:gravity="center_vertical"
             android:paddingTop="8dp"
-            android:text="Habitos de Leitura e Escrita"
+            android:text="Compreensão de Frases"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
