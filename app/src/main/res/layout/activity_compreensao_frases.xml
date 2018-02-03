@@ -95,7 +95,8 @@
             android:textAppearance="@style/TextAppearance.Design.CollapsingToolbar.Expanded"
             android:visibility="visible"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
-            tools:layout_editor_absoluteX="3dp" />
+            tools:layout_editor_absoluteX="3dp"
+            tools:ignore="MissingConstraints" />
 
 
         <TextView
@@ -159,25 +160,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
                 android:textSize="18sp" />
 
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="554dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/radioButton">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_span="4"
-                    android:background="@color/colorPrimary" />
-            </TableRow>
-
-
             <RadioButton
                 android:id="@+id/radioButtonNaoleu"
                 android:layout_width="wrap_content"
@@ -188,34 +170,6 @@
                 android:text="Não leu"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
                 android:textSize="18sp" />
-
-
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/radioButton3"
-                android:layout_alignStart="@+id/radioButton3"
-                android:layout_below="@+id/radioButton3">
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/radioButton2">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_span="4"
-                    android:background="@color/colorPrimary" />
-            </TableRow>
 
             <RadioButton
                 android:id="@+id/radioButtonLeuExecutou"

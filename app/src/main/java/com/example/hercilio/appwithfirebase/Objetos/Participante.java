@@ -21,6 +21,7 @@ public class Participante implements Serializable {
     private String observacaoPosAvaliacao;
 
     private HabitosLeituraEscritaObject hleObject;
+    private CompreensaoFrasesObject compFrasesObject;
 
 //    private String dataDaAvaliacao;
 //    private String exercidaPor;
@@ -33,7 +34,7 @@ public class Participante implements Serializable {
                         , String sexo, String celular
                         , String escolaridade, String dinamicaManual
                         , String profissao, boolean ehAposentado
-                        , String linguaMaterna, String outrasLinguas, HabitosLeituraEscritaObject hleObject
+                        , String linguaMaterna, String outrasLinguas
 //            , String observacaoPosAvaliacao, String dataDaAvaliacao, String exercidaPor
                         ) {
         this.nomeCompleto = nomeCompleto;
@@ -49,6 +50,7 @@ public class Participante implements Serializable {
         this.outrasLinguas = outrasLinguas;
         this.observacaoPosAvaliacao = observacaoPosAvaliacao;
         this.hleObject = null;
+        this.compFrasesObject = null;
 //        this.hleObject.criaPergunta("ola", true, false, false, false, false);
 //        this.dataDaAvaliacao = dataDaAvaliacao;
 //        this.exercidaPor = exercidaPor;
@@ -183,4 +185,10 @@ public class Participante implements Serializable {
     public void setHleObject() {
         hleObject = new HabitosLeituraEscritaObject();
     }
+
+    public CompreensaoFrasesObject getCompFrasesObject() { return compFrasesObject; }
+
+    public void setCompFrasesObject() { compFrasesObject = new CompreensaoFrasesObject(); }
+
+
 }

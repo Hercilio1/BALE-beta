@@ -131,7 +131,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
 
         //Cria o participante com base nas caracteristicas dele
         Participante participante = new Participante(nomeCompleto, cpf, dataNasc, sexo, celular, escolaridade,
-                dinamicaManual, profissao, ehAposentado, linguaMaterna, outrosIdiomas, null);
+                dinamicaManual, profissao, ehAposentado, linguaMaterna, outrosIdiomas);
 
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef = database.getReference("participantes");
