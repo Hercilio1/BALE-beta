@@ -178,6 +178,8 @@
     <string name="comp_frases_leu">Leu</string>
     <string name="comp_frases_nao_leu">Não leu</string>
     <string name="comp_frases_leu_executou">Leu e executou</string>
+    <string name="comp_frases_radio_nao">Não</string>
+    <string name="comp_frases_radio_sim">Sim</string>
     <string name="habitos_escr_mensagem">Textos/Mensagens</string>
     <string name="habitos_escr_literario">Textos Literários</string>
     <string name="habitos_escr_naoliterario">Textos Não Literários</string>

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -25,6 +36,11 @@ import java.util.ArrayList;
 
 public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
 
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseStorage mFirebaseStorage;
+    private StorageReference mFotoRelogioStoregeReference;
+    private DatabaseReference mParticipanteDatabaseReference;
 
     private ProgressDialog progressDialog;
     private Button mBtnContinuar;
@@ -38,17 +54,40 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compreensao_frases_relogio);
 
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseStorage = FirebaseStorage.getInstance();
+
         mimageView = (ImageView) this.findViewById(R.id.image_from_camera);
         mBtnContinuar = (Button) findViewById(R.id.btn_continuarRelogio);
-        mBtnContinuar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registrar();
+        Intent intentFromList = getIntent();
+        if (intentFromList != null) {
+            final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+
+            boolean isPhoto = participante.getFotoRelogio() != null;
+            if(isPhoto) {
+                autoComplete(participante);
             }
-        });
+
+            mBtnContinuar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    registrar(participante);
+                }
+            });
+
+        }
     }
 
-    public void registrar() {
+    public void autoComplete(Participante participante) {
+        Glide.with(mimageView.getContext()).load(participante.getFotoRelogio()).into(mimageView);
+    }
+
+    public void registrar(Participante participante) {
+        Intent intent = new Intent(this, BaleLobbyActivity.class);
+        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+        startActivity(intent);
+
     }
 
     public void takeImageFromCamera(View view) {
@@ -64,6 +103,27 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             mphoto.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
             bImg = outputStream.toByteArray();
+
+            Intent intentFromList = getIntent();
+            if (intentFromList != null) {
+                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+                final FirebaseAuth auth = FirebaseAuth.getInstance();
+                mFotoRelogioStoregeReference = mFirebaseStorage.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes").child(participante.getCpf()).child("foto_relogio");
+                mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+
+                Uri selectedImageUri = data.getData();
+                mFotoRelogioStoregeReference.putBytes(bImg).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                        participante.setFotoRelogio(downloadUrl.toString());
+                        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+                    }
+                });
+            }
+
+
+
         }
     }
 }

@@ -51,6 +51,10 @@
             android:label="Compreensão de Frases" >
         </activity>
         <activity
+            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFrasesRadioActivity"
+            android:label="Compreensão de Frases" >
+        </activity>
+        <activity
             android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFraseRelogioActivity"
             android:label="Compreensão de Frases" >
         </activity>

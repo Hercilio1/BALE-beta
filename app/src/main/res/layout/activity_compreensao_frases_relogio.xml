@@ -156,19 +156,29 @@
             app:layout_constraintTop_toBottomOf="@+id/tableRow2" />
 
         <ImageView
+            android:id="@+id/camera_relogio"
+            android:layout_width="200dp"
+            android:layout_height="189dp"
+            android:layout_alignBottom="@+id/btn_continuarRelogio"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:onClick="takeImageFromCamera"
+            android:src="@drawable/ic_camera_alt_black_48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <ImageView
             android:id="@+id/image_from_camera"
             android:layout_width="200dp"
             android:layout_height="189dp"
             android:layout_alignBottom="@+id/btn_continuarRelogio"
             android:layout_centerHorizontal="true"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="56dp"
-            android:onClick="takeImageFromCamera"
-            android:src="@drawable/ic_camera_alt_black_48dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_continuarRelogio"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintHorizontal_bias="0.896"
+            app:layout_constraintStart_toEndOf="@+id/camera_relogio"
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btn_continuarRelogio"
@@ -180,14 +190,15 @@
             android:layout_alignParentStart="true"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:background="@color/colorPrimary"
             android:text="@string/btn_continuar"
             android:textColor="#fff"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_from_camera" />
+            app:layout_constraintTop_toBottomOf="@+id/camera_relogio" />
 
     </android.support.constraint.ConstraintLayout>
 

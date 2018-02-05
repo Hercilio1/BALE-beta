@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * Created by Hercilio on 31/01/2018.
  */
 
-public class CompreensaoDeFrasesActivity extends AppCompatActivity {
+public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
 
     private RadioGroup mRadioGroupCompreensaoFrases;
     private int checkedRadioGroupCompreensaoFrases;
@@ -38,25 +38,25 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compreensao_frases);
+        setContentView(R.layout.activity_compreensao_frase_radio);
 
-        Button btnContinuar = (Button) findViewById(R.id.btn_continuarFrase);
-        mRadioGroupCompreensaoFrases = (RadioGroup) findViewById(R.id.radioGroupFrase);
+        Button btnContinuar = (Button) findViewById(R.id.btn_continuarRadio);
+        mRadioGroupCompreensaoFrases = (RadioGroup) findViewById(R.id.radioGroupRadio);
 
 
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            if(participante.getCompFrasesObject() != null) {
-                autoComplete(participante.getCompFrasesObject());
+            if(participante.getCompFrasesRadioObject() != null) {
+                autoComplete(participante.getCompFrasesRadioObject());
             }
 
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     registrar(participante);
-                    Intent intent = new Intent(getBaseContext(), CompreensaoFrasesRadioActivity.class);
+                    Intent intent = new Intent(getBaseContext(), CompreensaoFraseRelogioActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
                 }
@@ -65,40 +65,32 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
 
     }
 
-    public void onClick(View v) {
-        Intent intent = new Intent(getApplicationContext(), FraseExpandidaActivity.class);
-        startActivity(intent);
-    }
-
     public void registrar(Participante participante){
         checkedRadioGroupCompreensaoFrases = (int) onFrequenciaRadioButtonClicked(mRadioGroupCompreensaoFrases);
         traduzRadioButtonSelecionado(checkedRadioGroupCompreensaoFrases, participante);
         alteraDadosFirebase(participante);
     }
 
-    public void autoComplete(CompreensaoFrasesObject compFrasesObj) {
-        View y = mRadioGroupCompreensaoFrases.getChildAt(compFrasesObj.getValorFinal());
-        int x = mRadioGroupCompreensaoFrases.getChildAt(compFrasesObj.getValorFinal()).getId();
-        mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(compFrasesObj.getValorFinal()).getId());
+    public void autoComplete(CompreensaoFrasesRadioObject compFrasesRadioObj) {
+        if(compFrasesRadioObj.getValorFinal() == 1)
+            mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(0).getId());
+        else
+            mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(1).getId());
     }
 
     public long onFrequenciaRadioButtonClicked(RadioGroup mRadio) {
 
-        long avaliacao = 2;
+        long avaliacao = 1;
         String checkedFrequencia;
         int selectedRadioId = mRadio.getCheckedRadioButtonId();
         if (selectedRadioId != -1) {
             RadioButton selectedRadioButton = (RadioButton) findViewById(selectedRadioId);
             checkedFrequencia = selectedRadioButton.getText().toString();
-            if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_leu))) {
+            if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_radio_nao))) {
                 avaliacao = 0;
             } else {
-                if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_nao_leu))) {
+                if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_radio_sim))) {
                     avaliacao = 1;
-                } else {
-                    if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_leu_executou))) {
-                        avaliacao = 2;
-                    }
                 }
             }
         }
@@ -106,16 +98,13 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
     }
 
     public void traduzRadioButtonSelecionado(Integer selecao, Participante participante) {
-        if(participante.getCompFrasesObject() != null) {
+        if(participante.getCompFrasesRadioObject() != null) {
             switch (selecao) {
                 case 0:
-                    participante.getCompFrasesObject().setValorFinal(selecao);
+                    participante.getCompFrasesRadioObject().setValorFinal(selecao);
                     break;
                 case 1:
-                    participante.getCompFrasesObject().setValorFinal(selecao);
-                    break;
-                case 2:
-                    participante.getCompFrasesObject().setValorFinal(selecao);
+                    participante.getCompFrasesRadioObject().setValorFinal(selecao);
                     break;
                 default:
                     break;
@@ -123,16 +112,12 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
         } else {
             switch (selecao) {
                 case 0:
-                    participante.setCompFrasesObject();
-                    participante.getCompFrasesObject().setValorFinal(selecao);
+                    participante.setCompFrasesRadioObject();
+                    participante.getCompFrasesRadioObject().setValorFinal(selecao);
                     break;
                 case 1:
-                    participante.setCompFrasesObject();
-                    participante.getCompFrasesObject().setValorFinal(selecao);
-                    break;
-                case 2:
-                    participante.setCompFrasesObject();
-                    participante.getCompFrasesObject().setValorFinal(selecao);
+                    participante.setCompFrasesRadioObject();
+                    participante.getCompFrasesRadioObject().setValorFinal(selecao);
                     break;
                 default:
                     break;
@@ -142,10 +127,9 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
 
     public void alteraDadosFirebase(final Participante participante) {
 
-
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
-        ChildEventListener mChildEventListener;
+
         //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         final FirebaseAuth auth = FirebaseAuth.getInstance();

@@ -22,6 +22,8 @@ public class Participante implements Serializable {
 
     private HabitosLeituraEscritaObject hleObject;
     private CompreensaoFrasesObject compFrasesObject;
+    private CompreensaoFrasesRadioObject compFrasesRadioObject;
+    private String fotoRelogio;
 
 //    private String dataDaAvaliacao;
 //    private String exercidaPor;
@@ -34,9 +36,8 @@ public class Participante implements Serializable {
                         , String sexo, String celular
                         , String escolaridade, String dinamicaManual
                         , String profissao, boolean ehAposentado
-                        , String linguaMaterna, String outrasLinguas
-//            , String observacaoPosAvaliacao, String dataDaAvaliacao, String exercidaPor
-                        ) {
+                        , String linguaMaterna, String outrasLinguas) {
+
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
@@ -50,20 +51,11 @@ public class Participante implements Serializable {
         this.outrasLinguas = outrasLinguas;
         this.observacaoPosAvaliacao = observacaoPosAvaliacao;
         this.hleObject = null;
-        this.compFrasesObject = null;
-//        this.hleObject.criaPergunta("ola", true, false, false, false, false);
-//        this.dataDaAvaliacao = dataDaAvaliacao;
-//        this.exercidaPor = exercidaPor;
-//        this.bateria = new Bateria(null);
-    }
 
-//    public Bateria getBateria() {
-//        return bateria;
-//    }
-//
-//    public void setBateria(Bateria bat) {
-//        bateria = bat;
-//    }
+        this.compFrasesObject = null;
+        this.compFrasesRadioObject = null;
+        this.fotoRelogio = null;
+    }
 
     public String getNomeCompleto() {
         return nomeCompleto;
@@ -113,14 +105,6 @@ public class Participante implements Serializable {
         return observacaoPosAvaliacao;
     }
 
-//    public String getDataDaAvaliacao() {
-//        return dataDaAvaliacao;
-//    }
-//
-//    public String getExercidaPor() {
-//        return exercidaPor;
-//    }
-
     public void setNomeCompleto(String nomeCompleto) {
         this.nomeCompleto = nomeCompleto;
     }
@@ -169,14 +153,9 @@ public class Participante implements Serializable {
         this.observacaoPosAvaliacao = observacaoPosAvaliacao;
     }
 
-//    public void setDataDaAvaliacao(String dataDaAvaliacao) {
-//        this.dataDaAvaliacao = dataDaAvaliacao;
-//    }
-//
-//    public void setExercidaPor(String exercidaPor) {
-//        this.exercidaPor = exercidaPor;
-//    }
-
+    /**********************
+     * OBJETOS DA BATERIA *
+     **********************/
 
     public HabitosLeituraEscritaObject getHleObject() {
         return hleObject;
@@ -189,6 +168,22 @@ public class Participante implements Serializable {
     public CompreensaoFrasesObject getCompFrasesObject() { return compFrasesObject; }
 
     public void setCompFrasesObject() { compFrasesObject = new CompreensaoFrasesObject(); }
+
+    public CompreensaoFrasesRadioObject getCompFrasesRadioObject() {
+        return compFrasesRadioObject;
+    }
+
+    public void setCompFrasesRadioObject() {
+        compFrasesRadioObject = new CompreensaoFrasesRadioObject();
+    }
+
+    public String getFotoRelogio() {
+        return fotoRelogio;
+    }
+
+    public void setFotoRelogio(String fotoRelogio) {
+        this.fotoRelogio = fotoRelogio;
+    }
 
 
 }
