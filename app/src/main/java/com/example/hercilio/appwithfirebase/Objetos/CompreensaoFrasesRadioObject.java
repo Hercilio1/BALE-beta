@@ -9,9 +9,7 @@ import java.io.Serializable;
 public class CompreensaoFrasesRadioObject implements Serializable{
     private int valorFinal;
 
-    public CompreensaoFrasesRadioObject() {
-        this.valorFinal = valorFinal;
-    }
+    public CompreensaoFrasesRadioObject(){}
 
     public int getValorFinal() {
         return valorFinal;

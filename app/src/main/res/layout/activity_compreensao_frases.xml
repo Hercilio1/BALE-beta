@@ -127,6 +127,16 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp">
 
+            <RadioButton
+                android:id="@+id/radioButtonNaoleu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/radioButton"
+                android:layout_alignStart="@+id/radioButton"
+                android:layout_below="@+id/tableRow3"
+                android:text="Não leu"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/radioButtonLeu"
@@ -138,17 +148,6 @@
                 android:layout_marginEnd="17dp"
                 android:layout_marginRight="17dp"
                 android:text="Leu"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
-                android:textSize="18sp" />
-
-            <RadioButton
-                android:id="@+id/radioButtonNaoleu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/radioButton"
-                android:layout_alignStart="@+id/radioButton"
-                android:layout_below="@+id/tableRow3"
-                android:text="Não leu"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
                 android:textSize="18sp" />
 

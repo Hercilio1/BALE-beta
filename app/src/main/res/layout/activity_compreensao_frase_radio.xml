@@ -130,7 +130,6 @@
         android:layout_alignLeft="@+id/textView5"
         android:layout_alignStart="@+id/textView5"
         android:layout_below="@+id/tableRow2"
-        android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableRow">
 
@@ -147,17 +146,6 @@
             android:text="Sim"
             android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
             android:textSize="18sp" />
-
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="554dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/radioButton">
-
-        </TableRow>
 
 
         <RadioButton

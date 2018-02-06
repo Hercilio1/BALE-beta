@@ -49,7 +49,7 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
             if(participante.getCompFrasesRadioObject() != null) {
-                autoComplete(participante.getCompFrasesRadioObject());
+                autoComplete(participante);
             }
 
             btnContinuar.setOnClickListener(new View.OnClickListener() {
@@ -71,8 +71,8 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
         alteraDadosFirebase(participante);
     }
 
-    public void autoComplete(CompreensaoFrasesRadioObject compFrasesRadioObj) {
-        if(compFrasesRadioObj.getValorFinal() == 1)
+    public void autoComplete(Participante participante) {
+        if(participante.getCompFrasesRadioObject().getValorFinal() == 1)
             mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(0).getId());
         else
             mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(1).getId());
@@ -101,10 +101,10 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
         if(participante.getCompFrasesRadioObject() != null) {
             switch (selecao) {
                 case 0:
-                    participante.getCompFrasesRadioObject().setValorFinal(selecao);
+                    participante.getCompFrasesRadioObject().setValorFinal(0);
                     break;
                 case 1:
-                    participante.getCompFrasesRadioObject().setValorFinal(selecao);
+                    participante.getCompFrasesRadioObject().setValorFinal(1);
                     break;
                 default:
                     break;
@@ -113,11 +113,11 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
             switch (selecao) {
                 case 0:
                     participante.setCompFrasesRadioObject();
-                    participante.getCompFrasesRadioObject().setValorFinal(selecao);
+                    participante.getCompFrasesRadioObject().setValorFinal(0);
                     break;
                 case 1:
                     participante.setCompFrasesRadioObject();
-                    participante.getCompFrasesRadioObject().setValorFinal(selecao);
+                    participante.getCompFrasesRadioObject().setValorFinal(1);
                     break;
                 default:
                     break;
@@ -138,13 +138,7 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
 //        Criar uma váriavel final estava criando um loop no onDataChange
 //        final Participante partAux = participante;
 
-        mParticipanteDatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
+        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+
     }
 }

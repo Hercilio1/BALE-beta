@@ -118,6 +118,7 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
                         Uri downloadUrl = taskSnapshot.getDownloadUrl();
                         participante.setFotoRelogio(downloadUrl.toString());
                         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+                        return;
                     }
                 });
             }

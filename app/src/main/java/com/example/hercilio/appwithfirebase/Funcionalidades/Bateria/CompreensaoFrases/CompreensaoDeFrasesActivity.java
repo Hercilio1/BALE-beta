@@ -90,10 +90,10 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
         if (selectedRadioId != -1) {
             RadioButton selectedRadioButton = (RadioButton) findViewById(selectedRadioId);
             checkedFrequencia = selectedRadioButton.getText().toString();
-            if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_leu))) {
+            if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_nao_leu))) {
                 avaliacao = 0;
             } else {
-                if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_nao_leu))) {
+                if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_leu))) {
                     avaliacao = 1;
                 } else {
                     if (checkedFrequencia.equals(getResources().getString(R.string.comp_frases_leu_executou))) {
@@ -154,13 +154,6 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
 //        Criar uma váriavel final estava criando um loop no onDataChange
 //        final Participante partAux = participante;
 
-        mParticipanteDatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
+        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
 }
