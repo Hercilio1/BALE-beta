@@ -27,7 +27,7 @@ public class FraseExpandidaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_frase_expandida);
+        setContentView(R.layout.activity_comp_verbal_frase_btn);
 
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
