@@ -194,6 +194,64 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
+        <!--Total da label 3 -->
+        <TextView
+            android:id="@+id/total_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TOTAL"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_number1_label_3"
+            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta2_label3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/total_number1_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_barra_label_3"
+            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta2_label3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/total_barra_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_numero2_label_3"
+            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta2_label3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/total_numero2_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="8"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta2_label3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+
+        <!--LABEL 4-->
         <TextView
             android:id="@+id/label_4"
             android:layout_width="548dp"
@@ -210,7 +268,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta2_label3" />
+            app:layout_constraintTop_toBottomOf="@+id/total_label_3" />
 
         <!--Primeira pergunta da label 4-->
         <TextView
@@ -471,6 +529,63 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
+        <!--Total da label 4 -->
+        <TextView
+            android:id="@+id/total_label_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TOTAL"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_number1_label_4"
+            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta5_label4"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/total_number1_label_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_barra_label_4"
+            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta5_label4"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/total_barra_label_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_numero2_label_4"
+            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta5_label4"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/total_numero2_label_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="8"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta5_label4"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+
         <Button
             android:id="@+id/btn_continuar_comp_verbal_segunda_avaliacao_btn"
             android:layout_width="134dp"
@@ -483,7 +598,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_pergunta5_label4"
+            app:layout_constraintTop_toBottomOf="@+id/total_numero2_label_4"
             tools:ignore="MissingConstraints" />
 
 
