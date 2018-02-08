@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFrasesRadioActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/comp_verb3_label_1"
+            android:layout_width="116dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Avaliação 3"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp" />
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView8"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_label_1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_span="4"
+                android:background="@color/colorPrimary" />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/comp_verb3_label_2"
+            android:layout_width="548dp"
+            android:layout_height="31dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="ANALISE LINGUISTICA"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow1" />
+
+        <!--Primeira pergunta da label 2-->
+        <TextView
+            android:id="@+id/comp_verb3_pergunta1_label2"
+            android:layout_width="548dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="1) Anomias / dificuldade de encontrar as palavras"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_label_2"
+            tools:ignore="MissingConstraints" />
+
+        <RadioGroup
+            android:id="@+id/comp_verb3_radio_pergunta1_label2"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_pergunta1_label2">
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta1_label2_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta1_label2_intermediario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Intermediário"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta1_label2_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RadioGroup>
+
+        <!--Segunda pergunta da label 2-->
+        <TextView
+            android:id="@+id/comp_verb3_pergunta2_label2"
+            android:layout_width="548dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="2) Parafasias:"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta1_label2"
+            tools:ignore="MissingConstraints" />
+
+        <RadioGroup
+            android:id="@+id/comp_verb3_radio_pergunta2_label2"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_pergunta2_label2">
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta2_label2_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta2_label2_intermediario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Intermediário"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta2_label2_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RadioGroup>
+
+        <!--Terceira pergunta da label 2-->
+        <TextView
+            android:id="@+id/comp_verb3_pergunta3_label2"
+            android:layout_width="548dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="3) Acréscimo de informações erradas:"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta2_label2"
+            tools:ignore="MissingConstraints" />
+
+        <RadioGroup
+            android:id="@+id/comp_verb3_radio_pergunta3_label2"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_pergunta3_label2">
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta3_label2_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta3_label2_intermediario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Intermediário"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta3_label2_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RadioGroup>
+
+        <!--Total da label 2 -->
+        <TextView
+            android:id="@+id/comp_verb3_total_label_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TOTAL"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/comp_verb3_total_number1_label_2"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta3_label2"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/comp_verb3_total_number1_label_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/comp_verb3_total_barra_label_2"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta3_label2"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/comp_verb3_total_barra_label_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/comp_verb3_total_numero2_label_2"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta3_label2"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/comp_verb3_total_numero2_label_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="6"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta3_label2"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+
+        <!--Analise qualitativa-->
+        <TextView
+            android:id="@+id/comp_verb3_label_3"
+            android:layout_width="548dp"
+            android:layout_height="31dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="48dp"
+            android:text="ANALISE QUALITATIVA"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_total_label_2" />
+
+        <!--Primeira pergunta da label 3-->
+        <TextView
+            android:id="@+id/comp_verb3_pergunta1_label3"
+            android:layout_width="548dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="1) Desrespeito à cronologia:"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_label_3"
+            tools:ignore="MissingConstraints" />
+
+        <RadioGroup
+            android:id="@+id/comp_verb3_radio_pergunta1_label3"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_pergunta1_label3">
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta1_label3_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta1_label3_intermediario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Intermediário"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta1_label3_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RadioGroup>
+
+        <!--Segunda pergunta da label 3-->
+        <TextView
+            android:id="@+id/comp_verb3_pergunta2_label3"
+            android:layout_width="548dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="2) Informações tangenciais / pessoais:"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta1_label3"
+            tools:ignore="MissingConstraints" />
+
+        <RadioGroup
+            android:id="@+id/comp_verb3_radio_pergunta2_label3"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_pergunta2_label3">
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta2_label3_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta2_label3_intermediario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Intermediário"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta2_label3_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RadioGroup>
+
+        <!--Terceira pergunta da label 3-->
+        <TextView
+            android:id="@+id/comp_verb3_pergunta3_label3"
+            android:layout_width="548dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="3) Necessita de encorajamento:"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta2_label3"
+            tools:ignore="MissingConstraints" />
+
+        <RadioGroup
+            android:id="@+id/comp_verb3_radio_pergunta3_label3"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_pergunta3_label3">
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta3_label3_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta3_label3_intermediario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Intermediário"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/comp_verb3_radio_pergunta3_label3_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RadioGroup>
+
+        <!--Total da label 3 -->
+        <TextView
+            android:id="@+id/comp_verb3_total_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TOTAL"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/comp_verb3_total_number1_label_3"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta3_label3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/comp_verb3_total_number1_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/comp_verb3_total_barra_label_3"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta3_label3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/comp_verb3_total_barra_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/comp_verb3_total_numero2_label_3"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta3_label3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/comp_verb3_total_numero2_label_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="6"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comp_verb3_radio_pergunta3_label3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
