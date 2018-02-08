@@ -65,7 +65,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tableRow1"
             tools:ignore="MissingConstraints" />
 
-
         <Button
             android:id="@+id/btn_p_lucia"
             android:layout_width="65dp"
@@ -76,6 +75,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="Lúcia"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="MissingConstraints" />
@@ -88,6 +88,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="mora"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_p_lucia"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="MissingConstraints" />
@@ -100,6 +101,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="no inteirior"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_p_mora"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="MissingConstraints" />
@@ -109,9 +111,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/blue_compVerbal"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
             android:text="do Paraná."
             android:textAllCaps="false"
+            android:onClick="onClickSecundario"
             app:layout_constraintStart_toEndOf="@+id/btn_p_no_interior"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="MissingConstraints" />
@@ -121,9 +124,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/blue_compVerbal"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
             android:text="Numa manhã"
             android:textAllCaps="false"
+            android:onClick="onClickSecundario"
             app:layout_constraintStart_toEndOf="@+id/btn_s_do_parana"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="MissingConstraints" />
@@ -133,9 +137,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/blue_compVerbal"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
             android:text="de segunda-feira"
             android:textAllCaps="false"
+            android:onClick="onClickSecundario"
             app:layout_constraintStart_toEndOf="@+id/btn_s_numa_manha"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="MissingConstraints" />
@@ -148,6 +153,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="ela saiu"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_s_de_segundafeira"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="MissingConstraints" />
@@ -175,6 +181,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="entrevista de trabalho"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_p_lucia"
             tools:ignore="MissingConstraints" />
@@ -187,6 +194,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="na capital"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_p_entrevista_trabalho"
             app:layout_constraintTop_toBottomOf="@+id/btn_p_no_interior"
             tools:ignore="MissingConstraints" />
@@ -212,6 +220,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="Ela foi"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_irrelevante2"
             app:layout_constraintTop_toBottomOf="@+id/btn_s_numa_manha"
             tools:ignore="MissingConstraints" />
@@ -239,6 +248,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="rodoviária"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_irrelevante3"
             app:layout_constraintTop_toBottomOf="@+id/btn_s_de_segundafeira"
             tools:ignore="MissingConstraints" />
@@ -251,6 +261,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="de carona"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_p_rodoviaria"
             app:layout_constraintTop_toBottomOf="@+id/btn_p_ela_saiu"
             tools:ignore="MissingConstraints" />
@@ -263,6 +274,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="com seu amigo"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_p_de_carona"
             app:layout_constraintTop_toBottomOf="@+id/btn_irrelevante1"
             tools:ignore="MissingConstraints" />
@@ -277,6 +289,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="Pedro."
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_p_entrevista_trabalho"
             tools:ignore="MissingConstraints" />
@@ -286,9 +299,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/blue_compVerbal"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
             android:text="Estava chovendo"
             android:textAllCaps="false"
+            android:onClick="onClickSecundario"
             app:layout_constraintStart_toEndOf="@+id/btn_p_pedro"
             app:layout_constraintTop_toBottomOf="@+id/btn_p_na_capital"
             tools:ignore="MissingConstraints" />
@@ -311,9 +325,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/blue_compVerbal"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
             android:text="o carro"
             android:textAllCaps="false"
+            android:onClick="onClickSecundario"
             app:layout_constraintStart_toEndOf="@+id/btn_irrelevante4"
             app:layout_constraintTop_toBottomOf="@+id/btn_irrelevante3"
             tools:ignore="MissingConstraints" />
@@ -336,9 +351,10 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/blue_compVerbal"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
             android:text="buraco"
             android:textAllCaps="false"
+            android:onClick="onClickSecundario"
             app:layout_constraintStart_toEndOf="@+id/btn_irrelevante5"
             app:layout_constraintTop_toBottomOf="@+id/btn_p_de_carona"
             tools:ignore="MissingConstraints" />
@@ -351,6 +367,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="e o pneu furou."
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_s_buraco"
             app:layout_constraintTop_toBottomOf="@+id/btn_p_com_seu_amigo"
             tools:ignore="MissingConstraints" />
@@ -371,13 +388,14 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/btn_s_onicus"
+            android:id="@+id/btn_s_onibus"
             android:layout_width="74dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/blue_compVerbal"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
             android:text="ônibus."
             android:textAllCaps="false"
+            android:onClick="onClickSecundario"
             app:layout_constraintStart_toEndOf="@+id/btn_irrelevante6"
             app:layout_constraintTop_toBottomOf="@+id/btn_irrelevante4"
             tools:ignore="MissingConstraints" />
@@ -391,7 +409,7 @@
             android:clickable="false"
             android:text="Então, ela"
             android:textAllCaps="false"
-            app:layout_constraintStart_toEndOf="@+id/btn_s_onicus"
+            app:layout_constraintStart_toEndOf="@+id/btn_s_onibus"
             app:layout_constraintTop_toBottomOf="@+id/btn_irrelevante4"
             tools:ignore="MissingConstraints" />
 
@@ -403,6 +421,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="pegou um táxi"
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_irrelevante7"
             app:layout_constraintTop_toBottomOf="@+id/btn_s_o_carro"
             tools:ignore="MissingConstraints" />
@@ -412,9 +431,10 @@
             android:layout_width="129dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/blue_compVerbal"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
             android:text="até a rodoviária."
             android:textAllCaps="false"
+            android:onClick="onClickSecundario"
             app:layout_constraintStart_toEndOf="@+id/btn_p_pegou_taxi"
             app:layout_constraintTop_toBottomOf="@+id/btn_irrelevante5"
             tools:ignore="MissingConstraints" />
@@ -427,6 +447,7 @@
             android:backgroundTint="@color/colorAccent"
             android:text="e conseguiu chegar a tempo."
             android:textAllCaps="false"
+            android:onClick="onClickPrincipal"
             app:layout_constraintStart_toEndOf="@+id/btn_s_rodoviaria"
             app:layout_constraintTop_toBottomOf="@+id/btn_p_pneu_furou"
             tools:ignore="MissingConstraints" />
@@ -464,7 +485,7 @@
 
         <TextView
             android:id="@+id/first_value_p_avaliacao1_comp_verbal"
-            android:layout_width="12dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
@@ -491,11 +512,22 @@
             android:layout_width="26dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="13"
+            android:text="14"
             android:textColor="#000000"
             android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/barra_p_avaliacao1_comp_verbal"
             app:layout_constraintTop_toBottomOf="@+id/title_avaliacao1_comp_verbal" />
+
+        <Button
+            android:id="@+id/idicacao_color_principal"
+            android:layout_width="31dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/colorAccent"
+            app:layout_constraintEnd_toStartOf="@+id/title_p_avaliacao1_comp_verbal"
+            app:layout_constraintTop_toBottomOf="@+id/title_avaliacao1_comp_verbal"
+            android:layout_marginRight="8dp" />
 
         <!--Valor secundário do cálculo total da primeira avalição-->
         <TextView
@@ -542,11 +574,22 @@
             android:layout_width="26dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="9"
+            android:text="8"
             android:textColor="#000000"
             android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/barra_s_avaliacao1_comp_verbal"
             app:layout_constraintTop_toBottomOf="@+id/secound_value_p_avaliacao1_comp_verbal" />
+
+        <Button
+            android:id="@+id/idicacao_color_secundaria"
+            android:layout_width="31dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/colorSecundaria_compVerbal"
+            app:layout_constraintEnd_toStartOf="@+id/title_s_avaliacao1_comp_verbal"
+            app:layout_constraintTop_toBottomOf="@+id/title_p_avaliacao1_comp_verbal"
+            android:layout_marginRight="8dp" />
 
         <Button
             android:id="@+id/btn_continuar_comp_verbal_primeira_avaliacao_btn"

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFrasesRadioActivity">
+    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -116,7 +116,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:onClick="showTextButtons"
             android:text="Lúcia mora no interior do Paraná. Numa manhã de segunda-feira, ela saiu de casa para mais uma entrevista de trabalho na capital do estado. Ela foi para a rodoviária de carona com seu amigo Pedro. Estava chovendo naquela manhã. De repente, o carro passou por um buraco e o pneu furou. Lúcia pensou que iria perder o ônibus. Então, ela pegou um táxi até a rodoviária e conseguiu chegar a tempo."
             android:textColor="#000000"
             android:textSize="20dp"
@@ -322,6 +321,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <Button
+            android:id="@+id/btn_continuar_comp_verbal_lobby"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Continuar"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_terceira_avaliacao"
+            tools:ignore="MissingConstraints" />
 
     </android.support.constraint.ConstraintLayout>
 

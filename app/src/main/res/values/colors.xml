@@ -3,6 +3,8 @@
     <color name="colorPrimary">#81af91</color>
     <color name="colorPrimaryDark">#2c593d</color>
     <color name="colorAccent">#e6ac27</color>
+    <color name="colorSecundaria_compVerbal">#81af91</color>
+    <color name="clickedPrinc_compVerval">#6c4c00</color>
+    <color name="clickedSecun_compVerval">#2a5439</color>
     <color name="white">#ffffff</color>
-    <color name="blue_compVerbal">#63cccd</color>
 </resources>

@@ -58,6 +58,14 @@
             android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFraseRelogioActivity"
             android:label="Compreensão de Frases" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity"
+            android:label="Compreensão Verbal" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompVerbalPrimeiraAvaliacaoActivity"
+            android:label="Compreensão Verbal" >
+        </activity>
     </application>
 
 </manifest>
