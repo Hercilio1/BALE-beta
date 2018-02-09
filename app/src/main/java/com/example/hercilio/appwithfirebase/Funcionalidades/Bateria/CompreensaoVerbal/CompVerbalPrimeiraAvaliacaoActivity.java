@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -58,6 +59,11 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comp_verbal_primeira_avaliacao);
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         //Botoes principais:
         mBtnPrincLucia = (Button) findViewById(R.id.btn_p_lucia);
@@ -143,7 +149,7 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            if(participante.getCompVerbalObject() != null) {
+            if(participante.getCompVerbalObject() != null && participante.getCompVerbalObject().getPrimeiraAvaliacao() != null) {
                 verificadores = participante.getCompVerbalObject().getPrimeiraAvaliacao();
                 autoComplete(participante);
             }
@@ -237,10 +243,18 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
     }
 
     public void registrar(Participante participante) {
-        CompreensaoVerbalObject compVerbalObj = new CompreensaoVerbalObject();
-        compVerbalObj.atualizaPrimeiraAvaliacao(verificadores);
+        if(participante.getCompVerbalObject() == null) {
+            CompreensaoVerbalObject compVerbalObj = new CompreensaoVerbalObject();
+            compVerbalObj.atualizaPrimeiraAvaliacao(verificadores);
+            compVerbalObj.setValorTotalPrincipal(totalPrincipal);
+            compVerbalObj.setValorTotalSecundario(totalSecundario);
+            participante.setCompVerbalObject(compVerbalObj);
+        } else {
+            participante.getCompVerbalObject().atualizaPrimeiraAvaliacao(verificadores);
+            participante.getCompVerbalObject().setValorTotalPrincipal(totalPrincipal);
+            participante.getCompVerbalObject().setValorTotalSecundario(totalSecundario);
+        }
 
-        participante.setCompVerbalObject(compVerbalObj);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;

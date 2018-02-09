@@ -72,6 +72,7 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
             mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //TODO: fazer armazenamento da foto corretamente
                     registrar(participante);
                 }
             });

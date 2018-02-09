@@ -77,8 +77,6 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
     }
 
     public void autoComplete(CompreensaoFrasesObject compFrasesObj) {
-        View y = mRadioGroupCompreensaoFrases.getChildAt(compFrasesObj.getValorFinal());
-        int x = mRadioGroupCompreensaoFrases.getChildAt(compFrasesObj.getValorFinal()).getId();
         mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(compFrasesObj.getValorFinal()).getId());
     }
 

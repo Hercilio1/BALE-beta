@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFrasesRadioActivity">
+    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompVerbalSegundaAvaliacaoActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -120,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Errou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -128,6 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou Parte"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -136,6 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
@@ -175,6 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Errou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -183,6 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou Parte"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -191,6 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
@@ -243,7 +249,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
             android:layout_marginTop="8dp"
-            android:text="8"
+            android:text="4"
             android:textColor="#000000"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -306,6 +312,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Errou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -314,6 +321,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
@@ -353,6 +361,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Errou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -361,6 +370,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
@@ -400,6 +410,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Errou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -408,6 +419,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou Parte"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -416,6 +428,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
@@ -455,6 +468,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Errou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -463,6 +477,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou Parte"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -471,6 +486,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
@@ -510,6 +526,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Errou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -518,6 +535,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou Parte"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -526,6 +544,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 

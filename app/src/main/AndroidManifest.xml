@@ -66,6 +66,10 @@
             android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompVerbalPrimeiraAvaliacaoActivity"
             android:label="Compreensão Verbal" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompVerbalSegundaAvaliacaoActivity"
+            android:label="Compreensão Verbal" >
+        </activity>
     </application>
 
 </manifest>

@@ -180,6 +180,9 @@
     <string name="comp_frases_leu_executou">Leu e executou</string>
     <string name="comp_frases_radio_nao">Não</string>
     <string name="comp_frases_radio_sim">Sim</string>
+    <string name="comp_verbal_segunda_avaliacao_errou">Errou</string>
+    <string name="comp_verbal_segunda_avaliacao_acertou_parte">Acertou Parte</string>
+    <string name="comp_verbal_segunda_avaliacao_acertou">Acertou</string>
     <string name="habitos_escr_mensagem">Textos/Mensagens</string>
     <string name="habitos_escr_literario">Textos Literários</string>
     <string name="habitos_escr_naoliterario">Textos Não Literários</string>

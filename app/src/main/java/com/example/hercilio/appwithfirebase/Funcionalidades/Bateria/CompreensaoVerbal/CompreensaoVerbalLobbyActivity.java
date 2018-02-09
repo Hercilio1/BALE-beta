@@ -47,6 +47,15 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+            mBtnSegundaAvaliacao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getBaseContext(), CompVerbalSegundaAvaliacaoActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    startActivity(intent);
+                }
+            });
 //            btnContinuar.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
