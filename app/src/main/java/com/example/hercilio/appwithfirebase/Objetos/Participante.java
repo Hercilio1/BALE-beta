@@ -24,6 +24,7 @@ public class Participante implements Serializable {
     private CompreensaoFrasesObject compFrasesObject;
     private CompreensaoFrasesRadioObject compFrasesRadioObject;
     private String fotoRelogio;
+    private CompreensaoVerbalObject compVerbalObject;
 
 //    private String dataDaAvaliacao;
 //    private String exercidaPor;
@@ -55,6 +56,7 @@ public class Participante implements Serializable {
         this.compFrasesObject = null;
         this.compFrasesRadioObject = null;
         this.fotoRelogio = null;
+        this.compVerbalObject = null;
     }
 
     public String getNomeCompleto() {
@@ -185,5 +187,11 @@ public class Participante implements Serializable {
         this.fotoRelogio = fotoRelogio;
     }
 
+    public CompreensaoVerbalObject getCompVerbalObject() {
+        return compVerbalObject;
+    }
 
+    public void setCompVerbalObject(CompreensaoVerbalObject compVerbalObject) {
+        this.compVerbalObject = compVerbalObject;
+    }
 }
