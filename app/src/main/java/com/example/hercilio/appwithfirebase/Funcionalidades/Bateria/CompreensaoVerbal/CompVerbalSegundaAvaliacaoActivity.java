@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -18,7 +19,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -94,7 +94,7 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     registrar(participante);
-                    Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
+                    Intent intent = new Intent(getBaseContext(), CompreensaoVerbalLobbyActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
                 }
@@ -141,25 +141,25 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
 
     public void registrar(Participante participante) {
         checkedRadioPergunta1Label3 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta1Label3, false);
-        aramzenaDadoNoDicionario(13, checkedRadioPergunta1Label3);
+        armazenaDadoNoDicionario(13, checkedRadioPergunta1Label3);
 
         checkedRadioPergunta2Label3 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta2Label3, false);
-        aramzenaDadoNoDicionario(23, checkedRadioPergunta2Label3);
+        armazenaDadoNoDicionario(23, checkedRadioPergunta2Label3);
 
         checkedRadioPergunta1Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta1Label4, true);
-        aramzenaDadoNoDicionario(14, checkedRadioPergunta1Label4);
+        armazenaDadoNoDicionario(14, checkedRadioPergunta1Label4);
 
         checkedRadioPergunta2Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta2Label4, true);
-        aramzenaDadoNoDicionario(24, checkedRadioPergunta2Label4);
+        armazenaDadoNoDicionario(24, checkedRadioPergunta2Label4);
 
         checkedRadioPergunta3Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta3Label4, false);
-        aramzenaDadoNoDicionario(34, checkedRadioPergunta3Label4);
+        armazenaDadoNoDicionario(34, checkedRadioPergunta3Label4);
 
         checkedRadioPergunta4Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta4Label4, false);
-        aramzenaDadoNoDicionario(44, checkedRadioPergunta4Label4);
+        armazenaDadoNoDicionario(44, checkedRadioPergunta4Label4);
 
         checkedRadioPergunta5Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta5Label4, false);
-        aramzenaDadoNoDicionario(54, checkedRadioPergunta5Label4);
+        armazenaDadoNoDicionario(54, checkedRadioPergunta5Label4);
 
         if(participante != null) {
             alteraDadosFirebase(participante);
@@ -194,7 +194,7 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
         return avaliacao;
     }
 
-    public void aramzenaDadoNoDicionario(int index, Integer selecao) {
+    public void armazenaDadoNoDicionario(int index, Integer selecao) {
         verificadores.put(""+index, selecao);
         somaValoresTotais(index, selecao);
     }
@@ -245,9 +245,6 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
      }
 
      public void onClickRadio(View v) {
-
-
-
          if(v.getId() == mRadioPergunta1Label3.getChildAt(0).getId()
                  || v.getId() == mRadioPergunta1Label3.getChildAt(1).getId()
                  || v.getId() == mRadioPergunta1Label3.getChildAt(2).getId())
@@ -284,13 +281,15 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
          if(participante.getCompVerbalObject() == null) {
              CompreensaoVerbalObject compVerbalObj = new CompreensaoVerbalObject();
              compVerbalObj.atualizaSegundaAvaliacao(verificadores);
-             compVerbalObj.setValorTotalLabel3(valorTotalLabel3);
-             compVerbalObj.setValorTotalLabel4(valorTotalLabel4);
+             compVerbalObj.setAv2ValorTotalLabel3(valorTotalLabel3);
+             compVerbalObj.setAv2ValorTotalLabel4(valorTotalLabel4);
              participante.setCompVerbalObject(compVerbalObj);
          } else {
-             participante.getCompVerbalObject().atualizaSegundaAvaliacao(verificadores);
-             participante.getCompVerbalObject().setValorTotalLabel3(valorTotalLabel3);
-             participante.getCompVerbalObject().setValorTotalLabel3(valorTotalLabel4);
+             CompreensaoVerbalObject aux = participante.getCompVerbalObject();
+             aux.setAv2ValorTotalLabel3(valorTotalLabel3);
+             aux.setAv2ValorTotalLabel4(valorTotalLabel4);
+             aux.atualizaSegundaAvaliacao(verificadores);
+             participante.setCompVerbalObject(aux);
          }
 
 
@@ -306,5 +305,17 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
          //final Participante partAux = participante;
          mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
      }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
+
+        if (itemId == android.R.id.home) {
+            this.onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }

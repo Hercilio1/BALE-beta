@@ -56,15 +56,24 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-//            btnContinuar.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    registrar(participante);
-//                    Intent intent = new Intent(getBaseContext(), CompreensaoFrasesRadioActivity.class);
-//                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-//                    startActivity(intent);
-//                }
-//            });
+
+            mBtnTerceiraAvaliacao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getBaseContext(), CompVerbalTerceiraAvaliacaoActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    startActivity(intent);
+                }
+            });
+
+            mBtnContinuar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    startActivity(intent);
+                }
+            });
         }
 
     }

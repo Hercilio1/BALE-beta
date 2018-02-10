@@ -11,11 +11,15 @@ import java.util.Map;
 public class CompreensaoVerbalObject implements Serializable {
     //Primeira avalicao:
     private Map<String, Boolean> primeiraAvaliacao;
-    private int valorTotalPrincipal, valorTotalSecundario;
+    private int av1ValorTotalPrincipal, av1ValorTotalSecundario;
 
     //Segunda avaliacao:
     private Map<String, Integer> segundaAvaliacao;
-    private int valorTotalLabel3, valorTotalLabel4;
+    private int av2ValorTotalLabel3, av2ValorTotalLabel4;
+
+    //Terceira avaliacao:
+    private Map<String, Integer> terceiraAvaliacao;
+    private int av3ValorTotalLabel2, av3ValorTotalLabel3;
 
     public CompreensaoVerbalObject(){}
 
@@ -26,10 +30,10 @@ public class CompreensaoVerbalObject implements Serializable {
     public Map getPrimeiraAvaliacao() {
         return primeiraAvaliacao;
     }
-    public int getValorTotalPrincipal() { return valorTotalPrincipal; }
-    public int getValorTotalSecundario() { return valorTotalSecundario; }
-    public void setValorTotalPrincipal(int valorTotalPrincipal) { this.valorTotalPrincipal = valorTotalPrincipal; }
-    public void setValorTotalSecundario(int valorTotalSecundario) { this.valorTotalSecundario = valorTotalSecundario; }
+    public int getAv1ValorTotalPrincipal() { return av1ValorTotalPrincipal; }
+    public int getAv1ValorTotalSecundario() { return av1ValorTotalSecundario; }
+    public void setAv1ValorTotalPrincipal(int valorTotalPrincipal) { this.av1ValorTotalPrincipal = valorTotalPrincipal; }
+    public void setAv1ValorTotalSecundario(int valorTotalSecundario) { this.av1ValorTotalSecundario = valorTotalSecundario; }
 
     //Segunda avaliacao:
     public void atualizaSegundaAvaliacao(Map buttonsList) {
@@ -38,8 +42,20 @@ public class CompreensaoVerbalObject implements Serializable {
     public Map getSegundaAvaliacao() {
         return segundaAvaliacao;
     }
-    public int getValorTotalLabel3() { return valorTotalLabel3; }
-    public int getValorTotalLabel4() { return valorTotalLabel4; }
-    public void setValorTotalLabel3(int valorTotalLabel3) { this.valorTotalLabel3 = valorTotalLabel3; }
-    public void setValorTotalLabel4(int valorTotalLabel4) { this.valorTotalLabel4 = valorTotalLabel4; }
+    public int getAv2ValorTotalLabel3() { return av2ValorTotalLabel3; }
+    public int getAv2ValorTotalLabel4() { return av2ValorTotalLabel4; }
+    public void setAv2ValorTotalLabel3(int av2ValorTotalLabel3) { this.av2ValorTotalLabel3 = av2ValorTotalLabel3; }
+    public void setAv2ValorTotalLabel4(int av2ValorTotalLabel4) { this.av2ValorTotalLabel4 = av2ValorTotalLabel4; }
+
+    //Terceira avaliacao:
+    public void atualizaTerceiraAvaliacao(Map buttonsList) {
+        terceiraAvaliacao = buttonsList;
+    }
+    public Map getTerceiraAvaliacao() {
+        return terceiraAvaliacao;
+    }
+    public int getAv3ValorTotalLabel2() { return av3ValorTotalLabel2; }
+    public int getAv3ValorTotalLabel3() { return av3ValorTotalLabel3; }
+    public void setAv3ValorTotalLabel2(int av3ValorTotalLabel2) { this.av3ValorTotalLabel2 = av3ValorTotalLabel2; }
+    public void setAv3ValorTotalLabel3(int av3ValorTotalLabel3) { this.av3ValorTotalLabel3 = av3ValorTotalLabel3; }
 }

@@ -1,18 +1,15 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFrasesRadioActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
@@ -158,7 +155,7 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     registrar(participante);
-                    Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
+                    Intent intent = new Intent(getBaseContext(), CompreensaoVerbalLobbyActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
                 }
@@ -246,13 +243,15 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
         if(participante.getCompVerbalObject() == null) {
             CompreensaoVerbalObject compVerbalObj = new CompreensaoVerbalObject();
             compVerbalObj.atualizaPrimeiraAvaliacao(verificadores);
-            compVerbalObj.setValorTotalPrincipal(totalPrincipal);
-            compVerbalObj.setValorTotalSecundario(totalSecundario);
+            compVerbalObj.setAv1ValorTotalPrincipal(totalPrincipal);
+            compVerbalObj.setAv1ValorTotalSecundario(totalSecundario);
             participante.setCompVerbalObject(compVerbalObj);
         } else {
-            participante.getCompVerbalObject().atualizaPrimeiraAvaliacao(verificadores);
-            participante.getCompVerbalObject().setValorTotalPrincipal(totalPrincipal);
-            participante.getCompVerbalObject().setValorTotalSecundario(totalSecundario);
+            CompreensaoVerbalObject aux = participante.getCompVerbalObject();
+            aux.setAv1ValorTotalPrincipal(totalPrincipal);
+            aux.setAv1ValorTotalSecundario(totalSecundario);
+            aux.atualizaPrimeiraAvaliacao(verificadores);
+            participante.setCompVerbalObject(aux);
         }
 
 
@@ -268,4 +267,17 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
        //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
+
+        if (itemId == android.R.id.home) {
+            this.onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }
