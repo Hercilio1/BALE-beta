@@ -49,14 +49,14 @@ public class InformacaoDiscursolivreNarrativaLobbyActivity extends AppCompatActi
                 }
             });
 
-//            mBtnSegundaAvaliacao.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(getBaseContext(), CompVerbalSegundaAvaliacaoActivity.class);
-//                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-//                    startActivity(intent);
-//                }
-//            });
+            mBtnDiscursoLivre.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getBaseContext(), DiscursoLivreActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    startActivity(intent);
+                }
+            });
 //
 //            mBtnTerceiraAvaliacao.setOnClickListener(new View.OnClickListener() {
 //                @Override

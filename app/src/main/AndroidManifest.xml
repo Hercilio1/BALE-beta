@@ -83,7 +83,10 @@
             android:name=".Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoActivity"
             android:label="Informação, Discuso Livre e Narrativa" >
         </activity>
-
+        <activity
+            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.DiscursoLivreActivity"
+            android:label="Informação, Discuso Livre e Narrativa" >
+        </activity>
 
     </application>
 

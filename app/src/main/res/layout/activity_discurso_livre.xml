@@ -5,22 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.DiscursoLivreActivity">
+    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/informacao_label"
-            android:layout_width="116dp"
+            android:id="@+id/discursolivre_label"
+            android:layout_width="166dp"
             android:layout_height="25dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Informação"
+            android:text="Discurso Livre"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         <TableRow
             android:id="@+id/tableRow1"
             android:layout_width="match_parent"
-            android:layout_height="24dp"
+            android:layout_height="18dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView8"
@@ -39,7 +39,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label">
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label">
 
             <View
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
 
         <!--label 1-->
         <TextView
-            android:id="@+id/infomacao_label_1"
+            android:id="@+id/discursolivre_label_1"
             android:layout_width="548dp"
             android:layout_height="37dp"
             android:layout_alignParentLeft="true"
@@ -86,7 +86,7 @@
 
         <!--Label 1 - question 1-->
         <TextView
-            android:id="@+id/informacao_label1_quest1"
+            android:id="@+id/discursolivre_label1_quest1"
             android:layout_width="298dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -99,23 +99,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infomacao_label_1"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label_1"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label1_quest1"
+            android:id="@+id/radio_discursolivre_label1_quest1"
             android:layout_width="434dp"
             android:layout_height="37dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label1_quest1"
-            app:layout_constraintTop_toBottomOf="@+id/infomacao_label_1"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label1_quest1"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label_1"
             android:layout_marginLeft="8dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest1_sim"
+                android:id="@+id/radio_discursolivre_label1_quest1_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -125,7 +125,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest1_semelhante"
+                android:id="@+id/radio_discursolivre_label1_quest1_semelhante"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -135,7 +135,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest1_errou"
+                android:id="@+id/radio_discursolivre_label1_quest1_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -146,7 +146,7 @@
 
         <!--Label 1 - question 2-->
         <TextView
-            android:id="@+id/informacao_label1_quest2"
+            android:id="@+id/discursolivre_label1_quest2"
             android:layout_width="298dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -159,23 +159,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_informacao_label1_quest1"
+            app:layout_constraintTop_toBottomOf="@+id/radio_discursolivre_label1_quest1"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label1_quest2"
+            android:id="@+id/radio_discursolivre_label1_quest2"
             android:layout_width="434dp"
             android:layout_height="37dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label1_quest2"
-            app:layout_constraintTop_toBottomOf="@+id/radio_informacao_label1_quest1"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label1_quest2"
+            app:layout_constraintTop_toBottomOf="@+id/radio_discursolivre_label1_quest1"
             android:layout_marginLeft="8dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest2_sim"
+                android:id="@+id/radio_discursolivre_label1_quest2_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -185,7 +185,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest2_semelhante"
+                android:id="@+id/radio_discursolivre_label1_quest2_semelhante"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -195,7 +195,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest2_errou"
+                android:id="@+id/radio_discursolivre_label1_quest2_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -206,7 +206,7 @@
 
         <!--Label 1 - question 3-->
         <TextView
-            android:id="@+id/informacao_label1_quest3"
+            android:id="@+id/discursolivre_label1_quest3"
             android:layout_width="298dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -219,23 +219,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label1_quest2"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest2"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label1_quest3"
+            android:id="@+id/radio_discursolivre_label1_quest3"
             android:layout_width="434dp"
             android:layout_height="37dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label1_quest3"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label1_quest2"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label1_quest3"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest2"
             android:layout_marginLeft="8dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest3_sim"
+                android:id="@+id/radio_discursolivre_label1_quest3_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -245,7 +245,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest3_semelhante"
+                android:id="@+id/radio_discursolivre_label1_quest3_semelhante"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -255,7 +255,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest3_errou"
+                android:id="@+id/radio_discursolivre_label1_quest3_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -266,7 +266,7 @@
 
         <!--Label 1 - question 3-->
         <TextView
-            android:id="@+id/informacao_label1_quest4"
+            android:id="@+id/discursolivre_label1_quest4"
             android:layout_width="298dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -279,23 +279,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label1_quest3"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest3"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label1_quest4"
+            android:id="@+id/radio_discursolivre_label1_quest4"
             android:layout_width="434dp"
             android:layout_height="37dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label1_quest4"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label1_quest3"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label1_quest4"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest3"
             android:layout_marginLeft="8dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest4_sim"
+                android:id="@+id/radio_discursolivre_label1_quest4_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -305,7 +305,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest4_semelhante"
+                android:id="@+id/radio_discursolivre_label1_quest4_semelhante"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -315,7 +315,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label1_quest4_errou"
+                android:id="@+id/radio_discursolivre_label1_quest4_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -339,12 +339,12 @@
             android:textSize="20dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label1_quest4"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest4"
             android:layout_marginLeft="24dp" />
 
         <!--Label 2 - question 1-->
         <TextView
-            android:id="@+id/informacao_label2_quest1"
+            android:id="@+id/discursolivre_label2_quest1"
             android:layout_width="450dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -361,19 +361,19 @@
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label2_quest1"
+            android:id="@+id/radio_discursolivre_label2_quest1"
             android:layout_width="190dp"
             android:layout_height="37dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label2_quest1"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label2_quest1"
             app:layout_constraintTop_toBottomOf="@+id/infomacao_label_2"
             android:layout_marginLeft="16dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest1_sim"
+                android:id="@+id/radio_discursolivre_label2_quest1_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -383,7 +383,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest1_errou"
+                android:id="@+id/radio_discursolivre_label2_quest1_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -394,7 +394,7 @@
 
         <!--Label 2 - question 2-->
         <TextView
-            android:id="@+id/informacao_label2_quest2"
+            android:id="@+id/discursolivre_label2_quest2"
             android:layout_width="450dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -407,23 +407,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest1"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest1"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label2_quest2"
+            android:id="@+id/radio_discursolivre_label2_quest2"
             android:layout_width="190dp"
             android:layout_height="37dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label2_quest2"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest1"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label2_quest2"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest1"
             android:layout_marginLeft="16dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest2_sim"
+                android:id="@+id/radio_discursolivre_label2_quest2_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -433,7 +433,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest2_errou"
+                android:id="@+id/radio_discursolivre_label2_quest2_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -444,7 +444,7 @@
 
         <!--Label 2 - question 3-->
         <TextView
-            android:id="@+id/informacao_label2_quest3"
+            android:id="@+id/discursolivre_label2_quest3"
             android:layout_width="450dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -457,23 +457,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest2"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest2"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label2_quest3"
+            android:id="@+id/radio_discursolivre_label2_quest3"
             android:layout_width="190dp"
             android:layout_height="37dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label2_quest3"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest2"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label2_quest3"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest2"
             android:layout_marginLeft="16dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest3_sim"
+                android:id="@+id/radio_discursolivre_label2_quest3_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -483,7 +483,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest3_errou"
+                android:id="@+id/radio_discursolivre_label2_quest3_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -494,7 +494,7 @@
 
         <!--Label 2 - question 4-->
         <TextView
-            android:id="@+id/informacao_label2_quest4"
+            android:id="@+id/discursolivre_label2_quest4"
             android:layout_width="450dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -507,23 +507,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest3"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest3"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label2_quest4"
+            android:id="@+id/radio_discursolivre_label2_quest4"
             android:layout_width="190dp"
             android:layout_height="37dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label2_quest4"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest3"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label2_quest4"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest3"
             android:layout_marginLeft="16dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest4_sim"
+                android:id="@+id/radio_discursolivre_label2_quest4_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -533,7 +533,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest4_errou"
+                android:id="@+id/radio_discursolivre_label2_quest4_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -544,7 +544,7 @@
 
         <!--Label 2 - question 5-->
         <TextView
-            android:id="@+id/informacao_label2_quest5"
+            android:id="@+id/discursolivre_label2_quest5"
             android:layout_width="450dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -557,23 +557,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest4"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest4"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label2_quest5"
+            android:id="@+id/radio_discursolivre_label2_quest5"
             android:layout_width="190dp"
             android:layout_height="37dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label2_quest5"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest4"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label2_quest5"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest4"
             android:layout_marginLeft="16dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest5_sim"
+                android:id="@+id/radio_discursolivre_label2_quest5_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -583,7 +583,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest5_errou"
+                android:id="@+id/radio_discursolivre_label2_quest5_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -594,7 +594,7 @@
 
         <!--Label 2 - question 6-->
         <TextView
-            android:id="@+id/informacao_label2_quest6"
+            android:id="@+id/discursolivre_label2_quest6"
             android:layout_width="450dp"
             android:layout_height="33dp"
             android:layout_alignParentLeft="true"
@@ -607,23 +607,23 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest5"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest5"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
-            android:id="@+id/radio_informacao_label2_quest6"
+            android:id="@+id/radio_discursolivre_label2_quest6"
             android:layout_width="190dp"
             android:layout_height="37dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/informacao_label2_quest6"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest5"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label2_quest6"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest5"
             android:layout_marginLeft="16dp">
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest6_sim"
+                android:id="@+id/radio_discursolivre_label2_quest6_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -633,7 +633,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
-                android:id="@+id/radio_informacao_label2_quest6_errou"
+                android:id="@+id/radio_discursolivre_label2_quest6_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -644,7 +644,7 @@
 
         <!--Total da label 4 -->
         <TextView
-            android:id="@+id/informacao_total"
+            android:id="@+id/discursolivre_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
@@ -652,13 +652,13 @@
             android:text="Desempenho Linguístico/E.T: "
             android:textColor="#000000"
             android:textSize="18dp"
-            app:layout_constraintEnd_toStartOf="@+id/informacao_total_number1"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest6"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_number1"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest6"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="24dp" />
 
         <TextView
-            android:id="@+id/informacao_total_number1"
+            android:id="@+id/discursolivre_total_number1"
             android:layout_width="21dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -666,13 +666,13 @@
             android:text="0"
             android:textColor="#000000"
             android:textSize="18dp"
-            app:layout_constraintEnd_toStartOf="@+id/informacao_total_barra"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest6"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_barra"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest6"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="4dp" />
 
         <TextView
-            android:id="@+id/informacao_total_barra"
+            android:id="@+id/discursolivre_total_barra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -680,13 +680,13 @@
             android:text="/"
             android:textColor="#000000"
             android:textSize="18dp"
-            app:layout_constraintEnd_toStartOf="@+id/informacao_total_number2"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest6"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_number2"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest6"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="4dp" />
 
         <TextView
-            android:id="@+id/informacao_total_number2"
+            android:id="@+id/discursolivre_total_number2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
@@ -695,12 +695,12 @@
             android:textColor="#000000"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_label2_quest6"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest6"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="20dp" />
 
         <Button
-            android:id="@+id/btn_continuar_informacao_btn"
+            android:id="@+id/btn_continuar_discursolivre_btn"
             android:layout_width="134dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -711,7 +711,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informacao_total"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_total"
             tools:ignore="MissingConstraints" />
 
 

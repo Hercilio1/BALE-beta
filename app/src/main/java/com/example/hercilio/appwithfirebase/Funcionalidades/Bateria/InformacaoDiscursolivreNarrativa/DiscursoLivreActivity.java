@@ -11,9 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoDiscursolivreNarrativaLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
-import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.InformacaoDiscursoLivreNarrativaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
@@ -28,7 +27,7 @@ import java.util.Map;
  * Created by Hercilio on 15/02/2018.
  */
 
-public class InformacaoActivity extends AppCompatActivity {
+public class DiscursoLivreActivity extends AppCompatActivity {
 
     //Label 1:
     private RadioGroup mRadioLabel1Quest1, mRadioLabel1Quest2, mRadioLabel1Quest3, mRadioLabel1Quest4;
@@ -57,7 +56,7 @@ public class InformacaoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_informacao);
+        setContentView(R.layout.activity_discurso_livre);
 
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -65,32 +64,32 @@ public class InformacaoActivity extends AppCompatActivity {
         }
 
         //Label 1:
-        mRadioLabel1Quest1 = (RadioGroup) findViewById(R.id.radio_informacao_label1_quest1);
-        mRadioLabel1Quest2 = (RadioGroup) findViewById(R.id.radio_informacao_label1_quest2);
-        mRadioLabel1Quest3 = (RadioGroup) findViewById(R.id.radio_informacao_label1_quest3);
-        mRadioLabel1Quest4 = (RadioGroup) findViewById(R.id.radio_informacao_label1_quest4);
+        mRadioLabel1Quest1 = (RadioGroup) findViewById(R.id.radio_discursolivre_label1_quest1);
+        mRadioLabel1Quest2 = (RadioGroup) findViewById(R.id.radio_discursolivre_label1_quest2);
+        mRadioLabel1Quest3 = (RadioGroup) findViewById(R.id.radio_discursolivre_label1_quest3);
+        mRadioLabel1Quest4 = (RadioGroup) findViewById(R.id.radio_discursolivre_label1_quest4);
 
         //Label 2:
-        mRadioLabel2Quest1 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest1);
-        mRadioLabel2Quest2 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest2);
-        mRadioLabel2Quest3 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest3);
-        mRadioLabel2Quest4 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest4);
-        mRadioLabel2Quest5 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest5);
-        mRadioLabel2Quest6 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest6);
+        mRadioLabel2Quest1 = (RadioGroup) findViewById(R.id.radio_discursolivre_label2_quest1);
+        mRadioLabel2Quest2 = (RadioGroup) findViewById(R.id.radio_discursolivre_label2_quest2);
+        mRadioLabel2Quest3 = (RadioGroup) findViewById(R.id.radio_discursolivre_label2_quest3);
+        mRadioLabel2Quest4 = (RadioGroup) findViewById(R.id.radio_discursolivre_label2_quest4);
+        mRadioLabel2Quest5 = (RadioGroup) findViewById(R.id.radio_discursolivre_label2_quest5);
+        mRadioLabel2Quest6 = (RadioGroup) findViewById(R.id.radio_discursolivre_label2_quest6);
 
         //Totais:
-        mTotal = (TextView) findViewById(R.id.informacao_total_number1);
+        mTotal = (TextView) findViewById(R.id.discursolivre_total_number1);
 
         //Botao continuar:
-        btnContinuar = (Button) findViewById(R.id.btn_continuar_informacao_btn);
+        btnContinuar = (Button) findViewById(R.id.btn_continuar_discursolivre_btn);
 
 
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            if (participante.getInfDiscNarrObject() != null && participante.getInfDiscNarrObject().getInformacao() != null) {
-                verificadores = participante.getInfDiscNarrObject().getInformacao();
+            if (participante.getInfDiscNarrObject() != null && participante.getInfDiscNarrObject().getDiscursoLivre() != null) {
+                verificadores = participante.getInfDiscNarrObject().getDiscursoLivre();
                 autoComplete();
             }
 
@@ -139,7 +138,7 @@ public class InformacaoActivity extends AppCompatActivity {
         checkedRadioLabel2Quest6 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest6, true);
         armazenaDadoNoDicionario(26, checkedRadioLabel2Quest6);
 
-        if(participante != null) {
+        if (participante != null) {
             alteraDadosFirebase(participante);
         }
 
@@ -153,7 +152,7 @@ public class InformacaoActivity extends AppCompatActivity {
         if (selectedRadioId != -1) {
             RadioButton selectedRadioButton = (RadioButton) findViewById(selectedRadioId);
             checkedFrequencia = selectedRadioButton.getText().toString();
-            if(ref) {
+            if (ref) {
                 if (checkedFrequencia.equals(getResources().getString(R.string.informacao_sim))) {
                     avaliacao = 0;
                 } else if (checkedFrequencia.equals(getResources().getString(R.string.informacao_nao))) {
@@ -173,7 +172,7 @@ public class InformacaoActivity extends AppCompatActivity {
     }
 
     public void armazenaDadoNoDicionario(int index, Integer selecao) {
-        verificadores.put(""+index, selecao);
+        verificadores.put("" + index, selecao);
         somaValoresTotais(index, selecao);
     }
 
@@ -199,42 +198,43 @@ public class InformacaoActivity extends AppCompatActivity {
                 valorLabel1Quest4 = selecao;
                 valorTotal += valorLabel1Quest4;
                 break;
-            default: break;
+            default:
+                break;
         }
-        mTotal.setText(""+valorTotal);
+        mTotal.setText("" + valorTotal);
         return selecao;
     }
 
     public void onClickRadio(View v) {
         //Label 1:
-        if(v.getId() == mRadioLabel1Quest1.getChildAt(0).getId()
+        if (v.getId() == mRadioLabel1Quest1.getChildAt(0).getId()
                 || v.getId() == mRadioLabel1Quest1.getChildAt(1).getId()
                 || v.getId() == mRadioLabel1Quest1.getChildAt(2).getId())
-            somaValoresTotais(11, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest1,false));
-        else if(v.getId() == mRadioLabel1Quest2.getChildAt(0).getId()
+            somaValoresTotais(11, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest1, false));
+        else if (v.getId() == mRadioLabel1Quest2.getChildAt(0).getId()
                 || v.getId() == mRadioLabel1Quest2.getChildAt(1).getId()
                 || v.getId() == mRadioLabel1Quest2.getChildAt(2).getId())
-            somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest2,false));
-        else if(v.getId() == mRadioLabel1Quest3.getChildAt(0).getId()
+            somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest2, false));
+        else if (v.getId() == mRadioLabel1Quest3.getChildAt(0).getId()
                 || v.getId() == mRadioLabel1Quest3.getChildAt(1).getId()
                 || v.getId() == mRadioLabel1Quest3.getChildAt(2).getId())
-            somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest3,false));
-        else if(v.getId() == mRadioLabel1Quest4.getChildAt(0).getId()
+            somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest3, false));
+        else if (v.getId() == mRadioLabel1Quest4.getChildAt(0).getId()
                 || v.getId() == mRadioLabel1Quest4.getChildAt(1).getId()
                 || v.getId() == mRadioLabel1Quest4.getChildAt(2).getId())
-            somaValoresTotais(14, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest4,false));
+            somaValoresTotais(14, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest4, false));
     }
 
     public void alteraDadosFirebase(Participante participante) {
-        if(participante.getInfDiscNarrObject() == null) {
+        if (participante.getInfDiscNarrObject() == null) {
             InformacaoDiscursoLivreNarrativaObject infDiscNarrObj = new InformacaoDiscursoLivreNarrativaObject();
-            infDiscNarrObj.atualizaInformacao(verificadores);
-            infDiscNarrObj.setValorTotalInformacao(valorTotal);
+            infDiscNarrObj.atualizaDiscursoLivre(verificadores);
+            infDiscNarrObj.setValorTotalDiscursoLivre(valorTotal);
             participante.setInfDiscNarrObject(infDiscNarrObj);
         } else {
             InformacaoDiscursoLivreNarrativaObject aux = participante.getInfDiscNarrObject();
-            aux.setValorTotalInformacao(valorTotal);
-            aux.atualizaInformacao(verificadores);
+            aux.setValorTotalDiscursoLivre(valorTotal);
+            aux.atualizaDiscursoLivre(verificadores);
             participante.setInfDiscNarrObject(aux);
         }
 
@@ -252,44 +252,45 @@ public class InformacaoActivity extends AppCompatActivity {
     }
 
     public void autoComplete() {
-        int[] aux = {11,12,13,14,21,22,23,24,25,26};
-        for(int i=0; i<aux.length; i++) {
+        int[] aux = {11, 12, 13, 14, 21, 22, 23, 24, 25, 26};
+        for (int i = 0; i < aux.length; i++) {
             switch (aux[i]) {
                 case 11:
-                    mRadioLabel1Quest1.check(mRadioLabel1Quest1.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel1Quest1.check(mRadioLabel1Quest1.getChildAt(verificadores.get("" + aux[i])).getId());
                     somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest1, false));
                     break;
                 case 12:
-                    mRadioLabel1Quest2.check(mRadioLabel1Quest2.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel1Quest2.check(mRadioLabel1Quest2.getChildAt(verificadores.get("" + aux[i])).getId());
                     somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest2, false));
                     break;
                 case 13:
-                    mRadioLabel1Quest3.check(mRadioLabel1Quest3.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel1Quest3.check(mRadioLabel1Quest3.getChildAt(verificadores.get("" + aux[i])).getId());
                     somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest3, false));
                     break;
                 case 14:
-                    mRadioLabel1Quest4.check(mRadioLabel1Quest4.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel1Quest4.check(mRadioLabel1Quest4.getChildAt(verificadores.get("" + aux[i])).getId());
                     somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest4, false));
                     break;
                 case 21:
-                    mRadioLabel2Quest1.check(mRadioLabel2Quest1.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel2Quest1.check(mRadioLabel2Quest1.getChildAt(verificadores.get("" + aux[i])).getId());
                     break;
                 case 22:
-                    mRadioLabel2Quest2.check(mRadioLabel2Quest2.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel2Quest2.check(mRadioLabel2Quest2.getChildAt(verificadores.get("" + aux[i])).getId());
                     break;
                 case 23:
-                    mRadioLabel2Quest3.check(mRadioLabel2Quest3.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel2Quest3.check(mRadioLabel2Quest3.getChildAt(verificadores.get("" + aux[i])).getId());
                     break;
                 case 24:
-                    mRadioLabel2Quest4.check(mRadioLabel2Quest4.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel2Quest4.check(mRadioLabel2Quest4.getChildAt(verificadores.get("" + aux[i])).getId());
                     break;
                 case 25:
-                    mRadioLabel2Quest5.check(mRadioLabel2Quest5.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel2Quest5.check(mRadioLabel2Quest5.getChildAt(verificadores.get("" + aux[i])).getId());
                     break;
                 case 26:
-                    mRadioLabel2Quest6.check(mRadioLabel2Quest6.getChildAt(verificadores.get(""+aux[i])).getId());
+                    mRadioLabel2Quest6.check(mRadioLabel2Quest6.getChildAt(verificadores.get("" + aux[i])).getId());
                     break;
-                default: break;
+                default:
+                    break;
             }
         }
     }

@@ -11,49 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <TextView
-            android:id="@+id/bateria_informacao_discursolivre_narrativa_titulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="8dp"
-            android:layout_span="6"
-            android:text="@string/bateria_tipopergunta_compfrases"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="4dp"
-            android:layout_marginLeft="8dp" />
-
-        <TableRow
-            android:id="@+id/tableRow1_verbal"
-            android:layout_width="match_parent"
-            android:layout_height="13dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bateria_informacao_discursolivre_narrativa_titulo"
-            tools:ignore="MissingConstraints">
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_below="@+id/instrucoesVerb"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="2dp"
-                android:layout_span="4"
-                android:background="@color/colorPrimary" />
-        </TableRow>
-
-
 
         <TextView
             android:id="@+id/textView8"
@@ -63,12 +20,12 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="15dp"
             android:text="Informação"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableRow1_verbal"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="8dp" />
 
         <TableRow
