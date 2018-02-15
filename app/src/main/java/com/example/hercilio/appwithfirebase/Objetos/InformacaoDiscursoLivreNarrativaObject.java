@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class InformacaoDiscursoLivreNarrativaObject implements Serializable {
     //Informacao:
-    private Map<String, Boolean> informacao;
+    private Map<String, Integer> informacao;
     private int valorTotalInformacao;
 
     //Discurso Livre:
-    private Map<String, Boolean> discursoLivre;
+    private Map<String, Integer> discursoLivre;
     private int valorTotalDiscursoLivre;
 
     public InformacaoDiscursoLivreNarrativaObject(){}

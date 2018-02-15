@@ -1,5 +1,7 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -20,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,9 +52,11 @@ public class DiscursoLivreActivity extends AppCompatActivity {
     //Total text view:
     private TextView mTotal;
 
-
     //Botao continuar:
     private Button btnContinuar;
+
+    //Botão validador caso não haja o presseionamento de algum radio button
+    private boolean validaRadioButtons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,7 @@ public class DiscursoLivreActivity extends AppCompatActivity {
         mRadioLabel2Quest5 = (RadioGroup) findViewById(R.id.radio_discursolivre_label2_quest5);
         mRadioLabel2Quest6 = (RadioGroup) findViewById(R.id.radio_discursolivre_label2_quest6);
 
+
         //Totais:
         mTotal = (TextView) findViewById(R.id.discursolivre_total_number1);
 
@@ -97,48 +103,93 @@ public class DiscursoLivreActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     registrar(participante);
-                    Intent intent = new Intent(getBaseContext(), InformacaoDiscursolivreNarrativaLobbyActivity.class);
-                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                    startActivity(intent);
+                    if(!validaRadioButtons) {
+                        Intent intent = new Intent(getBaseContext(), InformacaoDiscursolivreNarrativaLobbyActivity.class);
+                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                        startActivity(intent);
+                    } else {
+                        if (validaRadioButtons) {
+
+                            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+
+                            alert.setTitle("Atenção");
+                            alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
+
+                            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    validaRadioButtons = true;
+                                }
+                            });
+
+                            AlertDialog dialog = alert.create();
+                            alert.show();
+                        }
+                    }
                 }
             });
+
         }
     }
 
     public void registrar(Participante participante) {
+        ArrayList<Integer> verificaValidade = new ArrayList<>();
+
         //Label 1:
         checkedRadioLabel1Quest1 = (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest1, false);
+        if(checkedRadioLabel1Quest1 == -1)
+            verificaValidade.add(11);
         armazenaDadoNoDicionario(11, checkedRadioLabel1Quest1);
 
         checkedRadioLabel1Quest2 = (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest2, false);
+        if(checkedRadioLabel1Quest2 == -1)
+            verificaValidade.add(12);
         armazenaDadoNoDicionario(12, checkedRadioLabel1Quest2);
 
         checkedRadioLabel1Quest3 = (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest3, false);
+        if(checkedRadioLabel1Quest3 == -1)
+            verificaValidade.add(13);
         armazenaDadoNoDicionario(13, checkedRadioLabel1Quest3);
 
         checkedRadioLabel1Quest4 = (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest4, false);
+        if(checkedRadioLabel1Quest1 == -1)
+            verificaValidade.add(14);
         armazenaDadoNoDicionario(14, checkedRadioLabel1Quest4);
 
         //Label2:
         checkedRadioLabel2Quest1 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest1, true);
+        if(checkedRadioLabel2Quest1 == -1)
+            verificaValidade.add(21);
         armazenaDadoNoDicionario(21, checkedRadioLabel2Quest1);
 
         checkedRadioLabel2Quest2 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest2, true);
+        if(checkedRadioLabel2Quest2 == -1)
+            verificaValidade.add(22);
         armazenaDadoNoDicionario(22, checkedRadioLabel2Quest2);
 
         checkedRadioLabel2Quest3 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest3, true);
+        if(checkedRadioLabel2Quest3 == -1)
+            verificaValidade.add(23);
         armazenaDadoNoDicionario(23, checkedRadioLabel2Quest3);
 
         checkedRadioLabel2Quest4 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest4, true);
+        if(checkedRadioLabel2Quest4 == -1)
+            verificaValidade.add(24);
         armazenaDadoNoDicionario(24, checkedRadioLabel2Quest4);
 
         checkedRadioLabel2Quest5 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest5, true);
+        if(checkedRadioLabel2Quest5 == -1)
+            verificaValidade.add(25);
         armazenaDadoNoDicionario(25, checkedRadioLabel2Quest5);
 
         checkedRadioLabel2Quest6 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest6, true);
+        if(checkedRadioLabel2Quest6 == -1)
+            verificaValidade.add(26);
         armazenaDadoNoDicionario(26, checkedRadioLabel2Quest6);
 
-        if (participante != null) {
+        if(!verificaValidade.isEmpty()) {
+            validaRadioButtons = true;
+        } else if (participante != null) {
+            validaRadioButtons = false;
             alteraDadosFirebase(participante);
         }
 
@@ -146,7 +197,7 @@ public class DiscursoLivreActivity extends AppCompatActivity {
 
     public long onFrequenciaRadioButtonClicked(RadioGroup mRadio, boolean ref) {
 
-        long avaliacao = 2;
+        long avaliacao = -1;
         String checkedFrequencia;
         int selectedRadioId = mRadio.getCheckedRadioButtonId();
         if (selectedRadioId != -1) {
@@ -176,33 +227,34 @@ public class DiscursoLivreActivity extends AppCompatActivity {
         somaValoresTotais(index, selecao);
     }
 
-    public int somaValoresTotais(int ref, int selecao) {
-        switch (ref) {
-            case 11:
-                valorTotal -= valorLabel1Quest1;
-                valorLabel1Quest1 = selecao;
-                valorTotal += valorLabel1Quest1;
-                break;
-            case 12:
-                valorTotal -= valorLabel1Quest2;
-                valorLabel1Quest2 = selecao;
-                valorTotal += valorLabel1Quest2;
-                break;
-            case 13:
-                valorTotal -= valorLabel1Quest3;
-                valorLabel1Quest3 = selecao;
-                valorTotal += valorLabel1Quest3;
-                break;
-            case 14:
-                valorTotal -= valorLabel1Quest4;
-                valorLabel1Quest4 = selecao;
-                valorTotal += valorLabel1Quest4;
-                break;
-            default:
-                break;
+    public void somaValoresTotais(int ref, int selecao) {
+        if (selecao != -1) {
+            switch (ref) {
+                case 11:
+                    valorTotal -= valorLabel1Quest1;
+                    valorLabel1Quest1 = selecao;
+                    valorTotal += valorLabel1Quest1;
+                    break;
+                case 12:
+                    valorTotal -= valorLabel1Quest2;
+                    valorLabel1Quest2 = selecao;
+                    valorTotal += valorLabel1Quest2;
+                    break;
+                case 13:
+                    valorTotal -= valorLabel1Quest3;
+                    valorLabel1Quest3 = selecao;
+                    valorTotal += valorLabel1Quest3;
+                    break;
+                case 14:
+                    valorTotal -= valorLabel1Quest4;
+                    valorLabel1Quest4 = selecao;
+                    valorTotal += valorLabel1Quest4;
+                    break;
+                default:
+                    break;
+            }
+            mTotal.setText("" + valorTotal);
         }
-        mTotal.setText("" + valorTotal);
-        return selecao;
     }
 
     public void onClickRadio(View v) {
