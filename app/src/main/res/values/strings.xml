@@ -186,6 +186,9 @@
     <string name="comp_verbal_terceira_avaliacao_sim">Sim</string>
     <string name="comp_verbal_terceira_avaliacao_intermediario">Intermediário</string>
     <string name="comp_verbal_terceira_avaliacao_não">Não</string>
+    <string name="informacao_sim">Sim</string>
+    <string name="informacao_semelhante">Semelhante</string>
+    <string name="informacao_nao">Não</string>
     <string name="habitos_escr_mensagem">Textos/Mensagens</string>
     <string name="habitos_escr_literario">Textos Literários</string>
     <string name="habitos_escr_naoliterario">Textos Não Literários</string>

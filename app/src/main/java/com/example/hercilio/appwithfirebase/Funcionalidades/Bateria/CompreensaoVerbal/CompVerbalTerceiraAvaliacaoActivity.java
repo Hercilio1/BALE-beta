@@ -287,7 +287,7 @@ public class CompVerbalTerceiraAvaliacaoActivity extends AppCompatActivity {
         //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int itemId = item.getItemId();

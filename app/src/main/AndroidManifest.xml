@@ -36,7 +36,8 @@
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.Lobby.BaleLobbyActivity"
-            android:label="Bateria" >
+            android:label="Bateria"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity"
@@ -74,6 +75,16 @@
             android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompVerbalTerceiraAvaliacaoActivity"
             android:label="Compreensão Verbal" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoDiscursolivreNarrativaLobbyActivity"
+            android:label="Informação, Discuso Livre e Narrativa" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoActivity"
+            android:label="Informação, Discuso Livre e Narrativa" >
+        </activity>
+
+
     </application>
 
 </manifest>

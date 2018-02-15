@@ -55,7 +55,7 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comp_verbal_primeira_avaliacao);
+        setContentView(R.layout.activity_informacao);
 
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

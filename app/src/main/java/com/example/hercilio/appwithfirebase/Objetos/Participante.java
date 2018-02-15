@@ -25,6 +25,7 @@ public class Participante implements Serializable {
     private CompreensaoFrasesRadioObject compFrasesRadioObject;
     private String fotoRelogio;
     private CompreensaoVerbalObject compVerbalObject;
+    private InformacaoDiscursoLivreNarrativaObject infDiscNarrObject;
 
 //    private String dataDaAvaliacao;
 //    private String exercidaPor;
@@ -57,6 +58,7 @@ public class Participante implements Serializable {
         this.compFrasesRadioObject = null;
         this.fotoRelogio = null;
         this.compVerbalObject = null;
+        this.infDiscNarrObject = null;
     }
 
     public String getNomeCompleto() {
@@ -155,6 +157,7 @@ public class Participante implements Serializable {
         this.observacaoPosAvaliacao = observacaoPosAvaliacao;
     }
 
+
     /**********************
      * OBJETOS DA BATERIA *
      **********************/
@@ -162,19 +165,16 @@ public class Participante implements Serializable {
     public HabitosLeituraEscritaObject getHleObject() {
         return hleObject;
     }
-
     public void setHleObject() {
         hleObject = new HabitosLeituraEscritaObject();
     }
 
     public CompreensaoFrasesObject getCompFrasesObject() { return compFrasesObject; }
-
     public void setCompFrasesObject() { compFrasesObject = new CompreensaoFrasesObject(); }
 
     public CompreensaoFrasesRadioObject getCompFrasesRadioObject() {
         return compFrasesRadioObject;
     }
-
     public void setCompFrasesRadioObject() {
         compFrasesRadioObject = new CompreensaoFrasesRadioObject();
     }
@@ -182,7 +182,6 @@ public class Participante implements Serializable {
     public String getFotoRelogio() {
         return fotoRelogio;
     }
-
     public void setFotoRelogio(String fotoRelogio) {
         this.fotoRelogio = fotoRelogio;
     }
@@ -190,8 +189,14 @@ public class Participante implements Serializable {
     public CompreensaoVerbalObject getCompVerbalObject() {
         return compVerbalObject;
     }
-
     public void setCompVerbalObject(CompreensaoVerbalObject compVerbalObject) {
         this.compVerbalObject = compVerbalObject;
+    }
+
+    public InformacaoDiscursoLivreNarrativaObject getInfDiscNarrObject() {
+        return infDiscNarrObject;
+    }
+    public void setInfDiscNarrObject(InformacaoDiscursoLivreNarrativaObject infDiscNarrObject) {
+        this.infDiscNarrObject = infDiscNarrObject;
     }
 }
