@@ -1,6 +1,7 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -72,8 +73,23 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
             mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO: fazer armazenamento da foto corretamente
-                    registrar(participante);
+                if(participante.getFotoRelogio() != null) {
+                        registrar(participante);
+                } else {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
+
+                    alert.setTitle("Atenção");
+                    alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
+
+                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
+
+                    AlertDialog dialog = alert.create();
+                    alert.show();
+                }
+
                 }
             });
 

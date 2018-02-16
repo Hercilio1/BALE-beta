@@ -5,6 +5,8 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLe
  * Created by Hercilio on 26/12/2017.
  */
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -18,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoDiscursolivreNarrativaLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
@@ -32,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HabitosLeituraEscritaActivity extends AppCompatActivity {
@@ -137,6 +141,9 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
     private TextView totalEscritaPassado;
     private TextView totalEscrita;
 
+    //Botão validador caso não haja o pressionamento de algum radio button
+    private boolean validaRadioButtons;
+
     /*Botão de continuar*/
     private Button mBtnContinuar;
 
@@ -241,9 +248,28 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     registrar(participante);
-                    Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
-                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                    startActivity(intent);
+                    if(!validaRadioButtons) {
+                        Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
+                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                        startActivity(intent);
+                    } else {
+                        if (validaRadioButtons) {
+
+                            AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
+
+                            alert.setTitle("Atenção");
+                            alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
+
+                            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    validaRadioButtons = true;
+                                }
+                            });
+
+                            AlertDialog dialog = alert.create();
+                            alert.show();
+                        }
+                    }
                 }
             });
         }
@@ -1158,10 +1184,9 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
     /* Método criado desta forma uma vez que necessita de um parâmetro */
     public int onFrequenciaRadioButtonClicked(RadioGroup mRadio) {
 
-        int checkedHabito = 4;
+        int checkedHabito = -1;
         String checkedFrequencia;
         int selectedRadioId = mRadio.getCheckedRadioButtonId();
-        Log.d("ERROOOOOOOOOOOO ====> ", ""+selectedRadioId);
         if (selectedRadioId != -1) {
             RadioButton selectedRadioButton = (RadioButton) findViewById(selectedRadioId);
             checkedFrequencia = selectedRadioButton.getText().toString();
@@ -1206,112 +1231,178 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
     public void registrar(Participante participante) {
         try {
-        /* Leitura */
-        /* Talvez valha a pena criar uma classe "Resposta" */
-//            Intent intentFromList = getIntent();
-//            if (intentFromList != null) {
-//                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            ArrayList<String> verificaValidade = new ArrayList<>();
 
+            /* Leitura */
             checkedLeitRevistasAtualFreq = onFrequenciaRadioButtonClicked(mRadioRevistasAtualFreq);
+            if(checkedLeitRevistasAtualFreq == -1)
+                verificaValidade.add("mRadioRevistasAtualFreq");
             traduzRadioButtonSelecionado("mRadioRevistasAtualFreq", checkedLeitRevistasAtualFreq, participante);
 
             checkedLeitRevistasPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRevistasPassadoFreq);
+            if(checkedLeitRevistasPassadoFreq == -1)
+                verificaValidade.add("mRadioRevistasPassadoFreq");
             traduzRadioButtonSelecionado("mRadioRevistasPassadoFreq", checkedLeitRevistasPassadoFreq, participante);
 
             checkedLeitJornaisAtualFreq = onFrequenciaRadioButtonClicked(mRadioJornaisAtualFreq);
+            if(checkedLeitJornaisAtualFreq == -1)
+                verificaValidade.add("mRadioJornaisAtualFreq");
             traduzRadioButtonSelecionado("mRadioJornaisAtualFreq", checkedLeitJornaisAtualFreq, participante);
 
             checkedLeitJornaisPassadoFreq = onFrequenciaRadioButtonClicked(mRadioJornaisPassadoFreq);
+            if(checkedLeitJornaisPassadoFreq == -1)
+                verificaValidade.add("mRadioJornaisPassadoFreq");
             traduzRadioButtonSelecionado("mRadioJornaisPassadoFreq", checkedLeitJornaisPassadoFreq, participante);
 
             checkedLeitLivrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLivrosAtualFreq);
+            if(checkedLeitLivrosAtualFreq == -1)
+                verificaValidade.add("mRadioLivrosAtualFreq");
             traduzRadioButtonSelecionado("mRadioLivrosAtualFreq", checkedLeitLivrosAtualFreq, participante);
 
             checkedLeitLivrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLivrosPassadoFreq);
+            if(checkedLeitLivrosPassadoFreq == -1)
+                verificaValidade.add("mRadioLivrosPassadoFreq");
             traduzRadioButtonSelecionado("mRadioLivrosPassadoFreq", checkedLeitLivrosPassadoFreq, participante);
 
             checkedLeitRedesAtualFreq = onFrequenciaRadioButtonClicked(mRadioRedesAtualFreq);
+            if(checkedLeitRedesAtualFreq == -1)
+                verificaValidade.add("mRadioRedesAtualFreq");
             traduzRadioButtonSelecionado("mRadioRedesAtualFreq", checkedLeitRedesAtualFreq, participante);
 
             checkedLeitRedesPassadoFreq = onFrequenciaRadioButtonClicked(mRadioRedesPassadoFreq);
+            if(checkedLeitRedesPassadoFreq == -1)
+                verificaValidade.add("mRadioRedesPassadoFreq");
             traduzRadioButtonSelecionado("mRadioRedesPassadoFreq", checkedLeitRedesPassadoFreq, participante);
 
         /* Escrita */
             checkedEscrMensagensAtualFreq = onFrequenciaRadioButtonClicked(mRadioMensagensAtualFreq);
+            if(checkedEscrMensagensAtualFreq == -1)
+                verificaValidade.add("mRadioMensagensAtualFreq");
             traduzRadioButtonSelecionado("mRadioMensagensAtualFreq", checkedEscrMensagensAtualFreq, participante);
 
             checkedEscrMensagensPassadoFreq = onFrequenciaRadioButtonClicked(mRadioMensagensPassadoFreq);
+            if(checkedEscrMensagensPassadoFreq == -1)
+                verificaValidade.add("mRadioMensagensPassadoFreq");
             traduzRadioButtonSelecionado("mRadioMensagensPassadoFreq", checkedEscrMensagensPassadoFreq, participante);
 
             checkedEscrLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosAtualFreq);
+            if(checkedEscrLiterariosAtualFreq == -1)
+                verificaValidade.add("mRadioLiterariosAtualFreq");
             traduzRadioButtonSelecionado("mRadioLiterariosAtualFreq", checkedEscrLiterariosAtualFreq, participante);
 
             checkedEscrLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioLiterariosPassadoFreq);
+            if(checkedEscrLiterariosPassadoFreq == -1)
+                verificaValidade.add("mRadioLiterariosPassadoFreq");
             traduzRadioButtonSelecionado("mRadioLiterariosPassadoFreq", checkedEscrLiterariosPassadoFreq, participante);
 
             checkedEscrNaoLiterariosAtualFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtualFreq);
+            if(checkedEscrNaoLiterariosAtualFreq == -1)
+                verificaValidade.add("mRadioNaoLiterariosAtualFreq");
             traduzRadioButtonSelecionado("mRadioNaoLiterariosAtualFreq", checkedEscrNaoLiterariosAtualFreq, participante);
 
             checkedEscrNaoLiterariosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassadoFreq);
+            if(checkedEscrNaoLiterariosPassadoFreq == -1)
+                verificaValidade.add("mRadioNaoLiterariosPassadoFreq");
             traduzRadioButtonSelecionado("mRadioNaoLiterariosPassadoFreq", checkedEscrNaoLiterariosPassadoFreq, participante);
 
             checkedEscrOutrosAtualFreq = onFrequenciaRadioButtonClicked(mRadioOutrosAtualFreq);
+            if(checkedEscrOutrosAtualFreq == -1)
+                verificaValidade.add("mRadioOutrosAtualFreq");
             traduzRadioButtonSelecionado("mRadioOutrosAtualFreq", checkedEscrOutrosAtualFreq, participante);
 
             checkedEscrOutrosPassadoFreq = onFrequenciaRadioButtonClicked(mRadioOutrosPassadoFreq);
+            if(checkedEscrOutrosPassadoFreq == -1)
+                verificaValidade.add("mRadioOutrosPassadoFreq");
             traduzRadioButtonSelecionado("mRadioOutrosPassadoFreq", checkedEscrOutrosPassadoFreq, participante);
 
         /* Atual */
             checkedLeitRevistasAtual = onFrequenciaRadioButtonClicked(mRadioRevistasAtual);
+            if(checkedLeitRevistasAtual == -1)
+                verificaValidade.add("mRadioRevistasAtual");
             traduzRadioButtonSelecionado("mRadioRevistasAtual", checkedLeitRevistasAtual, participante);
 
             checkedLeitJornaisAtual = onFrequenciaRadioButtonClicked(mRadioJornaisAtual);
+            if(checkedLeitJornaisAtual == -1)
+                verificaValidade.add("mRadioJornaisAtual");
             traduzRadioButtonSelecionado("mRadioJornaisAtual", checkedLeitJornaisAtual, participante);
 
             checkedLeitLivrosAtual = onFrequenciaRadioButtonClicked(mRadioLivrosAtual);
+            if(checkedLeitLivrosAtual == -1)
+                verificaValidade.add("mRadioLivrosAtual");
             traduzRadioButtonSelecionado("mRadioLivrosAtual", checkedLeitLivrosAtual, participante);
 
             checkedLeitRedesAtual = onFrequenciaRadioButtonClicked(mRadioRedesAtual);
+            if(checkedLeitRedesAtual == -1)
+                verificaValidade.add("mRadioRedesAtual");
             traduzRadioButtonSelecionado("mRadioRedesAtual", checkedLeitRedesAtual, participante);
 
             checkedEscrMensagensAtual = onFrequenciaRadioButtonClicked(mRadioMensagensAtual);
+            if(checkedEscrMensagensAtual == -1)
+                verificaValidade.add("mRadioMensagensAtual");
             traduzRadioButtonSelecionado("mRadioMensagensAtual", checkedEscrMensagensAtual, participante);
 
             checkedEscrLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioLiterariosAtual);
+            if(checkedEscrLiterariosAtual == -1)
+                verificaValidade.add("mRadioLiterariosAtual");
             traduzRadioButtonSelecionado("mRadioLiterariosAtual", checkedEscrLiterariosAtual, participante);
 
             checkedEscrNaoLiterariosAtual = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosAtual);
+            if(checkedEscrNaoLiterariosAtual == -1)
+                verificaValidade.add("mRadioNaoLiterariosAtual");
             traduzRadioButtonSelecionado("mRadioNaoLiterariosAtual", checkedEscrNaoLiterariosAtual, participante);
 
             checkedEscrOutrosAtual = onFrequenciaRadioButtonClicked(mRadioOutrosAtual);
+            if(checkedEscrOutrosAtual == -1)
+                verificaValidade.add("mRadioOutrosAtual");
             traduzRadioButtonSelecionado("mRadioOutrosAtual", checkedEscrOutrosAtual, participante);
 
         /* Passado */
             checkedLeitRevistasPassado = onFrequenciaRadioButtonClicked(mRadioRevistasPassado);
+            if(checkedLeitRevistasPassado == -1)
+                verificaValidade.add("mRadioRevistasPassado");
             traduzRadioButtonSelecionado("mRadioRevistasPassado", checkedLeitRevistasPassado, participante);
 
             checkedLeitJornaisPassado = onFrequenciaRadioButtonClicked(mRadioJornaisPassado);
+            if(checkedLeitJornaisPassado == -1)
+                verificaValidade.add("mRadioJornaisPassado");
             traduzRadioButtonSelecionado("mRadioJornaisPassado", checkedLeitJornaisPassado, participante);
 
             checkedLeitLivrosPassado = onFrequenciaRadioButtonClicked(mRadioLivrosPassado);
+            if(checkedLeitLivrosPassado == -1)
+                verificaValidade.add("mRadioLivrosPassado");
             traduzRadioButtonSelecionado("mRadioLivrosPassado", checkedLeitLivrosPassado, participante);
 
             checkedLeitRedesPassado = onFrequenciaRadioButtonClicked(mRadioRedesPassado);
+            if(checkedLeitRedesPassado == -1)
+                verificaValidade.add("mRadioRedesPassado");
             traduzRadioButtonSelecionado("mRadioRedesPassado", checkedLeitRedesPassado, participante);
 
             checkedEscrMensagensPassado = onFrequenciaRadioButtonClicked(mRadioMensagensPassado);
+            if(checkedEscrMensagensPassado == -1)
+                verificaValidade.add("mRadioMensagensPassado");
             traduzRadioButtonSelecionado("mRadioMensagensPassado", checkedEscrMensagensPassado, participante);
 
             checkedEscrLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioLiterariosPassado);
+            if(checkedEscrLiterariosPassado == -1)
+                verificaValidade.add("mRadioLiterariosPassado");
             traduzRadioButtonSelecionado("mRadioLiterariosPassado", checkedEscrLiterariosPassado, participante);
 
             checkedEscrNaoLiterariosPassado = onFrequenciaRadioButtonClicked(mRadioNaoLiterariosPassado);
+            if(checkedEscrNaoLiterariosPassado == -1)
+                verificaValidade.add("mRadioNaoLiterariosPassado");
             traduzRadioButtonSelecionado("mRadioNaoLiterariosPassado", checkedEscrNaoLiterariosPassado, participante);
 
             checkedEscrOutrosPassado = onFrequenciaRadioButtonClicked(mRadioOutrosPassado);
+            if(checkedEscrOutrosPassado == -1)
+                verificaValidade.add("mRadioOutrosPassado");
             traduzRadioButtonSelecionado("mRadioOutrosPassado", checkedEscrOutrosPassado, participante);
 
-            alteraDadosFirebase(participante);
+            if(!verificaValidade.isEmpty()) {
+                validaRadioButtons = true;
+            } else if (participante != null) {
+                validaRadioButtons = false;
+                alteraDadosFirebase(participante);
+            }
         } catch (Exception e) {
             Toast.makeText(HabitosLeituraEscritaActivity.this, R.string.toast_radiobutton, Toast.LENGTH_LONG).show();
             return;

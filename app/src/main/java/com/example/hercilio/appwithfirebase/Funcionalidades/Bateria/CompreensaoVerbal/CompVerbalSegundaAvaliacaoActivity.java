@@ -1,5 +1,7 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -11,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoDiscursolivreNarrativaLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
@@ -19,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,21 +36,27 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
     private RadioGroup mRadioPergunta1Label3, mRadioPergunta2Label3;
     //Laber 4:
     private RadioGroup mRadioPergunta1Label4, mRadioPergunta2Label4, mRadioPergunta3Label4, mRadioPergunta4Label4, mRadioPergunta5Label4;
+
     //Check label 3:
     private int checkedRadioPergunta1Label3, checkedRadioPergunta2Label3;
     //Check label 4:
     private int checkedRadioPergunta1Label4, checkedRadioPergunta2Label4, checkedRadioPergunta3Label4, checkedRadioPergunta4Label4, checkedRadioPergunta5Label4;
+
     //Variaveis dos valores totais:
     private int valorTotalLabel3, valorTotalLabel4;
     //Parciais Label 3:
     private int pergunta1Label3, pergunta2Label3;
     //Parciais Label 4:
     private int pergunta1Label4, pergunta2Label4, pergunta3Label4, pergunta4Label4, pergunta5Label4;
+
     //Dicionario que armazena os radiobuttons selecionados:
     private Map<String, Integer> verificadores = new HashMap<>();
+
     //Totais:
     private TextView mTotalNumero1Label3, mTotalNumero1Label4;
 
+    //Botão validador caso não haja o pressionamento de algum radio button
+    private boolean validaRadioButtons;
 
     //Botao continuar:
     private Button btnContinuar;
@@ -94,9 +104,28 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     registrar(participante);
-                    Intent intent = new Intent(getBaseContext(), CompreensaoVerbalLobbyActivity.class);
-                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                    startActivity(intent);
+                    if(!validaRadioButtons) {
+                        Intent intent = new Intent(getBaseContext(), CompreensaoVerbalLobbyActivity.class);
+                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                        startActivity(intent);
+                    } else {
+                        if (validaRadioButtons) {
+
+                            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+
+                            alert.setTitle("Atenção");
+                            alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
+
+                            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    validaRadioButtons = true;
+                                }
+                            });
+
+                            AlertDialog dialog = alert.create();
+                            alert.show();
+                        }
+                    }
                 }
             });
         }
@@ -140,28 +169,49 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
     }
 
     public void registrar(Participante participante) {
+        ArrayList<Integer> verificaValidade = new ArrayList<>();
+
+        //Label3:
         checkedRadioPergunta1Label3 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta1Label3, false);
+        if(checkedRadioPergunta1Label3 == -1)
+            verificaValidade.add(13);
         armazenaDadoNoDicionario(13, checkedRadioPergunta1Label3);
 
         checkedRadioPergunta2Label3 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta2Label3, false);
+        if(checkedRadioPergunta2Label3 == -1)
+            verificaValidade.add(23);
         armazenaDadoNoDicionario(23, checkedRadioPergunta2Label3);
 
+        //Label 4:
         checkedRadioPergunta1Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta1Label4, true);
+        if(checkedRadioPergunta1Label4 == -1)
+            verificaValidade.add(14);
         armazenaDadoNoDicionario(14, checkedRadioPergunta1Label4);
 
         checkedRadioPergunta2Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta2Label4, true);
+        if(checkedRadioPergunta2Label4 == -1)
+            verificaValidade.add(24);
         armazenaDadoNoDicionario(24, checkedRadioPergunta2Label4);
 
         checkedRadioPergunta3Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta3Label4, false);
+        if(checkedRadioPergunta3Label4 == -1)
+            verificaValidade.add(34);
         armazenaDadoNoDicionario(34, checkedRadioPergunta3Label4);
 
         checkedRadioPergunta4Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta4Label4, false);
+        if(checkedRadioPergunta4Label4 == -1)
+            verificaValidade.add(44);
         armazenaDadoNoDicionario(44, checkedRadioPergunta4Label4);
 
         checkedRadioPergunta5Label4 = (int) onFrequenciaRadioButtonClicked(mRadioPergunta5Label4, false);
+        if(checkedRadioPergunta5Label4 == -1)
+            verificaValidade.add(54);
         armazenaDadoNoDicionario(54, checkedRadioPergunta5Label4);
 
-        if(participante != null) {
+        if(!verificaValidade.isEmpty()) {
+            validaRadioButtons = true;
+        } else if (participante != null) {
+            validaRadioButtons = false;
             alteraDadosFirebase(participante);
         }
 
@@ -169,7 +219,7 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
 
     public long onFrequenciaRadioButtonClicked(RadioGroup mRadio, boolean ref) {
 
-        long avaliacao = 2;
+        long avaliacao = -1;
         String checkedFrequencia;
         int selectedRadioId = mRadio.getCheckedRadioButtonId();
         if (selectedRadioId != -1) {
@@ -199,49 +249,50 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
         somaValoresTotais(index, selecao);
     }
 
-     public int somaValoresTotais(int ref, int selecao) {
-         switch (ref) {
-             case 13:
-                 valorTotalLabel3 -= pergunta1Label3;
-                 pergunta1Label3 = selecao;
-                 valorTotalLabel3 += pergunta1Label3;
-                 break;
-             case 23:
-                 valorTotalLabel3 -= pergunta2Label3;
-                 pergunta2Label3 = selecao;
-                 valorTotalLabel3 += pergunta2Label3;
-                 break;
-             case 14:
-                 valorTotalLabel4 -= pergunta1Label4;
-                 pergunta1Label4 = selecao;
-                 valorTotalLabel4 += pergunta1Label4;
-                 break;
-             case 24:
-                 valorTotalLabel4 -= pergunta2Label4;
-                 pergunta2Label4 = selecao;
-                 valorTotalLabel4 += pergunta2Label4;
-                 break;
-             case 34:
-                 valorTotalLabel4 -= pergunta3Label4;
-                 pergunta3Label4 = selecao;
-                 valorTotalLabel4 += pergunta3Label4;
-                 break;
-             case 44:
-                 valorTotalLabel4 -= pergunta4Label4;
-                 pergunta4Label4 = selecao;
-                 valorTotalLabel4 += pergunta4Label4;
-                 break;
-             case 54:
-                 valorTotalLabel4 -= pergunta5Label4;
-                 pergunta5Label4 = selecao;
-                 valorTotalLabel4 += pergunta5Label4;
-                 break;
-             default:
-                 break;
+     public void somaValoresTotais(int ref, int selecao) {
+         if (selecao != -1) {
+             switch (ref) {
+                 case 13:
+                     valorTotalLabel3 -= pergunta1Label3;
+                     pergunta1Label3 = selecao;
+                     valorTotalLabel3 += pergunta1Label3;
+                     break;
+                 case 23:
+                     valorTotalLabel3 -= pergunta2Label3;
+                     pergunta2Label3 = selecao;
+                     valorTotalLabel3 += pergunta2Label3;
+                     break;
+                 case 14:
+                     valorTotalLabel4 -= pergunta1Label4;
+                     pergunta1Label4 = selecao;
+                     valorTotalLabel4 += pergunta1Label4;
+                     break;
+                 case 24:
+                     valorTotalLabel4 -= pergunta2Label4;
+                     pergunta2Label4 = selecao;
+                     valorTotalLabel4 += pergunta2Label4;
+                     break;
+                 case 34:
+                     valorTotalLabel4 -= pergunta3Label4;
+                     pergunta3Label4 = selecao;
+                     valorTotalLabel4 += pergunta3Label4;
+                     break;
+                 case 44:
+                     valorTotalLabel4 -= pergunta4Label4;
+                     pergunta4Label4 = selecao;
+                     valorTotalLabel4 += pergunta4Label4;
+                     break;
+                 case 54:
+                     valorTotalLabel4 -= pergunta5Label4;
+                     pergunta5Label4 = selecao;
+                     valorTotalLabel4 += pergunta5Label4;
+                     break;
+                 default:
+                     break;
+             }
+             mTotalNumero1Label3.setText("" + valorTotalLabel3);
+             mTotalNumero1Label4.setText("" + valorTotalLabel4);
          }
-         mTotalNumero1Label3.setText(""+valorTotalLabel3);
-         mTotalNumero1Label4.setText(""+valorTotalLabel4);
-         return selecao;
      }
 
      public void onClickRadio(View v) {

@@ -55,7 +55,7 @@ public class DiscursoLivreActivity extends AppCompatActivity {
     //Botao continuar:
     private Button btnContinuar;
 
-    //Botão validador caso não haja o presseionamento de algum radio button
+    //Botão validador caso não haja o pressionamento de algum radio button
     private boolean validaRadioButtons;
 
     @Override

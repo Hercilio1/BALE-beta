@@ -1,6 +1,8 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases;
 
 import android.animation.Animator;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoFrasesObject;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoFrasesRadioObject;
@@ -34,6 +37,8 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
 
     private RadioGroup mRadioGroupCompreensaoFrases;
     private int checkedRadioGroupCompreensaoFrases;
+    //Botão validador caso não haja o pressionamento de algum radio button
+    private boolean validaRadioButtons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +60,29 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    registrar(participante);
+                registrar(participante);
+                if(!validaRadioButtons) {
                     Intent intent = new Intent(getBaseContext(), CompreensaoFrasesRadioActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
+                } else {
+                    if (validaRadioButtons) {
+
+                        AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+
+                        alert.setTitle("Atenção");
+                        alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
+
+                        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                validaRadioButtons = true;
+                            }
+                        });
+
+                        AlertDialog dialog = alert.create();
+                        alert.show();
+                    }
+                }
                 }
             });
         }
@@ -71,9 +95,18 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
     }
 
     public void registrar(Participante participante){
+        boolean verificaValidade = false;
         checkedRadioGroupCompreensaoFrases = (int) onFrequenciaRadioButtonClicked(mRadioGroupCompreensaoFrases);
+        if(checkedRadioGroupCompreensaoFrases == -1)
+            verificaValidade = true;
         traduzRadioButtonSelecionado(checkedRadioGroupCompreensaoFrases, participante);
-        alteraDadosFirebase(participante);
+
+        if(verificaValidade) {
+            validaRadioButtons = true;
+        } else if (participante != null) {
+            validaRadioButtons = false;
+            alteraDadosFirebase(participante);
+        }
     }
 
     public void autoComplete(CompreensaoFrasesObject compFrasesObj) {
@@ -82,7 +115,7 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
 
     public long onFrequenciaRadioButtonClicked(RadioGroup mRadio) {
 
-        long avaliacao = 2;
+        long avaliacao = -1;
         String checkedFrequencia;
         int selectedRadioId = mRadio.getCheckedRadioButtonId();
         if (selectedRadioId != -1) {
@@ -104,36 +137,38 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
     }
 
     public void traduzRadioButtonSelecionado(Integer selecao, Participante participante) {
-        if(participante.getCompFrasesObject() != null) {
-            switch (selecao) {
-                case 0:
-                    participante.getCompFrasesObject().setValorFinal(selecao);
-                    break;
-                case 1:
-                    participante.getCompFrasesObject().setValorFinal(selecao);
-                    break;
-                case 2:
-                    participante.getCompFrasesObject().setValorFinal(selecao);
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            switch (selecao) {
-                case 0:
-                    participante.setCompFrasesObject();
-                    participante.getCompFrasesObject().setValorFinal(selecao);
-                    break;
-                case 1:
-                    participante.setCompFrasesObject();
-                    participante.getCompFrasesObject().setValorFinal(selecao);
-                    break;
-                case 2:
-                    participante.setCompFrasesObject();
-                    participante.getCompFrasesObject().setValorFinal(selecao);
-                    break;
-                default:
-                    break;
+        if (selecao != -1) {
+            if (participante.getCompFrasesObject() != null) {
+                switch (selecao) {
+                    case 0:
+                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        break;
+                    case 1:
+                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        break;
+                    case 2:
+                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                switch (selecao) {
+                    case 0:
+                        participante.setCompFrasesObject();
+                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        break;
+                    case 1:
+                        participante.setCompFrasesObject();
+                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        break;
+                    case 2:
+                        participante.setCompFrasesObject();
+                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
