@@ -8,6 +8,8 @@ import com.example.hercilio.appwithfirebase.R;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

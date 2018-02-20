@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.CadastroParticipanteActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
@@ -83,8 +84,15 @@ public class UsuariosFragment  extends Fragment {
         btnCadastrarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CadastraUsuarioActivity.class);
-                startActivity(intent);
+                Intent intentFromList = getActivity().getIntent();
+                if (intentFromList != null) {
+                    final String[] passwordAdmin = (String[]) intentFromList.getSerializableExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER);
+
+                    Intent intent = new Intent(getActivity(), CadastraUsuarioActivity.class);
+                    intent.putExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER, passwordAdmin);
+                    startActivity(intent);
+                }
+
             }
         });
 

@@ -4,6 +4,7 @@ package com.example.hercilio.appwithfirebase;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,8 +16,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyFragment;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsuarioActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosFragment;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,8 +30,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static String keyAdmin;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
@@ -44,6 +50,15 @@ public class AdminActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent intentFromList = getIntent();
+        if (intentFromList != null) {
+            final String[] passwordAdmin = (String[]) intentFromList.getSerializableExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER);
+
+            Intent intent = new Intent(this, CadastraUsuarioActivity.class);
+            intent.putExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER, passwordAdmin);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -125,6 +140,7 @@ public class AdminActivity extends AppCompatActivity
 
 
     }
+
 
     //    public void onListFragmentInteraction(Pesquisa item) {
 //        Intent intent = new Intent(getApplicationContext(), BateriaActivity.class);

@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hercilio.appwithfirebase.AdminActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
 import com.example.hercilio.appwithfirebase.Objetos.UserDados;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,12 +33,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class CadastraUsuarioActivity extends AppCompatActivity {
 
+    public static final String EXTRA_ADMIN_USER = "String[]";
+
     private EditText mNomeUsuario;
     private EditText mEmail;
     private EditText mSenha, mConfirmSenha;
     private Button mBtnCadastrar;
     private CheckBox mAdmin;
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private String authOriginalEmail;
     private final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
     @Override
@@ -55,8 +60,22 @@ public class CadastraUsuarioActivity extends AppCompatActivity {
         mBtnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(verficaSenha(mSenha.getText().toString(), mConfirmSenha.getText().toString()))
+                if(verficaSenha(mSenha.getText().toString(), mConfirmSenha.getText().toString())) {
                     cadatrarUsuario();
+                    String senhaAdmin[] = new String[1];
+                    Intent intentFromList = getIntent();
+                    if (intentFromList != null) {
+                        final String[] passwordAdmin = (String[]) intentFromList.getSerializableExtra(EXTRA_ADMIN_USER);
+
+                        senhaAdmin[0] = passwordAdmin[0];
+                    }
+                    mAuth.signInWithEmailAndPassword(authOriginalEmail, senhaAdmin[0]).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d("RELOG APÓS CADASTRO =>", "id do databaseReference  ==> " + mAuth.getCurrentUser().getUid());
+                        }
+                    });
+                }
 
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 Log.d("APÓS REGISTRAR =>", "id do databaseReference  ==> " + mAuth.getCurrentUser().getUid());
@@ -70,29 +89,21 @@ public class CadastraUsuarioActivity extends AppCompatActivity {
         String email = mEmail.getText().toString();
         String password = mSenha.getText().toString();
 
+        if(authOriginalEmail == null)
+            authOriginalEmail = mAuth.getCurrentUser().getEmail();
 
-        CreateRequest request = new CreateRequest()
-                .setEmail("user@example.com")
-                .setEmailVerified(false)
-                .setPassword("secretPassword")
-                .setPhoneNumber("+11234567890")
-                .setDisplayName("John Doe")
-                .setPhotoUrl("http://www.example.com/12345678/photo.png")
-                .setDisabled(false);
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                mAuth.signOut();
+            }
+        });
 
-        Task<UserRecord> task = FirebaseAuth.getInstance().createUser(request)
-                .addOnSuccessListener(userRecord -> {
-                    // See the UserRecord reference doc for the contents of userRecord.
-                    System.out.println("Successfully created new user: " + userRecord.getUid());
-                })
-                .addOnFailureListener(e -> {
-                    System.err.println("Error creating new user: " + e.getMessage());
-                });
 
-        UserDados userDados = new UserDados(mNomeUsuario.getText().toString(), "0 Participantes", mAdmin.isChecked());
-
-        DatabaseReference userRef = rootRef.child("users/" + task.getResult().getUser().getUid());
-        userRef.child("UserDados").setValue(userDados);
+//        UserDados userDados = new UserDados(mNomeUsuario.getText().toString(), "0 Participantes", mAdmin.isChecked());
+//
+//        DatabaseReference userRef = rootRef.child("users/" + task.getResult().getUser().getUid());
+//        userRef.child("UserDados").setValue(userDados);
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();

@@ -18,12 +18,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.AdminActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsuarioActivity;
+import com.example.hercilio.appwithfirebase.Objetos.Participante;
+import com.example.hercilio.appwithfirebase.Objetos.UserDados;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginFragment extends Fragment {
 
@@ -155,11 +166,47 @@ public class LoginFragment extends Fragment {
         if (user != null) {
             Toast.makeText(getActivity(), "User ID: " + user.getUid(), Toast.LENGTH_SHORT).show();
             //Transição para página inicial do aplicativo
-            Intent intent = new Intent(getActivity(), AdminActivity.class);
-            startActivity(intent);
+            verificaAdmin();
         } else {
             Toast.makeText(getActivity(), "Error in sign in", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void verificaAdmin(){
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        DatabaseReference mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid());
+
+        final boolean verificador[] = new boolean[1];
+
+        mParticipanteDatabaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot.getKey().equals("UserDados")) {
+                    UserDados userDados = dataSnapshot.getValue(UserDados.class);
+                    if (userDados.isAdmin()) {
+                        String[] auxKeyAdmin = new String[1];
+                        auxKeyAdmin[0] = senhaEditText.getText().toString();
+                        Intent intent = new Intent(getActivity().getBaseContext(), AdminActivity.class);
+                        intent.putExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER, auxKeyAdmin);
+                        startActivity(intent);
+                        return;
+                    } else {
+                        Intent intent = new Intent(getActivity(), BaleLobbyActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
     }
 
 }
