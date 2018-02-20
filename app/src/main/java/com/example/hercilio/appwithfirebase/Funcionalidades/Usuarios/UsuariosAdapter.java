@@ -1,0 +1,127 @@
+package com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios;
+
+import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.hercilio.appwithfirebase.Objetos.UserDados;
+import com.example.hercilio.appwithfirebase.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import at.grabner.circleprogress.CircleProgressView;
+
+/**
+ * Created by Hercilio on 19/02/2018.
+ */
+
+public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.PesquisaItemView> {
+
+    private Activity activity;
+    private List<UserDados> items = new ArrayList<>();
+    private com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.OnListFragmentInteractionListener mListener;
+
+    public void setListener(com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.OnListFragmentInteractionListener onListener) {
+        mListener = onListener;
+    }
+
+    /**
+     * Contrutor.
+     *
+     * @param activity recebe o contexto
+     * @param items recebe a lista de pesquisas
+     */
+    public UsuariosAdapter(Activity activity, ArrayList<UserDados> items) {
+        this.activity = activity;
+        this.items = items;
+    }
+
+    /**
+     * Infla o layout com a célula para o recyclerview
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
+    @Override
+    public UsuariosAdapter.PesquisaItemView onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.usuario_item, parent, false);
+        return new UsuariosAdapter.PesquisaItemView(view);
+    }
+
+    /**
+     *
+     *
+     * @param holder
+     * @param position
+     */
+    @Override
+    public void onBindViewHolder(final UsuariosAdapter.PesquisaItemView holder, int position) {
+        holder.mItem = items.get(position);
+        holder.mIdView.setText(items.get(position).getNome());
+        //holder.mContentView.setText(mValues.get(position).nomeExaminador);
+        holder.mContentView.setText(items.get(position).getNroDeParticipantesEntrevistados());
+
+//        holder.mView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (null != mListener) {
+//                    // Notify the active callbacks interface (the activity, if the
+//                    // fragment is attached to one) that an item has been selected.
+//                    mListener.onListFragmentInteraction(holder.mItem);
+//                }
+//            }
+//        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
+    /**
+     * Classe que irá criar o visual da recyclerview
+     */
+    class PesquisaItemView extends RecyclerView.ViewHolder {
+        public final View mView;
+        public final TextView mIdView;
+        public final TextView mContentView;
+        public final CircleProgressView mCircleProgressView;
+        public UserDados mItem;
+
+        PesquisaItemView(View view) {
+            super(view);
+            mView = view;
+            mIdView = (TextView) view.findViewById(R.id.id);
+            mContentView = (TextView) view.findViewById(R.id.content);
+            mCircleProgressView = (CircleProgressView) view.findViewById(R.id.circleView);
+
+//            btnFavoritar.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Menor menorItem = items.get(getAdapterPosition());
+//                    mOnMenorCancelarAdocaoListener.OnMenorItemSelected(menorItem, getAdapterPosition());
+//                }
+//            });
+//
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserDados menorItem = items.get(getAdapterPosition());
+                    mListener.onListFragmentInteraction(menorItem);
+                }
+            });
+        }
+
+        @Override
+        public String toString() {
+            return super.toString() + " '" + mContentView.getText() + "'";
+        }
+    }
+
+
+}

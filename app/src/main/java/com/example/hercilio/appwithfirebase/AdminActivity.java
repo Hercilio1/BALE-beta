@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosFragment;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -93,7 +94,8 @@ public class AdminActivity extends AppCompatActivity
                 Toast.makeText(this, "Cadastra o user", Toast.LENGTH_SHORT);
                 break;
             case 2:
-                Toast.makeText(this, "Lista os users", Toast.LENGTH_SHORT);
+                fragment = new UsuariosFragment();
+                title = "Usuários";
                 break;
             case 3:
                 fragment = new PesquisasFragment();

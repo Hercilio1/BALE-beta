@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding = "16dp"
+    tools:context=".Funcionalidades.Usuarios.CadastraUsuarioActivity" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <!--  Name Label -->
+            <TextView
+                android:id="@+id/nome_usuario_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="Nome Completo:" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText android:id="@+id/input_nome_usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:hint="Nome Completo" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--Email label-->
+            <TextView
+                android:id="@+id/email_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="E-mail:" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText android:id="@+id/input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="E-mail" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--Senha label-->
+            <TextView
+                android:id="@+id/senha_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="Senha:" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText android:id="@+id/input_senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="Senha" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--Confirmar senha label-->
+            <TextView
+                android:id="@+id/confirm_senha_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="20dp"
+                android:text="Confirmar senha:" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText android:id="@+id/input_confirm_senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="Confirmar senha" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Admin Label -->
+            <CheckBox
+                android:id="@+id/checkBox_usuario_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Administrador"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="8dp" />
+
+            <!-- Sign Up Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_usuario_register"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="12dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Cadastrar Usuário"
+                android:textColor="@color/white"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

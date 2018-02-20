@@ -87,7 +87,10 @@
             android:name=".Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.DiscursoLivreActivity"
             android:label="Informação, Discuso Livre e Narrativa" >
         </activity>
-
+        <activity
+            android:name=".Funcionalidades.Usuarios.CadastraUsuarioActivity"
+            android:label="Cadastrar novo usuário" >
+        </activity>
     </application>
 
 </manifest>
