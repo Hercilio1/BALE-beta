@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsuarioActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,7 +67,15 @@ public class PesquisasFragment extends Fragment {
         //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+
+        Intent intentFromList = getActivity().getIntent();
+        if (intentFromList != null) {
+            final String[] passwordAdmin = (String[]) intentFromList.getSerializableExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER);
+            if(passwordAdmin != null)
+                mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(passwordAdmin[0]).child("participantes");
+            else
+                mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+        }
 
         final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
             @Override
@@ -86,27 +95,8 @@ public class PesquisasFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), CadastroParticipanteActivity.class);
                 startActivity(intent);
 
-//                mParticipanteDatabaseReference.addChildEventListener(new ChildEventListener() {
-//                    @Override
-//                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                        final Participante participante = dataSnapshot.getValue(Participante.class);
-//                        Toast.makeText(getActivity(),"CLASUDHAIOSHD", Toast.LENGTH_SHORT);
-//                        Intent intent = new Intent(getActivity(), CadastroParticipanteActivity.class);
-//                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, (participante));
-//                        startActivity(intent);
-//                    }
-//                    @Override
-//                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-//                    @Override
-//                    public void onChildRemoved(DataSnapshot dataSnapshot) {}
-//                    @Override
-//                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {}
-//                });
             }
         });
-        //-------------------------------
 
         //Responsavel por ler o banco de dados
         mChildEventListener = new ChildEventListener() {
@@ -119,45 +109,16 @@ public class PesquisasFragment extends Fragment {
                 mPesquisasAdapter.setListener(selecionarItemView);
                 mRecyclerView.setAdapter(mPesquisasAdapter);
             }
-
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onCancelled(DatabaseError databaseError) {}
         };
         mParticipanteDatabaseReference.addChildEventListener(mChildEventListener);
     }
 
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnListFragmentInteractionListener) {
-//            mListener = (OnListFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnListFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
 }

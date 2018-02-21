@@ -31,7 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class AdminActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static String keyAdmin;
+    private static String keyAdminForUsuariosFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,12 +53,11 @@ public class AdminActivity extends AppCompatActivity
 
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
-            final String[] passwordAdmin = (String[]) intentFromList.getSerializableExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER);
-
-            Intent intent = new Intent(this, CadastraUsuarioActivity.class);
-            intent.putExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER, passwordAdmin);
-            startActivity(intent);
+            final String[] userFragForPesquisaFrag = (String[]) intentFromList.getSerializableExtra(UsuariosFragment.EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT);
+            if(userFragForPesquisaFrag != null)
+                displayView(3);
         }
+
     }
 
     @Override

@@ -48,6 +48,8 @@ public class LoginFragment extends Fragment {
     private FirebaseAuth mAuth;
     private final String  TAG = "ERRO - Login: ";
 
+    private boolean adminLoginConfirm;
+
 
 
     @Override
@@ -90,6 +92,8 @@ public class LoginFragment extends Fragment {
         entrarButton = (Button) view.findViewById(R.id.email_sign_in_button);
         esqueceuSenhaTextView = (TextView) view.findViewById(R.id.text_forgotten_password);
 
+
+
         entrarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,8 +101,13 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        //Rotina para recuperar senha:
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
+//        if(currentUser != null) {
+//            adminLoginConfirm = true;
+//        }
+
+        //Rotina para recuperar senha:
         if(currentUser == null) {
             esqueceuSenhaTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -116,6 +125,8 @@ public class LoginFragment extends Fragment {
         try {
             final String email = emailEditText.getText().toString();
             final String senha = senhaEditText.getText().toString();
+
+
 
             if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha)) {
                 mAuth.signInWithEmailAndPassword(email, senha)
@@ -185,6 +196,12 @@ public class LoginFragment extends Fragment {
                 if(dataSnapshot.getKey().equals("UserDados")) {
                     UserDados userDados = dataSnapshot.getValue(UserDados.class);
                     if (userDados.isAdmin()) {
+                        FirebaseUser currentUser = mAuth.getCurrentUser();
+                        if(adminLoginConfirm) {
+                            adminLoginConfirm = false;
+                            mAuth.signOut();
+                            return;
+                        }
                         String[] auxKeyAdmin = new String[1];
                         auxKeyAdmin[0] = senhaEditText.getText().toString();
                         Intent intent = new Intent(getActivity().getBaseContext(), AdminActivity.class);

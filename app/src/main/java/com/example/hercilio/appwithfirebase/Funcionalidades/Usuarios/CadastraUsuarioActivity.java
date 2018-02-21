@@ -62,14 +62,14 @@ public class CadastraUsuarioActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(verficaSenha(mSenha.getText().toString(), mConfirmSenha.getText().toString())) {
                     cadatrarUsuario();
-                    String senhaAdmin[] = new String[1];
+                    String senhaAdmin = null;
                     Intent intentFromList = getIntent();
                     if (intentFromList != null) {
                         final String[] passwordAdmin = (String[]) intentFromList.getSerializableExtra(EXTRA_ADMIN_USER);
 
-                        senhaAdmin[0] = passwordAdmin[0];
+                        senhaAdmin = passwordAdmin[0];
                     }
-                    mAuth.signInWithEmailAndPassword(authOriginalEmail, senhaAdmin[0]).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.signInWithEmailAndPassword(authOriginalEmail, senhaAdmin).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d("RELOG APÓS CADASTRO =>", "id do databaseReference  ==> " + mAuth.getCurrentUser().getUid());
@@ -96,18 +96,18 @@ public class CadastraUsuarioActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 mAuth.signOut();
+                Log.d("Após operação =>", "id do databaseReference  ==> " + task.getResult().getUser().getUid());
+
+                UserDados userDados = new UserDados(mNomeUsuario.getText().toString(), "0 Participantes", mAdmin.isChecked());
+
+                DatabaseReference userRef = rootRef.child("users/" + task.getResult().getUser().getUid());
+                userRef.child("UserDados").setValue(userDados);
             }
         });
 
 
-//        UserDados userDados = new UserDados(mNomeUsuario.getText().toString(), "0 Participantes", mAdmin.isChecked());
-//
-//        DatabaseReference userRef = rootRef.child("users/" + task.getResult().getUser().getUid());
-//        userRef.child("UserDados").setValue(userDados);
 
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        Log.d("Após operação =>", "id do databaseReference  ==> " + auth.getCurrentUser().getUid());
 
     }
 

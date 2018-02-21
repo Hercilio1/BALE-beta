@@ -7,15 +7,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
+import com.example.hercilio.appwithfirebase.AdminActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.CadastroParticipanteActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasAdapter;
-import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.Objetos.UserDados;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,25 +23,44 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by Hercilio on 19/02/2018.
  */
 
-public class UsuariosFragment  extends Fragment {
+public class UsuariosFragment extends Fragment {
+    public class IdWithUserDados {
+        private String idUser;
+        private UserDados userDados;
+
+        public IdWithUserDados(String idUser, UserDados userDados) {
+            this.idUser = idUser;
+            this.userDados = userDados;
+        }
+
+        public String getIdUser() {
+            return idUser;
+        }
+        public UserDados getUserDados() {
+            return userDados;
+        }
+    }
+
+    public static final String EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT = "UserFragForPesquisaFrag";
 
     //Responsavel pela recyclerView
     private UsuariosAdapter mUsuarioAdapter;
-    private ArrayList<UserDados> items = new ArrayList<>();
+    private ArrayList<UsuariosFragment.IdWithUserDados> items = new ArrayList<>();
     private RecyclerView mRecyclerView;
     //private OnListFragmentInteractionListener mListener;
     //Responsavel pelo btn de cadastro de participante
     private FloatingActionButton btnCadastrarUsuario;
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mParticipanteDatabaseReference;
-    private ChildEventListener mChildEventListener;
+    private DatabaseReference mUsuarioDatabaseReference;
 
 
     @Override
@@ -67,14 +85,16 @@ public class UsuariosFragment  extends Fragment {
 
         //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users");
+        final FirebaseAuth auth = FirebaseAuth.getInstance();
+        mUsuarioDatabaseReference = mFirebaseDatabase.getReference().child("users");
 
         final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
             @Override
-            public void onListFragmentInteraction(UserDados item) {
-                Intent intent = new Intent(getActivity(), BaleLobbyActivity.class);
-                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, (item));
+            public void onListFragmentInteraction(String item) {
+                String[] aux = new String[1];
+                aux[0] = item;
+                Intent intent = new Intent(getActivity(), AdminActivity.class);
+                intent.putExtra(EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT, (aux));
                 startActivity(intent);
             }
         };
@@ -84,6 +104,8 @@ public class UsuariosFragment  extends Fragment {
         btnCadastrarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Intent intentFromList = getActivity().getIntent();
                 if (intentFromList != null) {
                     final String[] passwordAdmin = (String[]) intentFromList.getSerializableExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER);
@@ -96,28 +118,29 @@ public class UsuariosFragment  extends Fragment {
             }
         });
 
-//        //Responsavel por ler o banco de dados
-//        mChildEventListener = new ChildEventListener() {
-//            //Método que lê os valores de determinada key
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                UserDados userDados = dataSnapshot.child("UserDados").getValue(UserDados.class);
-//                if(userDados != null) {
-//                    items.add(userDados);
-//                    mUsuarioAdapter = new UsuariosAdapter(getActivity(), items);
-//                    mUsuarioAdapter.setListener(selecionarItemView);
-//                    mRecyclerView.setAdapter(mUsuarioAdapter);
-//                }
-//            }
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {}
-//        };
-//        mParticipanteDatabaseReference.addChildEventListener(mChildEventListener);
+
+        ValueEventListener eventListener = new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        UserDados userDados = ds.child("UserDados").getValue(UserDados.class);
+                        IdWithUserDados idWithUserDados = new IdWithUserDados(dataSnapshot.getKey(), userDados);
+
+                            items.add(idWithUserDados);
+
+
+                    }
+                    mUsuarioAdapter = new UsuariosAdapter(getActivity(), items);
+                    mUsuarioAdapter.setListener(selecionarItemView);
+                    mRecyclerView.setAdapter(mUsuarioAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mUsuarioDatabaseReference.addValueEventListener(eventListener);
     }
 }

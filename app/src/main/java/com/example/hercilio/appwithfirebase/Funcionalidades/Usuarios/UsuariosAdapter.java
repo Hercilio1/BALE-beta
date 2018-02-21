@@ -19,10 +19,10 @@ import at.grabner.circleprogress.CircleProgressView;
  * Created by Hercilio on 19/02/2018.
  */
 
-public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.PesquisaItemView> {
+public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDadosItemView> {
 
     private Activity activity;
-    private List<UserDados> items = new ArrayList<>();
+    private List<UsuariosFragment.IdWithUserDados> items = new ArrayList<>();
     private com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.OnListFragmentInteractionListener mListener;
 
     public void setListener(com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.OnListFragmentInteractionListener onListener) {
@@ -35,7 +35,7 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.Pesqui
      * @param activity recebe o contexto
      * @param items recebe a lista de pesquisas
      */
-    public UsuariosAdapter(Activity activity, ArrayList<UserDados> items) {
+    public UsuariosAdapter(Activity activity, ArrayList<UsuariosFragment.IdWithUserDados> items) {
         this.activity = activity;
         this.items = items;
     }
@@ -48,9 +48,9 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.Pesqui
      * @return
      */
     @Override
-    public UsuariosAdapter.PesquisaItemView onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UsuariosAdapter.UserDadosItemView onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.usuario_item, parent, false);
-        return new UsuariosAdapter.PesquisaItemView(view);
+        return new UsuariosAdapter.UserDadosItemView(view);
     }
 
     /**
@@ -60,11 +60,11 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.Pesqui
      * @param position
      */
     @Override
-    public void onBindViewHolder(final UsuariosAdapter.PesquisaItemView holder, int position) {
-        holder.mItem = items.get(position);
-        holder.mIdView.setText(items.get(position).getNome());
+    public void onBindViewHolder(final UsuariosAdapter.UserDadosItemView holder, int position) {
+        holder.mItem = items.get(position).getUserDados();
+        holder.mIdView.setText(items.get(position).getUserDados().getNome());
         //holder.mContentView.setText(mValues.get(position).nomeExaminador);
-        holder.mContentView.setText(items.get(position).getNroDeParticipantesEntrevistados());
+        holder.mContentView.setText(items.get(position).getUserDados().getNroDeParticipantesEntrevistados());
 
 //        holder.mView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -86,19 +86,17 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.Pesqui
     /**
      * Classe que irá criar o visual da recyclerview
      */
-    class PesquisaItemView extends RecyclerView.ViewHolder {
+    class UserDadosItemView extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public final CircleProgressView mCircleProgressView;
         public UserDados mItem;
 
-        PesquisaItemView(View view) {
+        UserDadosItemView(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
-            mCircleProgressView = (CircleProgressView) view.findViewById(R.id.circleView);
+            mIdView = (TextView) view.findViewById(R.id.usuario_name);
+            mContentView = (TextView) view.findViewById(R.id.usuario_content);
 
 //            btnFavoritar.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -111,8 +109,7 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.Pesqui
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    UserDados menorItem = items.get(getAdapterPosition());
-                    mListener.onListFragmentInteraction(menorItem);
+                    mListener.onListFragmentInteraction(items.get(getAdapterPosition()).getIdUser());
                 }
             });
         }
