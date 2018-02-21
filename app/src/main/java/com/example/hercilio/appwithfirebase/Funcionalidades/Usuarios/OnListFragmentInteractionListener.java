@@ -7,5 +7,5 @@ import com.example.hercilio.appwithfirebase.Objetos.UserDados;
  */
 
 interface OnListFragmentInteractionListener {
-    void onListFragmentInteraction(String item);
+    void onListFragmentInteraction(UsuariosFragment.IdWithUserDados item);
 }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsuarioActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosFragment;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -70,9 +71,10 @@ public class PesquisasFragment extends Fragment {
 
         Intent intentFromList = getActivity().getIntent();
         if (intentFromList != null) {
-            final String[] passwordAdmin = (String[]) intentFromList.getSerializableExtra(CadastraUsuarioActivity.EXTRA_ADMIN_USER);
-            if(passwordAdmin != null)
-                mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(passwordAdmin[0]).child("participantes");
+            final UsuariosFragment.IdWithUserDados keyIdUsuarioListado =
+                    (UsuariosFragment.IdWithUserDados) intentFromList.getSerializableExtra(UsuariosFragment.EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT);
+            if(keyIdUsuarioListado != null)
+                mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(keyIdUsuarioListado.getIdUser()).child("participantes");
             else
                 mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
         }

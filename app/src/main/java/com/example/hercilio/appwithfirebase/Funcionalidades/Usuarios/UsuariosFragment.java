@@ -2,6 +2,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -33,9 +35,11 @@ import java.util.Set;
  */
 
 public class UsuariosFragment extends Fragment {
-    public class IdWithUserDados {
+    public static class IdWithUserDados implements Serializable{
         private String idUser;
         private UserDados userDados;
+
+        public IdWithUserDados () {}
 
         public IdWithUserDados(String idUser, UserDados userDados) {
             this.idUser = idUser;
@@ -90,11 +94,9 @@ public class UsuariosFragment extends Fragment {
 
         final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
             @Override
-            public void onListFragmentInteraction(String item) {
-                String[] aux = new String[1];
-                aux[0] = item;
+            public void onListFragmentInteraction(IdWithUserDados item) {
                 Intent intent = new Intent(getActivity(), AdminActivity.class);
-                intent.putExtra(EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT, (aux));
+                intent.putExtra(EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT, item);
                 startActivity(intent);
             }
         };
@@ -125,10 +127,8 @@ public class UsuariosFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         UserDados userDados = ds.child("UserDados").getValue(UserDados.class);
-                        IdWithUserDados idWithUserDados = new IdWithUserDados(dataSnapshot.getKey(), userDados);
-
-                            items.add(idWithUserDados);
-
+                        IdWithUserDados idWithUserDados = new IdWithUserDados(ds.getKey(), userDados);
+                        items.add(idWithUserDados);
 
                     }
                     mUsuarioAdapter = new UsuariosAdapter(getActivity(), items);

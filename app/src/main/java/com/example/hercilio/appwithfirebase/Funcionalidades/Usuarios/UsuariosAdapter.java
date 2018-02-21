@@ -109,7 +109,7 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDa
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.onListFragmentInteraction(items.get(getAdapterPosition()).getIdUser());
+                    mListener.onListFragmentInteraction(items.get(getAdapterPosition()));
                 }
             });
         }
