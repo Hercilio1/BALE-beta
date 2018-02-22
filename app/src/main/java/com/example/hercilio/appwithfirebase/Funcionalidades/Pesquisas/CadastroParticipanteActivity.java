@@ -196,6 +196,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
             datePickerDialog.getDatePicker().setMinDate(minDoB);
 
             return datePickerDialog;
+            
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
