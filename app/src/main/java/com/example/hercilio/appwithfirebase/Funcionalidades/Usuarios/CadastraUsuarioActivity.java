@@ -98,7 +98,7 @@ public class CadastraUsuarioActivity extends AppCompatActivity {
                 mAuth.signOut();
                 Log.d("Após operação =>", "id do databaseReference  ==> " + task.getResult().getUser().getUid());
 
-                UserDados userDados = new UserDados(mNomeUsuario.getText().toString(), "0 Participantes", mAdmin.isChecked());
+                UserDados userDados = new UserDados(mNomeUsuario.getText().toString(), 0, mAdmin.isChecked());
 
                 DatabaseReference userRef = rootRef.child("users/" + task.getResult().getUser().getUid());
                 userRef.child("UserDados").setValue(userDados);

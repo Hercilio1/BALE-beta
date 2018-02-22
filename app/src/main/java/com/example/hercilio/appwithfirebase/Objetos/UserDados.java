@@ -10,12 +10,12 @@ import java.io.Serializable;
 
 public class UserDados implements Serializable {
     private String nome;
-    private String nroDeParticipantesEntrevistados;
+    private int nroDeParticipantesEntrevistados;
     private boolean isAdmin;
 
     public UserDados () {}
 
-    public UserDados(String nome, String nroDeParticipantesEntrevistados, boolean isAdmin) {
+    public UserDados(String nome, int nroDeParticipantesEntrevistados, boolean isAdmin) {
         this.nome = nome;
         this.nroDeParticipantesEntrevistados = nroDeParticipantesEntrevistados;
         this.isAdmin = isAdmin;
@@ -35,10 +35,10 @@ public class UserDados implements Serializable {
         this.nome = nome;
     }
 
-    public String getNroDeParticipantesEntrevistados() {
+    public int getNroDeParticipantesEntrevistados() {
         return nroDeParticipantesEntrevistados;
     }
-    public void setNroDeParticipantesEntrevistados(String nroDeParticipantesEntrevistados) {
+    public void setNroDeParticipantesEntrevistados(int nroDeParticipantesEntrevistados) {
         this.nroDeParticipantesEntrevistados = nroDeParticipantesEntrevistados;
     }
 }

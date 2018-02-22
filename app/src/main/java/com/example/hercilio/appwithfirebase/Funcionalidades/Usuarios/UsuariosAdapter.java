@@ -64,7 +64,7 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDa
         holder.mItem = items.get(position).getUserDados();
         holder.mIdView.setText(items.get(position).getUserDados().getNome());
         //holder.mContentView.setText(mValues.get(position).nomeExaminador);
-        holder.mContentView.setText(items.get(position).getUserDados().getNroDeParticipantesEntrevistados());
+        holder.mContentView.setText(items.get(position).getUserDados().getNroDeParticipantesEntrevistados() + " Entrevistado(s)");
 
 //        holder.mView.setOnClickListener(new View.OnClickListener() {
 //            @Override

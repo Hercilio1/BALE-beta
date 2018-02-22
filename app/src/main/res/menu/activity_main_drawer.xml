@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/group" android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_cadastrar_usuario"
-            android:title="Cadastrar Novo Usuário"/>
-        <item
             android:id="@+id/nav_lista_usuarios"
             android:title="Lista de Usuários" />
         <item
             android:id="@+id/nav_pesquisas"
-            android:title="Pesquisas" />
+            android:title="Minhas Pesquisas em Andamento" />
+        <item
+            android:id="@+id/nav_pesquisas_finalizadas"
+            android:title="Minhas Pesquisas Finalizadas" />
 
     </group>
     <group android:id="@+id/group2" android:checkableBehavior="single">

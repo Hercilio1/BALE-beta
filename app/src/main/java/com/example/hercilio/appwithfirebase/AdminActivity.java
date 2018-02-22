@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,8 +34,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
-
-    private static String keyAdminForUsuariosFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,13 +58,14 @@ public class AdminActivity extends AppCompatActivity
             final UsuariosFragment.IdWithUserDados userFragForPesquisaFrag =
                     (UsuariosFragment.IdWithUserDados) intentFromList.getSerializableExtra(UsuariosFragment.EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT);
             if(userFragForPesquisaFrag != null) {
-                displayView(3);
-//                Fragment fragment = new PesquisasFragment();
-//                String title = "Pesquisas - " + userFragForPesquisaFrag.getUserDados().getNome();
-//
-//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                ft.replace(R.id.content_frame_menu, fragment, title);
-//                ft.commit();
+//                displayView(3);
+                Fragment fragment = new PesquisasFragment();
+                String title = "Pesquisas - " + userFragForPesquisaFrag.getUserDados().getNome();
+
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame_menu, fragment, title);
+                ft.commit();
+                getSupportActionBar().setTitle(title);
             }
 
         }
@@ -85,17 +88,17 @@ public class AdminActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.nav_cadastrar_usuario:
-                displayView(1);
-                break;
             case R.id.nav_lista_usuarios:
                 displayView(2);
                 break;
             case R.id.nav_pesquisas:
                 displayView(3);
                 break;
-            case R.id.nav_logout:
+            case R.id.nav_pesquisas_finalizadas:
                 displayView(4);
+                break;
+            case R.id.nav_logout:
+                displayView(5);
                 break;
             default:
                 break;
@@ -114,7 +117,6 @@ public class AdminActivity extends AppCompatActivity
 
         switch (viewId) {
             case 1:
-                Toast.makeText(this, "Cadastra o user", Toast.LENGTH_SHORT);
                 break;
             case 2:
                 fragment = new UsuariosFragment();
@@ -122,9 +124,11 @@ public class AdminActivity extends AppCompatActivity
                 break;
             case 3:
                 fragment = new PesquisasFragment();
-                title = "Pesquisas";
+                title = "Minhas Pesquisas";
                 break;
             case 4:
+                break;
+            case 5:
                 finish();
                 Intent intent = new Intent(this, LoginActivity.class);
                 FirebaseAuth.getInstance().signOut();
@@ -138,6 +142,7 @@ public class AdminActivity extends AppCompatActivity
             ft.commit();
         }
 
+
         // set the toolbar title
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
@@ -146,15 +151,5 @@ public class AdminActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-
     }
-
-
-    //    public void onListFragmentInteraction(Pesquisa item) {
-//        Intent intent = new Intent(getApplicationContext(), BateriaActivity.class);
-//        intent.putExtra(EXTRA_PK_PESQUISA, Integer.toString(item.getPk_pesquisa()));
-//        intent.putExtra(EXTRA_PESQUISA, item);
-//        // requestCode - int: If >= 0, this code will be returned in onActivityResult() when the activity exits
-//        startActivityForResult(intent, BATERIA_REQUEST);
-//    }
 }

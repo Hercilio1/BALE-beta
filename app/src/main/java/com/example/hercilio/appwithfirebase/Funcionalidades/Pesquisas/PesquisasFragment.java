@@ -65,6 +65,8 @@ public class PesquisasFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
+        btnCadastrarParticipante = (FloatingActionButton) view.findViewById(R.id.btn_cadastrar_participante);
+
         //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -73,10 +75,14 @@ public class PesquisasFragment extends Fragment {
         if (intentFromList != null) {
             final UsuariosFragment.IdWithUserDados keyIdUsuarioListado =
                     (UsuariosFragment.IdWithUserDados) intentFromList.getSerializableExtra(UsuariosFragment.EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT);
-            if(keyIdUsuarioListado != null)
+            if(keyIdUsuarioListado != null) {
                 mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(keyIdUsuarioListado.getIdUser()).child("participantes");
-            else
+                btnCadastrarParticipante.setVisibility(View.INVISIBLE);
+                intentFromList.removeExtra(UsuariosFragment.EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT);
+            } else {
                 mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+                btnCadastrarParticipante.setVisibility(View.VISIBLE);
+            }
         }
 
         final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
@@ -89,7 +95,6 @@ public class PesquisasFragment extends Fragment {
         };
 
         //Realiza função de cadastrar participante
-        btnCadastrarParticipante = (FloatingActionButton) view.findViewById(R.id.btn_cadastrar_participante);
         btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

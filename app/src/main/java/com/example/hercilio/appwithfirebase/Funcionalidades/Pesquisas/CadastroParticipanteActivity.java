@@ -18,11 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosAdapter;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
+import com.example.hercilio.appwithfirebase.Objetos.UserDados;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -142,6 +147,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         DatabaseReference userRef = rootRef.child("users/" + auth.getCurrentUser().getUid() + "/participantes");
         userRef.child(cpf).setValue(participante);
+        atualizaUserDados();
 
         Toast.makeText(this, "Participante " + nomeCompleto + " cadastrado com sucesso!", Toast.LENGTH_SHORT);
 
@@ -197,6 +203,28 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
             dobDate = calendar.getTime();
             ((TextView) getActivity().findViewById(R.id.input_participante_data_nasc_edit)).setText(dateFormat.format(dobDate));
         }
+    }
+
+    public void atualizaUserDados(){
+
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+        final FirebaseAuth auth = FirebaseAuth.getInstance();
+        final DatabaseReference mUsuarioDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("UserDados");
+        final ValueEventListener eventListener = new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                UserDados userDados = dataSnapshot.getValue(UserDados.class);
+                userDados.setNroDeParticipantesEntrevistados(userDados.getNroDeParticipantesEntrevistados() + 1);
+                mUsuarioDatabaseReference.setValue(userDados);
+                return;
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        mUsuarioDatabaseReference.addListenerForSingleValueEvent(eventListener);
+
     }
 
 }

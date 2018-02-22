@@ -64,8 +64,8 @@
     <string name="battery">"Bateria de Avaliação da Linguagem no Envelhecimento"</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="tab_pesquisas_em_andamento">Ongoing Surveys</string>
-    <string name="tab_pesquisas_finalizadas">Finished Surveys</string>
+    <string name="tab_pesquisas_em_andamento">Pesquisas em Andamento</string>
+    <string name="tab_pesquisas_finalizadas">Pesquisas Finalizadas</string>
 
     <!-- Strings related to BALE's e-mail account -->
     <string name="bale_email">suportebale@gmail.com</string>

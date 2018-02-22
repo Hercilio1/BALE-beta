@@ -24,6 +24,7 @@ import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsu
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.Objetos.UserDados;
 import com.example.hercilio.appwithfirebase.R;
+import com.example.hercilio.appwithfirebase.UsersActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -209,7 +210,7 @@ public class LoginFragment extends Fragment {
                         startActivity(intent);
                         return;
                     } else {
-                        Intent intent = new Intent(getActivity(), BaleLobbyActivity.class);
+                        Intent intent = new Intent(getActivity(), UsersActivity.class);
                         startActivity(intent);
                     }
                 }
