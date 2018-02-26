@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="89dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/title_memoria_episodica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_span="6"
+            android:text="@string/bateria_tipopergunta_memoria"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp" />
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bateria_compreensao"
+            android:layout_alignStart="@+id/bateria_compreensao"
+            android:layout_below="@+id/bateria_compreensao"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_memoria_episodica">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_span="4"
+                android:background="@color/colorPrimary" />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="938dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tableRow"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="Vou lhe mostrar uma série de cartelas. Cada cartela contém quatro figuras. Eu vou lhe falar uma categoria e o(a) senhor(a) deverá apontar e nomear a figura que se encaixa nessa categoria. Vou lhe pedir que preste atenção nas figuras e tente memoriza-las, pois assim que todas as quatro figuras da cartela forem identificadas, eu vou retirar a cartela e o(a) senhor(a) deverá me dizer quais figuras acabou de ver. Podemos começar?"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView5"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Clique na imagem para expandi-la"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="12dp" />
+
+        <ImageView
+            android:id="@+id/imagem_mem_ep_principal"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_alignBottom="@+id/btn_continuarRelogio"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_continuarRelogio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:ignore="MissingConstraints"
+            android:src="@drawable/mem_ep_fig_a"
+            android:layout_marginLeft="12dp" />
+
+        <!--Small Image 1-->
+        <ImageView
+            android:id="@+id/img1_image_view"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fig_igreja"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/a_morango"
+            app:layout_constraintStart_toEndOf="@+id/imagem_mem_ep_principal"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="120dp" />
+
+        <Button
+            android:id="@+id/img1_button_indicou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Indicou"
+            app:layout_constraintStart_toEndOf="@+id/img1_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <Button
+            android:id="@+id/img1_button_nomeou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Nomeou"
+            app:layout_constraintStart_toEndOf="@+id/img1_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/img1_button_indicou"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <!--Small Image 2-->
+        <ImageView
+            android:id="@+id/img2_image_view"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/a_igreja"
+            app:layout_constraintStart_toEndOf="@+id/img1_button_indicou"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="48dp" />
+
+        <Button
+            android:id="@+id/img2_button_indicou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Indicou"
+            app:layout_constraintStart_toEndOf="@+id/img2_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <Button
+            android:id="@+id/img2_button_nomeou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Nomeou"
+            app:layout_constraintStart_toEndOf="@+id/img2_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/img2_button_indicou"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <!--Small Image 3-->
+        <ImageView
+            android:id="@+id/img3_image_view"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/a_garfo"
+            app:layout_constraintStart_toEndOf="@+id/imagem_mem_ep_principal"
+            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="120dp" />
+
+        <Button
+            android:id="@+id/img3_button_indicou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Indicou"
+            app:layout_constraintStart_toEndOf="@+id/img3_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <Button
+            android:id="@+id/img3_button_nomeou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Nomeou"
+            app:layout_constraintStart_toEndOf="@+id/img3_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/img3_button_indicou"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <!--Small Image 4-->
+        <ImageView
+            android:id="@+id/img4_image_view"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/a_violao"
+            app:layout_constraintStart_toEndOf="@+id/img3_button_indicou"
+            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="120dp" />
+
+        <Button
+            android:id="@+id/img4_button_indicou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Indicou"
+            app:layout_constraintStart_toEndOf="@+id/img4_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <Button
+            android:id="@+id/img4_button_nomeou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Nomeou"
+            app:layout_constraintStart_toEndOf="@+id/img4_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/img4_button_indicou"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <Button
+            android:id="@+id/btn_continuar_mem_ep_primeira_fase"
+            style="?android:textAppearanceSmall"
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="58dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/btn_continuar"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img3_button_nomeou" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

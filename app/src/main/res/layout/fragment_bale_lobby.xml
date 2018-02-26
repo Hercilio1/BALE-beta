@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".Funcionalidades.Bateria.Lobby.BaleLobbyActivity" >
 
+    <!--Habitos de leitura e escrita-->
     <RelativeLayout
         android:id="@+id/rly_habitos_leitura_escrita"
         android:layout_width="match_parent"
@@ -54,6 +55,7 @@
 
     </RelativeLayout>
 
+    <!--Compreensao de frases-->
     <RelativeLayout
         android:id="@+id/rly_compreensao_frases"
         android:layout_width="match_parent"
@@ -101,6 +103,55 @@
 
     </RelativeLayout>
 
+    <!--Memoria Episodica-->
+    <RelativeLayout
+        android:id="@+id/rly_memoria_episodica"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+
+        <at.grabner.circleprogress.CircleProgressView
+            android:id="@+id/circleView_mem_ep"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            CircleProgressView:cpv_value="0"
+            CircleProgressView:cpv_maxValue="100"
+            CircleProgressView:cpv_barColor="@color/colorPrimaryDark"
+            CircleProgressView:cpv_rimColor="@color/colorPrimary"
+            CircleProgressView:cpv_textColor="@color/colorPrimaryDark"
+            CircleProgressView:cpv_unitColor="@color/colorPrimaryDark"
+            CircleProgressView:cpv_spinColor="@color/colorPrimary"
+            CircleProgressView:cpv_barWidth="7dp"
+            CircleProgressView:cpv_rimWidth="7dp"
+            CircleProgressView:cpv_contourSize="0dp"
+            CircleProgressView:cpv_autoTextSize="true"
+            CircleProgressView:cpv_seekMode="false"
+            CircleProgressView:cpv_unit="%"
+            CircleProgressView:cpv_unitPosition="right_top"
+            CircleProgressView:cpv_unitScale="1"
+            CircleProgressView:cpv_textScale="1"
+            CircleProgressView:cpv_showUnit="true"
+            android:padding="10dp"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:id="@+id/bl_mem_ep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/circleView_mem_ep"
+            android:layout_toRightOf="@+id/circleView_mem_ep"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:text="Memória Episódica"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!--Compreensao de verbal-->
     <RelativeLayout
         android:id="@+id/rly_compreensao_verbal"
         android:layout_width="match_parent"
@@ -148,14 +199,15 @@
 
     </RelativeLayout>
 
+    <!--Informacao e Discurso Livre-->
     <RelativeLayout
-        android:id="@+id/rly_informacao_discursolivre_narrativa"
+        android:id="@+id/rly_informacao_discursolivre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp" >
 
         <at.grabner.circleprogress.CircleProgressView
-            android:id="@+id/circleView_informacao_discursolivre_narrativa"
+            android:id="@+id/circleView_informacao_discursolivre"
             android:layout_width="100dp"
             android:layout_height="100dp"
             CircleProgressView:cpv_value="0"
@@ -179,7 +231,7 @@
             android:layout_alignParentLeft="true" />
 
         <TextView
-            android:id="@+id/bl_informacao_discursolivre_narrativa"
+            android:id="@+id/bl_informacao_discursolivre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -189,7 +241,7 @@
             android:layout_toRightOf="@+id/circleView_informacao_discursolivre_narrativa"
             android:gravity="center_vertical"
             android:paddingTop="8dp"
-            android:text="Informação, Discurso Livre e Narrativa"
+            android:text="Informação e Discurso Livre"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 

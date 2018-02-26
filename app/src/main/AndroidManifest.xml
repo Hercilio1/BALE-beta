@@ -91,6 +91,10 @@
             android:name=".Funcionalidades.Usuarios.CadastraUsuarioActivity"
             android:label="Cadastrar novo usuário" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.MemoriaEpisodica.GridActivity"
+            android:label="Memória Episódica" >
+        </activity>
     </application>
 
 </manifest>
