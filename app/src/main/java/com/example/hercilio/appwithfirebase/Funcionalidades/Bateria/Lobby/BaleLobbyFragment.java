@@ -14,6 +14,7 @@ import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoV
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoDiscursolivreNarrativaLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.MemoriaEpisodica.GridActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaPrimeiraFaseActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 
@@ -82,8 +83,12 @@ public class BaleLobbyFragment extends Fragment {
         rlyMemEp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), GridActivity.class);
+                Integer identificador[] = new Integer[1];
+                identificador[0] = 1;
+
+                Intent intent = new Intent(getActivity(), MemoriaEpisodicaPrimeiraFaseActivity.class);
                 intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
+                intent.putExtra(MemoriaEpisodicaPrimeiraFaseActivity.IDENTIFICADOR_DA_SEQUENCIA_MEM_EP, identificador);
                 startActivity(intent);
             }
         });

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="89dp">
+    tools:layout_editor_absoluteY="89dp"
+    tools:context=".Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaPrimeiraFaseActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -75,7 +76,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView5"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:text="Clique na imagem para expandi-la"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
@@ -86,12 +87,12 @@
 
         <ImageView
             android:id="@+id/imagem_mem_ep_principal"
-            android:layout_width="300dp"
-            android:layout_height="250dp"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
             android:layout_alignBottom="@+id/btn_continuarRelogio"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="24dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_continuarRelogio"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,19 +102,43 @@
             android:layout_marginLeft="12dp" />
 
         <!--Small Image 1-->
+        <TextView
+            android:id="@+id/small_image_1_tipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="12dp"
+            android:text="Fruta"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/imagem_mem_ep_principal"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:layout_marginLeft="128dp" />
+
+        <TextView
+            android:id="@+id/small_image_1_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:text="Morango"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/imagem_mem_ep_principal"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_1_tipo"
+            android:layout_marginLeft="128dp" />
+
         <ImageView
             android:id="@+id/img1_image_view"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/fig_igreja"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/a_morango"
             app:layout_constraintStart_toEndOf="@+id/imagem_mem_ep_principal"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_1_nome"
             android:layout_marginLeft="120dp" />
 
         <Button
@@ -121,10 +146,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:text="Indicou"
+            android:onClick="onClickIndicou"
             app:layout_constraintStart_toEndOf="@+id/img1_image_view"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_1_nome"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="8dp" />
 
@@ -134,12 +160,39 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Nomeou"
+            android:onClick="onClickNomeou"
             app:layout_constraintStart_toEndOf="@+id/img1_image_view"
             app:layout_constraintTop_toBottomOf="@+id/img1_button_indicou"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="8dp" />
 
         <!--Small Image 2-->
+        <TextView
+            android:id="@+id/small_image_2_tipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="12dp"
+            android:text="Lugar/Construção"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/img1_button_indicou"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:layout_marginLeft="128dp" />
+
+        <TextView
+            android:id="@+id/small_image_2_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:text="Igraja"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/img1_button_indicou"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_2_tipo"
+            android:layout_marginLeft="128dp" />
+
         <ImageView
             android:id="@+id/img2_image_view"
             android:layout_width="120dp"
@@ -147,10 +200,10 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginStart="48dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/a_igreja"
             app:layout_constraintStart_toEndOf="@+id/img1_button_indicou"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_2_nome"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="48dp" />
 
@@ -161,8 +214,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:text="Indicou"
+            android:onClick="onClickIndicou"
             app:layout_constraintStart_toEndOf="@+id/img2_image_view"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_2_nome"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="8dp" />
 
@@ -172,23 +226,51 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Nomeou"
+            android:onClick="onClickNomeou"
             app:layout_constraintStart_toEndOf="@+id/img2_image_view"
             app:layout_constraintTop_toBottomOf="@+id/img2_button_indicou"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="8dp" />
 
         <!--Small Image 3-->
+        <TextView
+            android:id="@+id/small_image_3_tipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="12dp"
+            android:text="Utensílio de cozinha"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/imagem_mem_ep_principal"
+            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            android:layout_marginLeft="128dp" />
+
+        <TextView
+            android:id="@+id/small_image_3_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:text="Garfo"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/imagem_mem_ep_principal"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_3_tipo"
+            android:layout_marginLeft="128dp" />
+
+
         <ImageView
             android:id="@+id/img3_image_view"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="120dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/a_garfo"
             app:layout_constraintStart_toEndOf="@+id/imagem_mem_ep_principal"
-            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_3_nome"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="120dp" />
 
@@ -199,8 +281,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:text="Indicou"
+            android:onClick="onClickIndicou"
             app:layout_constraintStart_toEndOf="@+id/img3_image_view"
-            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_3_nome"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="8dp" />
 
@@ -210,12 +293,39 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Nomeou"
+            android:onClick="onClickNomeou"
             app:layout_constraintStart_toEndOf="@+id/img3_image_view"
             app:layout_constraintTop_toBottomOf="@+id/img3_button_indicou"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="8dp" />
 
         <!--Small Image 4-->
+        <TextView
+            android:id="@+id/small_image_4_tipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="12dp"
+            android:text="Instrumento musical"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/img1_button_indicou"
+            app:layout_constraintTop_toBottomOf="@+id/img2_image_view"
+            android:layout_marginLeft="128dp" />
+
+        <TextView
+            android:id="@+id/small_image_4_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:text="Violão"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/img1_button_indicou"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_4_tipo"
+            android:layout_marginLeft="128dp" />
+
         <ImageView
             android:id="@+id/img4_image_view"
             android:layout_width="120dp"
@@ -226,7 +336,7 @@
             android:layout_marginTop="12dp"
             android:src="@drawable/a_violao"
             app:layout_constraintStart_toEndOf="@+id/img3_button_indicou"
-            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_4_nome"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="120dp" />
 
@@ -237,8 +347,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:text="Indicou"
+            android:onClick="onClickIndicou"
             app:layout_constraintStart_toEndOf="@+id/img4_image_view"
-            app:layout_constraintTop_toBottomOf="@+id/img1_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/small_image_4_nome"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="8dp" />
 
@@ -248,31 +359,145 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Nomeou"
+            android:onClick="onClickNomeou"
             app:layout_constraintStart_toEndOf="@+id/img4_image_view"
             app:layout_constraintTop_toBottomOf="@+id/img4_button_indicou"
             tools:ignore="MissingConstraints"
             android:layout_marginLeft="8dp" />
 
-        <Button
-            android:id="@+id/btn_continuar_mem_ep_primeira_fase"
-            style="?android:textAppearanceSmall"
-            android:layout_width="146dp"
+        <!--Título do somatório tatal da memoria episodica fase 1-->
+        <TextView
+            android:id="@+id/title_total_mem_ep_fase1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="58dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/btn_continuar"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="32dp"
+            android:text="TOTAL"
+            android:textColor="#000000"
+            android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img3_button_nomeou" />
+            app:layout_constraintTop_toBottomOf="@+id/img3_image_view" />
+
+        <!--Valor de indicacao do somatório tatal da memoria episodica fase 1-->
+        <TextView
+            android:id="@+id/title_indicacao_mem_ep_fase1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="PONTUAÇÃO DE INDICAÇÕES:"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_total_mem_ep_fase1" />
+
+        <TextView
+            android:id="@+id/first_value_indicacao_mem_ep_fase1"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/title_indicacao_mem_ep_fase1"
+            app:layout_constraintTop_toBottomOf="@+id/title_total_mem_ep_fase1" />
+
+        <TextView
+            android:id="@+id/barra_indicacao_mem_ep_fase1"
+            android:layout_width="9dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/first_value_indicacao_mem_ep_fase1"
+            app:layout_constraintTop_toBottomOf="@+id/title_total_mem_ep_fase1" />
+
+        <TextView
+            android:id="@+id/secound_value_indicacao_mem_ep_fase1"
+            android:layout_width="26dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="16"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/barra_indicacao_mem_ep_fase1"
+            app:layout_constraintTop_toBottomOf="@+id/title_total_mem_ep_fase1" />
+
+        <!--Valor de nomeação do somatório tatal da memoria episodica fase 1-->
+        <TextView
+            android:id="@+id/title_nomeacao_mem_ep_fase1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="PONTUAÇÃO DE NOMEAÇÕES:"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_indicacao_mem_ep_fase1" />
+
+        <TextView
+            android:id="@+id/first_value_nomeacao_mem_ep_fase1"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/title_nomeacao_mem_ep_fase1"
+            app:layout_constraintTop_toBottomOf="@+id/title_indicacao_mem_ep_fase1" />
+
+        <TextView
+            android:id="@+id/barra_nomeacao_mem_ep_fase1"
+            android:layout_width="9dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/first_value_nomeacao_mem_ep_fase1"
+            app:layout_constraintTop_toBottomOf="@+id/title_indicacao_mem_ep_fase1" />
+
+        <TextView
+            android:id="@+id/secound_value_nomeacao_mem_ep_fase1"
+            android:layout_width="26dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="16"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/barra_nomeacao_mem_ep_fase1"
+            app:layout_constraintTop_toBottomOf="@+id/title_indicacao_mem_ep_fase1" />
+
+
+        <!--Botao de prosseguimento-->
+        <Button
+            android:id="@+id/btn_continuar_mem_ep_primeira_fase"
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/colorPrimary"
+            android:text="Prosseguir"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/title_nomeacao_mem_ep_fase1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>

@@ -92,6 +92,14 @@
             android:label="Cadastrar novo usuário" >
         </activity>
         <activity
+            android:name=".Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaPrimeiraFaseActivity"
+            android:label="Memória Episódica" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.MemoriaEpisodica.ImagemExpandidaActivity"
+            android:label="Memória Episódica" >
+        </activity>
+        <activity
             android:name=".Funcionalidades.Bateria.MemoriaEpisodica.GridActivity"
             android:label="Memória Episódica" >
         </activity>
