@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="89dp"
+    tools:context=".Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaPrimeiraFaseActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/title_memoria_episodica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_span="6"
+            android:text="@string/bateria_tipopergunta_memoria"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp" />
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bateria_compreensao"
+            android:layout_alignStart="@+id/bateria_compreensao"
+            android:layout_below="@+id/bateria_compreensao"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_memoria_episodica">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_span="4"
+                android:background="@color/colorPrimary" />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="938dp"
+            android:layout_height="57dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tableRow"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="A Momória Episódica irá funcionar de forma diferente. Há quatro fases a serem concluídas. Após o término de uma fase e do tempo de intervalo, a seguinte fase será liberada."
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow" />
+
+        <Button
+            android:id="@+id/button_for_mem_ep_fase_1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="90dp"
+            android:layout_marginStart="90dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Primeira Fase"
+            android:textSize="50dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:layout_editor_absoluteX="0dp"
+            tools:ignore="MissingConstraints" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

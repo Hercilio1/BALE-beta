@@ -150,16 +150,16 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
 
         //Botoes de nomeação
         verificadores.put("" + R.id.img1_button_nomeou, false);
-        auxAutoCompleteIndicacao.add("" + R.id.img1_button_nomeou);
+        auxAutoCompleteNomeacao.add("" + R.id.img1_button_nomeou);
 
         verificadores.put("" + R.id.img2_button_nomeou, false);
-        auxAutoCompleteIndicacao.add("" + R.id.img2_button_nomeou);
+        auxAutoCompleteNomeacao.add("" + R.id.img2_button_nomeou);
 
         verificadores.put("" + R.id.img3_button_nomeou, false);
-        auxAutoCompleteIndicacao.add("" + R.id.img3_button_nomeou);
+        auxAutoCompleteNomeacao.add("" + R.id.img3_button_nomeou);
 
         verificadores.put("" + R.id.img4_button_nomeou, false);
-        auxAutoCompleteIndicacao.add("" + R.id.img4_button_nomeou);
+        auxAutoCompleteNomeacao.add("" + R.id.img4_button_nomeou);
 
         //Indica qual sequencia de imagens está
         Intent intentFromList = getIntent();
