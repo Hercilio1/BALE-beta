@@ -166,8 +166,12 @@ public class GridActivity extends AppCompatActivity {
                     mBtnConcluir.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            boolean[] bool = new boolean[4];
+                            bool[1] = true;
+
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
                             intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 1));
+                            intent.putExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_INTERVALO, bool);
                             startActivity(intent);
                         }
                     });
@@ -186,8 +190,12 @@ public class GridActivity extends AppCompatActivity {
                     mBtnConcluir.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            boolean[] bool = new boolean[4];
+                            bool[2] = true;
+
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
                             intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 2));
+                            intent.putExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_INTERVALO, bool);
                             startActivity(intent);
                         }
                     });
@@ -206,8 +214,12 @@ public class GridActivity extends AppCompatActivity {
                     mBtnConcluir.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            boolean[] bool = new boolean[4];
+                            bool[3] = true;
+
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
                             intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 3));
+                            intent.putExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_INTERVALO, bool);
                             startActivity(intent);
                         }
                     });

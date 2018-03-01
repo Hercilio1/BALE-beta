@@ -15,18 +15,22 @@ public class MemoriaEpisodicaObject implements Serializable {
     //Segunda Fase:
     private Map<String, Boolean> segundaFaseSemDica, segundaFaseComDica;
     private int pontuacaoSegundaFaseSemDica = 0, pontuacaoSegundaFaseComDica = 0;
+    private long timeStampSegundaFase = 0;
 
     //Terceira Fase:
     private Map<String, Boolean> terceiraFaseSemDica, terceiraFaseComDica;
     private int pontuacaoTerceiraFaseSemDica = 0, pontuacaoTerceiraFaseComDica = 0;
+    private long timeStampTerceiraFase = 0;
 
     //Quarta Fase:
     private Map<String, Boolean> quartaFaseSemDica, quartaFaseComDica;
     private int pontuacaoQuartaFaseSemDica = 0, pontuacaoQuartaFaseComDica = 0;
+    private long timeStampQuartaFase = 0;
 
     //Quinta Fase:
     private Map<String, Boolean> quintaFaseSemDica, quintaFaseComDica;
     private int pontuacaoQuintaFaseSemDica = 0, pontuacaoQuintaFaseComDica = 0;
+    private long timeStampQuintaFase = 0;
 
     public MemoriaEpisodicaObject() {
     }
@@ -76,6 +80,7 @@ public class MemoriaEpisodicaObject implements Serializable {
         this.pontuacaoNomeacao = pontuacaoNomeacao;
     }
 
+
     /*****************
      * SEGUNDA FASE *
      *****************/
@@ -108,6 +113,15 @@ public class MemoriaEpisodicaObject implements Serializable {
     public void setPontuacaoSegundaFaseComDica(int pontuacaoSegundaFaseComDica) {
         this.pontuacaoSegundaFaseComDica = pontuacaoSegundaFaseComDica;
     }
+
+    //Getter e Setter timestamp
+    public long getTimeStampSegundaFase() {
+        return timeStampSegundaFase;
+    }
+    public void setTimeStampSegundaFase(long timeStampSegundaFase) {
+        this.timeStampSegundaFase = timeStampSegundaFase;
+    }
+
 
     /*****************
      * TERCEIRA FASE *
@@ -142,6 +156,15 @@ public class MemoriaEpisodicaObject implements Serializable {
         this.pontuacaoTerceiraFaseComDica = pontuacaoTerceiraFaseComDica;
     }
 
+    //Getter e Setter timestamp
+    public long getTimeStampTerceiraFase() {
+        return timeStampTerceiraFase;
+    }
+    public void setTimeStampTerceiraFase(long timeStampTerceiraFase) {
+        this.timeStampTerceiraFase = timeStampTerceiraFase;
+    }
+
+
     /*****************
      * QUARTA FASE *
      *****************/
@@ -175,6 +198,15 @@ public class MemoriaEpisodicaObject implements Serializable {
         this.pontuacaoQuartaFaseComDica = pontuacaoQuartaFaseComDica;
     }
 
+    //Getter e Setter timestamp
+    public long getTimeStampQuartaFase() {
+        return timeStampQuartaFase;
+    }
+    public void setTimeStampQuartaFase(long timeStampQuartaFase) {
+        this.timeStampQuartaFase = timeStampQuartaFase;
+    }
+
+
     /*****************
      * QUINTA FASE *
      *****************/
@@ -206,5 +238,13 @@ public class MemoriaEpisodicaObject implements Serializable {
     }
     public void setPontuacaoQuintaFaseComDica(int pontuacaoQuintaFaseComDica) {
         this.pontuacaoQuintaFaseComDica = pontuacaoQuintaFaseComDica;
+    }
+
+    //Getter e Setter timestamp
+    public long getTimeStampQuintaFase() {
+        return timeStampQuintaFase;
+    }
+    public void setTimeStampQuintaFase(long timeStampQuintaFase) {
+        this.timeStampQuintaFase = timeStampQuintaFase;
     }
 }

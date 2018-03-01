@@ -367,8 +367,11 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
                     btnProsseguir.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            boolean[] bool = new boolean[4];
+                            bool[0] = true;
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
                             intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 4));
+                            intent.putExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_INTERVALO, bool);
                             startActivity(intent);
 
                         }
