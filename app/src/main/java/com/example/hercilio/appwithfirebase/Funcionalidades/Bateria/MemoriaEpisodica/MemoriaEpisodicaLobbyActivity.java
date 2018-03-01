@@ -19,7 +19,7 @@ import com.example.hercilio.appwithfirebase.R;
 
 public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
-    private Button mBtnPrimeiraFase;
+    private Button mBtnPrimeiraFase, mBtnSegundaFase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memoria_episodica_lobby);
 
         mBtnPrimeiraFase = (Button) findViewById(R.id.button_for_mem_ep_fase_1);
+        mBtnSegundaFase = (Button) findViewById(R.id.button_for_mem_ep_fase_2);
 
 
         Intent intentFromList = getIntent();
@@ -42,6 +43,19 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                     identificador[0] = 1;
 
                     Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaPrimeiraFaseActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    intent.putExtra(MemoriaEpisodicaPrimeiraFaseActivity.IDENTIFICADOR_DA_SEQUENCIA_MEM_EP, identificador);
+                    startActivity(intent);
+                }
+            });
+
+            mBtnSegundaFase.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Integer identificador[] = new Integer[1];
+                    identificador[0] = 1;
+
+                    Intent intent = new Intent(getBaseContext(), GridActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     intent.putExtra(MemoriaEpisodicaPrimeiraFaseActivity.IDENTIFICADOR_DA_SEQUENCIA_MEM_EP, identificador);
                     startActivity(intent);

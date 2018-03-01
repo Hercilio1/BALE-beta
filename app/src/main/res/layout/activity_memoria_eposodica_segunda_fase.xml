@@ -51,6 +51,32 @@
                 android:background="@color/colorPrimary" />
         </TableRow>
 
+        <Button
+            android:id="@+id/btn_mem_ep_sem_pista"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="152dp"
+            android:backgroundTint="@color/clickedSecun_compVerval"
+            android:onClick="OnclickSemPista"
+            android:text="Pontuar sem pista"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="20dp" />
+
+        <Button
+            android:id="@+id/btn_mem_ep_com_pista"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@color/clickedPrinc_compVerval"
+            android:text="Pontuar com pista"
+            android:onClick="OnclickComPista"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_mem_ep_sem_pista"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="20dp" />
 
         <GridView
             android:id="@+id/gridview_mem_ep"
@@ -67,7 +93,7 @@
             android:stretchMode="spacingWidthUniform"
             android:verticalSpacing="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_mem_ep_com_pista"
             app:layout_constraintTop_toBottomOf="@+id/tableRow"
             tools:ignore="MissingConstraints" />
 
