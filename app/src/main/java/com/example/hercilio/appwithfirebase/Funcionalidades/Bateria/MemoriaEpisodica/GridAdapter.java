@@ -79,10 +79,11 @@ public class GridAdapter extends BaseAdapter {
         imageButton.setImageResource(stringImages[position]);
         imageButton.setTag(""+stringImages[position]);
         imageButton.setBackgroundColor(Color.LTGRAY);
+        mListener.onListFragmentInteraction(imageButton, false);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.onListFragmentInteraction(imageButton);
+                mListener.onListFragmentInteraction(imageButton, true);
             }
         });
         return imageButton;

@@ -19,7 +19,9 @@ import com.example.hercilio.appwithfirebase.R;
 
 public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
-    private Button mBtnPrimeiraFase, mBtnSegundaFase;
+    public static final String IDENTIFICA_FASE = "Integer[]";
+
+    private Button mBtnPrimeiraFase, mBtnSegundaFase, mBtnTerceiraFase, mBtnQuartaFase, mBtnQuintaFase, mBtnContinuar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,11 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
         mBtnPrimeiraFase = (Button) findViewById(R.id.button_for_mem_ep_fase_1);
         mBtnSegundaFase = (Button) findViewById(R.id.button_for_mem_ep_fase_2);
+        mBtnTerceiraFase = (Button) findViewById(R.id.button_for_mem_ep_fase_3);
+        mBtnQuartaFase = (Button) findViewById(R.id.button_for_mem_ep_fase_4);
+        mBtnQuintaFase = (Button) findViewById(R.id.button_for_mem_ep_fase_5);
+
+        mBtnContinuar = (Button) findViewById(R.id.btn_continuar_mem_ep_lobby);
 
 
         Intent intentFromList = getIntent();
@@ -57,12 +64,58 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getBaseContext(), GridActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                    intent.putExtra(MemoriaEpisodicaPrimeiraFaseActivity.IDENTIFICADOR_DA_SEQUENCIA_MEM_EP, identificador);
+                    intent.putExtra(IDENTIFICA_FASE, identificador);
                     startActivity(intent);
                 }
             });
 
+            mBtnTerceiraFase.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Integer identificador[] = new Integer[1];
+                    identificador[0] = 2;
 
+                    Intent intent = new Intent(getBaseContext(), GridActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    intent.putExtra(IDENTIFICA_FASE, identificador);
+                    startActivity(intent);
+                }
+            });
+
+            mBtnQuartaFase.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Integer identificador[] = new Integer[1];
+                    identificador[0] = 3;
+
+                    Intent intent = new Intent(getBaseContext(), GridActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    intent.putExtra(IDENTIFICA_FASE, identificador);
+                    startActivity(intent);
+                }
+            });
+
+            mBtnQuintaFase.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Integer identificador[] = new Integer[1];
+                    identificador[0] = 4;
+
+                    Intent intent = new Intent(getBaseContext(), GridActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    intent.putExtra(IDENTIFICA_FASE, identificador);
+                    startActivity(intent);
+                }
+            });
+
+            mBtnContinuar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    startActivity(intent);
+                }
+            });
         }
 
     }

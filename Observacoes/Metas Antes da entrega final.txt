@@ -5,3 +5,6 @@ Metas de hoje:
 4 - Fazer pesquisas finalizadas
 5 - Terminar Bateria
 6 - Criar uma página para mostrar resultados finais
+7 - Corrigir Botao home para normal users
+8 - Criar ampliacao de foto do relogio
+

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="89dp">
+    tools:layout_editor_absoluteY="89dp"
+    tools:context=".Funcionalidades.Bateria.MemoriaEpisodica.GridActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,6 +56,7 @@
             android:id="@+id/btn_mem_ep_sem_pista"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="152dp"
             android:backgroundTint="@color/clickedSecun_compVerval"
@@ -62,30 +64,148 @@
             android:text="Pontuar sem pista"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tableRow"
-            tools:ignore="MissingConstraints"
-            android:layout_marginLeft="20dp" />
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btn_mem_ep_com_pista"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:backgroundTint="@color/clickedPrinc_compVerval"
-            android:text="Pontuar com pista"
             android:onClick="OnclickComPista"
+            android:text="Pontuar com pista"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_mem_ep_sem_pista"
-            tools:ignore="MissingConstraints"
-            android:layout_marginLeft="20dp" />
+            tools:ignore="MissingConstraints" />
 
+        <!--Pontuacao sem pista mem ep-->
+        <Button
+            android:id="@+id/color_principal_pontuacao_sem_pista_mem_ep"
+            android:layout_width="31dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_mem_ep_com_pista" />
+
+        <TextView
+            android:id="@+id/title_pontuacao_sem_pista_mem_ep"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:text="Pontuação SEM PISTA:"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/color_principal_pontuacao_sem_pista_mem_ep"
+            app:layout_constraintTop_toBottomOf="@+id/btn_mem_ep_com_pista"
+            android:layout_marginLeft="8dp" />
+
+        <TextView
+            android:id="@+id/first_value_pontuacao_sem_pista_mem_ep"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/title_pontuacao_sem_pista_mem_ep"
+            app:layout_constraintTop_toBottomOf="@+id/btn_mem_ep_com_pista" />
+
+        <TextView
+            android:id="@+id/barra_pontuacao_sem_pista_mem_ep"
+            android:layout_width="9dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/first_value_pontuacao_sem_pista_mem_ep"
+            app:layout_constraintTop_toBottomOf="@+id/btn_mem_ep_com_pista" />
+
+        <TextView
+            android:id="@+id/secound_value_pontuacao_sem_pista_mem_ep"
+            android:layout_width="26dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="16"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/barra_pontuacao_sem_pista_mem_ep"
+            app:layout_constraintTop_toBottomOf="@+id/btn_mem_ep_com_pista" />
+
+
+        <!--Pontuacao com pista mem ep-->
+        <Button
+            android:id="@+id/color_principal_pontuacao_com_pista_mem_ep"
+            android:layout_width="31dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/color_principal_pontuacao_sem_pista_mem_ep" />
+
+        <TextView
+            android:id="@+id/title_pontuacao_com_pista_mem_ep"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Pontuação COM PISTA:"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/color_principal_pontuacao_com_pista_mem_ep"
+            app:layout_constraintTop_toBottomOf="@+id/color_principal_pontuacao_sem_pista_mem_ep"
+            android:layout_marginLeft="8dp" />
+
+        <TextView
+            android:id="@+id/first_value_pontuacao_com_pista_mem_ep"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/title_pontuacao_com_pista_mem_ep"
+            app:layout_constraintTop_toBottomOf="@+id/color_principal_pontuacao_sem_pista_mem_ep" />
+
+        <TextView
+            android:id="@+id/barra_pontuacao_com_pista_mem_ep"
+            android:layout_width="9dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/first_value_pontuacao_com_pista_mem_ep"
+            app:layout_constraintTop_toBottomOf="@+id/color_principal_pontuacao_sem_pista_mem_ep" />
+
+        <TextView
+            android:id="@+id/secound_value_pontuacao_com_pista_mem_ep"
+            android:layout_width="26dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="16"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/barra_pontuacao_com_pista_mem_ep"
+            app:layout_constraintTop_toBottomOf="@+id/color_principal_pontuacao_sem_pista_mem_ep" />
+
+        <!--GRID VIEW-->
         <GridView
             android:id="@+id/gridview_mem_ep"
             android:layout_width="578dp"
             android:layout_height="443dp"
             android:layout_margin="20dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:columnWidth="130dp"
             android:gravity="center"
             android:horizontalSpacing="10dp"
@@ -93,9 +213,11 @@
             android:stretchMode="spacingWidthUniform"
             android:verticalSpacing="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_mem_ep_com_pista"
+            app:layout_constraintStart_toEndOf="@+id/secound_value_pontuacao_sem_pista_mem_ep"
             app:layout_constraintTop_toBottomOf="@+id/tableRow"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints" >
+
+        </GridView>
 
 
         <Button
@@ -107,7 +229,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="28dp"
             android:background="@color/colorPrimary"
-            android:text="Próxima Pista"
+            android:text="Concluir Segunda Fase"
             android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

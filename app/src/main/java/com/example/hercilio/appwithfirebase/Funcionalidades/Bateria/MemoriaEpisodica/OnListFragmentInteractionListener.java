@@ -9,5 +9,5 @@ import com.example.hercilio.appwithfirebase.Objetos.Participante;
  */
 
 interface OnListFragmentInteractionListener {
-    void onListFragmentInteraction(ImageButton item);
+    void onListFragmentInteraction(ImageButton item, boolean ref);
 }
