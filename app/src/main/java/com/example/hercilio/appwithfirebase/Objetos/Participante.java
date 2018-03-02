@@ -25,7 +25,8 @@ public class Participante implements Serializable {
     private CompreensaoFrasesRadioObject compFrasesRadioObject;
     private String fotoRelogio;
     private CompreensaoVerbalObject compVerbalObject;
-    private InformacaoDiscursoLivreNarrativaObject infDiscNarrObject;
+    private InformacaoDiscursoLivreObject infDiscNarrObject;
+    private NarrativaObject narrativaObject;
     private MemoriaEpisodicaObject memEpObject;
 
 //    private String dataDaAvaliacao;
@@ -61,6 +62,7 @@ public class Participante implements Serializable {
         this.compVerbalObject = null;
         this.infDiscNarrObject = null;
         this.memEpObject = null;
+        this.narrativaObject = null;
     }
 
     public String getNomeCompleto() {
@@ -195,10 +197,10 @@ public class Participante implements Serializable {
         this.compVerbalObject = compVerbalObject;
     }
 
-    public InformacaoDiscursoLivreNarrativaObject getInfDiscNarrObject() {
+    public InformacaoDiscursoLivreObject getInfDiscNarrObject() {
         return infDiscNarrObject;
     }
-    public void setInfDiscNarrObject(InformacaoDiscursoLivreNarrativaObject infDiscNarrObject) {
+    public void setInfDiscNarrObject(InformacaoDiscursoLivreObject infDiscNarrObject) {
         this.infDiscNarrObject = infDiscNarrObject;
     }
 
@@ -207,5 +209,12 @@ public class Participante implements Serializable {
     }
     public void setMemEpObject(MemoriaEpisodicaObject memEpObject) {
         this.memEpObject = memEpObject;
+    }
+
+    public NarrativaObject getNarrativaObject() {
+        return narrativaObject;
+    }
+    public void setNarrativaObject(NarrativaObject narrativaObject) {
+        this.narrativaObject = narrativaObject;
     }
 }

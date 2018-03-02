@@ -186,6 +186,13 @@
     <string name="comp_verbal_terceira_avaliacao_sim">Sim</string>
     <string name="comp_verbal_terceira_avaliacao_intermediario">Intermediário</string>
     <string name="comp_verbal_terceira_avaliacao_não">Não</string>
+    <string name="narrativa_sim">Sim</string>
+    <string name="narrativa_parcialmente">Parcialmente</string>
+    <string name="narrativa_nao">Não</string>
+    <string name="narrativa_nenhum">Nenhum</string>
+    <string name="narrativa_um">Um</string>
+    <string name="narrativa_dois">Dois</string>
+    <string name="narrativa_todos">Todos</string>
     <string name="informacao_sim">Sim</string>
     <string name="informacao_semelhante">Semelhante</string>
     <string name="informacao_nao">Não</string>

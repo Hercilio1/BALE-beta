@@ -107,6 +107,10 @@
             android:name=".Funcionalidades.Bateria.MemoriaEpisodica.GridActivity"
             android:label="Memória Episódica" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.Narrativa.NarrativaActivity"
+            android:label="Narrativa" >
+        </activity>
     </application>
 
 </manifest>

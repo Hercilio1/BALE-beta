@@ -14,7 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
-import com.example.hercilio.appwithfirebase.Objetos.InformacaoDiscursoLivreNarrativaObject;
+import com.example.hercilio.appwithfirebase.Objetos.InformacaoDiscursoLivreObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -276,12 +276,12 @@ public class InformacaoActivity extends AppCompatActivity {
 
     public void alteraDadosFirebase(Participante participante) {
         if(participante.getInfDiscNarrObject() == null) {
-            InformacaoDiscursoLivreNarrativaObject infDiscNarrObj = new InformacaoDiscursoLivreNarrativaObject();
+            InformacaoDiscursoLivreObject infDiscNarrObj = new InformacaoDiscursoLivreObject();
             infDiscNarrObj.atualizaInformacao(verificadores);
             infDiscNarrObj.setValorTotalInformacao(valorTotal);
             participante.setInfDiscNarrObject(infDiscNarrObj);
         } else {
-            InformacaoDiscursoLivreNarrativaObject aux = participante.getInfDiscNarrObject();
+            InformacaoDiscursoLivreObject aux = participante.getInfDiscNarrObject();
             aux.setValorTotalInformacao(valorTotal);
             aux.atualizaInformacao(verificadores);
             participante.setInfDiscNarrObject(aux);

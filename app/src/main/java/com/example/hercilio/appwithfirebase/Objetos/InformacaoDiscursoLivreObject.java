@@ -7,7 +7,7 @@ import java.util.Map;
  * Created by Hercilio on 15/02/2018.
  */
 
-public class InformacaoDiscursoLivreNarrativaObject implements Serializable {
+public class InformacaoDiscursoLivreObject implements Serializable {
     //Informacao:
     private Map<String, Integer> informacao;
     private int valorTotalInformacao;
@@ -16,7 +16,7 @@ public class InformacaoDiscursoLivreNarrativaObject implements Serializable {
     private Map<String, Integer> discursoLivre;
     private int valorTotalDiscursoLivre;
 
-    public InformacaoDiscursoLivreNarrativaObject(){}
+    public InformacaoDiscursoLivreObject(){}
 
     //Informacao:
     public void atualizaInformacao(Map buttonsList) {

@@ -154,7 +154,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_estrutura_analise_1_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -177,23 +177,23 @@
                 android:id="@+id/narrrativa_estrutura_analise_1_parcialmente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:onClick="onClickRadio"
                 android:text="Parcialmente"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_marginLeft="8dp" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
                 android:id="@+id/narrrativa_estrutura_analise_1_sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:onClick="onClickRadio"
                 android:text="Sim"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_marginLeft="8dp" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
         <!--Segunda pergunta da Estrutura-->
@@ -217,7 +217,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_estrutura_analise_2_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -280,7 +280,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_estrutura_analise_3_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -343,7 +343,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_estrutura_analise_4_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -406,7 +406,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_estrutura_analise_5_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -469,7 +469,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_estrutura_analise_6_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -609,7 +609,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_desempling1_analise_1_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -671,7 +671,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_desempling1_analise_2_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
@@ -732,7 +732,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_desempling1_analise_3_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
@@ -942,7 +942,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_desempling2_analise_1_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -1004,7 +1004,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_desempling2_analise_2_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
@@ -1065,7 +1065,7 @@
 
         <RadioGroup
             android:id="@+id/narrativa_desempling2_analise_3_radio"
-            android:layout_width="283dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"

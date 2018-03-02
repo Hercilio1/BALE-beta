@@ -14,6 +14,8 @@ import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoV
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Narrativa.NarrativaActivity;
+import com.example.hercilio.appwithfirebase.Objetos.NarrativaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 
@@ -60,6 +62,7 @@ public class BaleLobbyFragment extends Fragment {
         RelativeLayout rlyMemEp = (RelativeLayout) getActivity().findViewById(R.id.rly_memoria_episodica);
         RelativeLayout rlyCompVerbal = (RelativeLayout) getActivity().findViewById(R.id.rly_compreensao_verbal);
         RelativeLayout rlyInfDiscNarr = (RelativeLayout) getActivity().findViewById(R.id.rly_informacao_discursolivre);
+        RelativeLayout rlyNarrativa = (RelativeLayout)  getActivity().findViewById(R.id.rly_narrativa);
 
         rlyHLE.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +104,15 @@ public class BaleLobbyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), InformacaoDiscursolivreLobbyActivity.class);
+                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
+                startActivity(intent);
+            }
+        });
+
+        rlyNarrativa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), NarrativaActivity.class);
                 intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
                 startActivity(intent);
             }
