@@ -12,10 +12,8 @@ import android.widget.RelativeLayout;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrasesActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoDiscursolivreNarrativaLobbyActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.MemoriaEpisodica.GridActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaLobbyActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaPrimeiraFaseActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 
@@ -102,7 +100,7 @@ public class BaleLobbyFragment extends Fragment {
         rlyInfDiscNarr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), InformacaoDiscursolivreNarrativaLobbyActivity.class);
+                Intent intent = new Intent(getActivity(), InformacaoDiscursolivreLobbyActivity.class);
                 intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
                 startActivity(intent);
             }

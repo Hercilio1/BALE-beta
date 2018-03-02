@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoDiscursolivreNarrativaLobbyActivity">
+    tools:context="com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -145,70 +145,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-        <!--Terceira Avaliacao-->
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="116dp"
-            android:layout_height="25dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:text="Narrativa"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_discurso_livre"
-            android:layout_marginLeft="8dp" />
 
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView8"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="2dp"
-                android:layout_span="4"
-                android:background="@color/colorPrimary" />
-        </TableRow>
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="567dp"
-            android:layout_height="95dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Instrução: Vou lhe mostrar uma história com sete figuras. Cada figura é um momento da história, que tem início, meio e fim. Vou pedir que o (a) senhor (a) olhe bem cada uma das figuras e tente entender a história que elas contam. Depois disso, vou pedir que o (a) senhor (a) me conte essa história. (Mostrar as figuras e esperar). Está pronto (a)? Podemos começar?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.513"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableRow4" />
-
-        <Button
-            android:id="@+id/btn_narrativa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
-            android:text="Clique aqui para avaliar o teste de Narrativa"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <Button
             android:id="@+id/btn_continuar_informacao_discursolivre_narrativa_lobby"
@@ -222,7 +159,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_narrativa"
+            app:layout_constraintTop_toBottomOf="@+id/btn_discurso_livre"
             tools:ignore="MissingConstraints" />
 
     </android.support.constraint.ConstraintLayout>

@@ -76,15 +76,15 @@
             android:label="Compreensão Verbal" >
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoDiscursolivreNarrativaLobbyActivity"
+            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity"
             android:label="Informação, Discuso Livre e Narrativa" >
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.InformacaoActivity"
+            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoActivity"
             android:label="Informação, Discuso Livre e Narrativa" >
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa.DiscursoLivreActivity"
+            android:name=".Funcionalidades.Bateria.InformacaoDiscursolivre.DiscursoLivreActivity"
             android:label="Informação, Discuso Livre e Narrativa" >
         </activity>
         <activity

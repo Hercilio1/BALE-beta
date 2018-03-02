@@ -1,4 +1,4 @@
-package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivreNarrativa;
+package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,9 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
-import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.InformacaoDiscursoLivreNarrativaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
@@ -104,7 +102,7 @@ public class InformacaoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     registrar(participante);
                     if(!validaRadioButtons) {
-                        Intent intent = new Intent(getBaseContext(), InformacaoDiscursolivreNarrativaLobbyActivity.class);
+                        Intent intent = new Intent(getBaseContext(), InformacaoDiscursolivreLobbyActivity.class);
                         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                         startActivity(intent);
                     } else {
