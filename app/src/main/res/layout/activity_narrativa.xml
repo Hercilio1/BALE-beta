@@ -115,43 +115,1056 @@
                 android:background="@color/colorPrimary" />
         </TableRow>
 
+        <!--Estrutura -->
+        <TextView
+            android:id="@+id/narrativa_title_estrutura"
+            android:layout_width="548dp"
+            android:layout_height="31dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="ESTRUTURA"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow2"
+            android:layout_marginLeft="16dp" />
 
-        <Button
-            android:id="@+id/btn_estrutura_narrativa"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+        <!--Primeira pergunta da Estrutura-->
+        <TextView
+            android:id="@+id/narrativa_estrutura_analise_1"
+            android:layout_width="607dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Avaliar Estrutura"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="1) Um garoto vê um cachorro (de rua/perdido) na rua/calçada."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableRow2" />
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_title_estrutura"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
 
-        <Button
-            android:id="@+id/btn_desempenho_linguistico_1_narrativa"
-            android:layout_width="250dp"
+        <RadioGroup
+            android:id="@+id/narrativa_estrutura_analise_1_radio"
+            android:layout_width="283dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Avaliar Desempenho Linguistico I"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_estrutura_narrativa" />
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_estrutura_analise_1"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_title_estrutura"
+            android:layout_marginLeft="8dp">
 
-        <Button
-            android:id="@+id/btn_desempenho_linguistico_2_narrativa"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_1_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_1_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_1_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Segunda pergunta da Estrutura-->
+        <TextView
+            android:id="@+id/narrativa_estrutura_analise_2"
+            android:layout_width="607dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Avaliar Desempenho Linguistico II"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="2) O garoto leva (decide levar) o cachorro para casa."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_desempenho_linguistico_1_narrativa" />
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_1_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
 
+        <RadioGroup
+            android:id="@+id/narrativa_estrutura_analise_2_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_estrutura_analise_2"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_1_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_2_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_2_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_2_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Terceira pergunta da Estrutura-->
+        <TextView
+            android:id="@+id/narrativa_estrutura_analise_3"
+            android:layout_width="607dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="3) O garoto esconde o cachorro no guarda-roupa/roupeiro/armário."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_2_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_estrutura_analise_3_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_estrutura_analise_3"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_2_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_3_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_3_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_3_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Quarta pergunta da Estrutura-->
+        <TextView
+            android:id="@+id/narrativa_estrutura_analise_4"
+            android:layout_width="607dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="4) A mãe encontra o cachorro."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_3_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_estrutura_analise_4_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_estrutura_analise_4"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_3_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_4_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_4_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_4_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Quinta pergunta da Estrutura-->
+        <TextView
+            android:id="@+id/narrativa_estrutura_analise_5"
+            android:layout_width="607dp"
+            android:layout_height="49dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="5) A mãe pede ao garoto algumas explicações / O garoto implora à mãe para ficar com o cachorro."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_4_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_estrutura_analise_5_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_estrutura_analise_5"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_4_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_5_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_5_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_5_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Sexta pergunta da Estrutura-->
+        <TextView
+            android:id="@+id/narrativa_estrutura_analise_6"
+            android:layout_width="607dp"
+            android:layout_height="49dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="6) A mãe permite ao garoto ficar com o cachorro / A mãe ajuda o filho/garoto a construir a casinha para o cachorro."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_5"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_estrutura_analise_6_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_estrutura_analise_6"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_5"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_6_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_6_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_estrutura_analise_6_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+
+        <!--Total da ESTRUTURA -->
+        <TextView
+            android:id="@+id/narrativa_estrutura_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TOTAL ESTRUTURA"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_estrutura_total_number1"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_6_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/narrativa_estrutura_total_number1"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_estrutura_total_barra"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_6_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/narrativa_estrutura_total_barra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_estrutura_total_numero2"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_6_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/narrativa_estrutura_total_numero2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="12"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_analise_6_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+
+
+        <!--DESEMPENHO LINGUÍSTICO I -->
+        <TextView
+            android:id="@+id/narrativa_title_desempling1"
+            android:layout_width="548dp"
+            android:layout_height="31dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:text="DESEMPENHO LINGUÍSTICO I"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_estrutura_total"
+            android:layout_marginLeft="16dp" />
+
+        <!--Primeira pergunta do DESEMPENHO LINGUÍSTICO I-->
+        <TextView
+            android:id="@+id/narrativa_desempling1_analise_1"
+            android:layout_width="558dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="1) Ausência de sequência de narrativa."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_title_desempling1"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_desempling1_analise_1_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_desempling1_analise_1"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_title_desempling1"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_1_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_1_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_1_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Segunda pergunta do DESEMPENHO LINGUÍSTICO I-->
+        <TextView
+            android:id="@+id/narrativa_desempling1_analise_2"
+            android:layout_width="558dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:text="2) Predominância de descrição de cenas."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_1_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_desempling1_analise_2_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_desempling1_analise_2"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_1_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_2_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_2_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_2_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Terceira pergunta do DESEMPENHO LINGUÍSTICO I-->
+        <TextView
+            android:id="@+id/narrativa_desempling1_analise_3"
+            android:layout_width="558dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:text="3) Inclusão de informações intrusivas / não existentes na história."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_2_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_desempling1_analise_3_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_desempling1_analise_3"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_2_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_3_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_3_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_3_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Quarta pergunta do DESEMPENHO LINGUÍSTICO I-->
+        <TextView
+            android:id="@+id/narrativa_desempling1_analise_4"
+            android:layout_width="558dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:text="4) Reconhecimento de personagens."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_3_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_desempling1_analise_4_radio"
+            android:layout_width="378dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_desempling1_analise_4"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_3_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_4_nenhum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Nenhum"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_4_um"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:onClick="onClickRadio"
+                android:text="Um"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_4_dois"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:onClick="onClickRadio"
+                android:text="Dois"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling1_analise_4_todos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:onClick="onClickRadio"
+                android:text="Todos"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RadioGroup>
+
+        <!--Total da DESEMPENHO LINGUÍSTICO I -->
+        <TextView
+            android:id="@+id/narrativa_desempling1_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TOTAL DESEMPENHO LINGUÍSTICO I"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_desempling1_total_number1"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_4_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/narrativa_desempling1_total_number1"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_desempling1_total_barra"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_4_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/narrativa_desempling1_total_barra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_desempling1_total_numero2"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_4_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/narrativa_desempling1_total_numero2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="9"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_analise_4_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+
+
+        <!--DESEMPENHO LINGUÍSTICO II -->
+        <TextView
+            android:id="@+id/narrativa_title_desempling2"
+            android:layout_width="548dp"
+            android:layout_height="31dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:text="DESEMPENHO LINGUÍSTICO II"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling1_total"
+            android:layout_marginLeft="16dp" />
+
+        <!--Primeira pergunta do DESEMPENHO LINGUÍSTICO I-->
+        <TextView
+            android:id="@+id/narrativa_desempling2_analise_1"
+            android:layout_width="350dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="1) Dificuldade de busca de palavras."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_title_desempling2"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_desempling2_analise_1_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_desempling2_analise_1"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_title_desempling2"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_1_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_1_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_1_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Segunda pergunta do DESEMPENHO LINGUÍSTICO I-->
+        <TextView
+            android:id="@+id/narrativa_desempling2_analise_2"
+            android:layout_width="350dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:text="2) Repetições imediatas de palavras."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_analise_1_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_desempling2_analise_2_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_desempling2_analise_2"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_analise_1_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_2_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_2_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_2_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Terceira pergunta do DESEMPENHO LINGUÍSTICO I-->
+        <TextView
+            android:id="@+id/narrativa_desempling2_analise_3"
+            android:layout_width="350dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:text="2) Revisões."
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_analise_2_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp" />
+
+        <RadioGroup
+            android:id="@+id/narrativa_desempling2_analise_3_radio"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/narrativa_desempling2_analise_3"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_analise_2_radio"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_3_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_3_parcialmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Parcialmente"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+
+            <RadioButton
+                android:id="@+id/narrrativa_desempling2_analise_3_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="8dp" />
+        </RadioGroup>
+
+        <!--Total da DESEMPENHO LINGUÍSTICO II -->
+        <TextView
+            android:id="@+id/narrativa_desempling2_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TOTAL DESEMPENHO LINGUÍSTICO II"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_desempling2_total_number1"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_analise_3_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/narrativa_desempling2_total_number1"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_desempling2_total_barra"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_analise_3_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/narrativa_desempling2_total_barra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/narrativa_desempling2_total_numero2"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_analise_3_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/narrativa_desempling2_total_numero2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="6"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_analise_3_radio"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+
+
+        <!--BOTÃO CONTINUAR-->
         <Button
             android:id="@+id/btn_continuar_narrativa"
             android:layout_width="134dp"
@@ -159,14 +1172,15 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="40dp"
             android:backgroundTint="@color/colorPrimary"
             android:text="Continuar"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.543"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_desempenho_linguistico_2_narrativa"
+            app:layout_constraintTop_toBottomOf="@+id/narrativa_desempling2_total"
             tools:ignore="MissingConstraints" />
 
 
