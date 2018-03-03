@@ -81,6 +81,9 @@ public class NarrativaActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        //Imagem da historia
+        mImageViewPrincipal = (ImageView) findViewById(R.id.imageview_narrativa);
+
         //Estrutura
         mRadioEstruturaQuest1 = (RadioGroup) findViewById(R.id.narrativa_estrutura_analise_1_radio);
         mRadioEstruturaQuest2 = (RadioGroup) findViewById(R.id.narrativa_estrutura_analise_2_radio);
@@ -108,7 +111,14 @@ public class NarrativaActivity extends AppCompatActivity {
         //Botao continuar:
         mBtnContinuar = (Button) findViewById(R.id.btn_continuar_narrativa);
 
-        //Adiciona elementos nos verificadores:
+        //Adiciona intereção com imagem
+        mImageViewPrincipal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), ImagemExpandidaActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //TODO: completar até o final do método
         Intent intentFromList = getIntent();
