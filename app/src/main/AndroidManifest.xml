@@ -111,6 +111,10 @@
             android:name=".Funcionalidades.Bateria.Narrativa.NarrativaActivity"
             android:label="Narrativa" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.FluenciaVerbal.FluenciaVerbalActivity"
+            android:label="Fluência Verbal" >
+        </activity>
     </application>
 
 </manifest>

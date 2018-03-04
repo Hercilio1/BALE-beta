@@ -23,7 +23,6 @@ import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLo
 import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.Objetos.Perguntas;
-import com.example.hercilio.appwithfirebase.Objetos.Pesquisa;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -163,7 +162,6 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
     private int[] vetorTotalEscritaPassado;
     private int[] vetorTotalEscrita;
 
-    private static Pesquisa pesquisa = null;
 
 
 
@@ -1221,10 +1219,6 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
             return selectedRadioButton.getText().toString();
         }
         return null;
-    }
-
-    public void atualizaPorcentagemPesquisa() {
-        pesquisa.calculaPorcentagemTotal();
     }
 
     public void registrar(Participante participante) {
