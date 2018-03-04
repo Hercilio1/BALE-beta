@@ -112,6 +112,10 @@
             android:label="Narrativa" >
         </activity>
         <activity
+            android:name=".Funcionalidades.Bateria.Narrativa.ImagemExpandidaActivity"
+            android:label="Narrativa" >
+        </activity>
+        <activity
             android:name=".Funcionalidades.Bateria.FluenciaVerbal.FluenciaVerbalActivity"
             android:label="Fluência Verbal" >
         </activity>

@@ -14,9 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
-import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.NarrativaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
@@ -83,6 +81,9 @@ public class NarrativaActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        //Imagem da historia
+        mImageViewPrincipal = (ImageView) findViewById(R.id.imageview_narrativa);
+
         //Estrutura
         mRadioEstruturaQuest1 = (RadioGroup) findViewById(R.id.narrativa_estrutura_analise_1_radio);
         mRadioEstruturaQuest2 = (RadioGroup) findViewById(R.id.narrativa_estrutura_analise_2_radio);
@@ -109,6 +110,15 @@ public class NarrativaActivity extends AppCompatActivity {
 
         //Botao continuar:
         mBtnContinuar = (Button) findViewById(R.id.btn_continuar_narrativa);
+
+        //Adiciona intereção com imagem
+        mImageViewPrincipal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), ImagemExpandidaActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //TODO: completar até o final do método
         Intent intentFromList = getIntent();
@@ -225,69 +235,69 @@ public class NarrativaActivity extends AppCompatActivity {
         checkedRadioEstruturaQuest1= (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest1, 1);
         if(checkedRadioEstruturaQuest1 == -1)
             verificaValidade.add(11);
-        armazenaDadoNoDicionario(13, checkedRadioEstruturaQuest1);
+        armazenaDadoNoDicionario(11, checkedRadioEstruturaQuest1);
 
         checkedRadioEstruturaQuest2= (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest2, 1);
         if(checkedRadioEstruturaQuest2 == -1)
-            verificaValidade.add(11);
-        armazenaDadoNoDicionario(13, checkedRadioEstruturaQuest2);
+            verificaValidade.add(12);
+        armazenaDadoNoDicionario(12, checkedRadioEstruturaQuest2);
 
         checkedRadioEstruturaQuest3= (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest3, 1);
         if(checkedRadioEstruturaQuest3 == -1)
-            verificaValidade.add(11);
+            verificaValidade.add(13);
         armazenaDadoNoDicionario(13, checkedRadioEstruturaQuest3);
 
         checkedRadioEstruturaQuest4= (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest4, 1);
         if(checkedRadioEstruturaQuest4 == -1)
-            verificaValidade.add(11);
-        armazenaDadoNoDicionario(13, checkedRadioEstruturaQuest4);
+            verificaValidade.add(14);
+        armazenaDadoNoDicionario(14, checkedRadioEstruturaQuest4);
 
         checkedRadioEstruturaQuest5= (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest5, 1);
         if(checkedRadioEstruturaQuest5 == -1)
-            verificaValidade.add(11);
-        armazenaDadoNoDicionario(13, checkedRadioEstruturaQuest5);
+            verificaValidade.add(15);
+        armazenaDadoNoDicionario(15, checkedRadioEstruturaQuest5);
 
         checkedRadioEstruturaQuest6= (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest6, 1);
         if(checkedRadioEstruturaQuest6 == -1)
-            verificaValidade.add(11);
-        armazenaDadoNoDicionario(13, checkedRadioEstruturaQuest6);
+            verificaValidade.add(16);
+        armazenaDadoNoDicionario(16, checkedRadioEstruturaQuest6);
 
         //Desempenho Linguistico I:
         checkedRadioDesempling1Quest1 = (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest1, 2);
         if(checkedRadioDesempling1Quest1 == -1)
-            verificaValidade.add(14);
-        armazenaDadoNoDicionario(14, checkedRadioDesempling1Quest1);
+            verificaValidade.add(21);
+        armazenaDadoNoDicionario(21, checkedRadioDesempling1Quest1);
 
         checkedRadioDesempling1Quest2 = (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest2, 2);
         if(checkedRadioDesempling1Quest2 == -1)
-            verificaValidade.add(14);
-        armazenaDadoNoDicionario(14, checkedRadioDesempling1Quest2);
+            verificaValidade.add(22);
+        armazenaDadoNoDicionario(22, checkedRadioDesempling1Quest2);
 
         checkedRadioDesempling1Quest3 = (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest3, 2);
         if(checkedRadioDesempling1Quest3 == -1)
-            verificaValidade.add(14);
-        armazenaDadoNoDicionario(14, checkedRadioDesempling1Quest3);
+            verificaValidade.add(23);
+        armazenaDadoNoDicionario(23, checkedRadioDesempling1Quest3);
 
         checkedRadioDesempling1Quest4 = (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest4, 0);
         if(checkedRadioDesempling1Quest4 == -1)
-            verificaValidade.add(14);
-        armazenaDadoNoDicionario(14, checkedRadioDesempling1Quest4);
+            verificaValidade.add(24);
+        armazenaDadoNoDicionario(24, checkedRadioDesempling1Quest4);
 
         //Desempenho Linguistico II:
         checkedRadioDesempling2Quest1 = (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest1, 2);
         if(checkedRadioDesempling2Quest1 == -1)
-            verificaValidade.add(14);
-        armazenaDadoNoDicionario(14, checkedRadioDesempling2Quest1);
+            verificaValidade.add(31);
+        armazenaDadoNoDicionario(31, checkedRadioDesempling2Quest1);
 
         checkedRadioDesempling2Quest2 = (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest2, 2);
         if(checkedRadioDesempling2Quest2 == -1)
-            verificaValidade.add(14);
-        armazenaDadoNoDicionario(14, checkedRadioDesempling2Quest2);
+            verificaValidade.add(32);
+        armazenaDadoNoDicionario(32, checkedRadioDesempling2Quest2);
 
         checkedRadioDesempling2Quest3 = (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest3, 2);
         if(checkedRadioDesempling2Quest3 == -1)
-            verificaValidade.add(14);
-        armazenaDadoNoDicionario(14, checkedRadioDesempling2Quest3);
+            verificaValidade.add(33);
+        armazenaDadoNoDicionario(33, checkedRadioDesempling2Quest3);
 
         if(!verificaValidade.isEmpty()) {
             validaRadioButtons = true;
