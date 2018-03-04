@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BALE-beta.iml" filepath="$PROJECT_DIR$/BALE-beta.iml" />
+	  <module fileurl="file://C:\Users\Hercilio\Documents\PROJETOS\BALE-beta\AppWithFirebase.iml" filepath="C:\Users\Hercilio\Documents\PROJETOS\BALE-beta\AppWithFirebase.iml" /> 
+      <module fileurl="file://$PROJECT_DIR$/BALE-beta.iml" filepath="$PROJECT_DIR$/BALE-beta.iml" /> 
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
