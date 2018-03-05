@@ -36,88 +36,112 @@
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.Lobby.BaleLobbyActivity"
-            android:label="Bateria"
-            android:screenOrientation="userLandscape" >
+            android:label="Bateria" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity"
-            android:label="Hábitos de Leitura e Escrita" >
+            android:label="Hábitos de Leitura e Escrita"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrasesActivity"
-            android:label="Compreensão de Frases" >
+            android:label="Compreensão de Frases"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.CompreensaoFrases.FraseExpandidaActivity"
-            android:label="Compreensão de Frases" >
+            android:label="Compreensão de Frases"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFrasesRadioActivity"
-            android:label="Compreensão de Frases" >
+            android:label="Compreensão de Frases"
+            android:screenOrientation="userLandscape">
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFraseRelogioActivity"
-            android:label="Compreensão de Frases" >
+            android:label="Compreensão de Frases"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity"
-            android:label="Compreensão Verbal" >
+            android:label="Compreensão Verbal"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompVerbalPrimeiraAvaliacaoActivity"
-            android:label="Compreensão Verbal" >
+            android:label="Compreensão Verbal"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompVerbalSegundaAvaliacaoActivity"
-            android:label="Compreensão Verbal" >
+            android:label="Compreensão Verbal"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompVerbalTerceiraAvaliacaoActivity"
-            android:label="Compreensão Verbal" >
+            android:label="Compreensão Verbal"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity"
-            android:label="Informação, Discuso Livre e Narrativa" >
+            android:label="Informação, Discuso Livre e Narrativa"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoActivity"
-            android:label="Informação, Discuso Livre e Narrativa" >
+            android:label="Informação, Discuso Livre e Narrativa"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.InformacaoDiscursolivre.DiscursoLivreActivity"
-            android:label="Informação, Discuso Livre e Narrativa" >
+            android:label="Informação, Discuso Livre e Narrativa"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Usuarios.CadastraUsuarioActivity"
-            android:label="Cadastrar novo usuário" >
+            android:label="Cadastrar novo usuário"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaLobbyActivity"
-            android:label="Memória Episódica" >
+            android:label="Memória Episódica"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaPrimeiraFaseActivity"
-            android:label="Memória Episódica" >
+            android:label="Memória Episódica"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.MemoriaEpisodica.ImagemExpandidaActivity"
-            android:label="Memória Episódica" >
+            android:label="Memória Episódica"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.MemoriaEpisodica.GridActivity"
-            android:label="Memória Episódica" >
+            android:label="Memória Episódica"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.Narrativa.NarrativaActivity"
-            android:label="Narrativa" >
+            android:label="Narrativa"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.Narrativa.ImagemExpandidaActivity"
-            android:label="Narrativa" >
+            android:label="Narrativa"
+            android:screenOrientation="userLandscape" >
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.FluenciaVerbal.FluenciaVerbalActivity"
-            android:label="Fluência Verbal" >
+            android:label="Fluência Verbal"
+            android:screenOrientation="userLandscape" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.Nomeacao.NomeacaoActivity"
+            android:label="Nomeação"
+            android:screenOrientation="userLandscape" >
         </activity>
     </application>
 
