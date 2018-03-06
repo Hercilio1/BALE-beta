@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Funcionalidades.Bateria.FluenciaVerbal.FluenciaVerbalActivity"
+    tools:layout_editor_absoluteY="89dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_digit_Span"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_span="6"
+            android:text="@string/bateria_tipopergunta_fluencia_verbal"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bateria_compreensao"
+            android:layout_alignStart="@+id/bateria_compreensao"
+            android:layout_below="@+id/bateria_compreensao"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_span="4"
+                android:background="@color/colorPrimary" />
+        </TableRow>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_father_digit_span"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <!--Forward-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/tableRow"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Forward: Eu vou falar para o(a) senhor(a) uma sequência de números, e o(a) senhor(a) deverá repeti-la na mesma ordem. (Dar exemplo). Peço para que o(a) senhor(a) espere eu terminar de falar toda a sequência antes de começar a repetir. Podemos começar?"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textStyle="italic" />
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button1_nvl_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="1 - 7"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button2_nvl_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="6 - 3"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button1_nvl_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="8 – 5 – 2"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button2_nvl_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="9 – 4 – 6"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="3"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button1_nvl_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="6 – 4 – 3 – 9"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button2_nvl_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="7 – 2 – 8 – 6"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="4"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button1_nvl_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="4 – 2 – 7 – 3 – 1"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button2_nvl_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="7 – 5 – 8 – 3 – 1"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="5"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button1_nvl_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="1 – 6 – 9 – 4 – 7 – 3"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button2_nvl_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="3 – 9 – 2 – 4 – 8 – 7"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="6"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button1_nvl_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="5 – 9 – 1 – 7 – 4 – 2 – 8"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button2_nvl_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="4 – 1 – 7 – 9 – 3 – 8 – 6"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="7"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button1_nvl_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="5 – 8 – 1 – 9 – 2 – 6 – 4 – 7"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button2_nvl_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="3 – 8 – 2 – 9 – 5 – 1 – 7 – 4"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="8"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button1_nvl_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="2 – 7 – 5 – 8 – 6 – 1 – 3 – 9 – 4"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout1_button2_nvl_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="8 – 1 – 3 – 9 – 4 – 2 – 5 – 7 – 6"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--Backward-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/tableRow"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Backwards: Agora eu vou falar para o(a) senhor(a) uma sequência de números, e o(a) senhor(a) deverá repeti-la na ordem inversa. (Dar exemplo). Peço para que o(a) senhor(a) espere eu terminar de falar toda a sequência antes de começar a repetir. Podemos começar?"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textStyle="italic" />
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button1_nvl_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="2 – 4"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button2_nvl_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="5 – 7"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button1_nvl_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="6 – 2 – 9"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button2_nvl_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="4 – 1 – 5"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="3"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button1_nvl_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="3 – 2 – 7 – 9"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button2_nvl_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="4 – 9 – 6 – 8"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="4"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button1_nvl_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="1 – 5 – 2 – 8 – 6"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button2_nvl_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="6 – 1 – 8 – 4 – 3"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="5"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button1_nvl_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="5 – 3 – 9 – 4 – 1 – 8"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button2_nvl_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="7 – 2 – 4 – 8 – 5 – 6"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="6"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button1_nvl_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="8 – 1 – 2 – 9 – 3 – 6 – 5"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button2_nvl_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="4 – 7 – 3 – 9 – 1 – 2 – 8"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="7"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button1_nvl_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="9 – 4 – 3 – 7 – 6 – 2 – 5 – 8"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start"/>
+
+                        <Button
+                            android:id="@+id/digit_span_layout2_button2_nvl_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="2 – 7 – 8 – 1 – 9 – 6 – 5 – 3"
+                            android:textSize="20dp"
+                            android:textAlignment="textStart"
+                            android:gravity="start" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:layout_gravity="center" >
+
+                            <TextView
+                                android:id="@+id/total_forward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TOTAL FORWARD:  "
+                                android:textColor="#000000"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/total_number1_forward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="10"
+                                android:textColor="#000000"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/total_barra_forward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="/"
+                                android:textColor="#000000"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/total_numero2_forward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="16"
+                                android:textColor="#000000"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:id="@+id/total_backward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:text="TOTAL BACKWARD:  "
+                                android:textColor="#000000"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/total_number1_backward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#000000"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/total_barra_backward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="/"
+                                android:textColor="#000000"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/total_numero2_backward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="14"
+                                android:textColor="#000000"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/total_digit_span"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:text="TOTAL:  "
+                            android:textColor="#000000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/total_number1_digit_span"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#000000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/total_barra_digit_span"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/"
+                            android:textColor="#000000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/total_numero2_digit_span"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="30"
+                            android:textColor="#000000"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_continuar_digit_span"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Continuar"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+</ScrollView>
