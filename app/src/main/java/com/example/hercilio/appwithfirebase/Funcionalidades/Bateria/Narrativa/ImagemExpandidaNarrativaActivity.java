@@ -12,7 +12,7 @@ import com.example.hercilio.appwithfirebase.R;
  * Created by Hercilio on 27/02/2018.
  */
 
-public class ImagemExpandidaActivity extends AppCompatActivity {
+public class ImagemExpandidaNarrativaActivity extends AppCompatActivity {
 
     public static final String IMAGEM_EXPANDIDA = "Integer[]";
 

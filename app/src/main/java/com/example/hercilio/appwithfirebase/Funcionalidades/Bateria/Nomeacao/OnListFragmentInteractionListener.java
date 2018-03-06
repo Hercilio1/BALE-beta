@@ -1,5 +1,6 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao;
 
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 /**
@@ -7,5 +8,5 @@ import android.widget.ImageButton;
  */
 
 interface OnListFragmentInteractionListener {
-    void onListFragmentInteraction(ImageButton item, boolean ref);
+    void onListFragmentInteraction(ImageButton item);
 }

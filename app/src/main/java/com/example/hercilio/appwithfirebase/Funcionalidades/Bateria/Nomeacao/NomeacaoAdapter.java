@@ -1,80 +1,39 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.*;
+import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import at.grabner.circleprogress.CircleProgressView;
 
 /**
  * Created by Hercilio on 05/03/2018.
  */
 
-public class NomeacaoAdapter extends BaseAdapter {
+public class NomeacaoAdapter extends RecyclerView.Adapter<NomeacaoAdapter.NomeacaoItemView> {
 
-    private Context mContext;
-    private com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.OnListFragmentInteractionListener mListener;
-
-    public NomeacaoAdapter(Context c) {
-        mContext = c;
-    }
-
-    public int getCount() {
-        return stringImages.length;
-    }
-
-    public Object getItem(int position) {
-        return null;
-    }
-
-    public long getItemId(int position) {
-        return 0;
-    }
-
-
-    public void setListener(com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.OnListFragmentInteractionListener onListener) {
-        mListener = onListener;
-    }
-
-    // create a new ImageView for each item referenced by the Adapter
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final ImageButton imageButton;
-        if (convertView == null) {
-            // if it's not recycled, initialize some attributes
-            imageButton = new ImageButton(mContext);
-            imageButton.setLayoutParams(new GridView.LayoutParams(250, 250));
-            imageButton.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageButton.setPadding(35, 35, 35, 35);
-        } else {
-            imageButton = (ImageButton) convertView;
-        }
-
-        /*
-         * ColorPrimaty 			=> r:129 g:175 b:145
-         * ColorAssent  			=> r:230 g:172 b:39
-         *
-         * clickedPrinc_compVerval => r:108 g:76 b:0
-         * clickedSecun_compVerval => r:42 g:84 b:33
-         */
-        imageButton.setImageResource(stringImages[position]);
-        imageButton.setTag(""+stringImages[position]);
-        imageButton.setBackgroundColor(Color.LTGRAY);
-        mListener.onListFragmentInteraction(imageButton, false);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.onListFragmentInteraction(imageButton, true);
-            }
-        });
-        return imageButton;
-    }
-
-    Integer[] stringImages = {R.drawable.a1_chave_de_fenda, R.drawable.a2_esquilo, R.drawable.a3_regador, R.drawable.a4_rinocerounte
+    private Activity activity;
+    private Integer[] items = {R.drawable.a1_chave_de_fenda, R.drawable.a2_esquilo, R.drawable.a3_regador, R.drawable.a4_rinocerounte
             , R.drawable.b1_chaved_e_fenda, R.drawable.b2_pinguim, R.drawable.b3_escova_de_dentes, R.drawable.b4_aguia
             , R.drawable.c1_serrote, R.drawable.c2_avestruz, R.drawable.c3_alicate, R.drawable.c4_canguru
             , R.drawable.d1_lixeira, R.drawable.d2_urso, R.drawable.d3_pente, R.drawable.d4_pavao
@@ -89,6 +48,83 @@ public class NomeacaoAdapter extends BaseAdapter {
             , R.drawable.m1_sino, R.drawable.m2_banana, R.drawable.m3_galo, R.drawable.m4_trem
             , R.drawable.n1_cesta, R.drawable.n2_cavalo, R.drawable.n3_aviao, R.drawable.n4_vaca
             , R.drawable.o1_onibus, R.drawable.o2_rato, R.drawable.o3_chave, R.drawable.o4_peixe};
+
+    private com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.OnListFragmentInteractionListener mListener;
+
+    public void setListener(com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.OnListFragmentInteractionListener onListener) {
+        mListener = onListener;
+    }
+
+    /**
+     * Contrutor.
+     *
+     * @param activity recebe o contexto
+     */
+    public NomeacaoAdapter(Activity activity) {
+        this.activity = activity;
+    }
+
+    @Override
+    public NomeacaoAdapter.NomeacaoItemView onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.nomeacao_item, parent, false);
+        return new NomeacaoAdapter.NomeacaoItemView(view);
+    }
+
+    @Override
+    public void onBindViewHolder(NomeacaoItemView holder, int position) {
+        holder.mImageView.setImageResource(items[position]);
+        holder.mImageView.setTag(items[position]);
+        holder.mImageView.setBackgroundColor(Color.LTGRAY);
+
+        holder.mTextView.setTag(items[position]);
+
+        Intent intentFromList = activity.getIntent();
+        if (intentFromList != null) {
+            final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+
+            if(participante.getNomeacaoObject() != null) {
+                Map<String, String> verificadores = participante.getNomeacaoObject().getVerificadores();
+                if (verificadores != null) {
+                    holder.mTextView.setText(verificadores.get("" + items[position]));
+                }
+            }
+        }
+
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.length;
+    }
+
+    /**
+     * Classe que irá criar o visual da recyclerview
+     */
+    class NomeacaoItemView extends RecyclerView.ViewHolder {
+        public final View mView;
+        public final ImageButton mImageView;
+        public final TextView mTextView;
+
+        NomeacaoItemView(View view) {
+            super(view);
+            mView = view;
+            mImageView = (ImageButton) view.findViewById(R.id.grid_item_nomeacao_img);
+            mTextView = (TextView) view.findViewById(R.id.grid_item_nomeacao_tv);
+            mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            mImageView.setPadding(35, 35, 35, 35);
+
+            mImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onListFragmentInteraction(mImageView);
+                }
+            });
+        }
+    }
+
+
 
 }
 

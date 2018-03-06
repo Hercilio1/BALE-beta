@@ -129,7 +129,7 @@
             android:screenOrientation="userLandscape" >
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.Narrativa.ImagemExpandidaActivity"
+            android:name=".Funcionalidades.Bateria.Narrativa.ImagemExpandidaNarrativaActivity"
             android:label="Narrativa"
             android:screenOrientation="userLandscape" >
         </activity>
@@ -140,6 +140,11 @@
         </activity>
         <activity
             android:name=".Funcionalidades.Bateria.Nomeacao.NomeacaoActivity"
+            android:label="Nomeação"
+            android:screenOrientation="userLandscape" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.Nomeacao.ImagemExpandidaNomeacaoActivity"
             android:label="Nomeação"
             android:screenOrientation="userLandscape" >
         </activity>

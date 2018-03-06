@@ -115,7 +115,7 @@ public class NarrativaActivity extends AppCompatActivity {
         mImageViewPrincipal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), ImagemExpandidaActivity.class);
+                Intent intent = new Intent(getBaseContext(), ImagemExpandidaNarrativaActivity.class);
                 startActivity(intent);
             }
         });

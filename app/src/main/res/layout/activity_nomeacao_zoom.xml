@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/imagem_expandida_nomeacao_img"
+        android:layout_width="600dp"
+        android:layout_height="425dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp" />
+
+    <EditText
+        android:id="@+id/imagem_expandida_nomeacao_et"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="160dp"
+        app:layout_constraintStart_toEndOf="@+id/imagem_expandida_nomeacao_img"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="44dp"
+        android:hint="Nome do objeto/animal"
+        />
+
+    <Button
+        android:id="@+id/imagem_expandida_nomeacao_btn"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"
+        android:text="Registrar"
+        android:textColor="#fff"
+        app:layout_constraintStart_toEndOf="@+id/imagem_expandida_nomeacao_img"
+        app:layout_constraintTop_toBottomOf="@+id/imagem_expandida_nomeacao_et"
+        android:layout_marginLeft="44dp" />
+
+</android.support.constraint.ConstraintLayout>
