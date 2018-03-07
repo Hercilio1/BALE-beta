@@ -30,6 +30,7 @@ public class Participante implements Serializable {
     private MemoriaEpisodicaObject memEpObject;
     private FluenciaVerbalObject fluenciaVerbalObject;
     private NomeacaoObject nomeacaoObject;
+    private DigitSpanObject digitSpanObject;
 
 //    private String dataDaAvaliacao;
 //    private String exercidaPor;
@@ -67,6 +68,7 @@ public class Participante implements Serializable {
         this.narrativaObject = null;
         this.fluenciaVerbalObject = null;
         this.nomeacaoObject = null;
+        this.digitSpanObject = null;
     }
 
     public String getNomeCompleto() {
@@ -234,5 +236,12 @@ public class Participante implements Serializable {
     }
     public void setNomeacaoObject(NomeacaoObject nomeacaoObject) {
         this.nomeacaoObject = nomeacaoObject;
+    }
+
+    public DigitSpanObject getDigitSpanObject() {
+        return digitSpanObject;
+    }
+    public void setDigitSpanObject(DigitSpanObject digitSpanObject) {
+        this.digitSpanObject = digitSpanObject;
     }
 }

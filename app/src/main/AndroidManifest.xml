@@ -148,6 +148,11 @@
             android:label="Nomeação"
             android:screenOrientation="userLandscape" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.DigitSpan.DigitSpanActivity"
+            android:label="Digit Span"
+            android:screenOrientation="userLandscape" >
+        </activity>
     </application>
 
 </manifest>

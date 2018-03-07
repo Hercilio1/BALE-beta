@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrasesActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.DigitSpan.DigitSpanActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.FluenciaVerbal.FluenciaVerbalActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity;
@@ -68,6 +69,7 @@ public class BaleLobbyFragment extends Fragment {
         RelativeLayout rlyNarrativa = (RelativeLayout)  getActivity().findViewById(R.id.rly_narrativa);
         RelativeLayout rlyFluenciaVerbal = (RelativeLayout) getActivity().findViewById(R.id.rly_fluencia_verbal);
         RelativeLayout rlyNomeacao = (RelativeLayout) getActivity().findViewById(R.id.rly_nomeacao);
+        RelativeLayout rlyDigitSpan = (RelativeLayout) getActivity().findViewById(R.id.rly_digit_span);
 
         rlyHLE.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +138,15 @@ public class BaleLobbyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), NomeacaoActivity.class);
+                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
+                startActivity(intent);
+            }
+        });
+
+        rlyDigitSpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DigitSpanActivity.class);
                 intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
                 startActivity(intent);
             }
