@@ -242,7 +242,7 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
              ****************/
             final Chronometer cr4 = (Chronometer) findViewById(R.id.cronometro_button_for_mem_ep_fase_5);
             //Transição para a segunda fase
-            if(timeStampQuintaFase != 0 && (participante.getMemEpObject().getQuintaFaseComDica() != null || verificaElapseTime(timeStampQuintaFase))) {
+            if(timeStampQuintaFase != 0 && (participante.getMemEpObject().getQuintaFaseComDica() != null || verificaElapseTime(timeStampQuintaFase) || verificaElapseTimeQuintoTimeStamp())) {
 
                 cr4.setVisibility(View.INVISIBLE);
                 mBtnQuintaFase.setText("QUINTA FASE");
@@ -269,7 +269,7 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
             } else if(!mBtnQuintaFase.isEnabled() && bool != null && bool[3]) {
 
-                timeStampQuintaFase = SystemClock.elapsedRealtime() + (1200* 1000);
+                timeStampQuintaFase = SystemClock.elapsedRealtime() + (1200*1000);
                 participante.getMemEpObject().setTimeStampQuintaFase(timeStampQuintaFase);
                 registraTimeStampNoBanco(participante);
                 cr4.setBase(timeStampQuintaFase);
@@ -374,10 +374,15 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
     }
 
     public boolean verificaElapseTime(long timeStamp) {
-        long elapsedTime = SystemClock.elapsedRealtime() - timeStamp;
-        if (elapsedTime >= 0) {
+        long elapsedTime =  - timeStamp;
+        if (elapsedTime >= 0)
             return true;
-        }
+        return false;
+    }
+
+    public boolean verificaElapseTimeQuintoTimeStamp() {
+        if(SystemClock.elapsedRealtime() < (timeStampQuintaFase - (1200*1000)) || SystemClock.elapsedRealtime() > timeStampQuintaFase)
+            return true;
         return false;
     }
 
