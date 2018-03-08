@@ -46,6 +46,7 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
 
     //Dicionario que armazena os botoes selecionados:
     private Map<String, Boolean> verificadores = new HashMap<>();
+    private Map<String, Integer> dicionario = new HashMap<>();
 
     //Lista que auxilia no autoComplete
     private ArrayList<String> auxAutoComplete = new ArrayList<>();
@@ -64,74 +65,137 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
 
         //Botoes principais:
         mBtnPrincLucia = (Button) findViewById(R.id.btn_p_lucia);
-        verificadores.put("" + R.id.btn_p_lucia, false);
-        auxAutoComplete.add("" + R.id.btn_p_lucia);
+        mBtnPrincLucia.setTag("mBtnPrincLucia");
+        dicionario.put(mBtnPrincLucia.getTag().toString(), mBtnPrincLucia.getId());
+        verificadores.put(mBtnPrincLucia.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincLucia.getTag().toString());
+
         mBtnPrincMora = (Button) findViewById(R.id.btn_p_mora);
-        verificadores.put("" + R.id.btn_p_mora, false);
-        auxAutoComplete.add("" + R.id.btn_p_mora);
+        mBtnPrincMora.setTag("mBtnPrincMora");
+        dicionario.put(mBtnPrincMora.getTag().toString(), mBtnPrincMora.getId());
+        verificadores.put(mBtnPrincMora.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincMora.getTag().toString());
+
         mBtnPrincNoInterior = (Button) findViewById(R.id.btn_p_no_interior);
-        verificadores.put("" + R.id.btn_p_no_interior, false);
-        auxAutoComplete.add("" + R.id.btn_p_no_interior);
+        mBtnPrincNoInterior.setTag("mBtnPrincNoInterior");
+        dicionario.put(mBtnPrincNoInterior.getTag().toString(), mBtnPrincNoInterior.getId());
+        verificadores.put(mBtnPrincNoInterior.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincNoInterior.getTag().toString());
+
         mBtnPrincElaSaiu = (Button) findViewById(R.id.btn_p_ela_saiu);
-        verificadores.put("" + R.id.btn_p_ela_saiu, false);
-        auxAutoComplete.add("" + R.id.btn_p_ela_saiu);
+        mBtnPrincElaSaiu.setTag("mBtnPrincElaSaiu");
+        dicionario.put(mBtnPrincElaSaiu.getTag().toString(), mBtnPrincElaSaiu.getId());
+        verificadores.put(mBtnPrincElaSaiu.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincElaSaiu.getTag().toString());
+
         mBtnPrincEntrevistaTrabalho = (Button) findViewById(R.id.btn_p_entrevista_trabalho);
-        verificadores.put("" + R.id.btn_p_entrevista_trabalho, false);
-        auxAutoComplete.add("" + R.id.btn_p_entrevista_trabalho);
+        mBtnPrincEntrevistaTrabalho.setTag("mBtnPrincEntrevistaTrabalho");
+        dicionario.put(mBtnPrincEntrevistaTrabalho.getTag().toString(), mBtnPrincEntrevistaTrabalho.getId());
+        verificadores.put(mBtnPrincEntrevistaTrabalho.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincEntrevistaTrabalho.getTag().toString());
+
         mBtnPrincNaCapital = (Button) findViewById(R.id.btn_p_na_capital);
-        verificadores.put("" + R.id.btn_p_na_capital, false);
-        auxAutoComplete.add("" + R.id.btn_p_na_capital);
+        mBtnPrincNaCapital.setTag("mBtnPrincNaCapital");
+        dicionario.put(mBtnPrincNaCapital.getTag().toString(), mBtnPrincNaCapital.getId());
+        verificadores.put(mBtnPrincNaCapital.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincNaCapital.getTag().toString());
+
         mBtnPrincElaFoi = (Button) findViewById(R.id.btn_p_ela_foi);
-        verificadores.put("" + R.id.btn_p_ela_foi, false);
-        auxAutoComplete.add("" + R.id.btn_p_ela_foi);
+        mBtnPrincElaFoi.setTag("mBtnPrincElaFoi");
+        dicionario.put(mBtnPrincElaFoi.getTag().toString(), mBtnPrincElaFoi.getId());
+        verificadores.put(mBtnPrincElaFoi.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincElaFoi.getTag().toString());
+
         mBtnPrincRodoviaria = (Button) findViewById(R.id.btn_p_rodoviaria);
-        verificadores.put("" + R.id.btn_p_rodoviaria, false);
-        auxAutoComplete.add("" + R.id.btn_p_rodoviaria);
+        mBtnPrincRodoviaria.setTag("mBtnPrincRodoviaria");
+        dicionario.put(mBtnPrincRodoviaria.getTag().toString(), mBtnPrincRodoviaria.getId());
+        verificadores.put(mBtnPrincRodoviaria.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincRodoviaria.getTag().toString());
+
         mBtnPrincDeCarona = (Button) findViewById(R.id.btn_p_de_carona);
-        verificadores.put("" + R.id.btn_p_de_carona, false);
-        auxAutoComplete.add("" + R.id.btn_p_de_carona);
+        mBtnPrincDeCarona.setTag("mBtnPrincDeCarona");
+        dicionario.put(mBtnPrincDeCarona.getTag().toString(), mBtnPrincDeCarona.getId());
+        verificadores.put(mBtnPrincDeCarona.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincDeCarona.getTag().toString());
+
         mBtnPrincSeuAmigo = (Button) findViewById(R.id.btn_p_com_seu_amigo);
-        verificadores.put("" + R.id.btn_p_com_seu_amigo, false);
-        auxAutoComplete.add("" + R.id.btn_p_com_seu_amigo);
+        mBtnPrincSeuAmigo.setTag("mBtnPrincSeuAmigo");
+        dicionario.put(mBtnPrincSeuAmigo.getTag().toString(), mBtnPrincSeuAmigo.getId());
+        verificadores.put(mBtnPrincSeuAmigo.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincSeuAmigo.getTag().toString());
+
         mBtnPrincPedro = (Button) findViewById(R.id.btn_p_pedro);
-        verificadores.put("" + R.id.btn_p_pedro, false);
-        auxAutoComplete.add("" + R.id.btn_p_pedro);
+        mBtnPrincPedro.setTag("mBtnPrincPedro");
+        dicionario.put(mBtnPrincPedro.getTag().toString(), mBtnPrincPedro.getId());
+        verificadores.put(mBtnPrincPedro.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincPedro.getTag().toString());
+
         mBtnPrincPneuFurou = (Button) findViewById(R.id.btn_p_pneu_furou);
-        verificadores.put("" + R.id.btn_p_pneu_furou, false);
-        auxAutoComplete.add("" + R.id.btn_p_pneu_furou);
+        mBtnPrincPneuFurou.setTag("mBtnPrincPneuFurou");
+        dicionario.put(mBtnPrincPneuFurou.getTag().toString(), mBtnPrincPneuFurou.getId());
+        verificadores.put(mBtnPrincPneuFurou.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincPneuFurou.getTag().toString());
+
         mBtnPrincPegouTaxi = (Button) findViewById(R.id.btn_p_pegou_taxi);
-        verificadores.put("" + R.id.btn_p_pegou_taxi, false);
-        auxAutoComplete.add("" + R.id.btn_p_pegou_taxi);
+        mBtnPrincPegouTaxi.setTag("mBtnPrincPegouTaxi");
+        dicionario.put(mBtnPrincPegouTaxi.getTag().toString(), mBtnPrincPegouTaxi.getId());
+        verificadores.put(mBtnPrincPegouTaxi.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincPegouTaxi.getTag().toString());
+
         mBtnPrincChegarATempo = (Button) findViewById(R.id.btn_p_chegar_a_tempo);
-        verificadores.put("" + R.id.btn_p_chegar_a_tempo, false);
-        auxAutoComplete.add("" + R.id.btn_p_chegar_a_tempo);
+        mBtnPrincChegarATempo.setTag("mBtnPrincChegarATempo");
+        dicionario.put(mBtnPrincChegarATempo.getTag().toString(), mBtnPrincChegarATempo.getId());
+        verificadores.put(mBtnPrincChegarATempo.getTag().toString(), false);
+        auxAutoComplete.add(mBtnPrincChegarATempo.getTag().toString());
 
         //Botoes secundarios:
         mBtnSecunDoParana = (Button) findViewById(R.id.btn_s_do_parana);
-        verificadores.put("" + R.id.btn_s_do_parana, false);
-        auxAutoCompleteSecundario.add("" + R.id.btn_s_do_parana);
-        mBtnSecunNumaManha = (Button) findViewById(R.id.btn_s_numa_manha);
-        verificadores.put("" + R.id.btn_s_numa_manha, false);
-        auxAutoCompleteSecundario.add("" + R.id.btn_s_numa_manha);
-        mBtnSecunDeSegundaFeira = (Button) findViewById(R.id.btn_s_de_segundafeira);
-        verificadores.put("" + R.id.btn_s_de_segundafeira, false);
-        auxAutoCompleteSecundario.add("" + R.id.btn_s_de_segundafeira);
-        mBtnSecunEstavaChovendo = (Button) findViewById(R.id.btn_s_estava_chovendo);
-        verificadores.put("" + R.id.btn_s_estava_chovendo, false);
-        auxAutoCompleteSecundario.add("" + R.id.btn_s_estava_chovendo);
-        mBtnSecunOCarro = (Button) findViewById(R.id.btn_s_o_carro);
-        verificadores.put("" + R.id.btn_s_o_carro, false);
-        auxAutoCompleteSecundario.add("" + R.id.btn_s_o_carro);
-        mBtnSecunBuraco = (Button) findViewById(R.id.btn_s_buraco);
-        verificadores.put("" + R.id.btn_s_buraco, false);
-        auxAutoCompleteSecundario.add("" + R.id.btn_s_buraco);
-        mBtnSecunOnibus = (Button) findViewById(R.id.btn_s_onibus);
-        verificadores.put("" + R.id.btn_s_onibus, false);
-        auxAutoCompleteSecundario.add("" + R.id.btn_s_onibus);
-        mBtnSecunAteRodoviaria = (Button) findViewById(R.id.btn_s_rodoviaria);
-        verificadores.put("" + R.id.btn_s_rodoviaria, false);
-        auxAutoCompleteSecundario.add("" + R.id.btn_s_rodoviaria);
+        mBtnSecunDoParana.setTag("mBtnSecunDoParana");
+        dicionario.put(mBtnSecunDoParana.getTag().toString(), mBtnSecunDoParana.getId());
+        verificadores.put(mBtnSecunDoParana.getTag().toString(), false);
+        auxAutoCompleteSecundario.add(mBtnSecunDoParana.getTag().toString());
 
+        mBtnSecunNumaManha = (Button) findViewById(R.id.btn_s_numa_manha);
+        mBtnSecunNumaManha.setTag("mBtnSecunNumaManha");
+        dicionario.put(mBtnSecunNumaManha.getTag().toString(), mBtnSecunNumaManha.getId());
+        verificadores.put(mBtnSecunNumaManha.getTag().toString(), false);
+        auxAutoCompleteSecundario.add(mBtnSecunNumaManha.getTag().toString());
+
+        mBtnSecunDeSegundaFeira = (Button) findViewById(R.id.btn_s_de_segundafeira);
+        mBtnSecunDeSegundaFeira.setTag("mBtnSecunDeSegundaFeira");
+        dicionario.put(mBtnSecunDeSegundaFeira.getTag().toString(), mBtnSecunDeSegundaFeira.getId());
+        verificadores.put(mBtnSecunDeSegundaFeira.getTag().toString(), false);
+        auxAutoCompleteSecundario.add(mBtnSecunDeSegundaFeira.getTag().toString());
+
+        mBtnSecunEstavaChovendo = (Button) findViewById(R.id.btn_s_estava_chovendo);
+        mBtnSecunEstavaChovendo.setTag("mBtnSecunEstavaChovendo");
+        dicionario.put(mBtnSecunEstavaChovendo.getTag().toString(), mBtnSecunEstavaChovendo.getId());
+        verificadores.put(mBtnSecunEstavaChovendo.getTag().toString(), false);
+        auxAutoCompleteSecundario.add(mBtnSecunEstavaChovendo.getTag().toString());
+
+        mBtnSecunOCarro = (Button) findViewById(R.id.btn_s_o_carro);
+        mBtnSecunOCarro.setTag("mBtnSecunOCarro");
+        dicionario.put(mBtnSecunOCarro.getTag().toString(), mBtnSecunOCarro.getId());
+        verificadores.put(mBtnSecunOCarro.getTag().toString(), false);
+        auxAutoCompleteSecundario.add(mBtnSecunOCarro.getTag().toString());
+
+        mBtnSecunBuraco = (Button) findViewById(R.id.btn_s_buraco);
+        mBtnSecunBuraco.setTag("mBtnSecunBuraco");
+        dicionario.put(mBtnSecunBuraco.getTag().toString(), mBtnSecunBuraco.getId());
+        verificadores.put(mBtnSecunBuraco.getTag().toString(), false);
+        auxAutoCompleteSecundario.add(mBtnSecunBuraco.getTag().toString());
+
+        mBtnSecunOnibus = (Button) findViewById(R.id.btn_s_onibus);
+        mBtnSecunOnibus.setTag("mBtnSecunOnibus");
+        dicionario.put(mBtnSecunOnibus.getTag().toString(), mBtnSecunOnibus.getId());
+        verificadores.put(mBtnSecunOnibus.getTag().toString(), false);
+        auxAutoCompleteSecundario.add(mBtnSecunOnibus.getTag().toString());
+
+        mBtnSecunAteRodoviaria = (Button) findViewById(R.id.btn_s_rodoviaria);
+        mBtnSecunAteRodoviaria.setTag("mBtnSecunAteRodoviaria");
+        dicionario.put(mBtnSecunAteRodoviaria.getTag().toString(), mBtnSecunAteRodoviaria.getId());
+        verificadores.put(mBtnSecunAteRodoviaria.getTag().toString(), false);
+        auxAutoCompleteSecundario.add(mBtnSecunAteRodoviaria.getTag().toString());
         //Totais:
         mTotalPrincipal = (TextView) findViewById(R.id.first_value_p_avaliacao1_comp_verbal);
         mTotalSecundario = (TextView) findViewById(R.id.first_value_s_avaliacao1_comp_verbal);
@@ -148,7 +212,7 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
 
             if(participante.getCompVerbalObject() != null && participante.getCompVerbalObject().getPrimeiraAvaliacao() != null) {
                 verificadores = participante.getCompVerbalObject().getPrimeiraAvaliacao();
-                autoComplete(participante);
+                autoComplete();
             }
 
             btnContinuar.setOnClickListener(new View.OnClickListener() {
@@ -166,31 +230,30 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
     public void onClickPrincipal(View v) {
         Button button = (Button) v;
 
-        if(!verificadores.get(""+v.getId())) {
+        if(!verificadores.get(v.getTag().toString())) {
             v.getBackground().setColorFilter(getResources().getColor(R.color.clickedPrinc_compVerval), PorterDuff.Mode.SRC_ATOP);
 //            button.setTextColor(Color.WHITE);
-            verificadores.put("" + v.getId(), true);
+            verificadores.put(v.getTag().toString(), true);
             atualizaTotalPrincipal(true);
         } else {
             v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
 //            button.setTextColor(Color.BLACK);
-            verificadores.put("" + v.getId(), false);
+            verificadores.put(v.getTag().toString(), false);
             atualizaTotalPrincipal(false);
         }
     }
 
     public void onClickSecundario(View v) {
         Button button = (Button) v;
-        if(!verificadores.get(""+
-                v.getId())) {
+        if(!verificadores.get(v.getTag().toString())) {
             v.getBackground().setColorFilter(getResources().getColor(R.color.clickedSecun_compVerval), PorterDuff.Mode.SRC_ATOP);
 //            button.setTextColor(Color.WHITE);
-            verificadores.put("" + v.getId(), true);
+            verificadores.put(v.getTag().toString(), true);
             atualizaTotalSecundario(true);
         } else {
             v.getBackground().setColorFilter(getResources().getColor(R.color.colorSecundaria_compVerbal), PorterDuff.Mode.SRC_ATOP);
 //            button.setTextColor(Color.BLACK);
-            verificadores.put("" + v.getId(), false);
+            verificadores.put(v.getTag().toString(), false);
             atualizaTotalSecundario(false);
         }
     }
@@ -211,21 +274,21 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
         mTotalSecundario.setText(""+totalSecundario);
     }
 
-    public void autoComplete(Participante participante) {
+    public void autoComplete() {
         Button button;
         for(String x : auxAutoComplete) {
-            button = (Button) findViewById(Integer.parseInt(x));
+            button = (Button) findViewById(dicionario.get(x));
             autoCompleteButtonsPriciapais(button);
         }
         for(String x : auxAutoCompleteSecundario) {
-            button = (Button) findViewById(Integer.parseInt(x));
+            button = (Button) findViewById(dicionario.get(x));
             autoCompleteButtonsSecundarios(button);
         }
     }
 
     public void autoCompleteButtonsPriciapais(View v) {
         Button button = (Button) v;
-        if(verificadores.get(""+ v.getId())) {
+        if(verificadores.get(v.getTag().toString())) {
             v.getBackground().setColorFilter(getResources().getColor(R.color.clickedPrinc_compVerval), PorterDuff.Mode.SRC_ATOP);
             atualizaTotalPrincipal(true);
         }
@@ -233,7 +296,7 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
 
     public void autoCompleteButtonsSecundarios(View v) {
         Button button = (Button) v;
-        if(verificadores.get(""+ v.getId())) {
+        if(verificadores.get(v.getTag().toString())) {
             v.getBackground().setColorFilter(getResources().getColor(R.color.clickedSecun_compVerval), PorterDuff.Mode.SRC_ATOP);
             atualizaTotalSecundario(true);
         }
