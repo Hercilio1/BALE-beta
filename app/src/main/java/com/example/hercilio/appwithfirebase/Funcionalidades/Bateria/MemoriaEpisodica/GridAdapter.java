@@ -1,30 +1,15 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.MemoriaEpisodica;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.v7.view.menu.MenuView;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.*;
-import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import at.grabner.circleprogress.CircleProgressView;
 
 /**
  * Created by Hercilio on 26/02/2018.
@@ -40,7 +25,7 @@ public class GridAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return stringImages.length;
+        return drawableImages.length;
     }
 
     public Object getItem(int position) {
@@ -76,8 +61,8 @@ public class GridAdapter extends BaseAdapter {
          * clickedPrinc_compVerval => r:108 g:76 b:0
          * clickedSecun_compVerval => r:42 g:84 b:33
          */
-        imageButton.setImageResource(stringImages[position]);
-        imageButton.setTag(""+stringImages[position]);
+        imageButton.setImageResource(drawableImages[position]);
+        imageButton.setTag(imagesString[position]);
         imageButton.setBackgroundColor(Color.LTGRAY);
         mListener.onListFragmentInteraction(imageButton, false);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -89,10 +74,15 @@ public class GridAdapter extends BaseAdapter {
         return imageButton;
     }
 
-    Integer[] stringImages = {R.drawable.a_morango, R.drawable.a_igreja, R.drawable.a_garfo, R.drawable.a_violao
+    Integer[] drawableImages = {R.drawable.a_morango, R.drawable.a_igreja, R.drawable.a_garfo, R.drawable.a_violao
             , R.drawable.b_domino, R.drawable.b_lapis, R.drawable.b_formiga, R.drawable.b_cama
             , R.drawable.c_martelo, R.drawable.c_tubarao, R.drawable.c_orelha, R.drawable.c_vassoura
             , R.drawable.d_cenoura, R.drawable.d_calca, R.drawable.d_bicicleta, R.drawable.d_macaco};
+
+    String[] imagesString = {"a_morango", "a_igreja", "a_garfo", "a_violao"
+            , "b_domino","b_lapis", "b_formiga", "b_cama"
+            , "c_martelo", "c_tubarao", "c_orelha", "c_vassoura"
+            , "d_cenoura", "d_calca", "d_bicicleta", "d_macaco"};
 
 
 }

@@ -35,10 +35,10 @@ public class GridActivity extends AppCompatActivity {
     //Dicionario que armazena os botoes selecionados:
     private Map<String, Boolean> verificadoresSemDica = new HashMap<>();
     private Map<String, Boolean> verificadoresComDica = new HashMap<>();
+    private Map<String, Integer> dicionario = new HashMap<>();
 
     //Auxiliano auto complete
-    private ArrayList<String> auxAutoCompleteSemDica = new ArrayList<>();
-    private ArrayList<String> auxAutoCompleteComDica = new ArrayList<>();
+    private ArrayList<String> auxAutoComplete = new ArrayList<>();
 
     //totais textViews
     private TextView mTotalSemDica, mTotalComDica;
@@ -72,78 +72,97 @@ public class GridActivity extends AppCompatActivity {
         mBtnConcluir = (Button) findViewById(R.id.button_grid_mem_ep);
 
         //Inserindo no discionário a chave para os botoes de controle:
-        verificadorBotoesDeControle.put(""+R.id.btn_mem_ep_com_pista, false);
-        verificadorBotoesDeControle.put(""+R.id.btn_mem_ep_sem_pista, false);
+        verificadorBotoesDeControle.put("btn_mem_ep_com_pista", false);
+        dicionario.put("btn_mem_ep_com_pista", R.id.btn_mem_ep_com_pista);
+
+        verificadorBotoesDeControle.put("btn_mem_ep_sem_pista", false);
+        dicionario.put("btn_mem_ep_sem_pista", R.id.btn_mem_ep_sem_pista);
 
         //Inserindo no discionário a chave para os botoes:
-        verificadoresSemDica.put(""+R.drawable.a_morango, false);
-        verificadoresSemDica.put(""+R.drawable.a_igreja, false);
-        verificadoresSemDica.put(""+R.drawable.a_garfo, false);
-        verificadoresSemDica.put(""+R.drawable.a_violao, false);
-        verificadoresSemDica.put(""+R.drawable.b_domino, false);
-        verificadoresSemDica.put(""+R.drawable.b_lapis, false);
-        verificadoresSemDica.put(""+R.drawable.b_formiga, false);
-        verificadoresSemDica.put(""+R.drawable.b_cama, false);
-        verificadoresSemDica.put(""+R.drawable.c_martelo, false);
-        verificadoresSemDica.put(""+R.drawable.c_tubarao, false);
-        verificadoresSemDica.put(""+R.drawable.c_orelha, false);
-        verificadoresSemDica.put(""+R.drawable.c_vassoura, false);
-        verificadoresSemDica.put(""+R.drawable.d_cenoura, false);
-        verificadoresSemDica.put(""+R.drawable.d_calca, false);
-        verificadoresSemDica.put(""+R.drawable.d_bicicleta, false);
-        verificadoresSemDica.put(""+R.drawable.d_macaco, false);
+        verificadoresSemDica.put("a_morango", false);
+        dicionario.put("a_morango", R.drawable.a_morango);
 
-        verificadoresComDica.put(""+R.drawable.a_morango, false);
-        verificadoresComDica.put(""+R.drawable.a_igreja, false);
-        verificadoresComDica.put(""+R.drawable.a_garfo, false);
-        verificadoresComDica.put(""+R.drawable.a_violao, false);
-        verificadoresComDica.put(""+R.drawable.b_domino, false);
-        verificadoresComDica.put(""+R.drawable.b_lapis, false);
-        verificadoresComDica.put(""+R.drawable.b_formiga, false);
-        verificadoresComDica.put(""+R.drawable.b_cama, false);
-        verificadoresComDica.put(""+R.drawable.c_martelo, false);
-        verificadoresComDica.put(""+R.drawable.c_tubarao, false);
-        verificadoresComDica.put(""+R.drawable.c_orelha, false);
-        verificadoresComDica.put(""+R.drawable.c_vassoura, false);
-        verificadoresComDica.put(""+R.drawable.d_cenoura, false);
-        verificadoresComDica.put(""+R.drawable.d_calca, false);
-        verificadoresComDica.put(""+R.drawable.d_bicicleta, false);
-        verificadoresComDica.put(""+R.drawable.d_macaco, false);
+        verificadoresSemDica.put("a_igreja", false);
+        dicionario.put("a_igreja", R.drawable.a_igreja);
+
+        verificadoresSemDica.put("a_garfo", false);
+        dicionario.put("a_garfo", R.drawable.a_garfo);
+
+        verificadoresSemDica.put("a_violao", false);
+        dicionario.put("a_violao", R.drawable.a_violao);
+
+        verificadoresSemDica.put("b_domino", false);
+        dicionario.put("b_domino", R.drawable.b_domino);
+
+        verificadoresSemDica.put("b_lapis", false);
+        dicionario.put("b_lapis", R.drawable.b_lapis);
+
+        verificadoresSemDica.put("b_formiga", false);
+        dicionario.put("b_formiga", R.drawable.b_formiga);
+
+        verificadoresSemDica.put("b_cama", false);
+        dicionario.put("b_cama", R.drawable.b_cama);
+
+        verificadoresSemDica.put("c_martelo", false);
+        dicionario.put("c_martelo", R.drawable.c_martelo);
+
+        verificadoresSemDica.put("c_tubarao", false);
+        dicionario.put("c_tubarao", R.drawable.c_tubarao);
+
+        verificadoresSemDica.put("c_orelha", false);
+        dicionario.put("c_orelha", R.drawable.c_orelha);
+
+        verificadoresSemDica.put("c_vassoura", false);
+        dicionario.put("c_vassoura", R.drawable.c_vassoura);
+
+        verificadoresSemDica.put("d_cenoura", false);
+        dicionario.put("d_cenoura", R.drawable.d_cenoura);
+
+        verificadoresSemDica.put("d_calca", false);
+        dicionario.put("d_calca", R.drawable.d_calca);
+
+        verificadoresSemDica.put("d_bicicleta", false);
+        dicionario.put("d_bicicleta", R.drawable.d_bicicleta);
+
+        verificadoresSemDica.put("d_macaco", false);
+        dicionario.put("d_macaco", R.drawable.d_macaco);
+
+
+        verificadoresComDica.put("a_morango", false);
+        verificadoresComDica.put("a_igreja", false);
+        verificadoresComDica.put("a_garfo", false);
+        verificadoresComDica.put("a_violao", false);
+        verificadoresComDica.put("b_domino", false);
+        verificadoresComDica.put("b_lapis", false);
+        verificadoresComDica.put("b_formiga", false);
+        verificadoresComDica.put("b_cama", false);
+        verificadoresComDica.put("c_martelo", false);
+        verificadoresComDica.put("c_tubarao", false);
+        verificadoresComDica.put("c_orelha", false);
+        verificadoresComDica.put("c_vassoura", false);
+        verificadoresComDica.put("d_cenoura", false);
+        verificadoresComDica.put("d_calca", false);
+        verificadoresComDica.put("d_bicicleta", false);
+        verificadoresComDica.put("d_macaco", false);
 
         //Inserir todos os botoes nas bibliotecas
-        auxAutoCompleteSemDica.add(""+R.drawable.a_morango);
-        auxAutoCompleteSemDica.add(""+R.drawable.a_igreja);
-        auxAutoCompleteSemDica.add(""+R.drawable.a_garfo);
-        auxAutoCompleteSemDica.add(""+R.drawable.a_violao);
-        auxAutoCompleteSemDica.add(""+R.drawable.b_domino);
-        auxAutoCompleteSemDica.add(""+R.drawable.b_lapis);
-        auxAutoCompleteSemDica.add(""+R.drawable.b_formiga);
-        auxAutoCompleteSemDica.add(""+R.drawable.b_cama);
-        auxAutoCompleteSemDica.add(""+R.drawable.c_martelo);
-        auxAutoCompleteSemDica.add(""+R.drawable.c_tubarao);
-        auxAutoCompleteSemDica.add(""+R.drawable.c_orelha);
-        auxAutoCompleteSemDica.add(""+R.drawable.c_vassoura);
-        auxAutoCompleteSemDica.add(""+R.drawable.d_cenoura);
-        auxAutoCompleteSemDica.add(""+R.drawable.d_calca);
-        auxAutoCompleteSemDica.add(""+R.drawable.d_bicicleta);
-        auxAutoCompleteSemDica.add(""+R.drawable.d_macaco);
+        auxAutoComplete.add("a_morango");
+        auxAutoComplete.add("a_igreja");
+        auxAutoComplete.add("a_garfo");
+        auxAutoComplete.add("a_violao");
+        auxAutoComplete.add("b_domino");
+        auxAutoComplete.add("b_lapis");
+        auxAutoComplete.add("b_formiga");
+        auxAutoComplete.add("b_cama");
+        auxAutoComplete.add("c_martelo");
+        auxAutoComplete.add("c_tubarao");
+        auxAutoComplete.add("c_orelha");
+        auxAutoComplete.add("c_vassoura");
+        auxAutoComplete.add("d_cenoura");
+        auxAutoComplete.add("d_calca");
+        auxAutoComplete.add("d_bicicleta");
+        auxAutoComplete.add("d_macaco");
 
-        auxAutoCompleteComDica.add(""+R.drawable.a_morango);
-        auxAutoCompleteComDica.add(""+R.drawable.a_igreja);
-        auxAutoCompleteComDica.add(""+R.drawable.a_garfo);
-        auxAutoCompleteComDica.add(""+R.drawable.a_violao);
-        auxAutoCompleteComDica.add(""+R.drawable.b_domino);
-        auxAutoCompleteComDica.add(""+R.drawable.b_lapis);
-        auxAutoCompleteComDica.add(""+R.drawable.b_formiga);
-        auxAutoCompleteComDica.add(""+R.drawable.b_cama);
-        auxAutoCompleteComDica.add(""+R.drawable.c_martelo);
-        auxAutoCompleteComDica.add(""+R.drawable.c_tubarao);
-        auxAutoCompleteComDica.add(""+R.drawable.c_orelha);
-        auxAutoCompleteComDica.add(""+R.drawable.c_vassoura);
-        auxAutoCompleteComDica.add(""+R.drawable.d_cenoura);
-        auxAutoCompleteComDica.add(""+R.drawable.d_calca);
-        auxAutoCompleteComDica.add(""+R.drawable.d_bicicleta);
-        auxAutoCompleteComDica.add(""+R.drawable.d_macaco);
 
         //Inicia a comunicacao com o banco de dados
         Intent intentFromList = getIntent();
@@ -274,7 +293,7 @@ public class GridActivity extends AppCompatActivity {
 
     public void verificaTipo(ImageButton imageButton) {
         //caso a acao seja feita SEM DICA
-        if(verificadorBotoesDeControle.get(""+R.id.btn_mem_ep_sem_pista)) {
+        if(verificadorBotoesDeControle.get("btn_mem_ep_sem_pista")) {
             //Caso o botao já esteja clicado
             if(verificadoresSemDica.get(""+imageButton.getTag())) {
                 atualizaTotalSemDica(false);
@@ -292,7 +311,7 @@ public class GridActivity extends AppCompatActivity {
                 }
             }
         }//caso a acao seja feita COM DICA
-        else if(verificadorBotoesDeControle.get(""+R.id.btn_mem_ep_com_pista)) {
+        else if(verificadorBotoesDeControle.get("btn_mem_ep_com_pista")) {
             //Caso o botao já esteja clicado
             if(verificadoresComDica.get(""+imageButton.getTag())) {
                 atualizaTotalComDica(false);
@@ -313,8 +332,8 @@ public class GridActivity extends AppCompatActivity {
 
     public void OnclickSemPista(View v) {
         Button mBtnComPista = (Button) findViewById(R.id.btn_mem_ep_com_pista);
-        verificadorBotoesDeControle.put(""+R.id.btn_mem_ep_com_pista, false);
-        verificadorBotoesDeControle.put("" + v.getId(), true);
+        verificadorBotoesDeControle.put("btn_mem_ep_com_pista", false);
+        verificadorBotoesDeControle.put("btn_mem_ep_sem_pista", true);
         //colorPrimary
         mBtnComPista.getBackground().setColorFilter(getResources().getColor(R.color.clickedPrinc_compVerval), PorterDuff.Mode.SRC_ATOP);
         //clickedSecun_compVerval
@@ -323,8 +342,8 @@ public class GridActivity extends AppCompatActivity {
 
     public void OnclickComPista(View v) {
         Button mBtnSemPista = (Button) findViewById(R.id.btn_mem_ep_sem_pista);
-        verificadorBotoesDeControle.put(""+R.id.btn_mem_ep_sem_pista, false);
-        verificadorBotoesDeControle.put("" + v.getId(), true);
+        verificadorBotoesDeControle.put("btn_mem_ep_sem_pista", false);
+        verificadorBotoesDeControle.put("btn_mem_ep_com_pista", true);
         //ColorPrimary
         mBtnSemPista.getBackground().setColorFilter(getResources().getColor(R.color.clickedSecun_compVerval), PorterDuff.Mode.SRC_ATOP);
         //clickedPrinc_compVerval
