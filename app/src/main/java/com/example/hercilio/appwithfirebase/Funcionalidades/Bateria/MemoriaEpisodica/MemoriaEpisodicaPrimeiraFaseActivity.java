@@ -46,10 +46,10 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
 
 
     //Botoes de indicacao
-    private TextView mBtnIndicacao1, mBtnIndicacao2, mBtnIndicacao3, mBtnIndicacao4;
+    private Button mBtnIndicacao1, mBtnIndicacao2, mBtnIndicacao3, mBtnIndicacao4;
 
     //Botoes de nomeacao
-    private TextView mBtnNomeacao1, mBtnNomeacao2, mBtnNomeacao3, mBtnNomeacao4;
+    private Button mBtnNomeacao1, mBtnNomeacao2, mBtnNomeacao3, mBtnNomeacao4;
 
     //Tipo do objeto
     private TextView mTipoObjeto1, mTipoObjeto2, mTipoObjeto3, mTipoObjeto4;
@@ -82,6 +82,7 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
 
     //Dicionario que armazena os botoes selecionados:
     private Map<String, Boolean> verificadores = new HashMap<>();
+    private Map<String, Integer> dicionario = new HashMap<>();
 
     //Auxiliano auto complete
     private ArrayList<String> auxAutoCompleteIndicacao = new ArrayList<>();
@@ -107,14 +108,22 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
 
         //Botoes:
         mBtnIndicacao1 = (Button) findViewById(R.id.img1_button_indicou);
+        mBtnIndicacao1.setTag("mBtnIndicacao1");
         mBtnIndicacao2 = (Button) findViewById(R.id.img2_button_indicou);
+        mBtnIndicacao2.setTag("mBtnIndicacao2");
         mBtnIndicacao3 = (Button) findViewById(R.id.img3_button_indicou);
+        mBtnIndicacao3.setTag("mBtnIndicacao3");
         mBtnIndicacao4 = (Button) findViewById(R.id.img4_button_indicou);
+        mBtnIndicacao4.setTag("mBtnIndicacao4");
 
         mBtnNomeacao1 = (Button) findViewById(R.id.img1_button_nomeou);
+        mBtnNomeacao1.setTag("mBtnNomeacao1");
         mBtnNomeacao2 = (Button) findViewById(R.id.img2_button_nomeou);
+        mBtnNomeacao2.setTag("mBtnNomeacao2");
         mBtnNomeacao3 = (Button) findViewById(R.id.img3_button_nomeou);
+        mBtnNomeacao3.setTag("mBtnNomeacao3");
         mBtnNomeacao4 = (Button) findViewById(R.id.img4_button_nomeou);
+        mBtnNomeacao4.setTag("mBtnNomeacao4");
 
         //TextViews das imagens
         mTipoObjeto1 = (TextView) findViewById(R.id.small_image_1_tipo);
@@ -136,30 +145,38 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
 
         //Preparação das estruturas de dados:
         //Botoes de indicacao
-        verificadores.put("" + R.id.img1_button_indicou, false);
-        auxAutoCompleteIndicacao.add("" + R.id.img1_button_indicou);
+        verificadores.put(mBtnIndicacao1.getTag().toString(), false);
+        dicionario.put(mBtnIndicacao1.getTag().toString(), mBtnIndicacao1.getId());
+        auxAutoCompleteIndicacao.add(mBtnIndicacao1.getTag().toString());
 
-        verificadores.put("" + R.id.img2_button_indicou, false);
-        auxAutoCompleteIndicacao.add("" + R.id.img2_button_indicou);
+        verificadores.put(mBtnIndicacao2.getTag().toString(), false);
+        dicionario.put(mBtnIndicacao2.getTag().toString(), mBtnIndicacao2.getId());
+        auxAutoCompleteIndicacao.add(mBtnIndicacao2.getTag().toString());
 
-        verificadores.put("" + R.id.img3_button_indicou, false);
-        auxAutoCompleteIndicacao.add("" + R.id.img3_button_indicou);
+        verificadores.put(mBtnIndicacao3.getTag().toString(), false);
+        dicionario.put(mBtnIndicacao3.getTag().toString(), mBtnIndicacao3.getId());
+        auxAutoCompleteIndicacao.add(mBtnIndicacao3.getTag().toString());
 
-        verificadores.put("" + R.id.img4_button_indicou, false);
-        auxAutoCompleteIndicacao.add("" + R.id.img4_button_indicou);
+        verificadores.put(mBtnIndicacao4.getTag().toString(), false);
+        dicionario.put(mBtnIndicacao4.getTag().toString(), mBtnIndicacao4.getId());
+        auxAutoCompleteIndicacao.add(mBtnIndicacao4.getTag().toString());
 
         //Botoes de nomeação
-        verificadores.put("" + R.id.img1_button_nomeou, false);
-        auxAutoCompleteNomeacao.add("" + R.id.img1_button_nomeou);
+        verificadores.put(mBtnNomeacao1.getTag().toString(), false);
+        dicionario.put(mBtnNomeacao1.getTag().toString(), mBtnNomeacao1.getId());
+        auxAutoCompleteNomeacao.add(mBtnNomeacao1.getTag().toString());
 
-        verificadores.put("" + R.id.img2_button_nomeou, false);
-        auxAutoCompleteNomeacao.add("" + R.id.img2_button_nomeou);
+        verificadores.put(mBtnNomeacao2.getTag().toString(), false);
+        dicionario.put(mBtnNomeacao2.getTag().toString(), mBtnNomeacao2.getId());
+        auxAutoCompleteNomeacao.add(mBtnNomeacao2.getTag().toString());
 
-        verificadores.put("" + R.id.img3_button_nomeou, false);
-        auxAutoCompleteNomeacao.add("" + R.id.img3_button_nomeou);
+        verificadores.put(mBtnNomeacao3.getTag().toString(), false);
+        dicionario.put(mBtnNomeacao3.getTag().toString(), mBtnNomeacao3.getId());
+        auxAutoCompleteNomeacao.add(mBtnNomeacao3.getTag().toString());
 
-        verificadores.put("" + R.id.img4_button_nomeou, false);
-        auxAutoCompleteNomeacao.add("" + R.id.img4_button_nomeou);
+        verificadores.put(mBtnNomeacao4.getTag().toString(), false);
+        dicionario.put(mBtnNomeacao4.getTag().toString(), mBtnNomeacao4.getId());
+        auxAutoCompleteNomeacao.add(mBtnNomeacao4.getTag().toString());
 
         //Indica qual sequencia de imagens está
         Intent intentFromList = getIntent();
@@ -397,28 +414,26 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
 
     public void onClickIndicou(View v) {
         Button button = (Button) v;
-
-        if(!verificadores.get(""+v.getId())) {
+        if(!verificadores.get(v.getTag().toString())) {
             v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            verificadores.put("" + v.getId(), true);
+            verificadores.put(v.getTag().toString(), true);
             atualizaTotalIndicacao(true);
         } else {
             v.getBackground().clearColorFilter();
-            verificadores.put("" + v.getId(), false);
+            verificadores.put(v.getTag().toString(), false);
             atualizaTotalIndicacao(false);
         }
     }
 
     public void onClickNomeou(View v) {
         Button button = (Button) v;
-        if(!verificadores.get(""+
-                v.getId())) {
+        if(!verificadores.get(v.getTag().toString())) {
             v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            verificadores.put("" + v.getId(), true);
+            verificadores.put(v.getTag().toString(), true);
             atualizaTotalNomeacao(true);
         } else {
             v.getBackground().clearColorFilter();
-            verificadores.put("" + v.getId(), false);
+            verificadores.put(v.getTag().toString(), false);
             atualizaTotalNomeacao(false);
         }
     }
@@ -442,18 +457,18 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
     public void autoComplete() {
         Button button;
         for(String x : auxAutoCompleteIndicacao) {
-            button = (Button) findViewById(Integer.parseInt(x));
+            button = (Button) findViewById(dicionario.get(x));
             autoCompleteButtonsIndicacao(button);
         }
         for(String x : auxAutoCompleteNomeacao) {
-            button = (Button) findViewById(Integer.parseInt(x));
+            button = (Button) findViewById(dicionario.get(x));
             autoCompleteButtonsNomeacao(button);
         }
     }
 
     public void autoCompleteButtonsIndicacao(View v) {
         Button button = (Button) v;
-        if(verificadores.get(""+ v.getId())) {
+        if(verificadores.get(v.getTag().toString())) {
             v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
 //            atualizaTotalIndicacao(true);
         }
@@ -461,7 +476,7 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
 
     public void autoCompleteButtonsNomeacao(View v) {
         Button button = (Button) v;
-        if(verificadores.get(""+ v.getId())) {
+        if(verificadores.get(v.getTag().toString())) {
             v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
 //            atualizaTotalNomeacao(true);
         }
