@@ -153,6 +153,16 @@
             android:label="Digit Span"
             android:screenOrientation="userLandscape" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.AssociacaoSemantica.AssociacaoSemanticaActivity"
+            android:label="Associação Semântica"
+            android:screenOrientation="userLandscape" >
+        </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.AssociacaoSemantica.ImagemExpandidaAssociacaoSemanticaActivity"
+            android:label="Associação Semântica"
+            android:screenOrientation="userLandscape" >
+        </activity>
     </application>
 
 </manifest>

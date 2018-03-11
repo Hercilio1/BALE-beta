@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Funcionalidades.Bateria.AssociacaoSemantica.AssociacaoSemanticaActivity"
+    tools:layout_editor_absoluteY="89dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/title_associacao_semantica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_span="6"
+            android:text="Associação Semântica"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bateria_compreensao"
+            android:layout_alignStart="@+id/bateria_compreensao"
+            android:layout_below="@+id/bateria_compreensao"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_associacao_semantica">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_span="4"
+                android:background="@color/colorPrimary" />
+        </TableRow>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tableRow"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="O(a) senhor(a) verá quatro desenhos em uma cartela, sendo um acima e três abaixo. O(a) senhor(a) deverá apontar para um dos desenhos de baixo que acha que tem alguma relação de sentido com o desenho da parte de cima (por exemplo, em termos de função, de grupo a que pertencem, características semelhantes, etc.). Em seguida, o(a) senhor(a) deverá dizer por que pensa que os dois desenhos tem relação. (Mostrar o exemplo e verificar se o participante compreende.) Por exemplo, aqui associamos o maiô com a bermuda porque são roupas usadas no verão."
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow1"
+            android:textStyle="italic" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_associacao_semantica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView1"
+            tools:layout_editor_absoluteX="8dp"
+            tools:ignore="MissingConstraints" />
+
+
+        <Button
+            android:id="@+id/button_associacao_semantica"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/colorPrimary"
+            android:text="Continuar"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_associacao_semantica"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
