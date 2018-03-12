@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Funcionalidades.Bateria.FluenciaVerbal.FluenciaVerbalActivity"
+    tools:layout_editor_absoluteY="89dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_conhecimento_semantico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_span="6"
+            android:text="@string/bateria_tipopergunta_conhecimento_semantico"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bateria_compreensao"
+            android:layout_alignStart="@+id/bateria_compreensao"
+            android:layout_below="@+id/bateria_compreensao"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_span="4"
+                android:background="@color/colorPrimary" />
+        </TableRow>
+
+        <!--Provervio-->
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="935dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tableRow"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Provérbios: Eu vou lhe falar o começo de um provérbio e vou pedir para que o(a) senhor(a) o complete para mim. Por exemplo: “De grão em grão a galinha... enche o papo.”"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="italic" />
+
+        <!--Proverbio 1-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="1. Água mole em pedra dura... "
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_proverbio_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginRight="16dp"
+                android:hint="...tando bate até que fura." />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="Explicação: "
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_proverbio_1_explicacao"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:layout_marginRight="16dp" />
+
+        </LinearLayout>
+
+        <!--Proverbio 2-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="2. Mais vale um pássaro na mão... "
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_proverbio_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginRight="16dp"
+                android:hint="... do que dois a voar." />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="Explicação: "
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_proverbio_2_explicacao"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:layout_marginRight="16dp" />
+
+        </LinearLayout>
+
+        <!--Proverbio 3-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="3. Casa de ferreiro... "
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_proverbio_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginRight="16dp"
+                android:hint="... espeto de pau." />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="Explicação: "
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_proverbio_3_explicacao"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:layout_marginRight="16dp" />
+
+        </LinearLayout>
+
+        <!--Metafora-->
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="935dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:text="Metáforas: Agora irei ler três frases e vou pedir para que o(a) senhor(a) me explique o que essas frases querem dizer."
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="italic" />
+
+        <!--Metafora 1-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="4. Hoje eu acordei com as galinhas.  "
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_conhecimento_semantico_metafora_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:hint="EXPLICAÇÃO" />
+
+        <!--Metafora 2-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="5. Hoje no trabalho eu descasquei um abacaxi. "
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_conhecimento_semantico_metafora_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:hint="EXPLICAÇÃO" />
+
+        <!--Metafora 3-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="6. Ele quebrou um galho pra mim."
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_conhecimento_semantico_metafora_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:hint="EXPLICAÇÃO" />
+
+
+
+        <Button
+            android:id="@+id/btn_continuar_fluencia_verbal"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Continuar"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+</ScrollView>
