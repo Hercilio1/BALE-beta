@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Funcionalidades.Bateria.FluenciaVerbal.FluenciaVerbalActivity"
+    tools:context=".Funcionalidades.Bateria.ConhecimentoSemantico.ConhecimentoSemanticoActivity"
     tools:layout_editor_absoluteY="89dp">
 
     <LinearLayout
@@ -76,7 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_weight="1"
+                android:layout_weight="4"
                 android:text="1. Água mole em pedra dura... "
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -86,9 +86,47 @@
                 android:id="@+id/et_conhecimento_semantico_proverbio_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:layout_marginRight="16dp"
                 android:hint="...tando bate até que fura." />
+
+            <RadioGroup
+                android:id="@+id/rg_conhecimento_semantico_proverbio_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_weight="4"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_1_errou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Errou"
+                    android:layout_marginRight="8dp"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_1_parcialmente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Parcialmente"
+                    android:onClick="onClickRadio"
+                    android:layout_marginRight="8dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_1_acertou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Acertou"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -129,7 +167,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_weight="1"
+                android:layout_weight="4"
                 android:text="2. Mais vale um pássaro na mão... "
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -139,9 +177,47 @@
                 android:id="@+id/et_conhecimento_semantico_proverbio_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:layout_marginRight="16dp"
                 android:hint="... do que dois a voar." />
+
+            <RadioGroup
+                android:id="@+id/rg_conhecimento_semantico_proverbio_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_weight="4"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_2_errou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Errou"
+                    android:layout_marginRight="8dp"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_2_parcialmente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Parcialmente"
+                    android:onClick="onClickRadio"
+                    android:layout_marginRight="8dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_2_acertou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Acertou"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -182,7 +258,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_weight="1"
+                android:layout_weight="4"
                 android:text="3. Casa de ferreiro... "
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -192,9 +268,47 @@
                 android:id="@+id/et_conhecimento_semantico_proverbio_3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:layout_marginRight="16dp"
                 android:hint="... espeto de pau." />
+
+            <RadioGroup
+                android:id="@+id/rg_conhecimento_semantico_proverbio_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_weight="4"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_3_errou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Errou"
+                    android:layout_marginRight="8dp"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_3_parcialmente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Parcialmente"
+                    android:onClick="onClickRadio"
+                    android:layout_marginRight="8dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_proverbio_3_acertou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Acertou"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -246,14 +360,52 @@
             android:textColor="@color/black"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/et_conhecimento_semantico_metafora_1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:hint="EXPLICAÇÃO" />
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_metafora_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
+                android:hint="EXPLICAÇÃO" />
+
+            <RadioGroup
+                android:id="@+id/rg_conhecimento_semantico_metafora_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_metafora_1_errou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Errou"
+                    android:layout_marginRight="8dp"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_metafora_1_acertou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Acertou"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+
 
         <!--Metafora 2-->
         <TextView
@@ -266,14 +418,50 @@
             android:textColor="@color/black"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/et_conhecimento_semantico_metafora_2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:hint="EXPLICAÇÃO" />
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_metafora_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
+                android:hint="EXPLICAÇÃO" />
+
+            <RadioGroup
+                android:id="@+id/rg_conhecimento_semantico_metafora_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_metafora_2_errou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Errou"
+                    android:layout_marginRight="8dp"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_metafora_2_acertou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Acertou"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            </RadioGroup>
+        </LinearLayout>
 
         <!--Metafora 3-->
         <TextView
@@ -286,19 +474,55 @@
             android:textColor="@color/black"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/et_conhecimento_semantico_metafora_3"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:hint="EXPLICAÇÃO" />
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_conhecimento_semantico_metafora_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
+                android:hint="EXPLICAÇÃO" />
+
+            <RadioGroup
+                android:id="@+id/rg_conhecimento_semantico_metafora_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_metafora_3_errou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Errou"
+                    android:layout_marginRight="8dp"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RadioButton
+                    android:id="@+id/radio_conhecimento_semantico_metafora_3_acertou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Acertou"
+                    android:onClick="onClickRadio"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            </RadioGroup>
+        </LinearLayout>
 
 
 
         <Button
-            android:id="@+id/btn_continuar_fluencia_verbal"
+            android:id="@+id/btn_continuar_conhecimento_semantico"
             android:layout_width="134dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
