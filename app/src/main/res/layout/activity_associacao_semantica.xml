@@ -79,6 +79,63 @@
             tools:layout_editor_absoluteX="8dp"
             tools:ignore="MissingConstraints" />
 
+        <!--Total -->
+        <TextView
+            android:id="@+id/total_associacao_semantica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TOTAL"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_number1_associacao_semantica"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_associacao_semantica"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/total_number1_associacao_semantica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_barra_associacao_semantica"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_associacao_semantica"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/total_barra_associacao_semantica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/total_numero2__associacao_semantica"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_associacao_semantica"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/total_numero2__associacao_semantica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="24"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_associacao_semantica"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+
 
         <Button
             android:id="@+id/button_associacao_semantica"
@@ -94,7 +151,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view_associacao_semantica"
+            app:layout_constraintTop_toBottomOf="@+id/total_associacao_semantica"
             app:layout_constraintVertical_bias="0.0" />
 
 

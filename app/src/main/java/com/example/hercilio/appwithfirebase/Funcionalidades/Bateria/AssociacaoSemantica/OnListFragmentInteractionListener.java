@@ -2,6 +2,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.AssociacaoS
 
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 /**
@@ -10,5 +11,5 @@ import android.widget.TextView;
 
 interface OnListFragmentInteractionListener {
     void onListFragmentInteraction(ImageButton item);
-    void onRadioFragmentInteraction(RadioButton item, TextView tag);
+    void onRadioFragmentInteraction();
 }

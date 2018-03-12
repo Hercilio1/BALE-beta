@@ -71,21 +71,27 @@ public class AssociacaoSemanticaAdapter extends RecyclerView.Adapter<AssociacaoS
         holder.mTextView.setText(dicas[position]);
         holder.mTextView.setTag(dicas[position]);
 
-        if(position == 0) {
+        holder.mRadioGroup.setTag(dicas[position]);
+        holder.mRadioGroup.setVisibility(View.VISIBLE);
+        holder.mRadioGroup.clearCheck();
+
+        if(dicas[position].equals("modelo: maiô - bermuda")) {
             holder.mRadioGroup.setVisibility(View.INVISIBLE);
         }
+          else {
+            Intent intentFromList = activity.getIntent();
+            if (intentFromList != null) {
+                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-//        Intent intentFromList = activity.getIntent();
-//        if (intentFromList != null) {
-//            final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
-//
-//            if(participante.getNomeacaoObject() != null) {
-//                Map<String, String> verificadores = participante.getNomeacaoObject().getVerificadores();
-//                if (verificadores != null) {
-//                    holder.mTextView.setText(verificadores.get("" + items[position]));
-//                }
-//            }
-//        }
+                if (participante.getAssociacaoSemanticaObject() != null) {
+                    Map<String, Integer> verificadores = participante.getAssociacaoSemanticaObject().getVerificadores();
+                    if (verificadores.containsKey(dicas[position])) {
+                        holder.mRadioGroup.check(holder.mRadioGroup.getChildAt(verificadores.get(dicas[position])).getId());
+                        mListener.onRadioFragmentInteraction();
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -101,7 +107,6 @@ public class AssociacaoSemanticaAdapter extends RecyclerView.Adapter<AssociacaoS
         public final ImageButton mImageView;
         public final TextView mTextView;
         public final RadioGroup mRadioGroup;
-        public final RadioButton mRadioButtonErrou, mRadioButtonParcialmente, mRadioButtonAcertou;
 
 
         AssociacaoSemanticaItemView(final View view) {
@@ -112,12 +117,6 @@ public class AssociacaoSemanticaAdapter extends RecyclerView.Adapter<AssociacaoS
             mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             mImageView.setPadding(35, 35, 35, 35);
             mRadioGroup = (RadioGroup) view.findViewById(R.id.grid_item_assiciacao_semantica_rg);
-            mRadioButtonErrou = (RadioButton) view.findViewById(R.id.grid_item_assiciacao_semantica_errou_radio);
-            mRadioButtonErrou.setTag("errou");
-            mRadioButtonParcialmente = (RadioButton) view.findViewById(R.id.grid_item_assiciacao_semantica_parcialmente_radio);
-            mRadioButtonParcialmente.setTag("parcialmente");
-            mRadioButtonAcertou = (RadioButton) view.findViewById(R.id.grid_item_assiciacao_semantica_acertou_radio);
-            mRadioButtonAcertou.setTag("acertou");
 
             mImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -126,13 +125,6 @@ public class AssociacaoSemanticaAdapter extends RecyclerView.Adapter<AssociacaoS
                 }
             });
 
-            mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    RadioButton checkedRadioButton = (RadioButton) view.findViewById(checkedId);
-                    mListener.onRadioFragmentInteraction(checkedRadioButton, mTextView);
-                }
-            });
         }
     }
 

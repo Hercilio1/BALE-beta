@@ -47,6 +47,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="Errou"
                 android:layout_marginRight="8dp"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
@@ -55,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Parcialmente"
+                android:onClick="onClickRadio"
                 android:layout_marginRight="8dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -64,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Acertou"
+                android:onClick="onClickRadio"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 

@@ -187,6 +187,9 @@
     <string name="comp_verbal_terceira_avaliacao_sim">Sim</string>
     <string name="comp_verbal_terceira_avaliacao_intermediario">Intermediário</string>
     <string name="comp_verbal_terceira_avaliacao_não">Não</string>
+    <string name="associacao_semantica_acertou">Acertou</string>
+    <string name="associacao_semantica_parcialmente">Parcialmente</string>
+    <string name="associacao_semantica_errou">Errou</string>
     <string name="narrativa_sim">Sim</string>
     <string name="narrativa_parcialmente">Parcialmente</string>
     <string name="narrativa_nao">Não</string>
