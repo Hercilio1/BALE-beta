@@ -21,6 +21,9 @@ public class CompreensaoVerbalObject implements Serializable {
     private Map<String, Integer> terceiraAvaliacao;
     private int av3ValorTotalLabel2, av3ValorTotalLabel3;
 
+    //Observavoes:
+    private String observacoes;
+
     public CompreensaoVerbalObject(){}
 
     //Primeira avaliacao:
@@ -58,4 +61,8 @@ public class CompreensaoVerbalObject implements Serializable {
     public int getAv3ValorTotalLabel3() { return av3ValorTotalLabel3; }
     public void setAv3ValorTotalLabel2(int av3ValorTotalLabel2) { this.av3ValorTotalLabel2 = av3ValorTotalLabel2; }
     public void setAv3ValorTotalLabel3(int av3ValorTotalLabel3) { this.av3ValorTotalLabel3 = av3ValorTotalLabel3; }
+
+    //Observavoes:
+    public String getObservacoes() { return observacoes; }
+    public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
 }

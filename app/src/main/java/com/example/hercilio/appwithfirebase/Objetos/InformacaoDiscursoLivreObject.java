@@ -16,6 +16,9 @@ public class InformacaoDiscursoLivreObject implements Serializable {
     private Map<String, Integer> discursoLivre;
     private int valorTotalDiscursoLivre;
 
+    //Observações:
+    private String observacoes;
+
     public InformacaoDiscursoLivreObject(){}
 
     //Informacao:
@@ -37,4 +40,8 @@ public class InformacaoDiscursoLivreObject implements Serializable {
     }
     public int getValorTotalDiscursoLivre() { return valorTotalDiscursoLivre; }
     public void setValorTotalDiscursoLivre(int valorTotalDiscursoLivre) { this.valorTotalDiscursoLivre = valorTotalDiscursoLivre; }
+
+    //Observacoes:
+    public String getObservacoes() { return observacoes; }
+    public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
 }

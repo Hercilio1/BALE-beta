@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bale_observacoes_button"
+        android:title=""
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_border_color_white_24dp"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/bale_observacoes_button_concluir"
+        android:title="CONCLUIR"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+
+</menu>

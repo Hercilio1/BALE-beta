@@ -92,8 +92,8 @@ public class InformacaoActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            if (participante.getInfDiscNarrObject() != null && participante.getInfDiscNarrObject().getInformacao() != null) {
-                verificadores = participante.getInfDiscNarrObject().getInformacao();
+            if (participante.getInformacaoDiscLivreObject() != null && participante.getInformacaoDiscLivreObject().getInformacao() != null) {
+                verificadores = participante.getInformacaoDiscLivreObject().getInformacao();
                 autoComplete();
             }
 
@@ -275,16 +275,16 @@ public class InformacaoActivity extends AppCompatActivity {
     }
 
     public void alteraDadosFirebase(Participante participante) {
-        if(participante.getInfDiscNarrObject() == null) {
+        if(participante.getInformacaoDiscLivreObject() == null) {
             InformacaoDiscursoLivreObject infDiscNarrObj = new InformacaoDiscursoLivreObject();
             infDiscNarrObj.atualizaInformacao(verificadores);
             infDiscNarrObj.setValorTotalInformacao(valorTotal);
-            participante.setInfDiscNarrObject(infDiscNarrObj);
+            participante.setInformacaoDiscLivreObject(infDiscNarrObj);
         } else {
-            InformacaoDiscursoLivreObject aux = participante.getInfDiscNarrObject();
+            InformacaoDiscursoLivreObject aux = participante.getInformacaoDiscLivreObject();
             aux.setValorTotalInformacao(valorTotal);
             aux.atualizaInformacao(verificadores);
-            participante.setInfDiscNarrObject(aux);
+            participante.setInformacaoDiscLivreObject(aux);
         }
 
         FirebaseDatabase mFirebaseDatabase;

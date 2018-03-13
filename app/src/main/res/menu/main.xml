@@ -5,7 +5,7 @@
         android:id="@+id/bale_lobby_home_btn"
         android:title=""
         android:orderInCategory="100"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_home_white_24dp"
         app:showAsAction="ifRoom"
         android:visible="true"/>
 
