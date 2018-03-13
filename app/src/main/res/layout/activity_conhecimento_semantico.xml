@@ -69,24 +69,24 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
 
             <TextView
-
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:text="1. Água mole em pedra dura... "
                 android:textColor="@color/black"
                 android:textSize="20dp" />
-
 
             <EditText
                 android:id="@+id/et_conhecimento_semantico_proverbio_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="6"
                 android:layout_marginRight="16dp"
                 android:hint="...tando bate até que fura." />
 
@@ -95,7 +95,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:orientation="horizontal" >
 
                 <RadioButton
@@ -167,7 +167,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:text="2. Mais vale um pássaro na mão... "
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -177,7 +177,7 @@
                 android:id="@+id/et_conhecimento_semantico_proverbio_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="6"
                 android:layout_marginRight="16dp"
                 android:hint="... do que dois a voar." />
 
@@ -186,7 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:orientation="horizontal" >
 
                 <RadioButton
@@ -258,7 +258,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:text="3. Casa de ferreiro... "
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -268,7 +268,7 @@
                 android:id="@+id/et_conhecimento_semantico_proverbio_3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="6"
                 android:layout_marginRight="16dp"
                 android:hint="... espeto de pau." />
 
@@ -277,7 +277,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:orientation="horizontal" >
 
                 <RadioButton
@@ -519,6 +519,100 @@
             </RadioGroup>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <!--Total proverbio-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center" >
+
+                <TextView
+                    android:id="@+id/total_proverbio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL PROVÉRBIO:  "
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/total_number1_proverbio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/total_barra_proverbio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/total_numero2_proverbio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <!--Total Metafora-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/total_metafora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="TOTAL METÁFORA:  "
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/total_number1_metafora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/total_barra_metafora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/total_numero2_metafora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
         <Button

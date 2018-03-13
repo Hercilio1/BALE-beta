@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.AssociacaoSemantica.AssociacaoSemanticaActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrasesActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.ConhecimentoSemantico.ConhecimentoSemanticoActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.DigitSpan.DigitSpanActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.FluenciaVerbal.FluenciaVerbalActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity;
@@ -72,6 +73,7 @@ public class BaleLobbyFragment extends Fragment {
         RelativeLayout rlyNomeacao = (RelativeLayout) getActivity().findViewById(R.id.rly_nomeacao);
         RelativeLayout rlyDigitSpan = (RelativeLayout) getActivity().findViewById(R.id.rly_digit_span);
         RelativeLayout rlyAssocSemant = (RelativeLayout) getActivity().findViewById(R.id.rly_associacao_semantica);
+        RelativeLayout rlyConhecimentoSemantico = (RelativeLayout) getActivity().findViewById(R.id.rly_conhecimento_semantico);
 
         rlyHLE.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +160,15 @@ public class BaleLobbyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AssociacaoSemanticaActivity.class);
+                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
+                startActivity(intent);
+            }
+        });
+
+        rlyConhecimentoSemantico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ConhecimentoSemanticoActivity.class);
                 intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
                 startActivity(intent);
             }

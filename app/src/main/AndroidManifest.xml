@@ -163,6 +163,11 @@
             android:label="Associação Semântica"
             android:screenOrientation="userLandscape" >
         </activity>
+        <activity
+            android:name=".Funcionalidades.Bateria.ConhecimentoSemantico.ConhecimentoSemanticoActivity"
+            android:label="Conhecimento Semântico"
+            android:screenOrientation="userLandscape" >
+        </activity>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
+import com.example.hercilio.appwithfirebase.Objetos.ConhecimentoSemanticoObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,23 +39,33 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
     //Metafora RadioGroup:
     private RadioGroup mRadioMetaforaQuest1, mRadioMetaforaQuest2, mRadioMetaforaQuest3;
 
+    //Proverbio EditTexts:
+    private EditText mEditTextProverbio1, mEditTextProverbio2, mEditTextProverbio3;
+    private EditText mEditTextProverbioExplicacao1, mEditTextProverbioExplicacao2, mEditTextProverbioExplicacao3;
+    //Metafora EditTexts:
+    private EditText mEditTextMetafora1, mEditTextMetafora2, mEditTextMetafora3;
+
     //Check Proverbio:
     private int checkedRadioProverbioQuest1, checkedRadioProverbioQuest2, checkedRadioProverbioQuest3;
     //Check Metafora:
     private int checkedRadioMetaforaQuest1, checkedRadioMetaforaQuest2, checkedRadioMetaforaQuest3;
 
+    //Parciais Proverbio:
+    private int parcialProverbioQuest1, parcialProverbioQuest2, parcialProverbioQuest3;
+    //Parciais Metafora:
+    private int parcialMetaforaQuest1, parcialMetaforaQuest2, parcialMetaforaQuest3;
+
     //Variaveis dos valores totais:
     private int valorTotalProverbio, valorTotalMetafora;
-    //Parciais Label 3:
-    private int parcialProverbioQuest1, parcialProverbioQuest2, parcialProverbioQuest3;
-    //Parciais Label 4:
-    private int parcialMetaforaQuest1, parcialMetaforaQuest2, parcialMetaforaQuest3;
+
+    //Totais Text Views:
+    private TextView mTotalNumero1Proverbio, mTotalNumero1Metafora;
 
     //Dicionario que armazena os radiobuttons selecionados:
     private Map<String, Integer> verificadores = new HashMap<>();
 
-    //Totais:
-    private TextView mTotalNumero1Proverbio, mTotalNumero1Metafora;
+    //Discionario de EditText
+    private Map<String, String> verificadoresEditText = new HashMap<>();
 
     //Botão validador caso não haja o pressionamento de algum radio button
     private boolean validaRadioButtons;
@@ -71,19 +83,32 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        //Label 3:
+        //Proverbio:
         mRadioProverbioQuest1 = (RadioGroup) findViewById(R.id.rg_conhecimento_semantico_proverbio_1);
         mRadioProverbioQuest2 = (RadioGroup) findViewById(R.id.rg_conhecimento_semantico_proverbio_2);
         mRadioProverbioQuest3 = (RadioGroup) findViewById(R.id.rg_conhecimento_semantico_proverbio_3);
 
-        //Label 4:
+        //Metafora:
         mRadioMetaforaQuest1 = (RadioGroup) findViewById(R.id.rg_conhecimento_semantico_metafora_1);
         mRadioMetaforaQuest2 = (RadioGroup) findViewById(R.id.rg_conhecimento_semantico_metafora_2);
         mRadioMetaforaQuest3 = (RadioGroup) findViewById(R.id.rg_conhecimento_semantico_metafora_3);
 
+        //Proverbio EditText:
+        mEditTextProverbio1 = (EditText) findViewById(R.id.et_conhecimento_semantico_proverbio_1);
+        mEditTextProverbio2 = (EditText) findViewById(R.id.et_conhecimento_semantico_proverbio_2);
+        mEditTextProverbio3 = (EditText) findViewById(R.id.et_conhecimento_semantico_proverbio_3);
+        mEditTextProverbioExplicacao1 = (EditText) findViewById(R.id.et_conhecimento_semantico_proverbio_1_explicacao);
+        mEditTextProverbioExplicacao2 = (EditText) findViewById(R.id.et_conhecimento_semantico_proverbio_2_explicacao);
+        mEditTextProverbioExplicacao3 = (EditText) findViewById(R.id.et_conhecimento_semantico_proverbio_3_explicacao);
+
+        //Metafora EditText:
+        mEditTextMetafora1 = (EditText) findViewById(R.id.et_conhecimento_semantico_metafora_1);
+        mEditTextMetafora2 = (EditText) findViewById(R.id.et_conhecimento_semantico_metafora_2);
+        mEditTextMetafora3 = (EditText) findViewById(R.id.et_conhecimento_semantico_metafora_3);
+
         //Totais:
-//        mTotalNumero1Label3 = (TextView) findViewById(R.id.total_number1_label_3);
-//        mTotalNumero1Label4 = (TextView) findViewById(R.id.total_number1_label_4);
+        mTotalNumero1Proverbio = (TextView) findViewById(R.id.total_number1_proverbio);
+        mTotalNumero1Metafora = (TextView) findViewById(R.id.total_number1_metafora);
 
 
         //Botao continuar:
@@ -94,17 +119,20 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            if (participante.getCompVerbalObject() != null && participante.getCompVerbalObject().getSegundaAvaliacao() != null) {
-                verificadores = participante.getCompVerbalObject().getSegundaAvaliacao();
+            if (participante.getConhecimentoSemanticoObject() != null) {
+                verificadores = participante.getConhecimentoSemanticoObject().getVerificadores();
+                verificadoresEditText = participante.getConhecimentoSemanticoObject().getVerificadoresEditText();
                 autoComplete(participante);
+                autoCompleteEditText();
             }
 
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    armazenaStringsEditText();
                     registrar(participante);
                     if(!validaRadioButtons) {
-                        Intent intent = new Intent(getBaseContext(), CompreensaoVerbalLobbyActivity.class);
+                        Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
                         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                         startActivity(intent);
                     } else {
@@ -127,39 +155,6 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
                     }
                 }
             });
-        }
-    }
-
-    public void autoComplete(Participante participante) {
-        int[] aux = {11,12,13,21,22,23};
-        for(int i=0; i<aux.length; i++) {
-            switch (aux[i]) {
-                case 11:
-                    mRadioProverbioQuest1.check(mRadioProverbioQuest1.getChildAt(verificadores.get(""+aux[i])).getId());
-                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest1, false));
-                    break;
-                case 12:
-                    mRadioProverbioQuest2.check(mRadioProverbioQuest2.getChildAt(verificadores.get(""+aux[i])).getId());
-                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest2, false));
-                    break;
-                case 13:
-                    mRadioProverbioQuest3.check(mRadioProverbioQuest3.getChildAt(verificadores.get(""+aux[i])).getId());
-                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest3, false));
-                    break;
-                case 21:
-                    mRadioMetaforaQuest1.check(mRadioMetaforaQuest1.getChildAt(verificadores.get(""+aux[i])).getId());
-                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest1, true));
-                    break;
-                case 22:
-                    mRadioMetaforaQuest2.check(mRadioMetaforaQuest2.getChildAt(verificadores.get(""+aux[i])).getId());
-                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest2, false));
-                    break;
-                case 23:
-                    mRadioMetaforaQuest3.check(mRadioMetaforaQuest3.getChildAt(verificadores.get(""+aux[i])).getId());
-                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest3, false));
-                    break;
-                default: break;
-            }
         }
     }
 
@@ -275,8 +270,8 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
                 default:
                     break;
             }
-//            mTotalNumero1Label3.setText("" + valorTotalLabel3);
-//            mTotalNumero1Label4.setText("" + valorTotalLabel4);
+            mTotalNumero1Proverbio.setText("" + valorTotalProverbio);
+            mTotalNumero1Metafora.setText("" + valorTotalMetafora);
         }
     }
 
@@ -310,20 +305,85 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
 
     }
 
-    public void alteraDadosFirebase(Participante participante) {
-        if(participante.getCompVerbalObject() == null) {
-            CompreensaoVerbalObject compVerbalObj = new CompreensaoVerbalObject();
-            compVerbalObj.atualizaSegundaAvaliacao(verificadores);
-            compVerbalObj.setAv2ValorTotalLabel3(valorTotalLabel3);
-            compVerbalObj.setAv2ValorTotalLabel4(valorTotalLabel4);
-            participante.setCompVerbalObject(compVerbalObj);
-        } else {
-            CompreensaoVerbalObject aux = participante.getCompVerbalObject();
-            aux.setAv2ValorTotalLabel3(valorTotalLabel3);
-            aux.setAv2ValorTotalLabel4(valorTotalLabel4);
-            aux.atualizaSegundaAvaliacao(verificadores);
-            participante.setCompVerbalObject(aux);
+    public void autoComplete(Participante participante) {
+        int[] aux = {11,12,13,21,22,23};
+        for(int i=0; i<aux.length; i++) {
+            switch (aux[i]) {
+                case 11:
+                    mRadioProverbioQuest1.check(mRadioProverbioQuest1.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest1, false));
+                    break;
+                case 12:
+                    mRadioProverbioQuest2.check(mRadioProverbioQuest2.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest2, false));
+                    break;
+                case 13:
+                    mRadioProverbioQuest3.check(mRadioProverbioQuest3.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest3, false));
+                    break;
+                case 21:
+                    mRadioMetaforaQuest1.check(mRadioMetaforaQuest1.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest1, true));
+                    break;
+                case 22:
+                    mRadioMetaforaQuest2.check(mRadioMetaforaQuest2.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest2, true));
+                    break;
+                case 23:
+                    mRadioMetaforaQuest3.check(mRadioMetaforaQuest3.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest3, true));
+                    break;
+                default: break;
+            }
         }
+    }
+
+    public void armazenaStringsEditText(){
+        //Proverbio
+        verificadoresEditText.put("mEditTextProverbio1", mEditTextProverbio1.getText().toString());
+        verificadoresEditText.put("mEditTextProverbioExplicacao1", mEditTextProverbioExplicacao1.getText().toString());
+
+        verificadoresEditText.put("mEditTextProverbio2", mEditTextProverbio2.getText().toString());
+        verificadoresEditText.put("mEditTextProverbioExplicacao2", mEditTextProverbioExplicacao2.getText().toString());
+
+        verificadoresEditText.put("mEditTextProverbio3", mEditTextProverbio3.getText().toString());
+        verificadoresEditText.put("mEditTextProverbioExplicacao3", mEditTextProverbioExplicacao3.getText().toString());
+
+        //Metafora
+        verificadoresEditText.put("mEditTextMetafora1", mEditTextMetafora1.getText().toString());
+        verificadoresEditText.put("mEditTextMetafora2", mEditTextMetafora2.getText().toString());
+        verificadoresEditText.put("mEditTextMetafora3", mEditTextMetafora3.getText().toString());
+    }
+
+    public void autoCompleteEditText(){
+        //Proverbio
+        mEditTextProverbio1.setText(verificadoresEditText.get("mEditTextProverbio1"));
+        mEditTextProverbioExplicacao1.setText(verificadoresEditText.get("mEditTextProverbioExplicacao1"));
+
+        mEditTextProverbio2.setText(verificadoresEditText.get("mEditTextProverbio2"));
+        mEditTextProverbioExplicacao2.setText(verificadoresEditText.get("mEditTextProverbioExplicacao2"));
+
+        mEditTextProverbio3.setText(verificadoresEditText.get("mEditTextProverbio3"));
+        mEditTextProverbioExplicacao3.setText(verificadoresEditText.get("mEditTextProverbioExplicacao3"));
+
+        //Metafora
+        mEditTextMetafora1.setText(verificadoresEditText.get("mEditTextMetafora1"));
+        mEditTextMetafora2.setText(verificadoresEditText.get("mEditTextMetafora2"));
+        mEditTextMetafora3.setText(verificadoresEditText.get("mEditTextMetafora3"));
+    }
+
+    public void alteraDadosFirebase(Participante participante) {
+        ConhecimentoSemanticoObject conhecimentoSemanticoObject;
+        if(participante.getConhecimentoSemanticoObject() == null)
+            conhecimentoSemanticoObject= new ConhecimentoSemanticoObject();
+        else
+            conhecimentoSemanticoObject = participante.getConhecimentoSemanticoObject();
+
+        conhecimentoSemanticoObject.setVerificadores(verificadores);
+        conhecimentoSemanticoObject.setVerificadoresEditText(verificadoresEditText);
+        conhecimentoSemanticoObject.setValorTotalProverbio(valorTotalProverbio);
+        conhecimentoSemanticoObject.setValorTotalMetafora(valorTotalMetafora);
+        participante.setConhecimentoSemanticoObject(conhecimentoSemanticoObject);
 
 
         FirebaseDatabase mFirebaseDatabase;

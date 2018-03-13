@@ -32,6 +32,7 @@ public class Participante implements Serializable {
     private NomeacaoObject nomeacaoObject;
     private DigitSpanObject digitSpanObject;
     private AssociacaoSemanticaObject associacaoSemanticaObject;
+    private ConhecimentoSemanticoObject conhecimentoSemanticoObject;
 
 //    private String dataDaAvaliacao;
 //    private String exercidaPor;
@@ -71,6 +72,7 @@ public class Participante implements Serializable {
         this.nomeacaoObject = null;
         this.digitSpanObject = null;
         this.associacaoSemanticaObject = null;
+        this.conhecimentoSemanticoObject = null;
     }
 
     public String getNomeCompleto() {
@@ -252,5 +254,12 @@ public class Participante implements Serializable {
     }
     public void setAssociacaoSemanticaObject(AssociacaoSemanticaObject associacaoSemanticaObject) {
         this.associacaoSemanticaObject = associacaoSemanticaObject;
+    }
+
+    public ConhecimentoSemanticoObject getConhecimentoSemanticoObject() {
+        return conhecimentoSemanticoObject;
+    }
+    public void setConhecimentoSemanticoObject(ConhecimentoSemanticoObject conhecimentoSemanticoObject) {
+        this.conhecimentoSemanticoObject = conhecimentoSemanticoObject;
     }
 }
