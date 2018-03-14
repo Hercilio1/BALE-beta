@@ -319,6 +319,7 @@ public class CompVerbalTerceiraAvaliacaoActivity extends AppCompatActivity {
             participante.setCompVerbalObject(aux);
         }
 
+        new CompreensaoVerbalLobbyActivity().atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -332,6 +333,7 @@ public class CompVerbalTerceiraAvaliacaoActivity extends AppCompatActivity {
         //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

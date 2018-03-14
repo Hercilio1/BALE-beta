@@ -82,7 +82,6 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
                 }
             });
         }
-
     }
 
     @Override
@@ -125,5 +124,27 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 6;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getCompVerbalObject().getPrimeiraAvaliacao() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompVerbalObject().getSegundaAvaliacao() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompVerbalObject().getTerceiraAvaliacao() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompVerbalObject().getObservacoes() != null) {
+            numeroDeVerfConcluidos += 3;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getCompVerbalObject().setPorcentagem(porcentagem);
     }
 }

@@ -342,6 +342,7 @@ public class CompVerbalSegundaAvaliacaoActivity extends AppCompatActivity {
              participante.setCompVerbalObject(aux);
          }
 
+         new CompreensaoVerbalLobbyActivity().atualizaPorcentagem(participante);
 
          FirebaseDatabase mFirebaseDatabase;
          final DatabaseReference mParticipanteDatabaseReference;

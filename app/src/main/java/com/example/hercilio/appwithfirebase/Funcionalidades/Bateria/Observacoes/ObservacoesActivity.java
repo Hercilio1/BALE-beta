@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.InformacaoDiscursoLivreObject;
@@ -80,17 +81,9 @@ public class ObservacoesActivity extends AppCompatActivity {
         compreensaoVerbalObject.setObservacoes(mObservacoes.getText().toString());
         participante.setCompVerbalObject(compreensaoVerbalObject);
 
-        FirebaseDatabase mFirebaseDatabase;
-        final DatabaseReference mParticipanteDatabaseReference;
+        new CompreensaoVerbalLobbyActivity().atualizaPorcentagem(participante);
 
-        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        final FirebaseAuth auth = FirebaseAuth.getInstance();
-        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
-
-        //Criar uma váriavel final estava criando um loop no onDataChange
-        //final Participante partAux = participante;
-        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+        registra(participante);
     }
 
     public void registrarInfDiscLivre(Participante participante) {
@@ -103,17 +96,7 @@ public class ObservacoesActivity extends AppCompatActivity {
         informacaoDiscursoLivreObject.setObservacoes(mObservacoes.getText().toString());
         participante.setInformacaoDiscLivreObject(informacaoDiscursoLivreObject);
 
-        FirebaseDatabase mFirebaseDatabase;
-        final DatabaseReference mParticipanteDatabaseReference;
-
-        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        final FirebaseAuth auth = FirebaseAuth.getInstance();
-        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
-
-        //Criar uma váriavel final estava criando um loop no onDataChange
-        //final Participante partAux = participante;
-        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+        registra(participante);
     }
 
     public void registrarNarrativa(Participante participante) {
@@ -126,6 +109,10 @@ public class ObservacoesActivity extends AppCompatActivity {
         narrativaObject.setObservacoes(mObservacoes.getText().toString());
         participante.setNarrativaObject(narrativaObject);
 
+        registra(participante);
+    }
+
+    public void registra(Participante participante) {
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
 
@@ -145,7 +132,9 @@ public class ObservacoesActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.obeservacoes_button, menu);
         //Instanciação das referências.
         MenuItem baleLobbyHomeBtn = menu.findItem(R.id.bale_observacoes_button_concluir);
+        MenuItem baleLobbyEditBtn= menu.findItem(R.id.bale_observacoes_button);
         baleLobbyHomeBtn.setVisible(true);
+        baleLobbyEditBtn.setVisible(false);
         return true;
     }
 

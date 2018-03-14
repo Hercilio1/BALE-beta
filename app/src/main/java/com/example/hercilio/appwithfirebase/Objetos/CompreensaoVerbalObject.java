@@ -24,6 +24,9 @@ public class CompreensaoVerbalObject implements Serializable {
     //Observavoes:
     private String observacoes;
 
+    //Porcentagem:
+    private int porcentagem;
+
     public CompreensaoVerbalObject(){}
 
     //Primeira avaliacao:
@@ -65,4 +68,12 @@ public class CompreensaoVerbalObject implements Serializable {
     //Observavoes:
     public String getObservacoes() { return observacoes; }
     public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
+
+    //Porcentagem:
+    public int getPorcentagem() {
+        return porcentagem;
+    }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
+    }
 }
