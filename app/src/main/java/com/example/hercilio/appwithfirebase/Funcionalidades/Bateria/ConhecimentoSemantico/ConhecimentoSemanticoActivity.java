@@ -385,6 +385,7 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
         conhecimentoSemanticoObject.setValorTotalMetafora(valorTotalMetafora);
         participante.setConhecimentoSemanticoObject(conhecimentoSemanticoObject);
 
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -397,6 +398,40 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
         //Criar uma váriavel final estava criando um loop no onDataChange
         //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 1 + participante.getConhecimentoSemanticoObject().getVerificadoresEditText().size();
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getConhecimentoSemanticoObject().getVerificadores() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getConhecimentoSemanticoObject().getVerificadoresEditText() != null) {
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextProverbio1").equals(""))
+                numeroDeVerfConcluidos += 1;
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextProverbioExplicacao1").equals(""))
+                numeroDeVerfConcluidos += 1;
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextProverbio2").equals(""))
+                numeroDeVerfConcluidos += 1;
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextProverbioExplicacao2").equals(""))
+                numeroDeVerfConcluidos += 1;
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextProverbio2").equals(""))
+                numeroDeVerfConcluidos += 1;
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextProverbioExplicacao2").equals(""))
+                numeroDeVerfConcluidos += 1;
+
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextMetafora1").equals(""))
+                numeroDeVerfConcluidos += 1;
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextMetafora2").equals(""))
+                numeroDeVerfConcluidos += 1;
+            if(!participante.getConhecimentoSemanticoObject().getVerificadoresEditText().get("mEditTextMetafora3").equals(""))
+                numeroDeVerfConcluidos += 1;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getConhecimentoSemanticoObject().setPorcentagem(porcentagem);
     }
 
     @Override

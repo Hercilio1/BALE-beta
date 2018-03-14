@@ -13,6 +13,7 @@ public class ConhecimentoSemanticoObject implements Serializable{
     private Map<String, Integer> verificadores;
     private Map<String, String> verificadoresEditText;
     private int valorTotalProverbio, valorTotalMetafora;
+    private int porcentagem;
 
     public ConhecimentoSemanticoObject(){}
 
@@ -44,5 +45,10 @@ public class ConhecimentoSemanticoObject implements Serializable{
         this.valorTotalMetafora = valorTotalMetafora;
     }
 
-
+    public int getPorcentagem() {
+        return porcentagem;
+    }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
+    }
 }
