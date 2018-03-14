@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.InformacaoDiscursoLivreObject;
+import com.example.hercilio.appwithfirebase.Objetos.NarrativaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,6 +57,11 @@ public class ObservacoesActivity extends AppCompatActivity {
                     mTitle.setText("Informação e Discurso Livre");
                     if(participante.getInformacaoDiscLivreObject() != null && participante.getInformacaoDiscLivreObject().getObservacoes() != null)
                         mObservacoes.setText(participante.getInformacaoDiscLivreObject().getObservacoes());
+                    break;
+                case "NarrativaActivity":
+                    mTitle.setText("Narrativa");
+                    if(participante.getNarrativaObject() != null && participante.getNarrativaObject().getObservacoes() != null)
+                        mObservacoes.setText(participante.getNarrativaObject().getObservacoes());
                     break;
                 default:
                     break;
@@ -110,6 +116,29 @@ public class ObservacoesActivity extends AppCompatActivity {
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
 
+    public void registrarNarrativa(Participante participante) {
+        NarrativaObject narrativaObject;
+        if (participante.getNarrativaObject() == null)
+            narrativaObject = new NarrativaObject();
+        else
+            narrativaObject = participante.getNarrativaObject();
+
+        narrativaObject.setObservacoes(mObservacoes.getText().toString());
+        participante.setNarrativaObject(narrativaObject);
+
+        FirebaseDatabase mFirebaseDatabase;
+        final DatabaseReference mParticipanteDatabaseReference;
+
+        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        final FirebaseAuth auth = FirebaseAuth.getInstance();
+        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+
+        //Criar uma váriavel final estava criando um loop no onDataChange
+        //final Participante partAux = participante;
+        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -145,6 +174,9 @@ public class ObservacoesActivity extends AppCompatActivity {
                             break;
                         case "Informação e Discurso Livre":
                             registrarInfDiscLivre(participante);
+                            break;
+                        case "Narrativa":
+                            registrarNarrativa(participante);
                             break;
                         default:
                             break;

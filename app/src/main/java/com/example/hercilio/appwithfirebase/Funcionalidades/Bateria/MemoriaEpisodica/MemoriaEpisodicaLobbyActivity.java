@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -42,7 +44,10 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memoria_episodica_lobby);
 
-
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         mBtnPrimeiraFase = (Button) findViewById(R.id.button_for_mem_ep_fase_1);
         mBtnSegundaFase = (Button) findViewById(R.id.button_for_mem_ep_fase_2);
@@ -398,6 +403,18 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
         //Criar uma váriavel final estava criando um loop no onDataChange
         //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
+
+        if (itemId == android.R.id.home) {
+            this.onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

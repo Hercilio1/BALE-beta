@@ -2,9 +2,11 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +41,11 @@ public class NomeacaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nomeacao);
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         //Rotina da recyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_nomeacao);
@@ -104,4 +111,15 @@ public class NomeacaoActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
+
+        if (itemId == android.R.id.home) {
+            this.onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

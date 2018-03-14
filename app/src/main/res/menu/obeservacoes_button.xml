@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/bale_observacoes_button"
-        android:title=""
+        android:title="Observações"
         android:orderInCategory="100"
         android:icon="@drawable/ic_border_color_white_24dp"
         app:showAsAction="ifRoom"
-        android:visible="false"/>
+        android:visible="true"/>
 
     <item
         android:id="@+id/bale_observacoes_button_concluir"

@@ -9,4 +9,5 @@
 8 - Criar ampliacao de foto do relogio
 
 9 - Faazer último teste da bateria (PALAVRAS).
+10 - adicionar botao de retorno nos testes faltando
 

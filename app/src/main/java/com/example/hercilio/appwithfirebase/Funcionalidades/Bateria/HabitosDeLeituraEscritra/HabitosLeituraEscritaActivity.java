@@ -7,7 +7,9 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLe
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.content.Intent;
@@ -178,6 +180,10 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
         mProgressView = findViewById(R.id.habitos_progress);
 
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         /* Frequências */
         mRadioRevistasAtualFreq = (RadioGroup) findViewById(R.id.radio_revistas_atual);
@@ -1465,5 +1471,17 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
+
+        if (itemId == android.R.id.home) {
+            this.onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

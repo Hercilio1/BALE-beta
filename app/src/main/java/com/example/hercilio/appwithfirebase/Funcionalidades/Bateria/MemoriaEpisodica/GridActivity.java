@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -53,6 +55,11 @@ public class GridActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memoria_eposodica_segunda_fase);
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         GridAdapter gridAdapter = new GridAdapter(this);
 
@@ -438,4 +445,15 @@ public class GridActivity extends AppCompatActivity {
         return participante;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
+
+        if (itemId == android.R.id.home) {
+            this.onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

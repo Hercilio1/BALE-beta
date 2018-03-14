@@ -2,6 +2,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Compreensao
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,11 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compreensao_verbal);
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         mBtnPrimeiraAvaliacao = (Button) findViewById(R.id.btn_primeira_avaliacao);
         mBtnSegundaAvaliacao = (Button) findViewById(R.id.btn_segunda_avaliacao);
@@ -102,6 +108,9 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
 
         //Faz as transações
         switch (id) {
+            case android.R.id.home:
+                this.onBackPressed();
+                return true;
             case R.id.bale_observacoes_button:
                 Intent intentFromList = getIntent();
                 if (intentFromList != null) {

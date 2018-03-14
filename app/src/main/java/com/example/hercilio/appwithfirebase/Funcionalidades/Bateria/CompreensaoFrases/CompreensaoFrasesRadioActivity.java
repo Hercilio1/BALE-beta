@@ -5,8 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -43,6 +45,11 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compreensao_frase_radio);
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         Button btnContinuar = (Button) findViewById(R.id.btn_continuarRadio);
         mRadioGroupCompreensaoFrases = (RadioGroup) findViewById(R.id.radioGroupRadio);
@@ -174,5 +181,17 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
 
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
+
+        if (itemId == android.R.id.home) {
+            this.onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

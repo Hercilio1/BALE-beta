@@ -2,6 +2,7 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoD
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +28,11 @@ public class InformacaoDiscursolivreLobbyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacao_discursolivre_lobby);
+
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         mBtnInformacao = (Button) findViewById(R.id.btn_informacao);
         mBtnDiscursoLivre = (Button) findViewById(R.id.btn_discurso_livre);
@@ -88,6 +94,9 @@ public class InformacaoDiscursolivreLobbyActivity extends AppCompatActivity {
 
         //Faz as transações
         switch (id) {
+            case android.R.id.home:
+                this.onBackPressed();
+                return true;
             case R.id.bale_observacoes_button:
                 Intent intentFromList = getIntent();
                 if (intentFromList != null) {
