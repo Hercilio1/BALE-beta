@@ -37,7 +37,7 @@ import java.util.ArrayList;
  * Created by 14202151 on 18/05/2017.
  */
 
-public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
+public class CompreensaoDeFrasesRelogioActivity extends AppCompatActivity {
 
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mFirebaseAuth;
@@ -72,7 +72,7 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            boolean isPhoto = participante.getFotoRelogio() != null;
+            boolean isPhoto = participante.getCompFrasesObject().getFotoRelogio() != null;
             if(isPhoto) {
                 autoComplete(participante);
             }
@@ -80,13 +80,14 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
             mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                if(participante.getFotoRelogio() != null) {
-                        registrar(participante);
+                if(participante.getCompFrasesObject().getFotoRelogio() != null) {
+                    atualizaPorcentagem(participante);
+                    registrar(participante);
                 } else {
                     AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
 
                     alert.setTitle("Atenção");
-                    alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
+                    alert.setMessage("A imagem não foi armazena no Banco de Dados. Por favor, espere mais alguns instantes e continue!");
 
                     alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -104,7 +105,7 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
     }
 
     public void autoComplete(Participante participante) {
-        Glide.with(mimageView.getContext()).load(participante.getFotoRelogio()).into(mimageView);
+        Glide.with(mimageView.getContext()).load(participante.getCompFrasesObject().getFotoRelogio()).into(mimageView);
     }
 
     public void registrar(Participante participante) {
@@ -140,13 +141,41 @@ public class CompreensaoFraseRelogioActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                        participante.setFotoRelogio(downloadUrl.toString());
+                        participante.getCompFrasesObject().setFotoRelogio(downloadUrl.toString());
                         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
                         return;
                     }
                 });
             }
         }
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 3;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getCompFrasesObject().getValorFinal1() >=0) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompFrasesObject().getValorFinal2() >=0) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompFrasesObject().getFotoRelogio() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getCompFrasesObject().setPorcentagem(porcentagem);
+
+        FirebaseDatabase mFirebaseDatabase;
+        final DatabaseReference mParticipanteDatabaseReference;
+
+        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        final FirebaseAuth auth = FirebaseAuth.getInstance();
+        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
 
     @Override

@@ -1,13 +1,11 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases;
 
-import android.animation.Animator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,25 +14,17 @@ import android.widget.RadioGroup;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoFrasesObject;
-import com.example.hercilio.appwithfirebase.Objetos.CompreensaoFrasesRadioObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
-import com.example.hercilio.appwithfirebase.Objetos.Perguntas;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 /**
  * Created by Hercilio on 31/01/2018.
  */
 
-public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
+public class CompreensaoDeFrases2Activity extends AppCompatActivity {
 
     private RadioGroup mRadioGroupCompreensaoFrases;
     private int checkedRadioGroupCompreensaoFrases;
@@ -44,7 +34,7 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compreensao_frase_radio);
+        setContentView(R.layout.activity_compreensao_frases_2);
 
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -59,7 +49,7 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            if(participante.getCompFrasesRadioObject() != null) {
+            if(participante.getCompFrasesObject() != null && participante.getCompFrasesObject().getValorFinal2() >= 0) {
                 autoComplete(participante);
             }
 
@@ -68,7 +58,7 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
                 public void onClick(View view) {
                 registrar(participante);
                     if(!validaRadioButtons) {
-                        Intent intent = new Intent(getBaseContext(), CompreensaoFraseRelogioActivity.class);
+                        Intent intent = new Intent(getBaseContext(), CompreensaoDeFrasesRelogioActivity.class);
                         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                         startActivity(intent);
                     } else {
@@ -111,7 +101,7 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
     }
 
     public void autoComplete(Participante participante) {
-        if(participante.getCompFrasesRadioObject().getValorFinal() == 1)
+        if(participante.getCompFrasesObject().getValorFinal2() == 1)
             mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(0).getId());
         else
             mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(1).getId());
@@ -137,36 +127,39 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
     }
 
     public void traduzRadioButtonSelecionado(Integer selecao, Participante participante) {
+
         if (selecao != -1) {
-            if (participante.getCompFrasesRadioObject() != null) {
+            if (participante.getCompFrasesObject() != null) {
                 switch (selecao) {
                     case 0:
-                        participante.getCompFrasesRadioObject().setValorFinal(0);
+                        participante.getCompFrasesObject().setValorFinal2(0);
                         break;
                     case 1:
-                        participante.getCompFrasesRadioObject().setValorFinal(1);
+                        participante.getCompFrasesObject().setValorFinal2(1);
                         break;
                     default:
                         break;
                 }
             } else {
+                CompreensaoFrasesObject compreensaoFrasesObject = new CompreensaoFrasesObject();
                 switch (selecao) {
                     case 0:
-                        participante.setCompFrasesRadioObject();
-                        participante.getCompFrasesRadioObject().setValorFinal(0);
+                        compreensaoFrasesObject.setValorFinal2(0);
                         break;
                     case 1:
-                        participante.setCompFrasesRadioObject();
-                        participante.getCompFrasesRadioObject().setValorFinal(1);
+                        compreensaoFrasesObject.setValorFinal2(1);
                         break;
                     default:
                         break;
                 }
+                participante.setCompFrasesObject(compreensaoFrasesObject);
             }
         }
     }
 
-    public void alteraDadosFirebase(final Participante participante) {
+    public void alteraDadosFirebase(Participante participante) {
+
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -175,12 +168,27 @@ public class CompreensaoFrasesRadioActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         final FirebaseAuth auth = FirebaseAuth.getInstance();
         mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
-
-//        Criar uma váriavel final estava criando um loop no onDataChange
-//        final Participante partAux = participante;
-
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
 
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 3;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getCompFrasesObject().getValorFinal1() >=0) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompFrasesObject().getValorFinal2() >=0) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompFrasesObject().getFotoRelogio() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getCompFrasesObject().setPorcentagem(porcentagem);
     }
 
     @Override

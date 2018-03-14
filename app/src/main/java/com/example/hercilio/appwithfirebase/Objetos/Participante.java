@@ -22,8 +22,6 @@ public class Participante implements Serializable {
 
     private HabitosLeituraEscritaObject hleObject;
     private CompreensaoFrasesObject compFrasesObject;
-    private CompreensaoFrasesRadioObject compFrasesRadioObject;
-    private String fotoRelogio;
     private CompreensaoVerbalObject compVerbalObject;
     private InformacaoDiscursoLivreObject informacaoDiscLivreObject;
     private NarrativaObject narrativaObject;
@@ -62,8 +60,6 @@ public class Participante implements Serializable {
 
         this.hleObject = null;
         this.compFrasesObject = null;
-        this.compFrasesRadioObject = null;
-        this.fotoRelogio = null;
         this.compVerbalObject = null;
         this.informacaoDiscLivreObject = null;
         this.memEpObject = null;
@@ -183,20 +179,8 @@ public class Participante implements Serializable {
     }
 
     public CompreensaoFrasesObject getCompFrasesObject() { return compFrasesObject; }
-    public void setCompFrasesObject() { compFrasesObject = new CompreensaoFrasesObject(); }
-
-    public CompreensaoFrasesRadioObject getCompFrasesRadioObject() {
-        return compFrasesRadioObject;
-    }
-    public void setCompFrasesRadioObject() {
-        compFrasesRadioObject = new CompreensaoFrasesRadioObject();
-    }
-
-    public String getFotoRelogio() {
-        return fotoRelogio;
-    }
-    public void setFotoRelogio(String fotoRelogio) {
-        this.fotoRelogio = fotoRelogio;
+    public void setCompFrasesObject(CompreensaoFrasesObject compFrasesObject) {
+        this.compFrasesObject = compFrasesObject;
     }
 
     public CompreensaoVerbalObject getCompVerbalObject() {

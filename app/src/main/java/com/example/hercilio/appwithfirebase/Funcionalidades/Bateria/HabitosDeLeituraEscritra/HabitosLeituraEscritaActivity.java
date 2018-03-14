@@ -28,11 +28,8 @@ import com.example.hercilio.appwithfirebase.Objetos.Perguntas;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -1447,7 +1444,7 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
 
     public void alteraDadosFirebase(Participante participante) {
 
-        autlizaPorcentagem(participante);
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -1460,7 +1457,7 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
 
-    public void autlizaPorcentagem(Participante participante) {
+    public void atualizaPorcentagem(Participante participante) {
         int numeroDeVerf = 1;
         int numeroDeVerfConcluidos = 0;
 

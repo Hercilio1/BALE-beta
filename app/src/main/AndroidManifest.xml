@@ -44,7 +44,7 @@
             android:screenOrientation="userLandscape" >
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrasesActivity"
+            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrases1Activity"
             android:label="Compreensão de Frases"
             android:screenOrientation="userLandscape" >
         </activity>
@@ -54,12 +54,12 @@
             android:screenOrientation="userLandscape" >
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFrasesRadioActivity"
+            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrases2Activity"
             android:label="Compreensão de Frases"
             android:screenOrientation="userLandscape">
         </activity>
         <activity
-            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoFraseRelogioActivity"
+            android:name=".Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrasesRelogioActivity"
             android:label="Compreensão de Frases"
             android:screenOrientation="userLandscape" >
         </activity>

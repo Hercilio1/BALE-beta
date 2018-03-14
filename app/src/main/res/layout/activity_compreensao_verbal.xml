@@ -20,7 +20,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_span="6"
-            android:text="@string/bateria_tipopergunta_compfrases"
+            android:text="Compreensão Verbal"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#000"
             android:textSize="24sp"

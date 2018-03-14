@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.AssociacaoSemantica.AssociacaoSemanticaActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrasesActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases.CompreensaoDeFrases1Activity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.ConhecimentoSemantico.ConhecimentoSemanticoActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.DigitSpan.DigitSpanActivity;
@@ -20,8 +20,6 @@ import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDi
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.MemoriaEpisodica.MemoriaEpisodicaLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Narrativa.NarrativaActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.NomeacaoActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.NomeacaoAdapter;
-import com.example.hercilio.appwithfirebase.Objetos.NarrativaObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
 
@@ -87,7 +85,7 @@ public class BaleLobbyFragment extends Fragment {
         rlyCompFrases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CompreensaoDeFrasesActivity.class);
+                Intent intent = new Intent(getActivity(), CompreensaoDeFrases1Activity.class);
                 intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, mParticipante);
                 startActivity(intent);
             }

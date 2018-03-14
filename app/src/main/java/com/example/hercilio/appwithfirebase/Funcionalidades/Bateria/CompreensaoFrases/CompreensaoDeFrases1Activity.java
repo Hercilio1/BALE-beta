@@ -1,41 +1,31 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoFrases;
 
-import android.animation.Animator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoFrasesObject;
-import com.example.hercilio.appwithfirebase.Objetos.CompreensaoFrasesRadioObject;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
-import com.example.hercilio.appwithfirebase.Objetos.Perguntas;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 /**
  * Created by Hercilio on 31/01/2018.
  */
 
-public class CompreensaoDeFrasesActivity extends AppCompatActivity {
+public class CompreensaoDeFrases1Activity extends AppCompatActivity {
 
     private RadioGroup mRadioGroupCompreensaoFrases;
     private int checkedRadioGroupCompreensaoFrases;
@@ -45,7 +35,7 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compreensao_frases);
+        setContentView(R.layout.activity_compreensao_frases_1);
 
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -60,7 +50,7 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            if(participante.getCompFrasesObject() != null) {
+            if(participante.getCompFrasesObject() != null && participante.getCompFrasesObject().getValorFinal1() >= 0) {
                 autoComplete(participante.getCompFrasesObject());
             }
 
@@ -69,7 +59,7 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
                 public void onClick(View view) {
                 registrar(participante);
                 if(!validaRadioButtons) {
-                    Intent intent = new Intent(getBaseContext(), CompreensaoFrasesRadioActivity.class);
+                    Intent intent = new Intent(getBaseContext(), CompreensaoDeFrases2Activity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
                 } else {
@@ -117,7 +107,7 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
     }
 
     public void autoComplete(CompreensaoFrasesObject compFrasesObj) {
-        mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(compFrasesObj.getValorFinal()).getId());
+        mRadioGroupCompreensaoFrases.check(mRadioGroupCompreensaoFrases.getChildAt(compFrasesObj.getValorFinal1()).getId());
     }
 
     public long onFrequenciaRadioButtonClicked(RadioGroup mRadio) {
@@ -148,40 +138,41 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
             if (participante.getCompFrasesObject() != null) {
                 switch (selecao) {
                     case 0:
-                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        participante.getCompFrasesObject().setValorFinal1(selecao);
                         break;
                     case 1:
-                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        participante.getCompFrasesObject().setValorFinal1(selecao);
                         break;
                     case 2:
-                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        participante.getCompFrasesObject().setValorFinal1(selecao);
                         break;
                     default:
                         break;
                 }
             } else {
+                CompreensaoFrasesObject compreensaoFrasesObject = new CompreensaoFrasesObject();
                 switch (selecao) {
                     case 0:
-                        participante.setCompFrasesObject();
-                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        compreensaoFrasesObject.setValorFinal1(selecao);
                         break;
                     case 1:
-                        participante.setCompFrasesObject();
-                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        compreensaoFrasesObject.setValorFinal1(selecao);
                         break;
                     case 2:
-                        participante.setCompFrasesObject();
-                        participante.getCompFrasesObject().setValorFinal(selecao);
+                        compreensaoFrasesObject.setValorFinal1(selecao);
                         break;
                     default:
                         break;
                 }
+                participante.setCompFrasesObject(compreensaoFrasesObject);
             }
         }
+
     }
 
-    public void alteraDadosFirebase(final Participante participante) {
+    public void alteraDadosFirebase(Participante participante) {
 
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -190,12 +181,28 @@ public class CompreensaoDeFrasesActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         final FirebaseAuth auth = FirebaseAuth.getInstance();
         mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
-
-//        Criar uma váriavel final estava criando um loop no onDataChange
-//        final Participante partAux = participante;
-
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 3;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getCompFrasesObject().getValorFinal1() >=0) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompFrasesObject().getValorFinal2() >=0) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getCompFrasesObject().getFotoRelogio() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getCompFrasesObject().setPorcentagem(porcentagem);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
