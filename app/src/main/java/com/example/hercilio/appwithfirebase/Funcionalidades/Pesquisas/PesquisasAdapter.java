@@ -64,19 +64,8 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
     public void onBindViewHolder(final PesquisaItemView holder, int position) {
         holder.mItem = items.get(position);
         holder.mIdView.setText(items.get(position).getNomeCompleto());
-        //holder.mContentView.setText(mValues.get(position).nomeExaminador);
         holder.mContentView.setText(items.get(position).getCpf());
-
-//        holder.mView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (null != mListener) {
-//                    // Notify the active callbacks interface (the activity, if the
-//                    // fragment is attached to one) that an item has been selected.
-//                    mListener.onListFragmentInteraction(holder.mItem);
-//                }
-//            }
-//        });
+        holder.mCircleProgressView.setText(items.get(position).getPorcentagem()+"");
     }
 
     @Override

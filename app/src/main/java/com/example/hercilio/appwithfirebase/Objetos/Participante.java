@@ -18,7 +18,7 @@ public class Participante implements Serializable {
     private boolean ehAposentado;
     private String linguaMaterna;
     private String outrasLinguas;
-    private String observacaoPosAvaliacao;
+    private int porcentagem;
 
     private HabitosLeituraEscritaObject hleObject;
     private CompreensaoFrasesObject compFrasesObject;
@@ -58,9 +58,9 @@ public class Participante implements Serializable {
         this.ehAposentado = ehAposentado;
         this.linguaMaterna = linguaMaterna;
         this.outrasLinguas = outrasLinguas;
-        this.observacaoPosAvaliacao = observacaoPosAvaliacao;
-        this.hleObject = null;
+        this.porcentagem = 0;
 
+        this.hleObject = null;
         this.compFrasesObject = null;
         this.compFrasesRadioObject = null;
         this.fotoRelogio = null;
@@ -119,8 +119,8 @@ public class Participante implements Serializable {
         return outrasLinguas;
     }
 
-    public String getObservacaoPosAvaliacao() {
-        return observacaoPosAvaliacao;
+    public int getPorcentagem() {
+        return porcentagem;
     }
 
     public void setNomeCompleto(String nomeCompleto) {
@@ -167,10 +167,9 @@ public class Participante implements Serializable {
         this.outrasLinguas = outrasLinguas;
     }
 
-    public void setObservacaoPosAvaliacao(String observacaoPosAvaliacao) {
-        this.observacaoPosAvaliacao = observacaoPosAvaliacao;
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
     }
-
 
     /**********************
      * OBJETOS DA BATERIA *

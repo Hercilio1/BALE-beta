@@ -1445,8 +1445,9 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         }
     }
 
-    public void alteraDadosFirebase(final Participante participante) {
+    public void alteraDadosFirebase(Participante participante) {
 
+        autlizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -1456,21 +1457,20 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
         final FirebaseAuth auth = FirebaseAuth.getInstance();
         mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
-//        Criar uma váriavel final estava criando um loop no onDataChange
-//        final Participante partAux = participante;
+        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+    }
 
-        mParticipanteDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+    public void autlizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 1;
+        int numeroDeVerfConcluidos = 0;
 
-                mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+        if(participante.getHleObject().getPerguntas() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
 
-            }
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
+        participante.getHleObject().setPorcentagem(porcentagem);
     }
 
     @Override
