@@ -28,11 +28,10 @@ public class BaleLobbyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bale_lobby);
 
-//        getSupportActionBar().hide();
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.fragment_container_bale_lobby, new BaleLobbyFragment())
-//                .commit();
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
@@ -48,32 +47,19 @@ public class BaleLobbyActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        //Instanciação das referências.
-        baleLobbyHomeBtn = menu.findItem(R.id.bale_lobby_home_btn);
-        baleLobbyHomeBtn.setVisible(true);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        final int itemId = item.getItemId();
 
-        int id = item.getItemId();
-
-        //Faz as transações
-        switch (id) {
-            case R.id.bale_lobby_home_btn:
+        if (itemId == android.R.id.home) {
+            Intent intentFromList = getIntent();
+            if (intentFromList != null) {
+                final Participante participante = (Participante) intentFromList.getSerializableExtra(EXTRA_PARTICIPANTE);
                 Intent intent = new Intent(this, AdminActivity.class);
                 startActivity(intent);
-                return true;
-            default:
-                break;
+            }
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
