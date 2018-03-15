@@ -12,6 +12,8 @@ public class FluenciaVerbalObject implements Serializable {
     private String animais00s15s, animais16s30s, animais31s45s, animais46s60s;
     //Palavras com P
     private String palavras00s15s, palavras16s30s, palavras31s45s, palavras46s60s;
+    //Porcentagem
+    private int porcentagem;
 
     public FluenciaVerbalObject(){}
 
@@ -77,5 +79,13 @@ public class FluenciaVerbalObject implements Serializable {
 
     public void setPalavras46s60s(String palavras46s60s) {
         this.palavras46s60s = palavras46s60s;
+    }
+
+    //Porcentagem:
+    public int getPorcentagem() {
+        return porcentagem;
+    }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
     }
 }

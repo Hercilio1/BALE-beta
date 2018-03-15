@@ -270,37 +270,26 @@ public class FluenciaVerbalActivity extends AppCompatActivity {
     }
 
     public void registrar(Participante participante) {
+        FluenciaVerbalObject fluenciaVerbalObject;
 
-        if(participante.getFluenciaVerbalObject() == null) {
-            FluenciaVerbalObject fluenciaVerbalObject = new FluenciaVerbalObject();
-            //Animais
-            fluenciaVerbalObject.setAnimais00s15s(mEditTextAnimais0p15.getText().toString());
-            fluenciaVerbalObject.setAnimais16s30s(mEditTextAnimais16p30.getText().toString());
-            fluenciaVerbalObject.setAnimais31s45s(mEditTextAnimais31p45.getText().toString());
-            fluenciaVerbalObject.setAnimais46s60s(mEditTextAnimais46p60.getText().toString());
-            //Palavras
-            fluenciaVerbalObject.setPalavras00s15s(mEditTextPalavras0p15.getText().toString());
-            fluenciaVerbalObject.setPalavras16s30s(mEditTextPalavras16p30.getText().toString());
-            fluenciaVerbalObject.setPalavras31s45s(mEditTextPalavras31p45.getText().toString());
-            fluenciaVerbalObject.setPalavras46s60s(mEditTextPalavras46p60.getText().toString());
+        if(participante.getFluenciaVerbalObject() == null)
+            fluenciaVerbalObject = new FluenciaVerbalObject();
+        else
+            fluenciaVerbalObject = participante.getFluenciaVerbalObject();
 
-            participante.setFluenciaVerbalObject(fluenciaVerbalObject);
-        } else {
-            FluenciaVerbalObject fluenciaVerbalObject = participante.getFluenciaVerbalObject();
-            //Animais
-            fluenciaVerbalObject.setAnimais00s15s(mEditTextAnimais0p15.getText().toString());
-            fluenciaVerbalObject.setAnimais16s30s(mEditTextAnimais16p30.getText().toString());
-            fluenciaVerbalObject.setAnimais31s45s(mEditTextAnimais31p45.getText().toString());
-            fluenciaVerbalObject.setAnimais46s60s(mEditTextAnimais46p60.getText().toString());
-            //Palavras
-            fluenciaVerbalObject.setPalavras00s15s(mEditTextPalavras0p15.getText().toString());
-            fluenciaVerbalObject.setPalavras16s30s(mEditTextPalavras16p30.getText().toString());
-            fluenciaVerbalObject.setPalavras31s45s(mEditTextPalavras31p45.getText().toString());
-            fluenciaVerbalObject.setPalavras46s60s(mEditTextPalavras46p60.getText().toString());
+        //Animais
+        fluenciaVerbalObject.setAnimais00s15s(mEditTextAnimais0p15.getText().toString());
+        fluenciaVerbalObject.setAnimais16s30s(mEditTextAnimais16p30.getText().toString());
+        fluenciaVerbalObject.setAnimais31s45s(mEditTextAnimais31p45.getText().toString());
+        fluenciaVerbalObject.setAnimais46s60s(mEditTextAnimais46p60.getText().toString());
+        //Palavras
+        fluenciaVerbalObject.setPalavras00s15s(mEditTextPalavras0p15.getText().toString());
+        fluenciaVerbalObject.setPalavras16s30s(mEditTextPalavras16p30.getText().toString());
+        fluenciaVerbalObject.setPalavras31s45s(mEditTextPalavras31p45.getText().toString());
+        fluenciaVerbalObject.setPalavras46s60s(mEditTextPalavras46p60.getText().toString());
+        participante.setFluenciaVerbalObject(fluenciaVerbalObject);
 
-            participante.setFluenciaVerbalObject(fluenciaVerbalObject);
-        }
-
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -325,6 +314,19 @@ public class FluenciaVerbalActivity extends AppCompatActivity {
         mEditTextPalavras16p30.setText(participante.getFluenciaVerbalObject().getPalavras16s30s());
         mEditTextPalavras31p45.setText(participante.getFluenciaVerbalObject().getPalavras31s45s());
         mEditTextPalavras46p60.setText(participante.getFluenciaVerbalObject().getPalavras46s60s());
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 1;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getFluenciaVerbalObject() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getFluenciaVerbalObject().setPorcentagem(porcentagem);
     }
 
     @Override
