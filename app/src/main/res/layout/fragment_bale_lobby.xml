@@ -15,7 +15,7 @@
         android:padding="10dp" >
 
         <at.grabner.circleprogress.CircleProgressView
-            android:id="@+id/circleView"
+            android:id="@+id/circleView_hle"
             android:layout_width="100dp"
             android:layout_height="100dp"
             CircleProgressView:cpv_value="0"
@@ -45,8 +45,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="18dp"
             android:layout_marginStart="18dp"
-            android:layout_toEndOf="@+id/circleView"
-            android:layout_toRightOf="@+id/circleView"
+            android:layout_toEndOf="@+id/circleView_hle"
+            android:layout_toRightOf="@+id/circleView_hle"
             android:gravity="center_vertical"
             android:paddingTop="8dp"
             android:text="Habitos de Leitura e Escrita"

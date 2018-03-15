@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.transition.CircularPropagation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Narrativa.Na
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.NomeacaoActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
+
+import at.grabner.circleprogress.CircleProgressView;
 
 /**
  * Created by Hercilio on 24/01/2018.
@@ -65,13 +68,47 @@ public class BaleLobbyFragment extends Fragment {
         RelativeLayout rlyCompFrases = (RelativeLayout) getActivity().findViewById(R.id.rly_compreensao_frases);
         RelativeLayout rlyMemEp = (RelativeLayout) getActivity().findViewById(R.id.rly_memoria_episodica);
         RelativeLayout rlyCompVerbal = (RelativeLayout) getActivity().findViewById(R.id.rly_compreensao_verbal);
-        RelativeLayout rlyInfDiscNarr = (RelativeLayout) getActivity().findViewById(R.id.rly_informacao_discursolivre);
+        RelativeLayout rlyInfDisc = (RelativeLayout) getActivity().findViewById(R.id.rly_informacao_discursolivre);
         RelativeLayout rlyNarrativa = (RelativeLayout)  getActivity().findViewById(R.id.rly_narrativa);
         RelativeLayout rlyFluenciaVerbal = (RelativeLayout) getActivity().findViewById(R.id.rly_fluencia_verbal);
         RelativeLayout rlyNomeacao = (RelativeLayout) getActivity().findViewById(R.id.rly_nomeacao);
         RelativeLayout rlyDigitSpan = (RelativeLayout) getActivity().findViewById(R.id.rly_digit_span);
         RelativeLayout rlyAssocSemant = (RelativeLayout) getActivity().findViewById(R.id.rly_associacao_semantica);
         RelativeLayout rlyConhecimentoSemantico = (RelativeLayout) getActivity().findViewById(R.id.rly_conhecimento_semantico);
+
+        CircleProgressView cpvHLE = (CircleProgressView) getActivity().findViewById(R.id.circleView_hle);
+        cpvHLE.setValue(mParticipante.getHleObject().getPorcentagem());
+
+        CircleProgressView cpvCompFrases = (CircleProgressView) getActivity().findViewById(R.id.circleView_comp_frases);
+        cpvCompFrases.setValue(mParticipante.getCompFrasesObject().getPorcentagem());
+
+        CircleProgressView cpvMemEp = (CircleProgressView) getActivity().findViewById(R.id.circleView_mem_ep);
+        cpvMemEp.setValue(mParticipante.getMemEpObject().getPorcentagem());
+
+        CircleProgressView cpvCompVerbal = (CircleProgressView) getActivity().findViewById(R.id.circleView_comp_verbal);
+        cpvCompVerbal.setValue(mParticipante.getCompVerbalObject().getPorcentagem());
+
+        CircleProgressView cpvInfDisc = (CircleProgressView) getActivity().findViewById(R.id.circleView_informacao_discursolivre);
+        cpvInfDisc.setValue(mParticipante.getInformacaoDiscLivreObject().getPorcentagem());
+
+        CircleProgressView cpvNarrativa = (CircleProgressView) getActivity().findViewById(R.id.circleView_narrativa);
+        cpvNarrativa.setValue(mParticipante.getNarrativaObject().getPorcentagem());
+
+        CircleProgressView cpvFluenciaVerbal = (CircleProgressView) getActivity().findViewById(R.id.circleView_fluencia_verbal);
+        cpvFluenciaVerbal.setValue(mParticipante.getFluenciaVerbalObject().getPorcentagem());
+
+        CircleProgressView cpvNomeacao = (CircleProgressView) getActivity().findViewById(R.id.circleView_nomeacao);
+        cpvNomeacao.setValue(mParticipante.getNomeacaoObject().getPorcentagem());
+
+        CircleProgressView cpvDigitSpan = (CircleProgressView) getActivity().findViewById(R.id.circleView_digit_span);
+        cpvDigitSpan.setValue(mParticipante.getDigitSpanObject().getPorcentagem());
+
+        CircleProgressView cpvAssocSemant = (CircleProgressView) getActivity().findViewById(R.id.circleView_associacao_semantica);
+        cpvAssocSemant.setValue(mParticipante.getAssociacaoSemanticaObject().getPorcentagem());
+
+        CircleProgressView cpvConhecimentoSemantico = (CircleProgressView) getActivity().findViewById(R.id.circleView_conhecimento_semantico);
+        cpvConhecimentoSemantico.setValue(mParticipante.getConhecimentoSemanticoObject().getPorcentagem());
+
 
         rlyHLE.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +146,7 @@ public class BaleLobbyFragment extends Fragment {
             }
         });
 
-        rlyInfDiscNarr.setOnClickListener(new View.OnClickListener() {
+        rlyInfDisc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), InformacaoDiscursolivreLobbyActivity.class);
