@@ -65,7 +65,7 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
         holder.mItem = items.get(position);
         holder.mIdView.setText(items.get(position).getNomeCompleto());
         holder.mContentView.setText(items.get(position).getCpf());
-        holder.mCircleProgressView.setText(items.get(position).getPorcentagem()+"");
+        holder.mCircleProgressView.setValue(items.get(position).getPorcentagem());
     }
 
     @Override

@@ -1,7 +1,7 @@
 ﻿Metas de hoje:
 1 - Fazer lobby para normal users 					1- COMPLETO
 2 - Atualizar dados de quantos participantes um user tem 		2- COMPLETO
-3 - Atualzar porcentagem - Olhas classe de app-bale-master Pesquisa
+3 - Atualzar porcentagem - Olhas classe de app-bale-master Pesquisa	3- COMPLETO
 4 - Fazer pesquisas finalizadas
 5 - Terminar Bateria 							5- COMPLETO
 6 - Criar uma página para mostrar resultados finais
