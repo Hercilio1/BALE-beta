@@ -8,6 +8,8 @@
 7 - Corrigir Botao home para normal users
 8 - Criar ampliacao de foto do relogio
 
+
 9 - Faazer último teste da bateria (PALAVRAS).
 10 - adicionar botao de retorno nos testes faltando			10 - COMPLETO
+11 - criar tela com dados do usuário
 

@@ -178,6 +178,7 @@ public class AssociacaoSemanticaActivity extends AppCompatActivity {
         associacaoSemanticaObject.setValorTotal(total);
         participante.setAssociacaoSemanticaObject(associacaoSemanticaObject);
 
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -191,6 +192,55 @@ public class AssociacaoSemanticaActivity extends AppCompatActivity {
         //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
 
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 12;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getAssociacaoSemanticaObject() != null) {
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("maçã – uva")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("maçã – uva") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("óculos – livro")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("óculos – livro") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("rato – gato")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("rato – gato") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("pente – espelho")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("pente – espelho") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("árvore – maçã")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("árvore – maçã") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("xícara – chaleira")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("xícara – chaleira") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("morcego – coruja")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("morcego – coruja") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("mala – camisa")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("mala – camisa") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("borboleta – lagarta")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("borboleta – lagarta") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("cadeado – bicicleta")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("cadeado – bicicleta") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("elefante – gorila")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("elefante – gorila") >= 0)
+                numeroDeVerfConcluidos += 1;
+            if(participante.getAssociacaoSemanticaObject().getVerificadores().containsKey("isqueiro – vela")
+                    && participante.getAssociacaoSemanticaObject().getVerificadores().get("isqueiro – vela") >= 0)
+                numeroDeVerfConcluidos += 1;
+
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getAssociacaoSemanticaObject().setPorcentagem(porcentagem);
     }
 
     @Override
