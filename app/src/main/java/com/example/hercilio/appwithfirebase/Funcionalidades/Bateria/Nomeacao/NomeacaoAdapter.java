@@ -49,6 +49,22 @@ public class NomeacaoAdapter extends RecyclerView.Adapter<NomeacaoAdapter.Nomeac
             , R.drawable.n1_cesta, R.drawable.n2_cavalo, R.drawable.n3_aviao, R.drawable.n4_vaca
             , R.drawable.o1_onibus, R.drawable.o2_rato, R.drawable.o3_chave, R.drawable.o4_peixe};
 
+    private String[] strings = {"a1_chave_de_fenda", "a2_esquilo", "a3_regador", "a4_rinocerounte"
+            , "b1_chaved_e_fenda", "b2_pinguim", "b3_escova_de_dentes", "b4_aguia"
+            , "c1_serrote", "c2_avestruz", "c3_alicate", "c4_canguru"
+            , "d1_lixeira", "d2_urso", "d3_pente", "d4_pavao"
+            , "e1_pincel", "e2_cisne", "e3_sofa", "e4_jacare"
+            , "f1_escova", "f2_pera", "f3_tesoura", "f4_milho"
+            , "g1_machado", "g2_sapo", "g3_motocicleta", "g4_abacaxi"
+            , "h1_carta", "h2_tartaruga", "h3_helicoptero", "h4_coruja"
+            , "i1_mala", "i2_elefante", "i3_barril", "i4_tigre"
+            , "j1_gravata", "j2_maca", "j3_vela", "j4_zebra"
+            , "k1_guarda_chuva", "k2_galinha", "k3_copo", "k4_tomate"
+            , "l1_piano", "l2_pato", "l3_caminhao", "l4_cachorro"
+            , "m1_sino", "m2_banana", "m3_galo", "m4_trem"
+            , "n1_cesta", "n2_cavalo", "n3_aviao", "n4_vaca"
+            , "o1_onibus", "o2_rato", "o3_chave", "o4_peixe"};
+
     private com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.OnListFragmentInteractionListener mListener;
 
     public void setListener(com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Nomeacao.OnListFragmentInteractionListener onListener) {
@@ -76,7 +92,7 @@ public class NomeacaoAdapter extends RecyclerView.Adapter<NomeacaoAdapter.Nomeac
         holder.mImageView.setTag(items[position]);
         holder.mImageView.setBackgroundColor(Color.LTGRAY);
 
-        holder.mTextView.setTag(items[position]);
+        holder.mTextView.setTag(strings[position]);
 
         Intent intentFromList = activity.getIntent();
         if (intentFromList != null) {
@@ -85,13 +101,10 @@ public class NomeacaoAdapter extends RecyclerView.Adapter<NomeacaoAdapter.Nomeac
             if(participante.getNomeacaoObject() != null) {
                 Map<String, String> verificadores = participante.getNomeacaoObject().getVerificadores();
                 if (verificadores != null) {
-                    holder.mTextView.setText(verificadores.get("" + items[position]));
+                    holder.mTextView.setText(verificadores.get(strings[position]));
                 }
             }
         }
-
-
-
     }
 
     @Override
@@ -118,7 +131,7 @@ public class NomeacaoAdapter extends RecyclerView.Adapter<NomeacaoAdapter.Nomeac
             mImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListener.onListFragmentInteraction(mImageView);
+                    mListener.onListFragmentInteraction(mImageView, mTextView);
                 }
             });
         }

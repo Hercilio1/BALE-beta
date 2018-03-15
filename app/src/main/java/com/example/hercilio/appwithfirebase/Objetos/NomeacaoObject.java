@@ -10,6 +10,7 @@ import java.util.Map;
 public class NomeacaoObject implements Serializable {
     //Primeira avalicao:
     private Map<String, String> verificadores;
+    private int porcentagem;
 
     public NomeacaoObject(){}
 
@@ -19,5 +20,12 @@ public class NomeacaoObject implements Serializable {
 
     public void setVerificadores(Map<String, String> verificadores) {
         this.verificadores = verificadores;
+    }
+
+    public int getPorcentagem() {
+        return porcentagem;
+    }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
     }
 }

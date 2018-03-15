@@ -25,6 +25,7 @@ import java.util.Map;
 public class ImagemExpandidaNomeacaoActivity extends AppCompatActivity {
 
     public static final String IMAGEM_EXPANDIDA = "Integer[]";
+    public static final String KEY_IMAGEM_EXPANDIDA = "String[]";
 
     private Button mBtnRegistrar;
     private EditText mEditText;
@@ -42,40 +43,44 @@ public class ImagemExpandidaNomeacaoActivity extends AppCompatActivity {
 
         mBtnRegistrar = (Button) findViewById(R.id.imagem_expandida_nomeacao_btn);
         mEditText = (EditText) findViewById(R.id.imagem_expandida_nomeacao_et);
-        verificadores = new HashMap<>();
+
 
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Integer[] ref = (Integer[]) intentFromList.getSerializableExtra(IMAGEM_EXPANDIDA);
+            final String[] refKey = (String[]) intentFromList.getSerializableExtra(KEY_IMAGEM_EXPANDIDA);
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+
+            if(participante.getNomeacaoObject() != null
+                    && participante.getNomeacaoObject().getVerificadores() != null)
+                verificadores = participante.getNomeacaoObject().getVerificadores();
+            else
+                verificadores = new HashMap<>();
 
             ImageView imagem = (ImageView) findViewById(R.id.imagem_expandida_nomeacao_img);
             imagem.setImageResource(ref[0]);
+            if(verificadores.containsKey(refKey[0]))
+                mEditText.setText(verificadores.get(refKey[0]));
 
             mBtnRegistrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(participante.getNomeacaoObject() == null) {
-                        verificadores.put(""+ref[0], mEditText.getText().toString());
-                        NomeacaoObject nomeacaoObject = new NomeacaoObject();
-                        nomeacaoObject.setVerificadores(verificadores);
-                        participante.setNomeacaoObject(nomeacaoObject);
-                    } else {
-                        NomeacaoObject nomeacaoObject = participante.getNomeacaoObject();
-                        verificadores = nomeacaoObject.getVerificadores();
-                        verificadores.put(""+ref[0], mEditText.getText().toString());
-                        nomeacaoObject.setVerificadores(verificadores);
-                        participante.setNomeacaoObject(nomeacaoObject);
-                    }
+                    NomeacaoObject nomeacaoObject;
+                    if(participante.getNomeacaoObject() == null)
+                        nomeacaoObject = new NomeacaoObject();
+                    else
+                        nomeacaoObject = participante.getNomeacaoObject();
+
+                    verificadores.put(refKey[0], mEditText.getText().toString());
+                    nomeacaoObject.setVerificadores(verificadores);
+                    participante.setNomeacaoObject(nomeacaoObject);
 
                     Intent intent = new Intent(getBaseContext(),  NomeacaoActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
                 }
             });
-
         }
-
     }
 
     @Override
@@ -83,13 +88,7 @@ public class ImagemExpandidaNomeacaoActivity extends AppCompatActivity {
         final int itemId = item.getItemId();
 
         if (itemId == android.R.id.home) {
-            Intent intentFromList = getIntent();
-            if (intentFromList != null) {
-                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
-                Intent intent = new Intent(this, BaleLobbyActivity.class);
-                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                startActivity(intent);
-            }
+            this.onBackPressed();
             return true;
         }
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
@@ -35,7 +36,21 @@ public class NomeacaoActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private Button mBtnContinuar;
 
-
+    private String[] strings = {"a1_chave_de_fenda", "a2_esquilo", "a3_regador", "a4_rinocerounte"
+            , "b1_chaved_e_fenda", "b2_pinguim", "b3_escova_de_dentes", "b4_aguia"
+            , "c1_serrote", "c2_avestruz", "c3_alicate", "c4_canguru"
+            , "d1_lixeira", "d2_urso", "d3_pente", "d4_pavao"
+            , "e1_pincel", "e2_cisne", "e3_sofa", "e4_jacare"
+            , "f1_escova", "f2_pera", "f3_tesoura", "f4_milho"
+            , "g1_machado", "g2_sapo", "g3_motocicleta", "g4_abacaxi"
+            , "h1_carta", "h2_tartaruga", "h3_helicoptero", "h4_coruja"
+            , "i1_mala", "i2_elefante", "i3_barril", "i4_tigre"
+            , "j1_gravata", "j2_maca", "j3_vela", "j4_zebra"
+            , "k1_guarda_chuva", "k2_galinha", "k3_copo", "k4_tomate"
+            , "l1_piano", "l2_pato", "l3_caminhao", "l4_cachorro"
+            , "m1_sino", "m2_banana", "m3_galo", "m4_trem"
+            , "n1_cesta", "n2_cavalo", "n3_aviao", "n4_vaca"
+            , "o1_onibus", "o2_rato", "o3_chave", "o4_peixe"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +93,19 @@ public class NomeacaoActivity extends AppCompatActivity {
 
     final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
         @Override
-        public void onListFragmentInteraction(ImageButton item) {
+        public void onListFragmentInteraction(ImageButton item, TextView key) {
             Intent intentFromList = getIntent();
             if (intentFromList != null) {
                 final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
                 Integer[] ref = new Integer[1];
+                String[] refKey = new String[1];
                 ref[0] = (Integer) item.getTag();
+                refKey[0] = key.getTag().toString();
 
                 Intent intent = new Intent(getBaseContext(), ImagemExpandidaNomeacaoActivity.class);
                 intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                 intent.putExtra(ImagemExpandidaNomeacaoActivity.IMAGEM_EXPANDIDA, ref);
+                intent.putExtra(ImagemExpandidaNomeacaoActivity.KEY_IMAGEM_EXPANDIDA, refKey);
                 startActivity(intent);
             }
 
@@ -96,6 +114,7 @@ public class NomeacaoActivity extends AppCompatActivity {
     };
 
     public void registrar(Participante participante) {
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -111,12 +130,32 @@ public class NomeacaoActivity extends AppCompatActivity {
 
     }
 
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 60;
+        int numeroDeVerfConcluidos = 0;
+
+        for(String x : strings) {
+            if(participante.getNomeacaoObject().getVerificadores().containsKey(x))
+                numeroDeVerfConcluidos += 1;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getNomeacaoObject().setPorcentagem(porcentagem);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int itemId = item.getItemId();
 
         if (itemId == android.R.id.home) {
-            this.onBackPressed();
+            Intent intentFromList = getIntent();
+            if (intentFromList != null) {
+                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+                Intent intent = new Intent(this, BaleLobbyActivity.class);
+                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                startActivity(intent);
+            }
             return true;
         }
 
