@@ -530,20 +530,18 @@ public class DigitSpanActivity extends AppCompatActivity {
     }
 
     public Participante registrar(Participante participante) {
+        DigitSpanObject digitSpanObject;
+        if(participante.getDigitSpanObject() == null)
+            digitSpanObject = new DigitSpanObject();
+        else
+            digitSpanObject = participante.getDigitSpanObject();
 
-        if(participante.getDigitSpanObject() == null) {
-            DigitSpanObject digitSpanObject = new DigitSpanObject();
-            digitSpanObject.setVerificadores(verificadores);
-            digitSpanObject.setValorTotalForward(totalForward);
-            digitSpanObject.setValorTotalBackward(totalBackward);
-            participante.setDigitSpanObject(digitSpanObject);
-        } else {
-            DigitSpanObject digitSpanObject = participante.getDigitSpanObject();
-            digitSpanObject.setVerificadores(verificadores);
-            digitSpanObject.setValorTotalForward(totalForward);
-            digitSpanObject.setValorTotalBackward(totalBackward);
-            participante.setDigitSpanObject(digitSpanObject);
-        }
+        digitSpanObject.setVerificadores(verificadores);
+        digitSpanObject.setValorTotalForward(totalForward);
+        digitSpanObject.setValorTotalBackward(totalBackward);
+        participante.setDigitSpanObject(digitSpanObject);
+
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -558,6 +556,19 @@ public class DigitSpanActivity extends AppCompatActivity {
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
 
         return participante;
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 1;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getDigitSpanObject().getVerificadores() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getDigitSpanObject().setPorcentagem(porcentagem);
     }
 
     @Override

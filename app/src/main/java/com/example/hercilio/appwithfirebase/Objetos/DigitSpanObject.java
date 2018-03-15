@@ -11,6 +11,7 @@ public class DigitSpanObject implements Serializable {
     //Primeira avalicao:
     private Map<String, Boolean> verificadores;
     private int valorTotalForward, valorTotalBackward;
+    private int porcentagem;
 
     public DigitSpanObject(){}
 
@@ -25,16 +26,21 @@ public class DigitSpanObject implements Serializable {
     public int getValorTotalForward() {
         return valorTotalForward;
     }
-
-    public int getValorTotalBackward() {
-        return valorTotalBackward;
-    }
-
     public void setValorTotalForward(int valorTotalForward) {
         this.valorTotalForward = valorTotalForward;
     }
 
+    public int getValorTotalBackward() {
+        return valorTotalBackward;
+    }
     public void setValorTotalBackward(int valorTotalBackward) {
         this.valorTotalBackward = valorTotalBackward;
+    }
+
+    public int getPorcentagem() {
+        return porcentagem;
+    }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
     }
 }
