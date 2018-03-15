@@ -1,6 +1,7 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -44,7 +45,12 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            //TODO: fazer intents
+            if(participante.getCompVerbalObject().getPrimeiraAvaliacao() != null)
+                mBtnPrimeiraAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+            if(participante.getCompVerbalObject().getSegundaAvaliacao() != null)
+                mBtnSegundaAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+            if(participante.getCompVerbalObject().getTerceiraAvaliacao() != null)
+                mBtnTerceiraAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
 
             mBtnPrimeiraAvaliacao.setOnClickListener(new View.OnClickListener() {
                 @Override
