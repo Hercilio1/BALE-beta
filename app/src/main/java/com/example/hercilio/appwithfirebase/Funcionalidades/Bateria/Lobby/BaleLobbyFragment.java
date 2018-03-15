@@ -77,37 +77,48 @@ public class BaleLobbyFragment extends Fragment {
         RelativeLayout rlyConhecimentoSemantico = (RelativeLayout) getActivity().findViewById(R.id.rly_conhecimento_semantico);
 
         CircleProgressView cpvHLE = (CircleProgressView) getActivity().findViewById(R.id.circleView_hle);
-        cpvHLE.setValue(mParticipante.getHleObject().getPorcentagem());
+        if(mParticipante.getHleObject() != null)
+            cpvHLE.setValue(mParticipante.getHleObject().getPorcentagem());
 
         CircleProgressView cpvCompFrases = (CircleProgressView) getActivity().findViewById(R.id.circleView_comp_frases);
-        cpvCompFrases.setValue(mParticipante.getCompFrasesObject().getPorcentagem());
+        if(mParticipante.getCompFrasesObject() != null)
+            cpvCompFrases.setValue(mParticipante.getCompFrasesObject().getPorcentagem());
 
         CircleProgressView cpvMemEp = (CircleProgressView) getActivity().findViewById(R.id.circleView_mem_ep);
-        cpvMemEp.setValue(mParticipante.getMemEpObject().getPorcentagem());
+        if(mParticipante.getMemEpObject() != null)
+            cpvMemEp.setValue(mParticipante.getMemEpObject().getPorcentagem());
 
         CircleProgressView cpvCompVerbal = (CircleProgressView) getActivity().findViewById(R.id.circleView_comp_verbal);
-        cpvCompVerbal.setValue(mParticipante.getCompVerbalObject().getPorcentagem());
+        if(mParticipante.getCompVerbalObject() != null)
+            cpvCompVerbal.setValue(mParticipante.getCompVerbalObject().getPorcentagem());
 
         CircleProgressView cpvInfDisc = (CircleProgressView) getActivity().findViewById(R.id.circleView_informacao_discursolivre);
-        cpvInfDisc.setValue(mParticipante.getInformacaoDiscLivreObject().getPorcentagem());
+        if(mParticipante.getInformacaoDiscLivreObject() != null)
+            cpvInfDisc.setValue(mParticipante.getInformacaoDiscLivreObject().getPorcentagem());
 
         CircleProgressView cpvNarrativa = (CircleProgressView) getActivity().findViewById(R.id.circleView_narrativa);
-        cpvNarrativa.setValue(mParticipante.getNarrativaObject().getPorcentagem());
+        if(mParticipante.getNarrativaObject() != null)
+            cpvNarrativa.setValue(mParticipante.getNarrativaObject().getPorcentagem());
 
         CircleProgressView cpvFluenciaVerbal = (CircleProgressView) getActivity().findViewById(R.id.circleView_fluencia_verbal);
-        cpvFluenciaVerbal.setValue(mParticipante.getFluenciaVerbalObject().getPorcentagem());
+        if(mParticipante.getFluenciaVerbalObject() != null)
+            cpvFluenciaVerbal.setValue(mParticipante.getFluenciaVerbalObject().getPorcentagem());
 
         CircleProgressView cpvNomeacao = (CircleProgressView) getActivity().findViewById(R.id.circleView_nomeacao);
-        cpvNomeacao.setValue(mParticipante.getNomeacaoObject().getPorcentagem());
+        if(mParticipante.getNomeacaoObject() != null)
+            cpvNomeacao.setValue(mParticipante.getNomeacaoObject().getPorcentagem());
 
         CircleProgressView cpvDigitSpan = (CircleProgressView) getActivity().findViewById(R.id.circleView_digit_span);
-        cpvDigitSpan.setValue(mParticipante.getDigitSpanObject().getPorcentagem());
+        if(mParticipante.getDigitSpanObject() != null)
+            cpvDigitSpan.setValue(mParticipante.getDigitSpanObject().getPorcentagem());
 
         CircleProgressView cpvAssocSemant = (CircleProgressView) getActivity().findViewById(R.id.circleView_associacao_semantica);
-        cpvAssocSemant.setValue(mParticipante.getAssociacaoSemanticaObject().getPorcentagem());
+        if(mParticipante.getAssociacaoSemanticaObject() != null)
+            cpvAssocSemant.setValue(mParticipante.getAssociacaoSemanticaObject().getPorcentagem());
 
         CircleProgressView cpvConhecimentoSemantico = (CircleProgressView) getActivity().findViewById(R.id.circleView_conhecimento_semantico);
-        cpvConhecimentoSemantico.setValue(mParticipante.getConhecimentoSemanticoObject().getPorcentagem());
+        if(mParticipante.getConhecimentoSemanticoObject() != null)
+            cpvConhecimentoSemantico.setValue(mParticipante.getConhecimentoSemanticoObject().getPorcentagem());
 
 
         rlyHLE.setOnClickListener(new View.OnClickListener() {
