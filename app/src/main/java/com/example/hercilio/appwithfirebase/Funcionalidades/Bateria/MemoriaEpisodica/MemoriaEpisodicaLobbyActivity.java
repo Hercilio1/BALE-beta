@@ -64,7 +64,36 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
             final boolean[] bool = (boolean[]) intentFromList.getSerializableExtra(IDENTIFICA_INTERVALO);
 
+
             if(participante.getMemEpObject() != null) {
+                if(participante.getMemEpObject().getPrimeiraFaseAnalise1() != null
+                        && participante.getMemEpObject().getPrimeiraFaseAnalise2() != null
+                        && participante.getMemEpObject().getPrimeiraFaseAnalise3() != null
+                        && participante.getMemEpObject().getPrimeiraFaseAnalise4() != null) {
+                    mBtnPrimeiraFase.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+
+                    if(participante.getMemEpObject().getSegundaFaseComDica() != null
+                        || participante.getMemEpObject().getSegundaFaseSemDica() != null) {
+                        mBtnSegundaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+
+                        if(participante.getMemEpObject().getTerceiraFaseSemDica() != null
+                                || participante.getMemEpObject().getTerceiraFaseComDica() != null) {
+                            mBtnTerceiraFase.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+
+                            if(participante.getMemEpObject().getQuartaFaseSemDica() != null
+                                    || participante.getMemEpObject().getQuartaFaseComDica() != null) {
+                                mBtnQuartaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+
+                                if(participante.getMemEpObject().getQuintaFaseSemDica() != null
+                                        || participante.getMemEpObject().getQuintaFaseComDica() != null) {
+                                    mBtnQuintaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+                                }
+                            }
+                        }
+                    }
+                }
+
+
                 if (participante.getMemEpObject().getTimeStampSegundaFase() != 0
                         && timeStampSegundaFase == 0) {
                     timeStampSegundaFase = participante.getMemEpObject().getTimeStampSegundaFase();
@@ -92,7 +121,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
                 cr1.setVisibility(View.INVISIBLE);
                 mBtnSegundaFase.setText("SEGUNDA FASE");
-                mBtnSegundaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                 mBtnSegundaFase.setEnabled(true);
 
             } else if(timeStampSegundaFase != 0) {
@@ -107,7 +135,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                             cr1.stop();
                             cr1.setVisibility(View.INVISIBLE);
                             mBtnSegundaFase.setText("SEGUNDA FASE");
-                            mBtnSegundaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                             mBtnSegundaFase.setEnabled(true);
                         }
                     }
@@ -129,7 +156,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                             cr1.stop();
                             cr1.setVisibility(View.INVISIBLE);
                             mBtnSegundaFase.setText("SEGUNDA FASE");
-                            mBtnSegundaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                             mBtnSegundaFase.setEnabled(true);
                         }
                     }
@@ -145,7 +171,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
                 cr2.setVisibility(View.INVISIBLE);
                 mBtnTerceiraFase.setText("TERCEIRA FASE");
-                mBtnTerceiraFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                 mBtnTerceiraFase.setEnabled(true);
 
             } else if(timeStampTerceiraFase != 0) {
@@ -160,7 +185,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                             cr2.stop();
                             cr2.setVisibility(View.INVISIBLE);
                             mBtnTerceiraFase.setText("TERCEIRA FASE");
-                            mBtnTerceiraFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                             mBtnTerceiraFase.setEnabled(true);
                         }
                     }
@@ -182,7 +206,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                             cr2.stop();
                             cr2.setVisibility(View.INVISIBLE);
                             mBtnTerceiraFase.setText("TERCEIRA FASE");
-                            mBtnTerceiraFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                             mBtnTerceiraFase.setEnabled(true);
                         }
                     }
@@ -198,7 +221,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
                 cr3.setVisibility(View.INVISIBLE);
                 mBtnQuartaFase.setText("QUARTA FASE");
-                mBtnQuartaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                 mBtnQuartaFase.setEnabled(true);
 
             } else if(timeStampQuartaFase != 0) {
@@ -213,7 +235,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                             cr3.stop();
                             cr3.setVisibility(View.INVISIBLE);
                             mBtnQuartaFase.setText("QUARTA FASE");
-                            mBtnQuartaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                             mBtnQuartaFase.setEnabled(true);
                         }
                     }
@@ -235,7 +256,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                             cr3.stop();
                             cr3.setVisibility(View.INVISIBLE);
                             mBtnQuartaFase.setText("QUARTA FASE");
-                            mBtnQuartaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                             mBtnQuartaFase.setEnabled(true);
                         }
                     }
@@ -251,7 +271,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
 
                 cr4.setVisibility(View.INVISIBLE);
                 mBtnQuintaFase.setText("QUINTA FASE");
-                mBtnQuintaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                 mBtnQuintaFase.setEnabled(true);
 
             } else if(timeStampQuintaFase != 0) {
@@ -266,7 +285,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                             cr4.stop();
                             cr4.setVisibility(View.INVISIBLE);
                             mBtnQuintaFase.setText("QUINTA FASE");
-                            mBtnQuintaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                             mBtnQuintaFase.setEnabled(true);
                         }
                     }
@@ -288,7 +306,6 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
                             cr4.stop();
                             cr4.setVisibility(View.INVISIBLE);
                             mBtnQuintaFase.setText("QUINTA FASE");
-                            mBtnQuintaFase.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
                             mBtnQuintaFase.setEnabled(true);
                         }
                     }
