@@ -12,6 +12,7 @@ public class NarrativaObject implements Serializable {
     private Map<String, Integer> verificadores;
     private int valorTotalEstrutura, valorTotalDesempLing1, valorTotalDesempLing2;
     private String observacoes;
+    private int porcentagem;
 
     public NarrativaObject(){}
 
@@ -50,4 +51,12 @@ public class NarrativaObject implements Serializable {
     //Observacoes:
     public String getObservacoes() { return observacoes; }
     public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
+
+    //Porcentagem:
+    public int getPorcentagem() {
+        return porcentagem;
+    }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
+    }
 }

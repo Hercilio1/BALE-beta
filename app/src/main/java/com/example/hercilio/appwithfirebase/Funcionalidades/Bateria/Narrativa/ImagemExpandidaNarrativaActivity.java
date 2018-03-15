@@ -28,8 +28,6 @@ public class ImagemExpandidaNarrativaActivity extends AppCompatActivity {
 
         ImageView imagem = (ImageView) findViewById(R.id.imagem_expandida_mem_ep);
         imagem.setImageResource(R.drawable.narrativa_historia_cachorro);
-
-
     }
 
     @Override

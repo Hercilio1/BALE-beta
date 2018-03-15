@@ -524,6 +524,7 @@ public class NarrativaActivity extends AppCompatActivity {
             participante.setNarrativaObject(aux);
         }
 
+        atualizaPorcentagem(participante);
 
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
@@ -536,6 +537,22 @@ public class NarrativaActivity extends AppCompatActivity {
         //Criar uma váriavel final estava criando um loop no onDataChange
         //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 2;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getNarrativaObject().getVerificadores() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getNarrativaObject().getObservacoes() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getNarrativaObject().setPorcentagem(porcentagem);
     }
 
     @Override

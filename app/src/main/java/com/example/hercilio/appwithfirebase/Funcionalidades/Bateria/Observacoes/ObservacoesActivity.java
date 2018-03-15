@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Narrativa.NarrativaActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.InformacaoDiscursoLivreObject;
 import com.example.hercilio.appwithfirebase.Objetos.NarrativaObject;
@@ -108,6 +109,8 @@ public class ObservacoesActivity extends AppCompatActivity {
             narrativaObject = new NarrativaObject();
         else
             narrativaObject = participante.getNarrativaObject();
+
+        new NarrativaActivity().atualizaPorcentagem(participante);
 
         narrativaObject.setObservacoes(mObservacoes.getText().toString());
         participante.setNarrativaObject(narrativaObject);
