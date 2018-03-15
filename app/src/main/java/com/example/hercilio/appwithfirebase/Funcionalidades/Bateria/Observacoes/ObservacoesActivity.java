@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.InformacaoDiscursoLivreObject;
@@ -96,6 +97,8 @@ public class ObservacoesActivity extends AppCompatActivity {
         informacaoDiscursoLivreObject.setObservacoes(mObservacoes.getText().toString());
         participante.setInformacaoDiscLivreObject(informacaoDiscursoLivreObject);
 
+        new InformacaoDiscursolivreLobbyActivity().atualizaPorcentagem(participante);
+
         registra(participante);
     }
 
@@ -121,8 +124,6 @@ public class ObservacoesActivity extends AppCompatActivity {
         final FirebaseAuth auth = FirebaseAuth.getInstance();
         mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
-        //Criar uma váriavel final estava criando um loop no onDataChange
-        //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
 

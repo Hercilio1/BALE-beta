@@ -45,12 +45,14 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            if(participante.getCompVerbalObject().getPrimeiraAvaliacao() != null)
-                mBtnPrimeiraAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
-            if(participante.getCompVerbalObject().getSegundaAvaliacao() != null)
-                mBtnSegundaAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
-            if(participante.getCompVerbalObject().getTerceiraAvaliacao() != null)
-                mBtnTerceiraAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+            if(participante.getCompVerbalObject() != null) {
+                if (participante.getCompVerbalObject().getPrimeiraAvaliacao() != null)
+                    mBtnPrimeiraAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+                if (participante.getCompVerbalObject().getSegundaAvaliacao() != null)
+                    mBtnSegundaAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+                if (participante.getCompVerbalObject().getTerceiraAvaliacao() != null)
+                    mBtnTerceiraAvaliacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+            }
 
             mBtnPrimeiraAvaliacao.setOnClickListener(new View.OnClickListener() {
                 @Override

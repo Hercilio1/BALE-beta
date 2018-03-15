@@ -10,14 +10,14 @@ import java.util.Map;
 public class InformacaoDiscursoLivreObject implements Serializable {
     //Informacao:
     private Map<String, Integer> informacao;
-    private int valorTotalInformacao;
-
+    private int valorTotalInformacaoEstrutura, valorTotalInformacaoDesempenho;
     //Discurso Livre:
     private Map<String, Integer> discursoLivre;
-    private int valorTotalDiscursoLivre;
-
+    private int valorTotalDiscursoLivreEstrutura, valorTotalDiscursoLivreDesempenho;
     //Observações:
     private String observacoes;
+    //Porcentagem:
+    private int porcentagem;
 
     public InformacaoDiscursoLivreObject(){}
 
@@ -28,8 +28,18 @@ public class InformacaoDiscursoLivreObject implements Serializable {
     public Map getInformacao() {
         return informacao;
     }
-    public int getValorTotalInformacao() { return valorTotalInformacao; }
-    public void setValorTotalInformacao(int valorTotalInformacao) { this.valorTotalInformacao = valorTotalInformacao; }
+    public int getValorTotalInformacaoEstrutura() {
+        return valorTotalInformacaoEstrutura;
+    }
+    public int getValorTotalInformacaoDesempenho() {
+        return valorTotalInformacaoDesempenho;
+    }
+    public void setValorTotalInformacaoEstrutura(int valorTotalInformacaoEstrutura) {
+        this.valorTotalInformacaoEstrutura = valorTotalInformacaoEstrutura;
+    }
+    public void setValorTotalInformacaoDesempenho(int valorTotalInformacaoDesempenho) {
+        this.valorTotalInformacaoDesempenho = valorTotalInformacaoDesempenho;
+    }
 
     //Discurso Livre:
     public void atualizaDiscursoLivre(Map buttonsList) {
@@ -38,10 +48,27 @@ public class InformacaoDiscursoLivreObject implements Serializable {
     public Map getDiscursoLivre() {
         return discursoLivre;
     }
-    public int getValorTotalDiscursoLivre() { return valorTotalDiscursoLivre; }
-    public void setValorTotalDiscursoLivre(int valorTotalDiscursoLivre) { this.valorTotalDiscursoLivre = valorTotalDiscursoLivre; }
+    public int getValorTotalDiscursoLivreEstrutura() {
+        return valorTotalDiscursoLivreEstrutura;
+    }
+    public int getValorTotalDiscursoLivreDesempenho() {
+        return valorTotalDiscursoLivreDesempenho;
+    }
+    public void setValorTotalDiscursoLivreEstrutura(int valorTotalDiscursoLivreEstrutura) {
+        this.valorTotalDiscursoLivreEstrutura = valorTotalDiscursoLivreEstrutura;
+    }
+    public void setValorTotalDiscursoLivreDesempenho(int valorTotalDiscursoLivreDesempenho) {
+        this.valorTotalDiscursoLivreDesempenho = valorTotalDiscursoLivreDesempenho;
+    }
 
     //Observacoes:
     public String getObservacoes() { return observacoes; }
     public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
+
+    public int getPorcentagem() {
+        return porcentagem;
+    }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
+    }
 }

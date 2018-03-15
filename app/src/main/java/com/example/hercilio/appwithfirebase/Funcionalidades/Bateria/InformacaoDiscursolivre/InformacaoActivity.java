@@ -32,24 +32,27 @@ import java.util.Map;
 public class InformacaoActivity extends AppCompatActivity {
 
     //Label 1:
-    private RadioGroup mRadioLabel1Quest1, mRadioLabel1Quest2, mRadioLabel1Quest3, mRadioLabel1Quest4;
+    private RadioGroup mRadioLabel1Quest1, mRadioLabel1Quest2, mRadioLabel1Quest3, mRadioLabel1Quest4, mRadioLabel1Quest5;
     //Laber 2:
-    private RadioGroup mRadioLabel2Quest1, mRadioLabel2Quest2, mRadioLabel2Quest3, mRadioLabel2Quest4, mRadioLabel2Quest5, mRadioLabel2Quest6;
+    private RadioGroup mRadioLabel2Quest1, mRadioLabel2Quest2, mRadioLabel2Quest3, mRadioLabel2Quest4;
 
     //Check label 1:
-    private int checkedRadioLabel1Quest1, checkedRadioLabel1Quest2, checkedRadioLabel1Quest3, checkedRadioLabel1Quest4;
+    private int checkedRadioLabel1Quest1, checkedRadioLabel1Quest2, checkedRadioLabel1Quest3, checkedRadioLabel1Quest4, checkedRadioLabel1Quest5;
     //Check label 2:
-    private int checkedRadioLabel2Quest1, checkedRadioLabel2Quest2, checkedRadioLabel2Quest3, checkedRadioLabel2Quest4, checkedRadioLabel2Quest5, checkedRadioLabel2Quest6;
+    private int checkedRadioLabel2Quest1, checkedRadioLabel2Quest2, checkedRadioLabel2Quest3, checkedRadioLabel2Quest4;
 
-    //Variaveis dos valores totais:
-    private int valorTotal;
-    private int valorLabel1Quest1, valorLabel1Quest2, valorLabel1Quest3, valorLabel1Quest4;
+    //Variaveis dos valores totais label 1:
+    private int valorTotalLabel1;
+    private int valorLabel1Quest1, valorLabel1Quest2, valorLabel1Quest3, valorLabel1Quest4, valorLabel1Quest5;
+    //Variaveis dos valores totais label 2:
+    private int valorTotalLabel2;
+    private int valorLabel2Quest1, valorLabel2Quest2, valorLabel2Quest3, valorLabel2Quest4;
 
     //Dicionario que armazena os radiobuttons selecionados:
     private Map<String, Integer> verificadores = new HashMap<>();
 
     //Total text view:
-    private TextView mTotal;
+    private TextView mTotalLabel1, mTotalLabel2;
 
     //Botão validador caso não haja o pressionamento de algum radio button
     private boolean validaRadioButtons;
@@ -72,20 +75,20 @@ public class InformacaoActivity extends AppCompatActivity {
         mRadioLabel1Quest2 = (RadioGroup) findViewById(R.id.radio_informacao_label1_quest2);
         mRadioLabel1Quest3 = (RadioGroup) findViewById(R.id.radio_informacao_label1_quest3);
         mRadioLabel1Quest4 = (RadioGroup) findViewById(R.id.radio_informacao_label1_quest4);
+        mRadioLabel1Quest5 = (RadioGroup) findViewById(R.id.radio_informacao_label1_quest5);
 
         //Label 2:
         mRadioLabel2Quest1 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest1);
         mRadioLabel2Quest2 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest2);
         mRadioLabel2Quest3 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest3);
         mRadioLabel2Quest4 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest4);
-        mRadioLabel2Quest5 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest5);
-        mRadioLabel2Quest6 = (RadioGroup) findViewById(R.id.radio_informacao_label2_quest6);
 
         //Totais:
-        mTotal = (TextView) findViewById(R.id.informacao_total_number1);
+        mTotalLabel1 = (TextView) findViewById(R.id.informacao_total_number1_label1);
+        mTotalLabel2 = (TextView) findViewById(R.id.informacao_total_number1_label2);
 
         //Botao continuar:
-        btnContinuar = (Button) findViewById(R.id.btn_continuar_informacao_btn);
+        btnContinuar = (Button) findViewById(R.id.btn_continuar_informacao);
 
 
         Intent intentFromList = getIntent();
@@ -152,6 +155,11 @@ public class InformacaoActivity extends AppCompatActivity {
             verificaValidade.add(14);
         armazenaDadoNoDicionario(14, checkedRadioLabel1Quest4);
 
+        checkedRadioLabel1Quest5 = (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest5, false);
+        if(checkedRadioLabel1Quest5 == -1)
+            verificaValidade.add(15);
+        armazenaDadoNoDicionario(15, checkedRadioLabel1Quest5);
+
         //Label2:
         checkedRadioLabel2Quest1 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest1, true);
         if(checkedRadioLabel2Quest1 == -1)
@@ -168,20 +176,10 @@ public class InformacaoActivity extends AppCompatActivity {
             verificaValidade.add(23);
         armazenaDadoNoDicionario(23, checkedRadioLabel2Quest3);
 
-        checkedRadioLabel2Quest4 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest4, true);
+        checkedRadioLabel2Quest4 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest4, false);
         if(checkedRadioLabel2Quest4 == -1)
             verificaValidade.add(24);
         armazenaDadoNoDicionario(24, checkedRadioLabel2Quest4);
-
-        checkedRadioLabel2Quest5 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest5, true);
-        if(checkedRadioLabel2Quest5 == -1)
-            verificaValidade.add(25);
-        armazenaDadoNoDicionario(25, checkedRadioLabel2Quest5);
-
-        checkedRadioLabel2Quest6 = (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest6, true);
-        if(checkedRadioLabel2Quest6 == -1)
-            verificaValidade.add(26);
-        armazenaDadoNoDicionario(26, checkedRadioLabel2Quest6);
 
         if(!verificaValidade.isEmpty()) {
             validaRadioButtons = true;
@@ -227,30 +225,59 @@ public class InformacaoActivity extends AppCompatActivity {
     public void somaValoresTotais(int ref, int selecao) {
         if (selecao != -1) {
             switch (ref) {
+                //Label 1:
                 case 11:
-                    valorTotal -= valorLabel1Quest1;
+                    valorTotalLabel1 -= valorLabel1Quest1;
                     valorLabel1Quest1 = selecao;
-                    valorTotal += valorLabel1Quest1;
+                    valorTotalLabel1 += valorLabel1Quest1;
                     break;
                 case 12:
-                    valorTotal -= valorLabel1Quest2;
+                    valorTotalLabel1 -= valorLabel1Quest2;
                     valorLabel1Quest2 = selecao;
-                    valorTotal += valorLabel1Quest2;
+                    valorTotalLabel1 += valorLabel1Quest2;
                     break;
                 case 13:
-                    valorTotal -= valorLabel1Quest3;
+                    valorTotalLabel1 -= valorLabel1Quest3;
                     valorLabel1Quest3 = selecao;
-                    valorTotal += valorLabel1Quest3;
+                    valorTotalLabel1 += valorLabel1Quest3;
                     break;
                 case 14:
-                    valorTotal -= valorLabel1Quest4;
+                    valorTotalLabel1 -= valorLabel1Quest4;
                     valorLabel1Quest4 = selecao;
-                    valorTotal += valorLabel1Quest4;
+                    valorTotalLabel1 += valorLabel1Quest4;
+                    break;
+                case 15:
+                    valorTotalLabel1 -= valorLabel1Quest5;
+                    valorLabel1Quest5 = selecao;
+                    valorTotalLabel1 += valorLabel1Quest5;
+                    break;
+
+                //Label 2:
+                case 21:
+                    valorTotalLabel2 -= valorLabel2Quest1;
+                    valorLabel2Quest1 = selecao;
+                    valorTotalLabel2 += valorLabel2Quest1;
+                    break;
+                case 22:
+                    valorTotalLabel2 -= valorLabel2Quest2;
+                    valorLabel2Quest2 = selecao;
+                    valorTotalLabel2 += valorLabel2Quest2;
+                    break;
+                case 23:
+                    valorTotalLabel2 -= valorLabel2Quest3;
+                    valorLabel2Quest3 = selecao;
+                    valorTotalLabel2 += valorLabel2Quest3;
+                    break;
+                case 24:
+                    valorTotalLabel2 -= valorLabel2Quest4;
+                    valorLabel2Quest4 = selecao;
+                    valorTotalLabel2 += valorLabel2Quest4;
                     break;
                 default:
                     break;
             }
-            mTotal.setText("" + valorTotal);
+            mTotalLabel1.setText("" + valorTotalLabel1);
+            mTotalLabel2.setText("" + valorTotalLabel2);
         }
     }
 
@@ -272,36 +299,29 @@ public class InformacaoActivity extends AppCompatActivity {
                 || v.getId() == mRadioLabel1Quest4.getChildAt(1).getId()
                 || v.getId() == mRadioLabel1Quest4.getChildAt(2).getId())
             somaValoresTotais(14, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest4,false));
-    }
+        else if(v.getId() == mRadioLabel1Quest5.getChildAt(0).getId()
+                || v.getId() == mRadioLabel1Quest5.getChildAt(1).getId()
+                || v.getId() == mRadioLabel1Quest5.getChildAt(2).getId())
+            somaValoresTotais(15, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest5,false));
 
-    public void alteraDadosFirebase(Participante participante) {
-        if(participante.getInformacaoDiscLivreObject() == null) {
-            InformacaoDiscursoLivreObject infDiscNarrObj = new InformacaoDiscursoLivreObject();
-            infDiscNarrObj.atualizaInformacao(verificadores);
-            infDiscNarrObj.setValorTotalInformacao(valorTotal);
-            participante.setInformacaoDiscLivreObject(infDiscNarrObj);
-        } else {
-            InformacaoDiscursoLivreObject aux = participante.getInformacaoDiscLivreObject();
-            aux.setValorTotalInformacao(valorTotal);
-            aux.atualizaInformacao(verificadores);
-            participante.setInformacaoDiscLivreObject(aux);
-        }
-
-        FirebaseDatabase mFirebaseDatabase;
-        final DatabaseReference mParticipanteDatabaseReference;
-
-        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        final FirebaseAuth auth = FirebaseAuth.getInstance();
-        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
-
-        //Criar uma váriavel final estava criando um loop no onDataChange
-        //final Participante partAux = participante;
-        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+        //Label 2:
+        if(v.getId() == mRadioLabel2Quest1.getChildAt(0).getId()
+                || v.getId() == mRadioLabel2Quest1.getChildAt(1).getId())
+            somaValoresTotais(21, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest1,true));
+        if(v.getId() == mRadioLabel2Quest2.getChildAt(0).getId()
+                || v.getId() == mRadioLabel2Quest2.getChildAt(1).getId())
+            somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest2,true));
+        if(v.getId() == mRadioLabel2Quest3.getChildAt(0).getId()
+                || v.getId() == mRadioLabel2Quest3.getChildAt(1).getId())
+            somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest3,true));
+        else if(v.getId() == mRadioLabel2Quest4.getChildAt(0).getId()
+                || v.getId() == mRadioLabel2Quest4.getChildAt(1).getId()
+                || v.getId() == mRadioLabel2Quest4.getChildAt(2).getId())
+            somaValoresTotais(24, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest4,false));
     }
 
     public void autoComplete() {
-        int[] aux = {11,12,13,14,21,22,23,24,25,26};
+        int[] aux = {11,12,13,14,15,21,22,23,24};
         for(int i=0; i<aux.length; i++) {
             switch (aux[i]) {
                 case 11:
@@ -320,28 +340,60 @@ public class InformacaoActivity extends AppCompatActivity {
                     mRadioLabel1Quest4.check(mRadioLabel1Quest4.getChildAt(verificadores.get(""+aux[i])).getId());
                     somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest4, false));
                     break;
+                case 15:
+                    mRadioLabel1Quest5.check(mRadioLabel1Quest5.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest5, true));
+                    break;
                 case 21:
                     mRadioLabel2Quest1.check(mRadioLabel2Quest1.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest1, true));
                     break;
                 case 22:
                     mRadioLabel2Quest2.check(mRadioLabel2Quest2.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest2, true));
                     break;
                 case 23:
                     mRadioLabel2Quest3.check(mRadioLabel2Quest3.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest3, true));
                     break;
                 case 24:
                     mRadioLabel2Quest4.check(mRadioLabel2Quest4.getChildAt(verificadores.get(""+aux[i])).getId());
-                    break;
-                case 25:
-                    mRadioLabel2Quest5.check(mRadioLabel2Quest5.getChildAt(verificadores.get(""+aux[i])).getId());
-                    break;
-                case 26:
-                    mRadioLabel2Quest6.check(mRadioLabel2Quest6.getChildAt(verificadores.get(""+aux[i])).getId());
+                    somaValoresTotais(aux[i], (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest4, false));
                     break;
                 default: break;
             }
         }
     }
+
+    public void alteraDadosFirebase(Participante participante) {
+        InformacaoDiscursoLivreObject infDiscNarrObj;
+
+        if(participante.getInformacaoDiscLivreObject() == null)
+            infDiscNarrObj = new InformacaoDiscursoLivreObject();
+        else
+            infDiscNarrObj = participante.getInformacaoDiscLivreObject();
+
+        infDiscNarrObj.atualizaInformacao(verificadores);
+        infDiscNarrObj.setValorTotalInformacaoEstrutura(valorTotalLabel1);
+        infDiscNarrObj.setValorTotalInformacaoDesempenho(valorTotalLabel2);
+        participante.setInformacaoDiscLivreObject(infDiscNarrObj);
+
+        new InformacaoDiscursolivreLobbyActivity().atualizaPorcentagem(participante);
+
+        FirebaseDatabase mFirebaseDatabase;
+        final DatabaseReference mParticipanteDatabaseReference;
+
+        //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        final FirebaseAuth auth = FirebaseAuth.getInstance();
+        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+
+        //Criar uma váriavel final estava criando um loop no onDataChange
+        //final Participante partAux = participante;
+        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

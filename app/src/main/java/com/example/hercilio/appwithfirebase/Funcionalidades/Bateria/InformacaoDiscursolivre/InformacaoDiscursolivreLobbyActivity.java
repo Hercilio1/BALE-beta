@@ -1,6 +1,7 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +43,12 @@ public class InformacaoDiscursolivreLobbyActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-            //TODO: fazer intents
+            if(participante.getInformacaoDiscLivreObject() != null) {
+                if (participante.getInformacaoDiscLivreObject().getInformacao() != null)
+                    mBtnInformacao.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+                if (participante.getInformacaoDiscLivreObject().getDiscursoLivre() != null)
+                    mBtnDiscursoLivre.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+            }
 
             mBtnInformacao.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,6 +78,25 @@ public class InformacaoDiscursolivreLobbyActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 4;
+        int numeroDeVerfConcluidos = 0;
+
+        if(participante.getInformacaoDiscLivreObject().getInformacao() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getInformacaoDiscLivreObject().getDiscursoLivre() != null) {
+            numeroDeVerfConcluidos += 1;
+        }
+        if(participante.getInformacaoDiscLivreObject().getObservacoes() != null) {
+            numeroDeVerfConcluidos += 2;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getInformacaoDiscLivreObject().setPorcentagem(porcentagem);
     }
 
     @Override

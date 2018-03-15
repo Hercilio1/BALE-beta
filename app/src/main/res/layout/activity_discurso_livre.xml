@@ -68,7 +68,7 @@
 
         <!--label 1-->
         <TextView
-            android:id="@+id/discursolivre_label_1"
+            android:id="@+id/infomacao_label_1"
             android:layout_width="548dp"
             android:layout_height="37dp"
             android:layout_alignParentLeft="true"
@@ -76,7 +76,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Desempenho Linguístico: Estrutura do Texto"
+            android:text="ESTRUTURA DO TEXTO"
             android:textColor="#000000"
             android:textSize="20dp"
             android:visibility="visible"
@@ -99,7 +99,7 @@
             android:textSize="18dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label_1"
+            app:layout_constraintTop_toBottomOf="@+id/infomacao_label_1"
             android:layout_marginLeft="24dp" />
 
         <RadioGroup
@@ -111,7 +111,7 @@
             android:layout_weight="1"
             android:orientation="horizontal"
             app:layout_constraintStart_toEndOf="@+id/discursolivre_label1_quest1"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label_1"
+            app:layout_constraintTop_toBottomOf="@+id/infomacao_label_1"
             android:layout_marginLeft="8dp">
 
             <RadioButton
@@ -264,7 +264,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
-        <!--Label 1 - question 3-->
+        <!--Label 1 - question 4-->
         <TextView
             android:id="@+id/discursolivre_label1_quest4"
             android:layout_width="298dp"
@@ -324,6 +324,66 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
+        <!--Label 1 - question 5-->
+        <TextView
+            android:id="@+id/discursolivre_label1_quest5"
+            android:layout_width="298dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="5) Relato exclusivo do tópico"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest4"
+            android:layout_marginLeft="24dp" />
+
+        <RadioGroup
+            android:id="@+id/radio_discursolivre_label1_quest5"
+            android:layout_width="434dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/discursolivre_label1_quest5"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest4"
+            android:layout_marginLeft="8dp">
+
+            <RadioButton
+                android:id="@+id/radio_discursolivre_label1_quest5_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:paddingRight="15dp"
+                android:text="Sim"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/radio_discursolivre_label1_quest5_semelhante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:paddingRight="15dp"
+                android:text="Semelhante"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/radio_discursolivre_label1_quest5_errou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:text="Não"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RadioGroup>
+
         <!--label 2-->
         <TextView
             android:id="@+id/infomacao_label_2"
@@ -334,12 +394,12 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="25dp"
-            android:text="Desempenho Comportamental/Linguístico"
+            android:text="DESEMPENHO LINGUÍSTICO "
             android:textColor="#000000"
             android:textSize="20dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest4"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label1_quest5"
             android:layout_marginLeft="24dp" />
 
         <!--Label 2 - question 1-->
@@ -402,7 +462,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:text="2) Necessidade de encorajamento"
+            android:text="2) Troca de tópico"
             android:textColor="#000000"
             android:textSize="18dp"
             android:visibility="visible"
@@ -452,7 +512,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:text="3) Relato exclusivo do tópico"
+            android:text="3) Anomia / dificuldade de encontrar palavras"
             android:textColor="#000000"
             android:textSize="18dp"
             android:visibility="visible"
@@ -496,13 +556,13 @@
         <TextView
             android:id="@+id/discursolivre_label2_quest4"
             android:layout_width="450dp"
-            android:layout_height="33dp"
+            android:layout_height="61dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:text="4) Troca de tópico"
+            android:text="4) Falta de clareza na contagem da história"
             android:textColor="#000000"
             android:textSize="18dp"
             android:visibility="visible"
@@ -512,7 +572,7 @@
 
         <RadioGroup
             android:id="@+id/radio_discursolivre_label2_quest4"
-            android:layout_width="190dp"
+            android:layout_width="434dp"
             android:layout_height="37dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
@@ -533,6 +593,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
+                android:id="@+id/radio_discursolivre_label2_quest4_semelhante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="onClickRadio"
+                android:paddingRight="15dp"
+                android:text="Semelhante"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
                 android:id="@+id/radio_discursolivre_label2_quest4_errou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -542,123 +612,24 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RadioGroup>
 
-        <!--Label 2 - question 5-->
+
+        <!--Total da label 3 -->
         <TextView
-            android:id="@+id/discursolivre_label2_quest5"
-            android:layout_width="450dp"
-            android:layout_height="33dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="5) Informações tangenciais / pessoais"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest4"
-            android:layout_marginLeft="24dp" />
-
-        <RadioGroup
-            android:id="@+id/radio_discursolivre_label2_quest5"
-            android:layout_width="190dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/discursolivre_label2_quest5"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest4"
-            android:layout_marginLeft="16dp">
-
-            <RadioButton
-                android:id="@+id/radio_discursolivre_label2_quest5_sim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:onClick="onClickRadio"
-                android:paddingRight="15dp"
-                android:text="Sim"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <RadioButton
-                android:id="@+id/radio_discursolivre_label2_quest5_errou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:onClick="onClickRadio"
-                android:text="Não"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </RadioGroup>
-
-        <!--Label 2 - question 6-->
-        <TextView
-            android:id="@+id/discursolivre_label2_quest6"
-            android:layout_width="450dp"
-            android:layout_height="33dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="6) Anomias / dificuldade de encontrar as palavras"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest5"
-            android:layout_marginLeft="24dp" />
-
-        <RadioGroup
-            android:id="@+id/radio_discursolivre_label2_quest6"
-            android:layout_width="190dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@+id/discursolivre_label2_quest6"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest5"
-            android:layout_marginLeft="16dp">
-
-            <RadioButton
-                android:id="@+id/radio_discursolivre_label2_quest6_sim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:onClick="onClickRadio"
-                android:paddingRight="15dp"
-                android:text="Sim"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <RadioButton
-                android:id="@+id/radio_discursolivre_label2_quest6_errou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:onClick="onClickRadio"
-                android:text="Não"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </RadioGroup>
-
-        <!--Total da label 4 -->
-        <TextView
-            android:id="@+id/discursolivre_total"
+            android:id="@+id/discursolivre_total_label1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginTop="8dp"
-            android:text="Desempenho Linguístico/E.T: "
+            android:text="Estrutura de Texto: "
             android:textColor="#000000"
             android:textSize="18dp"
-            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_number1"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest6"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_number1_label1"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest4"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="24dp" />
 
         <TextView
-            android:id="@+id/discursolivre_total_number1"
+            android:id="@+id/discursolivre_total_number1_label1"
             android:layout_width="21dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -666,13 +637,13 @@
             android:text="0"
             android:textColor="#000000"
             android:textSize="18dp"
-            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_barra"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest6"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_barra_label1"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest4"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="4dp" />
 
         <TextView
-            android:id="@+id/discursolivre_total_barra"
+            android:id="@+id/discursolivre_total_barra_label1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -680,27 +651,87 @@
             android:text="/"
             android:textColor="#000000"
             android:textSize="18dp"
-            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_number2"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest6"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_number2_label1"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest4"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="4dp" />
 
         <TextView
-            android:id="@+id/discursolivre_total_number2"
+            android:id="@+id/discursolivre_total_number2_label1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
             android:layout_marginTop="8dp"
-            android:text="8"
+            android:text="10"
             android:textColor="#000000"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest6"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_label2_quest4"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="20dp" />
 
+
+        <!--Total da label 4 -->
+        <TextView
+            android:id="@+id/discursolivre_total_label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Desempenho Linguístico: "
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_number1_label2"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_total_label1"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="24dp" />
+
+        <TextView
+            android:id="@+id/discursolivre_total_number1_label2"
+            android:layout_width="21dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_barra_label2"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_total_label1"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/discursolivre_total_barra_label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/discursolivre_total_number2_label2"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_total_label1"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="4dp" />
+
+        <TextView
+            android:id="@+id/discursolivre_total_number2_label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:text="5"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_total_label1"
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="20dp" />
+
+
+
         <Button
-            android:id="@+id/btn_continuar_discursolivre_btn"
+            android:id="@+id/btn_continuar_discursolivre"
             android:layout_width="134dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -711,7 +742,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discursolivre_total"
+            app:layout_constraintTop_toBottomOf="@+id/discursolivre_total_label2"
             tools:ignore="MissingConstraints" />
 
 
