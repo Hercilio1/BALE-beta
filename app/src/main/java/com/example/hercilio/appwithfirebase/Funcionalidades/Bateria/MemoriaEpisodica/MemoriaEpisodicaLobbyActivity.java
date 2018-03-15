@@ -408,7 +408,7 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
     public void atualizaPorcentagem(Participante participante) {
         int numeroDeVerf = 20;
         int numeroDeVerfConcluidos = 0;
-        
+
         if(participante.getMemEpObject().getPrimeiraFaseAnalise1() != null)
             numeroDeVerfConcluidos += 1;
         if(participante.getMemEpObject().getPrimeiraFaseAnalise2() != null)
@@ -445,7 +445,13 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
         final int itemId = item.getItemId();
 
         if (itemId == android.R.id.home) {
-            this.onBackPressed();
+            Intent intentFromList = getIntent();
+            if (intentFromList != null) {
+                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+                Intent intent = new Intent(this, BaleLobbyActivity.class);
+                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                startActivity(intent);
+            }
             return true;
         }
 

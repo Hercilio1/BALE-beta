@@ -557,12 +557,17 @@ public class NarrativaActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //Faz as transações
+        Intent intentFromList = getIntent();
         switch (id) {
             case android.R.id.home:
-                this.onBackPressed();
+                if (intentFromList != null) {
+                    final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+                    Intent intent = new Intent(this, BaleLobbyActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    startActivity(intent);
+                }
                 return true;
             case R.id.bale_observacoes_button:
-                Intent intentFromList = getIntent();
                 if (intentFromList != null) {
                     final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
                     String[] strings = new String[1];

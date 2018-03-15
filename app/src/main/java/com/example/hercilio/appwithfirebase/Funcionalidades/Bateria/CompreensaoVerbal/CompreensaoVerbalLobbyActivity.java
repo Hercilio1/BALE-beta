@@ -109,14 +109,18 @@ public class CompreensaoVerbalLobbyActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
-
+        Intent intentFromList = getIntent();
         //Faz as transações
         switch (id) {
             case android.R.id.home:
-                this.onBackPressed();
+                if (intentFromList != null) {
+                    final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+                    Intent intent = new Intent(this, BaleLobbyActivity.class);
+                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                    startActivity(intent);
+                }
                 return true;
             case R.id.bale_observacoes_button:
-                Intent intentFromList = getIntent();
                 if (intentFromList != null) {
                     final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
                     String[] strings = new String[1];

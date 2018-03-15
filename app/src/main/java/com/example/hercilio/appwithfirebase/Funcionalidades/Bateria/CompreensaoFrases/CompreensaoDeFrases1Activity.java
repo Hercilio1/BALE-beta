@@ -209,7 +209,13 @@ public class CompreensaoDeFrases1Activity extends AppCompatActivity {
         final int itemId = item.getItemId();
 
         if (itemId == android.R.id.home) {
-            this.onBackPressed();
+            Intent intentFromList = getIntent();
+            if (intentFromList != null) {
+                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+                Intent intent = new Intent(this, BaleLobbyActivity.class);
+                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                startActivity(intent);
+            }
             return true;
         }
 
