@@ -32,6 +32,9 @@ public class MemoriaEpisodicaObject implements Serializable {
     private int pontuacaoQuintaFaseSemDica = 0, pontuacaoQuintaFaseComDica = 0;
     private long timeStampQuintaFase = 0;
 
+    //Porcentagem:
+    private int porcentagem;
+
     public MemoriaEpisodicaObject() {
     }
 
@@ -246,5 +249,15 @@ public class MemoriaEpisodicaObject implements Serializable {
     }
     public void setTimeStampQuintaFase(long timeStampQuintaFase) {
         this.timeStampQuintaFase = timeStampQuintaFase;
+    }
+
+    /***************
+     * PORCENTAGEM *
+     ***************/
+    public int getPorcentagem() {
+        return porcentagem;
+    }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
     }
 }

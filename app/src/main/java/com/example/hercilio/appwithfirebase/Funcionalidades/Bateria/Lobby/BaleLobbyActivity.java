@@ -51,12 +51,8 @@ public class BaleLobbyActivity extends AppCompatActivity {
         final int itemId = item.getItemId();
 
         if (itemId == android.R.id.home) {
-            Intent intentFromList = getIntent();
-            if (intentFromList != null) {
-                final Participante participante = (Participante) intentFromList.getSerializableExtra(EXTRA_PARTICIPANTE);
-                Intent intent = new Intent(this, AdminActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(this, AdminActivity.class);
+            startActivity(intent);
             return true;
         }
 

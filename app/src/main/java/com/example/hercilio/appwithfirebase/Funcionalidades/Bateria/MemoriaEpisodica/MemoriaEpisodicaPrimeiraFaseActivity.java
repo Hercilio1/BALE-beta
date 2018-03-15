@@ -15,7 +15,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hercilio.appwithfirebase.AdminActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.InformacaoDiscursolivre.InformacaoDiscursolivreLobbyActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.CompreensaoVerbalObject;
 import com.example.hercilio.appwithfirebase.Objetos.HabitosLeituraEscritaObject;
@@ -485,7 +487,6 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
     public Participante registrar(Participante participante, int nroAnalise) {
         MemoriaEpisodicaObject memEpObj;
         switch (nroAnalise) {
-
             case 1:
                 if(participante.getMemEpObject() == null) {
                     memEpObj = new MemoriaEpisodicaObject();
@@ -526,6 +527,7 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
                 break;
         }
 
+        new MemoriaEpisodicaLobbyActivity().atualizaPorcentagem(participante);
 
 
         FirebaseDatabase mFirebaseDatabase;
@@ -548,7 +550,13 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
         final int itemId = item.getItemId();
 
         if (itemId == android.R.id.home) {
-            this.onBackPressed();
+            Intent intentFromList = getIntent();
+            if (intentFromList != null) {
+                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+                Intent intent = new Intent(this, BaleLobbyActivity.class);
+                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                startActivity(intent);
+            }
             return true;
         }
 

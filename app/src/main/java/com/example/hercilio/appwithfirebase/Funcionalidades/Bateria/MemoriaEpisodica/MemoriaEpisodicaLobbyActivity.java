@@ -405,6 +405,41 @@ public class MemoriaEpisodicaLobbyActivity extends AppCompatActivity {
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
 
+    public void atualizaPorcentagem(Participante participante) {
+        int numeroDeVerf = 20;
+        int numeroDeVerfConcluidos = 0;
+        
+        if(participante.getMemEpObject().getPrimeiraFaseAnalise1() != null)
+            numeroDeVerfConcluidos += 1;
+        if(participante.getMemEpObject().getPrimeiraFaseAnalise2() != null)
+            numeroDeVerfConcluidos += 1;
+        if(participante.getMemEpObject().getPrimeiraFaseAnalise3() != null)
+            numeroDeVerfConcluidos += 1;
+        if(participante.getMemEpObject().getPrimeiraFaseAnalise4() != null)
+            numeroDeVerfConcluidos += 1;
+
+        if(participante.getMemEpObject().getSegundaFaseSemDica() != null
+                && participante.getMemEpObject().getSegundaFaseComDica() != null) {
+            numeroDeVerfConcluidos += 4;
+        }
+        if(participante.getMemEpObject().getTerceiraFaseSemDica() != null
+                && participante.getMemEpObject().getTerceiraFaseComDica() != null) {
+            numeroDeVerfConcluidos += 4;
+        }
+        if(participante.getMemEpObject().getQuartaFaseSemDica() != null
+                && participante.getMemEpObject().getQuartaFaseComDica() != null) {
+            numeroDeVerfConcluidos += 4;
+        }
+        if(participante.getMemEpObject().getQuintaFaseSemDica() != null
+                && participante.getMemEpObject().getQuintaFaseComDica() != null) {
+            numeroDeVerfConcluidos += 4;
+        }
+
+        int porcentagem = (100*numeroDeVerfConcluidos)/numeroDeVerf;
+
+        participante.getMemEpObject().setPorcentagem(porcentagem);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int itemId = item.getItemId();

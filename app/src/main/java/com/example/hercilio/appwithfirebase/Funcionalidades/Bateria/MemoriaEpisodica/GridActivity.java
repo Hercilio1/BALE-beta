@@ -430,6 +430,8 @@ public class GridActivity extends AppCompatActivity {
                 break;
         }
 
+        new MemoriaEpisodicaLobbyActivity().atualizaPorcentagem(participante);
+
         FirebaseDatabase mFirebaseDatabase;
         final DatabaseReference mParticipanteDatabaseReference;
 
