@@ -69,7 +69,8 @@ public class DigitSpanActivity extends AppCompatActivity {
     private ArrayList<String> auxAutoCompleteForward = new ArrayList<>();
     private ArrayList<String> auxAutoCompleteBackward = new ArrayList<>();
 
-
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -309,6 +310,7 @@ public class DigitSpanActivity extends AppCompatActivity {
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            isFinalizado = participante.isFinalizado();
 
             if(participante.getDigitSpanObject() != null) {
                 verificadores = participante.getDigitSpanObject().getVerificadores();
@@ -326,7 +328,8 @@ public class DigitSpanActivity extends AppCompatActivity {
             mBtnProsseguir.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    registrar(participante);
+                    if (!isFinalizado)
+                        registrar(participante);
                     Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
@@ -339,32 +342,35 @@ public class DigitSpanActivity extends AppCompatActivity {
 
     public void onClickForward(View v) {
         Button button = (Button) v;
-
-        if(!verificadores.get(v.getTag().toString())) {
-            v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            verificadores.put(v.getTag().toString(), true);
-            atualizaVeficadoresDeNivelForward();
-            atualizaTotalForward(true);
-        } else {
-            v.getBackground().clearColorFilter();
-            verificadores.put(v.getTag().toString(), false);
-            atualizaVeficadoresDeNivelForward();
-            atualizaTotalForward(false);
+        if (!isFinalizado) {
+            if (!verificadores.get(v.getTag().toString())) {
+                v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                verificadores.put(v.getTag().toString(), true);
+                atualizaVeficadoresDeNivelForward();
+                atualizaTotalForward(true);
+            } else {
+                v.getBackground().clearColorFilter();
+                verificadores.put(v.getTag().toString(), false);
+                atualizaVeficadoresDeNivelForward();
+                atualizaTotalForward(false);
+            }
         }
     }
 
     public void onClickBackward(View v) {
         Button button = (Button) v;
-        if(!verificadores.get(v.getTag().toString())) {
-            v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            verificadores.put(v.getTag().toString(), true);
-            atualizaVeficadoresDeNivelBackward();
-            atualizaTotalBackward(true);
-        } else {
-            v.getBackground().clearColorFilter();
-            verificadores.put(v.getTag().toString(), false);
-            atualizaVeficadoresDeNivelBackward();
-            atualizaTotalBackward(false);
+        if (!isFinalizado) {
+            if (!verificadores.get(v.getTag().toString())) {
+                v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                verificadores.put(v.getTag().toString(), true);
+                atualizaVeficadoresDeNivelBackward();
+                atualizaTotalBackward(true);
+            } else {
+                v.getBackground().clearColorFilter();
+                verificadores.put(v.getTag().toString(), false);
+                atualizaVeficadoresDeNivelBackward();
+                atualizaTotalBackward(false);
+            }
         }
     }
 
@@ -406,7 +412,7 @@ public class DigitSpanActivity extends AppCompatActivity {
             mForwardButton2Option7.setEnabled(true);
         }
         if (!verificadores.get(mForwardButton1Option7.getTag().toString()) && !verificadores.get(mForwardButton2Option7.getTag().toString())) {
-            resetaNivelForward(mForwardButton1Option7, mForwardButton2Option7);
+            resetaNivelForward(mForwardButton1Option8, mForwardButton2Option8);
         } else {
             mForwardButton1Option8.setEnabled(true);
             mForwardButton2Option8.setEnabled(true);
