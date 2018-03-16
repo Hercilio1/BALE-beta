@@ -246,7 +246,8 @@ public class HabitosLeituraEscritaActivity extends AppCompatActivity {
             mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    registrar(participante);
+                    if(!participante.isFinalizado())
+                        registrar(participante);
                     if(!validaRadioButtons) {
                         Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
                         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
