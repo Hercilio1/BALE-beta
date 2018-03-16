@@ -60,6 +60,9 @@ public class DiscursoLivreActivity extends AppCompatActivity {
     //Botao continuar:
     private Button btnContinuar;
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +97,7 @@ public class DiscursoLivreActivity extends AppCompatActivity {
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            isFinalizado = participante.isFinalizado();
 
             if (participante.getInformacaoDiscLivreObject() != null && participante.getInformacaoDiscLivreObject().getDiscursoLivre() != null) {
                 verificadores = participante.getInformacaoDiscLivreObject().getDiscursoLivre();
@@ -103,7 +107,8 @@ public class DiscursoLivreActivity extends AppCompatActivity {
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    registrar(participante);
+                    if(!isFinalizado)
+                        registrar(participante);
                     if(!validaRadioButtons) {
                         Intent intent = new Intent(getBaseContext(), InformacaoDiscursolivreLobbyActivity.class);
                         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
@@ -282,42 +287,44 @@ public class DiscursoLivreActivity extends AppCompatActivity {
     }
 
     public void onClickRadio(View v) {
-        //Label 1:
-        if(v.getId() == mRadioLabel1Quest1.getChildAt(0).getId()
-                || v.getId() == mRadioLabel1Quest1.getChildAt(1).getId()
-                || v.getId() == mRadioLabel1Quest1.getChildAt(2).getId())
-            somaValoresTotais(11, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest1,false));
-        else if(v.getId() == mRadioLabel1Quest2.getChildAt(0).getId()
-                || v.getId() == mRadioLabel1Quest2.getChildAt(1).getId()
-                || v.getId() == mRadioLabel1Quest2.getChildAt(2).getId())
-            somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest2,false));
-        else if(v.getId() == mRadioLabel1Quest3.getChildAt(0).getId()
-                || v.getId() == mRadioLabel1Quest3.getChildAt(1).getId()
-                || v.getId() == mRadioLabel1Quest3.getChildAt(2).getId())
-            somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest3,false));
-        else if(v.getId() == mRadioLabel1Quest4.getChildAt(0).getId()
-                || v.getId() == mRadioLabel1Quest4.getChildAt(1).getId()
-                || v.getId() == mRadioLabel1Quest4.getChildAt(2).getId())
-            somaValoresTotais(14, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest4,false));
-        else if(v.getId() == mRadioLabel1Quest5.getChildAt(0).getId()
-                || v.getId() == mRadioLabel1Quest5.getChildAt(1).getId()
-                || v.getId() == mRadioLabel1Quest5.getChildAt(2).getId())
-            somaValoresTotais(15, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest5,false));
+        if(!isFinalizado) {
+            //Label 1:
+            if (v.getId() == mRadioLabel1Quest1.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel1Quest1.getChildAt(1).getId()
+                    || v.getId() == mRadioLabel1Quest1.getChildAt(2).getId())
+                somaValoresTotais(11, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest1, false));
+            else if (v.getId() == mRadioLabel1Quest2.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel1Quest2.getChildAt(1).getId()
+                    || v.getId() == mRadioLabel1Quest2.getChildAt(2).getId())
+                somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest2, false));
+            else if (v.getId() == mRadioLabel1Quest3.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel1Quest3.getChildAt(1).getId()
+                    || v.getId() == mRadioLabel1Quest3.getChildAt(2).getId())
+                somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest3, false));
+            else if (v.getId() == mRadioLabel1Quest4.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel1Quest4.getChildAt(1).getId()
+                    || v.getId() == mRadioLabel1Quest4.getChildAt(2).getId())
+                somaValoresTotais(14, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest4, false));
+            else if (v.getId() == mRadioLabel1Quest5.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel1Quest5.getChildAt(1).getId()
+                    || v.getId() == mRadioLabel1Quest5.getChildAt(2).getId())
+                somaValoresTotais(15, (int) onFrequenciaRadioButtonClicked(mRadioLabel1Quest5, false));
 
-        //Label 2:
-        if(v.getId() == mRadioLabel2Quest1.getChildAt(0).getId()
-                || v.getId() == mRadioLabel2Quest1.getChildAt(1).getId())
-            somaValoresTotais(21, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest1,true));
-        if(v.getId() == mRadioLabel2Quest2.getChildAt(0).getId()
-                || v.getId() == mRadioLabel2Quest2.getChildAt(1).getId())
-            somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest2,true));
-        if(v.getId() == mRadioLabel2Quest3.getChildAt(0).getId()
-                || v.getId() == mRadioLabel2Quest3.getChildAt(1).getId())
-            somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest3,true));
-        else if(v.getId() == mRadioLabel2Quest4.getChildAt(0).getId()
-                || v.getId() == mRadioLabel2Quest4.getChildAt(1).getId()
-                || v.getId() == mRadioLabel2Quest4.getChildAt(2).getId())
-            somaValoresTotais(24, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest4,false));
+            //Label 2:
+            if (v.getId() == mRadioLabel2Quest1.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel2Quest1.getChildAt(1).getId())
+                somaValoresTotais(21, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest1, true));
+            if (v.getId() == mRadioLabel2Quest2.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel2Quest2.getChildAt(1).getId())
+                somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest2, true));
+            if (v.getId() == mRadioLabel2Quest3.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel2Quest3.getChildAt(1).getId())
+                somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest3, true));
+            else if (v.getId() == mRadioLabel2Quest4.getChildAt(0).getId()
+                    || v.getId() == mRadioLabel2Quest4.getChildAt(1).getId()
+                    || v.getId() == mRadioLabel2Quest4.getChildAt(2).getId())
+                somaValoresTotais(24, (int) onFrequenciaRadioButtonClicked(mRadioLabel2Quest4, false));
+        }
     }
 
     public void autoComplete() {
