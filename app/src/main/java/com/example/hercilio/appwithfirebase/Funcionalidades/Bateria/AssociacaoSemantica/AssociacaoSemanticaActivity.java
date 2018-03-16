@@ -79,7 +79,8 @@ public class AssociacaoSemanticaActivity extends AppCompatActivity {
             mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    registrar(participante);
+                    if(!participante.isFinalizado())
+                        registrar(participante);
                     Intent intent = new Intent(getBaseContext(),  BaleLobbyActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
@@ -116,18 +117,21 @@ public class AssociacaoSemanticaActivity extends AppCompatActivity {
         RadioButton radioButton = (RadioButton) v;
         RadioGroup item = (RadioGroup) radioButton.getParent();
 
-        if(onFrequenciaRadioButtonClicked(item) == 0) {
-            verificadores.put(item.getTag().toString(), 0);
-        } else if(onFrequenciaRadioButtonClicked(item) == 1) {
-            verificadores.put(item.getTag().toString(), 1);
-        } else if(onFrequenciaRadioButtonClicked(item) == 2) {
-            verificadores.put(item.getTag().toString(), 2);
-        }
         atualizaTotal();
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
-            registrar(participante);
+
+            if(!participante.isFinalizado()) {
+                if(onFrequenciaRadioButtonClicked(item) == 0) {
+                    verificadores.put(item.getTag().toString(), 0);
+                } else if(onFrequenciaRadioButtonClicked(item) == 1) {
+                    verificadores.put(item.getTag().toString(), 1);
+                } else if(onFrequenciaRadioButtonClicked(item) == 2) {
+                    verificadores.put(item.getTag().toString(), 2);
+                }
+                registrar(participante);
+            }
         }
     }
 
