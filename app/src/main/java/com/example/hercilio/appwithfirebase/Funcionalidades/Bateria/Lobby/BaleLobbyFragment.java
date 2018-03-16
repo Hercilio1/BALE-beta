@@ -64,6 +64,7 @@ public class BaleLobbyFragment extends Fragment {
 
         mParticipante = (Participante) getArguments().getSerializable(EXTRA_PARTICIPANTE);
 
+
         RelativeLayout rlyHLE = (RelativeLayout) getActivity().findViewById(R.id.rly_habitos_leitura_escrita);
         RelativeLayout rlyCompFrases = (RelativeLayout) getActivity().findViewById(R.id.rly_compreensao_frases);
         RelativeLayout rlyMemEp = (RelativeLayout) getActivity().findViewById(R.id.rly_memoria_episodica);

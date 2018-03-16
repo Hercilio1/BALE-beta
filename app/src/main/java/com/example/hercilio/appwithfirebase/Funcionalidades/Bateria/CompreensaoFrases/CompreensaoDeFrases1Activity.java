@@ -57,29 +57,30 @@ public class CompreensaoDeFrases1Activity extends AppCompatActivity {
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                registrar(participante);
-                if(!validaRadioButtons) {
-                    Intent intent = new Intent(getBaseContext(), CompreensaoDeFrases2Activity.class);
-                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                    startActivity(intent);
-                } else {
-                    if (validaRadioButtons) {
+                    if (!participante.isFinalizado())
+                        registrar(participante);
+                    if(!validaRadioButtons) {
+                        Intent intent = new Intent(getBaseContext(), CompreensaoDeFrases2Activity.class);
+                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                        startActivity(intent);
+                    } else {
+                        if (validaRadioButtons) {
 
-                        AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
 
-                        alert.setTitle("Atenção");
-                        alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
+                            alert.setTitle("Atenção");
+                            alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
 
-                        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                validaRadioButtons = true;
-                            }
-                        });
+                            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    validaRadioButtons = true;
+                                }
+                            });
 
-                        AlertDialog dialog = alert.create();
-                        alert.show();
+                            AlertDialog dialog = alert.create();
+                            alert.show();
+                        }
                     }
-                }
                 }
             });
         }

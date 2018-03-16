@@ -56,7 +56,8 @@ public class CompreensaoDeFrases2Activity extends AppCompatActivity {
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                registrar(participante);
+                    if (!participante.isFinalizado())
+                        registrar(participante);
                     if(!validaRadioButtons) {
                         Intent intent = new Intent(getBaseContext(), CompreensaoDeFrasesRelogioActivity.class);
                         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);

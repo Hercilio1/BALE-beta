@@ -132,20 +132,22 @@ public class CompreensaoDeFrasesRelogioActivity extends AppCompatActivity {
             Intent intentFromList = getIntent();
             if (intentFromList != null) {
                 final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
-                final FirebaseAuth auth = FirebaseAuth.getInstance();
-                mFotoRelogioStoregeReference = mFirebaseStorage.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes").child(participante.getCpf()).child("foto_relogio");
-                mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+                if (!participante.isFinalizado()) {
+                    final FirebaseAuth auth = FirebaseAuth.getInstance();
+                    mFotoRelogioStoregeReference = mFirebaseStorage.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes").child(participante.getCpf()).child("foto_relogio");
+                    mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
-                Uri selectedImageUri = data.getData();
-                mFotoRelogioStoregeReference.putBytes(bImg).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                        participante.getCompFrasesObject().setFotoRelogio(downloadUrl.toString());
-                        mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
-                        return;
-                    }
-                });
+                    Uri selectedImageUri = data.getData();
+                    mFotoRelogioStoregeReference.putBytes(bImg).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            participante.getCompFrasesObject().setFotoRelogio(downloadUrl.toString());
+                            mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+                            return;
+                        }
+                    });
+                }
             }
         }
     }
