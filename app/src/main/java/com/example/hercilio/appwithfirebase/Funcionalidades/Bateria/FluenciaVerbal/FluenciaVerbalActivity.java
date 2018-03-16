@@ -131,7 +131,8 @@ public class FluenciaVerbalActivity extends AppCompatActivity {
             mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    registrar(participante);
+                    if(!participante.isFinalizado())
+                        registrar(participante);
                     Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
