@@ -52,6 +52,9 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
     private ArrayList<String> auxAutoComplete = new ArrayList<>();
     private ArrayList<String> auxAutoCompleteSecundario = new ArrayList<>();
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,6 +213,8 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
+            isFinalizado = participante.isFinalizado();
+
             if(participante.getCompVerbalObject() != null && participante.getCompVerbalObject().getPrimeiraAvaliacao() != null) {
                 verificadores = participante.getCompVerbalObject().getPrimeiraAvaliacao();
                 autoComplete();
@@ -218,7 +223,8 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    registrar(participante);
+                    if(!isFinalizado)
+                        registrar(participante);
                     Intent intent = new Intent(getBaseContext(), CompreensaoVerbalLobbyActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
@@ -230,31 +236,35 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
     public void onClickPrincipal(View v) {
         Button button = (Button) v;
 
-        if(!verificadores.get(v.getTag().toString())) {
-            v.getBackground().setColorFilter(getResources().getColor(R.color.clickedPrinc_compVerval), PorterDuff.Mode.SRC_ATOP);
+        if(!isFinalizado) {
+            if (!verificadores.get(v.getTag().toString())) {
+                v.getBackground().setColorFilter(getResources().getColor(R.color.clickedPrinc_compVerval), PorterDuff.Mode.SRC_ATOP);
 //            button.setTextColor(Color.WHITE);
-            verificadores.put(v.getTag().toString(), true);
-            atualizaTotalPrincipal(true);
-        } else {
-            v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                verificadores.put(v.getTag().toString(), true);
+                atualizaTotalPrincipal(true);
+            } else {
+                v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
 //            button.setTextColor(Color.BLACK);
-            verificadores.put(v.getTag().toString(), false);
-            atualizaTotalPrincipal(false);
+                verificadores.put(v.getTag().toString(), false);
+                atualizaTotalPrincipal(false);
+            }
         }
     }
 
     public void onClickSecundario(View v) {
         Button button = (Button) v;
-        if(!verificadores.get(v.getTag().toString())) {
-            v.getBackground().setColorFilter(getResources().getColor(R.color.clickedSecun_compVerval), PorterDuff.Mode.SRC_ATOP);
+        if(!isFinalizado) {
+            if (!verificadores.get(v.getTag().toString())) {
+                v.getBackground().setColorFilter(getResources().getColor(R.color.clickedSecun_compVerval), PorterDuff.Mode.SRC_ATOP);
 //            button.setTextColor(Color.WHITE);
-            verificadores.put(v.getTag().toString(), true);
-            atualizaTotalSecundario(true);
-        } else {
-            v.getBackground().setColorFilter(getResources().getColor(R.color.colorSecundaria_compVerbal), PorterDuff.Mode.SRC_ATOP);
+                verificadores.put(v.getTag().toString(), true);
+                atualizaTotalSecundario(true);
+            } else {
+                v.getBackground().setColorFilter(getResources().getColor(R.color.colorSecundaria_compVerbal), PorterDuff.Mode.SRC_ATOP);
 //            button.setTextColor(Color.BLACK);
-            verificadores.put(v.getTag().toString(), false);
-            atualizaTotalSecundario(false);
+                verificadores.put(v.getTag().toString(), false);
+                atualizaTotalSecundario(false);
+            }
         }
     }
 

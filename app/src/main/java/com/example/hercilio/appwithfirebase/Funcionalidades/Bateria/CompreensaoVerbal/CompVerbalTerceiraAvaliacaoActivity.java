@@ -61,6 +61,9 @@ public class CompVerbalTerceiraAvaliacaoActivity extends AppCompatActivity {
     //Botao continuar:
     private Button btnContinuar;
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +96,7 @@ public class CompVerbalTerceiraAvaliacaoActivity extends AppCompatActivity {
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            isFinalizado = participante.isFinalizado();
 
             if (participante.getCompVerbalObject() != null && participante.getCompVerbalObject().getTerceiraAvaliacao() != null) {
                 verificadores = participante.getCompVerbalObject().getTerceiraAvaliacao();
@@ -102,29 +106,30 @@ public class CompVerbalTerceiraAvaliacaoActivity extends AppCompatActivity {
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                registrar(participante);
-                if(!validaRadioButtons) {
-                    Intent intent = new Intent(getBaseContext(), CompreensaoVerbalLobbyActivity.class);
-                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                    startActivity(intent);
-                } else {
-                    if (validaRadioButtons) {
+                    if(!isFinalizado)
+                        registrar(participante);
+                    if(!validaRadioButtons) {
+                        Intent intent = new Intent(getBaseContext(), CompreensaoVerbalLobbyActivity.class);
+                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                        startActivity(intent);
+                    } else {
+                        if (validaRadioButtons) {
 
-                        AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
 
-                        alert.setTitle("Atenção");
-                        alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
+                            alert.setTitle("Atenção");
+                            alert.setMessage("Você não pressionou algum botão necessário para pesquisa. Favor pressiona-lo(s) para presseguir");
 
-                        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                validaRadioButtons = true;
-                            }
-                        });
+                            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    validaRadioButtons = true;
+                                }
+                            });
 
-                        AlertDialog dialog = alert.create();
-                        alert.show();
+                            AlertDialog dialog = alert.create();
+                            alert.show();
+                        }
                     }
-                }
                 }
             });
         }
@@ -273,35 +278,37 @@ public class CompVerbalTerceiraAvaliacaoActivity extends AppCompatActivity {
     }
 
     public void onClickRadio(View v) {
-        if(v.getId() == mRadioPergunta1Label2.getChildAt(0).getId()
-                || v.getId() == mRadioPergunta1Label2.getChildAt(1).getId()
-                || v.getId() == mRadioPergunta1Label2.getChildAt(2).getId())
-            somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioPergunta1Label2));
+        if(!isFinalizado) {
+            if (v.getId() == mRadioPergunta1Label2.getChildAt(0).getId()
+                    || v.getId() == mRadioPergunta1Label2.getChildAt(1).getId()
+                    || v.getId() == mRadioPergunta1Label2.getChildAt(2).getId())
+                somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioPergunta1Label2));
 
-        else if(v.getId() == mRadioPergunta2Label2.getChildAt(0).getId()
-                || v.getId() == mRadioPergunta2Label2.getChildAt(1).getId()
-                || v.getId() == mRadioPergunta2Label2.getChildAt(2).getId())
-            somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioPergunta2Label2));
+            else if (v.getId() == mRadioPergunta2Label2.getChildAt(0).getId()
+                    || v.getId() == mRadioPergunta2Label2.getChildAt(1).getId()
+                    || v.getId() == mRadioPergunta2Label2.getChildAt(2).getId())
+                somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioPergunta2Label2));
 
-        else if(v.getId() == mRadioPergunta3Label2.getChildAt(0).getId()
-                || v.getId() == mRadioPergunta3Label2.getChildAt(1).getId()
-                || v.getId() == mRadioPergunta3Label2.getChildAt(2).getId())
-            somaValoresTotais(32, (int) onFrequenciaRadioButtonClicked(mRadioPergunta3Label2));
+            else if (v.getId() == mRadioPergunta3Label2.getChildAt(0).getId()
+                    || v.getId() == mRadioPergunta3Label2.getChildAt(1).getId()
+                    || v.getId() == mRadioPergunta3Label2.getChildAt(2).getId())
+                somaValoresTotais(32, (int) onFrequenciaRadioButtonClicked(mRadioPergunta3Label2));
 
-        else if(v.getId() == mRadioPergunta1Label3.getChildAt(0).getId()
-                || v.getId() == mRadioPergunta1Label3.getChildAt(1).getId()
-                || v.getId() == mRadioPergunta1Label3.getChildAt(2).getId())
-            somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioPergunta1Label3));
+            else if (v.getId() == mRadioPergunta1Label3.getChildAt(0).getId()
+                    || v.getId() == mRadioPergunta1Label3.getChildAt(1).getId()
+                    || v.getId() == mRadioPergunta1Label3.getChildAt(2).getId())
+                somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioPergunta1Label3));
 
-        else if(v.getId() == mRadioPergunta2Label3.getChildAt(0).getId()
-                || v.getId() == mRadioPergunta2Label3.getChildAt(1).getId()
-                || v.getId() == mRadioPergunta2Label3.getChildAt(2).getId())
-            somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioPergunta2Label3));
+            else if (v.getId() == mRadioPergunta2Label3.getChildAt(0).getId()
+                    || v.getId() == mRadioPergunta2Label3.getChildAt(1).getId()
+                    || v.getId() == mRadioPergunta2Label3.getChildAt(2).getId())
+                somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioPergunta2Label3));
 
-        else if(v.getId() == mRadioPergunta3Label3.getChildAt(0).getId()
-                || v.getId() == mRadioPergunta3Label3.getChildAt(1).getId()
-                || v.getId() == mRadioPergunta3Label3.getChildAt(2).getId())
-            somaValoresTotais(33, (int) onFrequenciaRadioButtonClicked(mRadioPergunta3Label3));
+            else if (v.getId() == mRadioPergunta3Label3.getChildAt(0).getId()
+                    || v.getId() == mRadioPergunta3Label3.getChildAt(1).getId()
+                    || v.getId() == mRadioPergunta3Label3.getChildAt(2).getId())
+                somaValoresTotais(33, (int) onFrequenciaRadioButtonClicked(mRadioPergunta3Label3));
+        }
     }
 
     public void alteraDadosFirebase(Participante participante) {

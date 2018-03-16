@@ -161,18 +161,20 @@ public class ObservacoesActivity extends AppCompatActivity {
                 if (intentFromList != null) {
                     final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
 
-                    switch (mTitle.getText().toString()) {
-                        case "Compreensão Verbal":
-                            registrarCompVerbal(participante);
-                            break;
-                        case "Informação e Discurso Livre":
-                            registrarInfDiscLivre(participante);
-                            break;
-                        case "Narrativa":
-                            registrarNarrativa(participante);
-                            break;
-                        default:
-                            break;
+                    if(!participante.isFinalizado()) {
+                        switch (mTitle.getText().toString()) {
+                            case "Compreensão Verbal":
+                                registrarCompVerbal(participante);
+                                break;
+                            case "Informação e Discurso Livre":
+                                registrarInfDiscLivre(participante);
+                                break;
+                            case "Narrativa":
+                                registrarNarrativa(participante);
+                                break;
+                            default:
+                                break;
+                        }
                     }
 
                     Intent intent = new Intent(this, BaleLobbyActivity.class);
