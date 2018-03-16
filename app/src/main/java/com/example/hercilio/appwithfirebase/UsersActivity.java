@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFinalizadasFragment;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,7 +83,7 @@ public class UsersActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return (position == 0 ? new PesquisasFragment() : new UsuariosFragment());
+            return (position == 0 ? new PesquisasFragment() : new PesquisasFinalizadasFragment());
         }
 
         @Override

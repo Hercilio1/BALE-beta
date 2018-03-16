@@ -19,6 +19,7 @@ public class Participante implements Serializable {
     private String linguaMaterna;
     private String outrasLinguas;
     private int porcentagem;
+    private boolean finalizado;
 
     private HabitosLeituraEscritaObject hleObject;
     private CompreensaoFrasesObject compFrasesObject;
@@ -57,6 +58,7 @@ public class Participante implements Serializable {
         this.linguaMaterna = linguaMaterna;
         this.outrasLinguas = outrasLinguas;
         this.porcentagem = 0;
+        this.finalizado = false;
 
         this.hleObject = null;
         this.compFrasesObject = null;
@@ -79,92 +81,19 @@ public class Participante implements Serializable {
         return cpf;
     }
 
-    public String getDataNasc() {
-        return dataNasc;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public String getEscolaridade() {
-        return escolaridade;
-    }
-
-    public String getDinamicaManual() {
-        return dinamicaManual;
-    }
-
-    public String getProfissao() {
-        return profissao;
-    }
-
-    public boolean isEhAposentado() {
-        return ehAposentado;
-    }
-
-    public String getLinguaMaterna() {
-        return linguaMaterna;
-    }
-
-    public String getOutrasLinguas() {
-        return outrasLinguas;
-    }
-
     public int getPorcentagem() {
         return porcentagem;
     }
 
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public void setDataNasc(String dataNasc) {
-        this.dataNasc = dataNasc;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
-    public void setEscolaridade(String escolaridade) {
-        this.escolaridade = escolaridade;
-    }
-
-    public void setDinamicaManual(String dinamicaManual) {
-        this.dinamicaManual = dinamicaManual;
-    }
-
-    public void setProfissao(String profissao) {
-        this.profissao = profissao;
-    }
-
-    public void setEhAposentado(boolean ehAposentado) {
-        this.ehAposentado = ehAposentado;
-    }
-
-    public void setLinguaMaterna(String linguaMaterna) {
-        this.linguaMaterna = linguaMaterna;
-    }
-
-    public void setOutrasLinguas(String outrasLinguas) {
-        this.outrasLinguas = outrasLinguas;
-    }
-
     public void setPorcentagem(int porcentagem) {
         this.porcentagem = porcentagem;
+    }
+
+    public boolean isFinalizado() {
+        return finalizado;
+    }
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     /**********************
@@ -244,5 +173,88 @@ public class Participante implements Serializable {
     }
     public void setConhecimentoSemanticoObject(ConhecimentoSemanticoObject conhecimentoSemanticoObject) {
         this.conhecimentoSemanticoObject = conhecimentoSemanticoObject;
+    }
+
+    /*****************************
+     * GETS AND SETS Secundarios *
+     *****************************/
+    public String getDataNasc() {
+        return dataNasc;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public String getEscolaridade() {
+        return escolaridade;
+    }
+
+    public String getDinamicaManual() {
+        return dinamicaManual;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public boolean isEhAposentado() {
+        return ehAposentado;
+    }
+
+    public String getLinguaMaterna() {
+        return linguaMaterna;
+    }
+
+    public String getOutrasLinguas() {
+        return outrasLinguas;
+    }
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public void setEscolaridade(String escolaridade) {
+        this.escolaridade = escolaridade;
+    }
+
+    public void setDinamicaManual(String dinamicaManual) {
+        this.dinamicaManual = dinamicaManual;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
+    }
+
+    public void setEhAposentado(boolean ehAposentado) {
+        this.ehAposentado = ehAposentado;
+    }
+
+    public void setLinguaMaterna(String linguaMaterna) {
+        this.linguaMaterna = linguaMaterna;
+    }
+
+    public void setOutrasLinguas(String outrasLinguas) {
+        this.outrasLinguas = outrasLinguas;
     }
 }

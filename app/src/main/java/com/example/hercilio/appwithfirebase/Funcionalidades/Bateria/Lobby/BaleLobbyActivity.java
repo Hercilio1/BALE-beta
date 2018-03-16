@@ -1,5 +1,7 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,8 +12,10 @@ import android.view.MenuItem;
 
 import com.example.hercilio.appwithfirebase.AdminActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Observacoes.ObservacoesActivity;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
+import com.example.hercilio.appwithfirebase.UsersActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,7 +28,7 @@ public class BaleLobbyActivity extends AppCompatActivity {
 
     public static final String EXTRA_PARTICIPANTE = "participante";
 
-    private MenuItem baleLobbyHomeBtn;
+    private boolean isComplete, isFinalizado;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +43,11 @@ public class BaleLobbyActivity extends AppCompatActivity {
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(EXTRA_PARTICIPANTE);
+
+            if(participante.getPorcentagem() == 100 && !participante.isFinalizado())
+                isComplete = true;
+            if(participante.isFinalizado())
+                isFinalizado = true;
 
             atualizaPorcentagem(participante);
 
@@ -104,6 +113,24 @@ public class BaleLobbyActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        //Instanciação das referências.
+        MenuItem baleLobbyFinalizarBtn = menu.findItem(R.id.bale_lobby_finalizar_btn);
+        MenuItem baleLobbyReativarBtn = menu.findItem(R.id.bale_lobby_retestar_btn);
+        if(isComplete) {
+            baleLobbyFinalizarBtn.setVisible(true);
+            baleLobbyReativarBtn.setVisible(false);
+        }
+        if(isFinalizado) {
+            baleLobbyReativarBtn.setVisible(true);
+            baleLobbyFinalizarBtn.setVisible(false);
+        }
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int itemId = item.getItemId();
 
@@ -113,6 +140,84 @@ public class BaleLobbyActivity extends AppCompatActivity {
             return true;
         }
 
+        final Intent intent = new Intent(this, UsersActivity.class);
+        Intent intentFromList = getIntent();
+        //Faz as transações
+        switch (itemId) {
+            case android.R.id.home:
+                startActivity(intent);
+                return true;
+
+            case R.id.bale_lobby_finalizar_btn:
+                if (intentFromList != null) {
+                    final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+                    alert.setTitle("Atenção");
+                    alert.setMessage("Os resultados da bateria realizada não poderão ser alterados. Você tem certeza que deseja finalizar a pesquisa?");
+
+                    alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            participante.setFinalizado(true);
+
+                            FirebaseDatabase mFirebaseDatabase;
+                            final DatabaseReference mParticipanteDatabaseReference;
+                            mFirebaseDatabase = FirebaseDatabase.getInstance();
+                            final FirebaseAuth auth = FirebaseAuth.getInstance();
+                            mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+                            mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+
+                            startActivity(intent);
+                        }
+                    });
+
+                    alert.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+                    AlertDialog dialog = alert.create();
+                    alert.show();
+                }
+                return true;
+
+            case R.id.bale_lobby_retestar_btn:
+                if (intentFromList != null) {
+                    final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+                    alert.setTitle("Atenção");
+                    alert.setMessage("Os resultados da bateria realizada poderão ser alterados. Você tem certeza que deseja reativar a pesquisa?");
+
+                    alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            participante.setFinalizado(false);
+
+                            FirebaseDatabase mFirebaseDatabase;
+                            final DatabaseReference mParticipanteDatabaseReference;
+                            mFirebaseDatabase = FirebaseDatabase.getInstance();
+                            final FirebaseAuth auth = FirebaseAuth.getInstance();
+                            mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+                            mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+
+                            startActivity(intent);
+                        }
+                    });
+
+                    alert.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+                    AlertDialog dialog = alert.create();
+                    alert.show();
+                }
+                return true;
+            default:
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 

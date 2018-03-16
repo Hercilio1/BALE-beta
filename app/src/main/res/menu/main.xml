@@ -2,11 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/bale_lobby_home_btn"
-        android:title=""
+        android:id="@+id/bale_lobby_finalizar_btn"
+        android:title="FINALIZAR PESQUISA"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_home_white_24dp"
         app:showAsAction="ifRoom"
-        android:visible="true"/>
+        android:visible="false" />
+    <item
+        android:id="@+id/bale_lobby_retestar_btn"
+        android:title="REATIVAR PESQUISA"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:visible="false" />
 
 </menu>

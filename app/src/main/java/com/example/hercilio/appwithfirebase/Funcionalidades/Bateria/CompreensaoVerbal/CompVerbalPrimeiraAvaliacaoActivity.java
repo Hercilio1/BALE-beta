@@ -326,9 +326,6 @@ public class CompVerbalPrimeiraAvaliacaoActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         final FirebaseAuth auth = FirebaseAuth.getInstance();
         mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
-
-       //Criar uma váriavel final estava criando um loop no onDataChange
-       //final Participante partAux = participante;
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
     }
 

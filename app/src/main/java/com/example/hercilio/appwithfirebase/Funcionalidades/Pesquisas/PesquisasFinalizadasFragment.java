@@ -1,20 +1,17 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsuarioActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosFragment;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
@@ -28,16 +25,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 /**
- * Created by Hercilio on 14/12/2017.
+ * Created by Hercilio on 16/03/2018.
  */
 
-public class PesquisasFragment extends Fragment {
+public class PesquisasFinalizadasFragment extends Fragment {
 
     //Responsavel pela recyclerView
     private PesquisasAdapter mPesquisasAdapter;
     private ArrayList<Participante> items = new ArrayList<>();
     private RecyclerView mRecyclerView;
-//    private OnListFragmentInteractionListener mListener;
+    //    private OnListFragmentInteractionListener mListener;
     //Responsavel pelo btn de cadastro de participante
     private FloatingActionButton btnCadastrarParticipante;
     private FirebaseDatabase mFirebaseDatabase;
@@ -71,6 +68,7 @@ public class PesquisasFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
+        //Caso seja uma consulta através do admin
         Intent intentFromList = getActivity().getIntent();
         if (intentFromList != null) {
             final UsuariosFragment.IdWithUserDados keyIdUsuarioListado =
@@ -84,6 +82,8 @@ public class PesquisasFragment extends Fragment {
                 btnCadastrarParticipante.setVisibility(View.VISIBLE);
             }
         }
+
+        btnCadastrarParticipante.setVisibility(View.INVISIBLE);
 
         final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
             @Override
@@ -111,7 +111,7 @@ public class PesquisasFragment extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Participante participante = dataSnapshot.getValue(Participante.class);
-                if(!participante.isFinalizado()) {
+                if(participante.isFinalizado()) {
                     items.add(participante);
                     mPesquisasAdapter = new PesquisasAdapter(getActivity(), items);
                     mPesquisasAdapter.setListener(selecionarItemView);
