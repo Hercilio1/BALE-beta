@@ -74,48 +74,63 @@ public class ObservacoesActivity extends AppCompatActivity {
     }
 
     public void registrarCompVerbal(Participante participante) {
-        CompreensaoVerbalObject compreensaoVerbalObject;
-        if (participante.getCompVerbalObject() == null)
-            compreensaoVerbalObject = new CompreensaoVerbalObject();
-        else
-            compreensaoVerbalObject = participante.getCompVerbalObject();
+        if(!participante.isFinalizado()) {
+            CompreensaoVerbalObject compreensaoVerbalObject;
+            if (participante.getCompVerbalObject() == null)
+                compreensaoVerbalObject = new CompreensaoVerbalObject();
+            else
+                compreensaoVerbalObject = participante.getCompVerbalObject();
 
-        compreensaoVerbalObject.setObservacoes(mObservacoes.getText().toString());
-        participante.setCompVerbalObject(compreensaoVerbalObject);
+            compreensaoVerbalObject.setObservacoes(mObservacoes.getText().toString());
+            participante.setCompVerbalObject(compreensaoVerbalObject);
 
-        new CompreensaoVerbalLobbyActivity().atualizaPorcentagem(participante);
+            new CompreensaoVerbalLobbyActivity().atualizaPorcentagem(participante);
 
-        registra(participante);
+            registra(participante);
+        }
+        Intent intent = new Intent(this, CompreensaoVerbalLobbyActivity.class);
+        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+        startActivity(intent);
     }
 
     public void registrarInfDiscLivre(Participante participante) {
-        InformacaoDiscursoLivreObject informacaoDiscursoLivreObject;
-        if (participante.getInformacaoDiscLivreObject() == null)
-            informacaoDiscursoLivreObject = new InformacaoDiscursoLivreObject();
-        else
-            informacaoDiscursoLivreObject = participante.getInformacaoDiscLivreObject();
+        if(!participante.isFinalizado()) {
+            InformacaoDiscursoLivreObject informacaoDiscursoLivreObject;
+            if (participante.getInformacaoDiscLivreObject() == null)
+                informacaoDiscursoLivreObject = new InformacaoDiscursoLivreObject();
+            else
+                informacaoDiscursoLivreObject = participante.getInformacaoDiscLivreObject();
 
-        informacaoDiscursoLivreObject.setObservacoes(mObservacoes.getText().toString());
-        participante.setInformacaoDiscLivreObject(informacaoDiscursoLivreObject);
+            informacaoDiscursoLivreObject.setObservacoes(mObservacoes.getText().toString());
+            participante.setInformacaoDiscLivreObject(informacaoDiscursoLivreObject);
 
-        new InformacaoDiscursolivreLobbyActivity().atualizaPorcentagem(participante);
+            new InformacaoDiscursolivreLobbyActivity().atualizaPorcentagem(participante);
 
-        registra(participante);
+            registra(participante);
+        }
+        Intent intent = new Intent(this, InformacaoDiscursolivreLobbyActivity.class);
+        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+        startActivity(intent);
     }
 
     public void registrarNarrativa(Participante participante) {
-        NarrativaObject narrativaObject;
-        if (participante.getNarrativaObject() == null)
-            narrativaObject = new NarrativaObject();
-        else
-            narrativaObject = participante.getNarrativaObject();
+        if(!participante.isFinalizado()) {
+            NarrativaObject narrativaObject;
+            if (participante.getNarrativaObject() == null)
+                narrativaObject = new NarrativaObject();
+            else
+                narrativaObject = participante.getNarrativaObject();
 
-        new NarrativaActivity().atualizaPorcentagem(participante);
+            new NarrativaActivity().atualizaPorcentagem(participante);
 
-        narrativaObject.setObservacoes(mObservacoes.getText().toString());
-        participante.setNarrativaObject(narrativaObject);
+            narrativaObject.setObservacoes(mObservacoes.getText().toString());
+            participante.setNarrativaObject(narrativaObject);
 
-        registra(participante);
+            registra(participante);
+        }
+        Intent intent = new Intent(this, NarrativaActivity.class);
+        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+        startActivity(intent);
     }
 
     public void registra(Participante participante) {
@@ -160,26 +175,21 @@ public class ObservacoesActivity extends AppCompatActivity {
                 Intent intentFromList = getIntent();
                 if (intentFromList != null) {
                     final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
-
-                    if(!participante.isFinalizado()) {
-                        switch (mTitle.getText().toString()) {
-                            case "Compreensão Verbal":
-                                registrarCompVerbal(participante);
-                                break;
-                            case "Informação e Discurso Livre":
-                                registrarInfDiscLivre(participante);
-                                break;
-                            case "Narrativa":
-                                registrarNarrativa(participante);
-                                break;
-                            default:
-                                break;
-                        }
+                    
+                    switch (mTitle.getText().toString()) {
+                        case "Compreensão Verbal":
+                            registrarCompVerbal(participante);
+                            break;
+                        case "Informação e Discurso Livre":
+                            registrarInfDiscLivre(participante);
+                            break;
+                        case "Narrativa":
+                            registrarNarrativa(participante);
+                            break;
+                        default:
+                            break;
                     }
 
-                    Intent intent = new Intent(this, BaleLobbyActivity.class);
-                    intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                    startActivity(intent);
                 }
                 return true;
             default:
