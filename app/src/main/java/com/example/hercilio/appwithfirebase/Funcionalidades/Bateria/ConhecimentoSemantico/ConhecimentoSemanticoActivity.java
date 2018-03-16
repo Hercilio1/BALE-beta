@@ -73,6 +73,9 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
     //Botao continuar:
     private Button btnContinuar;
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,14 +113,13 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
         mTotalNumero1Proverbio = (TextView) findViewById(R.id.total_number1_proverbio);
         mTotalNumero1Metafora = (TextView) findViewById(R.id.total_number1_metafora);
 
-
         //Botao continuar:
         btnContinuar = (Button) findViewById(R.id.btn_continuar_conhecimento_semantico);
-
 
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            isFinalizado = participante.isFinalizado();
 
             if (participante.getConhecimentoSemanticoObject() != null) {
                 verificadores = participante.getConhecimentoSemanticoObject().getVerificadores();
@@ -129,8 +131,10 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
             btnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    armazenaStringsEditText();
-                    registrar(participante);
+                    if(!isFinalizado) {
+                        armazenaStringsEditText();
+                        registrar(participante);
+                    }
                     if(!validaRadioButtons) {
                         Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
                         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
@@ -276,33 +280,34 @@ public class ConhecimentoSemanticoActivity extends AppCompatActivity {
     }
 
     public void onClickRadio(View v) {
-        if(v.getId() == mRadioProverbioQuest1.getChildAt(0).getId()
-                || v.getId() == mRadioProverbioQuest1.getChildAt(1).getId()
-                || v.getId() == mRadioProverbioQuest1.getChildAt(2).getId())
-            somaValoresTotais(11, (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest1, false));
+        if(!isFinalizado) {
+            if (v.getId() == mRadioProverbioQuest1.getChildAt(0).getId()
+                    || v.getId() == mRadioProverbioQuest1.getChildAt(1).getId()
+                    || v.getId() == mRadioProverbioQuest1.getChildAt(2).getId())
+                somaValoresTotais(11, (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest1, false));
 
-        else if(v.getId() == mRadioProverbioQuest2.getChildAt(0).getId()
-                || v.getId() == mRadioProverbioQuest2.getChildAt(1).getId()
-                || v.getId() == mRadioProverbioQuest2.getChildAt(2).getId())
-            somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest2, false));
+            else if (v.getId() == mRadioProverbioQuest2.getChildAt(0).getId()
+                    || v.getId() == mRadioProverbioQuest2.getChildAt(1).getId()
+                    || v.getId() == mRadioProverbioQuest2.getChildAt(2).getId())
+                somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest2, false));
 
-        else if(v.getId() == mRadioProverbioQuest3.getChildAt(0).getId()
-                || v.getId() == mRadioProverbioQuest3.getChildAt(1).getId()
-                || v.getId() == mRadioProverbioQuest3.getChildAt(2).getId())
-            somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest3, false));
+            else if (v.getId() == mRadioProverbioQuest3.getChildAt(0).getId()
+                    || v.getId() == mRadioProverbioQuest3.getChildAt(1).getId()
+                    || v.getId() == mRadioProverbioQuest3.getChildAt(2).getId())
+                somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioProverbioQuest3, false));
 
-        else if(v.getId() == mRadioMetaforaQuest1.getChildAt(0).getId()
-                || v.getId() == mRadioMetaforaQuest1.getChildAt(1).getId())
-            somaValoresTotais(21, (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest1, true));
+            else if (v.getId() == mRadioMetaforaQuest1.getChildAt(0).getId()
+                    || v.getId() == mRadioMetaforaQuest1.getChildAt(1).getId())
+                somaValoresTotais(21, (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest1, true));
 
-        else if(v.getId() == mRadioMetaforaQuest2.getChildAt(0).getId()
-                || v.getId() == mRadioMetaforaQuest2.getChildAt(1).getId())
-            somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest2, true));
+            else if (v.getId() == mRadioMetaforaQuest2.getChildAt(0).getId()
+                    || v.getId() == mRadioMetaforaQuest2.getChildAt(1).getId())
+                somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest2, true));
 
-        else if(v.getId() == mRadioMetaforaQuest3.getChildAt(0).getId()
-                || v.getId() == mRadioMetaforaQuest3.getChildAt(1).getId())
-            somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest3, true));
-
+            else if (v.getId() == mRadioMetaforaQuest3.getChildAt(0).getId()
+                    || v.getId() == mRadioMetaforaQuest3.getChildAt(1).getId())
+                somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioMetaforaQuest3, true));
+        }
     }
 
     public void autoComplete(Participante participante) {
