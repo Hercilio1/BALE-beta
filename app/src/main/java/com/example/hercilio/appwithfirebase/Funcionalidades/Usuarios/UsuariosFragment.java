@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import com.example.hercilio.appwithfirebase.AdminActivity;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyActivity;
 import com.example.hercilio.appwithfirebase.Objetos.UserDados;
 import com.example.hercilio.appwithfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -106,7 +105,6 @@ public class UsuariosFragment extends Fragment {
         btnCadastrarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 Intent intentFromList = getActivity().getIntent();
                 if (intentFromList != null) {

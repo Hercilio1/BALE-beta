@@ -7,18 +7,27 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.hercilio.appwithfirebase.AdminActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.HabitosDeLeituraEscritra.HabitosLeituraEscritaActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Observacoes.ObservacoesActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsuarioActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosAdapter;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
+import com.example.hercilio.appwithfirebase.Objetos.UserDados;
 import com.example.hercilio.appwithfirebase.R;
 import com.example.hercilio.appwithfirebase.UsersActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Hercilio on 26/12/2017.
@@ -29,6 +38,8 @@ public class BaleLobbyActivity extends AppCompatActivity {
     public static final String EXTRA_PARTICIPANTE = "participante";
 
     private boolean isComplete, isFinalizado;
+
+    private final Intent[] intentHome = new Intent[1];;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -110,6 +121,26 @@ public class BaleLobbyActivity extends AppCompatActivity {
         mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
+
+        DatabaseReference mParticipanteDatabaseReference2 = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("UserDados");
+
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserDados userDados = dataSnapshot.getValue(UserDados.class);
+                if(userDados.isAdmin())
+                    intentHome[0] = new Intent(getBaseContext(), AdminActivity.class);
+                else
+                    intentHome[0] = new Intent(getBaseContext(), UsersActivity.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        mParticipanteDatabaseReference2.addListenerForSingleValueEvent(valueEventListener);
+
+
+
     }
 
     @Override
@@ -134,13 +165,8 @@ public class BaleLobbyActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         final int itemId = item.getItemId();
 
-        if (itemId == android.R.id.home) {
-            Intent intent = new Intent(this, AdminActivity.class);
-            startActivity(intent);
-            return true;
-        }
+        final Intent intent = intentHome[0];
 
-        final Intent intent = new Intent(this, UsersActivity.class);
         Intent intentFromList = getIntent();
         //Faz as transações
         switch (itemId) {

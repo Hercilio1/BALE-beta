@@ -18,14 +18,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLobbyFragment;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Login.LoginActivity;
+import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFinalizadasFragment;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas.PesquisasFragment;
-import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsuarioActivity;
 import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosFragment;
-import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -127,6 +124,8 @@ public class AdminActivity extends AppCompatActivity
                 title = "Minhas Pesquisas";
                 break;
             case 4:
+                fragment = new PesquisasFinalizadasFragment();
+                title = "Minhas Pesquisas Finalizadas";
                 break;
             case 5:
                 finish();
