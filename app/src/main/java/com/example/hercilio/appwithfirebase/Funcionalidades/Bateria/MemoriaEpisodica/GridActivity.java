@@ -51,6 +51,9 @@ public class GridActivity extends AppCompatActivity {
     //btn concluir
     private Button mBtnConcluir;
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -176,6 +179,7 @@ public class GridActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
             final Integer[] identificador = (Integer[]) intentFromList.getSerializableExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_FASE);
+            isFinalizado = participante.isFinalizado();
 
             switch (identificador[0]) {
                 case 1:
@@ -194,9 +198,10 @@ public class GridActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             boolean[] bool = new boolean[4];
                             bool[1] = true;
-
+                            if(!isFinalizado)
+                                registrar(participante, 1);
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
-                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 1));
+                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                             intent.putExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_INTERVALO, bool);
                             startActivity(intent);
                         }
@@ -218,9 +223,10 @@ public class GridActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             boolean[] bool = new boolean[4];
                             bool[2] = true;
-
+                            if(!isFinalizado)
+                                registrar(participante, 2);
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
-                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 2));
+                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                             intent.putExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_INTERVALO, bool);
                             startActivity(intent);
                         }
@@ -242,9 +248,10 @@ public class GridActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             boolean[] bool = new boolean[4];
                             bool[3] = true;
-
+                            if(!isFinalizado)
+                                registrar(participante, 3);
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
-                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 3));
+                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                             intent.putExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_INTERVALO, bool);
                             startActivity(intent);
                         }
@@ -264,8 +271,10 @@ public class GridActivity extends AppCompatActivity {
                     mBtnConcluir.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if(!isFinalizado)
+                                registrar(participante, 4);
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
-                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 4));
+                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                             startActivity(intent);
                         }
                     });
@@ -338,23 +347,27 @@ public class GridActivity extends AppCompatActivity {
     }
 
     public void OnclickSemPista(View v) {
-        Button mBtnComPista = (Button) findViewById(R.id.btn_mem_ep_com_pista);
-        verificadorBotoesDeControle.put("btn_mem_ep_com_pista", false);
-        verificadorBotoesDeControle.put("btn_mem_ep_sem_pista", true);
-        //colorPrimary
-        mBtnComPista.getBackground().setColorFilter(getResources().getColor(R.color.clickedPrinc_compVerval), PorterDuff.Mode.SRC_ATOP);
-        //clickedSecun_compVerval
-        v.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+        if(!isFinalizado) {
+            Button mBtnComPista = (Button) findViewById(R.id.btn_mem_ep_com_pista);
+            verificadorBotoesDeControle.put("btn_mem_ep_com_pista", false);
+            verificadorBotoesDeControle.put("btn_mem_ep_sem_pista", true);
+            //colorPrimary
+            mBtnComPista.getBackground().setColorFilter(getResources().getColor(R.color.clickedPrinc_compVerval), PorterDuff.Mode.SRC_ATOP);
+            //clickedSecun_compVerval
+            v.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+        }
     }
 
     public void OnclickComPista(View v) {
-        Button mBtnSemPista = (Button) findViewById(R.id.btn_mem_ep_sem_pista);
-        verificadorBotoesDeControle.put("btn_mem_ep_sem_pista", false);
-        verificadorBotoesDeControle.put("btn_mem_ep_com_pista", true);
-        //ColorPrimary
-        mBtnSemPista.getBackground().setColorFilter(getResources().getColor(R.color.clickedSecun_compVerval), PorterDuff.Mode.SRC_ATOP);
-        //clickedPrinc_compVerval
-        v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+        if(!isFinalizado) {
+            Button mBtnSemPista = (Button) findViewById(R.id.btn_mem_ep_sem_pista);
+            verificadorBotoesDeControle.put("btn_mem_ep_sem_pista", false);
+            verificadorBotoesDeControle.put("btn_mem_ep_com_pista", true);
+            //ColorPrimary
+            mBtnSemPista.getBackground().setColorFilter(getResources().getColor(R.color.clickedSecun_compVerval), PorterDuff.Mode.SRC_ATOP);
+            //clickedPrinc_compVerval
+            v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+        }
     }
 
     public void atualizaTotalSemDica(boolean ref) {
@@ -398,32 +411,32 @@ public class GridActivity extends AppCompatActivity {
                 memEpObj = participante.getMemEpObject();
                 memEpObj.setSegundaFaseSemDica(verificadoresSemDica);
                 memEpObj.setSegundaFaseComDica(verificadoresComDica);
-                memEpObj.setPontuacaoSegundaFaseComDica(pontuacaoSemDica);
-                memEpObj.setPontuacaoSegundaFaseSemDica(pontuacaoComDica);
+                memEpObj.setPontuacaoSegundaFaseSemDica(pontuacaoSemDica);
+                memEpObj.setPontuacaoSegundaFaseComDica(pontuacaoComDica);
                 participante.setMemEpObject(memEpObj);
                 break;
             case 2:
                 memEpObj = participante.getMemEpObject();
                 memEpObj.setTerceiraFaseSemDica(verificadoresSemDica);
                 memEpObj.setTerceiraFaseComDica(verificadoresComDica);
-                memEpObj.setPontuacaoTerceiraFaseComDica(pontuacaoSemDica);
-                memEpObj.setPontuacaoTerceiraFaseSemDica(pontuacaoComDica);
+                memEpObj.setPontuacaoTerceiraFaseSemDica(pontuacaoSemDica);
+                memEpObj.setPontuacaoTerceiraFaseComDica(pontuacaoComDica);
                 participante.setMemEpObject(memEpObj);
                 break;
             case 3:
                 memEpObj = participante.getMemEpObject();
                 memEpObj.setQuartaFaseSemDica(verificadoresSemDica);
                 memEpObj.setQuartaFaseComDica(verificadoresComDica);
-                memEpObj.setPontuacaoQuartaFaseComDica(pontuacaoSemDica);
-                memEpObj.setPontuacaoQuartaFaseSemDica(pontuacaoComDica);
+                memEpObj.setPontuacaoQuartaFaseSemDica(pontuacaoSemDica);
+                memEpObj.setPontuacaoQuartaFaseComDica(pontuacaoComDica);
                 participante.setMemEpObject(memEpObj);
                 break;
             case 4:
                 memEpObj = participante.getMemEpObject();
                 memEpObj.setQuintaFaseSemDica(verificadoresSemDica);
                 memEpObj.setQuintaFaseComDica(verificadoresComDica);
-                memEpObj.setPontuacaoQuintaFaseComDica(pontuacaoSemDica);
-                memEpObj.setPontuacaoQuintaFaseSemDica(pontuacaoComDica);
+                memEpObj.setPontuacaoQuintaFaseSemDica(pontuacaoSemDica);
+                memEpObj.setPontuacaoQuintaFaseComDica(pontuacaoComDica);
                 participante.setMemEpObject(memEpObj);
                 break;
             default:

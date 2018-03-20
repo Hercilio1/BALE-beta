@@ -175,7 +175,7 @@ public class ObservacoesActivity extends AppCompatActivity {
                 Intent intentFromList = getIntent();
                 if (intentFromList != null) {
                     final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
-                    
+
                     switch (mTitle.getText().toString()) {
                         case "Compreensão Verbal":
                             registrarCompVerbal(participante);

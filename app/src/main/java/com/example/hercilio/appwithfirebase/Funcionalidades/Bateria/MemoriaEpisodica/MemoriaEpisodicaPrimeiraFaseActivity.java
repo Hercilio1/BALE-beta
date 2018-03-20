@@ -90,6 +90,8 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
     private ArrayList<String> auxAutoCompleteIndicacao = new ArrayList<>();
     private ArrayList<String> auxAutoCompleteNomeacao = new ArrayList<>();
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,6 +187,7 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
         if (intentFromList != null) {
             final Integer[] indicador = (Integer[]) intentFromList.getSerializableExtra(IDENTIFICADOR_DA_SEQUENCIA_MEM_EP);
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            isFinalizado = participante.isFinalizado();
 
             switch (indicador[0]) {
                 case 1:
@@ -224,8 +227,10 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             Integer[] proxIndicador = new Integer[1];
                             proxIndicador[0] = 2;
+                            if(!isFinalizado)
+                                registrar(participante, 1);
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaPrimeiraFaseActivity.class);
-                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 1));
+                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                             intent.putExtra(IDENTIFICADOR_DA_SEQUENCIA_MEM_EP, proxIndicador);
                             startActivity(intent);
                         }
@@ -279,8 +284,10 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             Integer[] proxIndicador = new Integer[1];
                             proxIndicador[0] = 3;
+                            if(!isFinalizado)
+                                registrar(participante, 2);
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaPrimeiraFaseActivity.class);
-                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 2));
+                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                             intent.putExtra(IDENTIFICADOR_DA_SEQUENCIA_MEM_EP, proxIndicador);
                             startActivity(intent);
                         }
@@ -334,8 +341,10 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             Integer[] proxIndicador = new Integer[1];
                             proxIndicador[0] = 4;
+                            if(!isFinalizado)
+                                registrar(participante, 3);
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaPrimeiraFaseActivity.class);
-                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 3));
+                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                             intent.putExtra(IDENTIFICADOR_DA_SEQUENCIA_MEM_EP, proxIndicador);
                             startActivity(intent);
                         }
@@ -388,8 +397,10 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             boolean[] bool = new boolean[4];
                             bool[0] = true;
+                            if(!isFinalizado)
+                                registrar(participante, 4);
                             Intent intent = new Intent(getBaseContext(), MemoriaEpisodicaLobbyActivity.class);
-                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, registrar(participante, 4));
+                            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                             intent.putExtra(MemoriaEpisodicaLobbyActivity.IDENTIFICA_INTERVALO, bool);
                             startActivity(intent);
 
@@ -416,27 +427,31 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
 
     public void onClickIndicou(View v) {
         Button button = (Button) v;
-        if(!verificadores.get(v.getTag().toString())) {
-            v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            verificadores.put(v.getTag().toString(), true);
-            atualizaTotalIndicacao(true);
-        } else {
-            v.getBackground().clearColorFilter();
-            verificadores.put(v.getTag().toString(), false);
-            atualizaTotalIndicacao(false);
+        if(!isFinalizado) {
+            if (!verificadores.get(v.getTag().toString())) {
+                v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                verificadores.put(v.getTag().toString(), true);
+                atualizaTotalIndicacao(true);
+            } else {
+                v.getBackground().clearColorFilter();
+                verificadores.put(v.getTag().toString(), false);
+                atualizaTotalIndicacao(false);
+            }
         }
     }
 
     public void onClickNomeou(View v) {
         Button button = (Button) v;
-        if(!verificadores.get(v.getTag().toString())) {
-            v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            verificadores.put(v.getTag().toString(), true);
-            atualizaTotalNomeacao(true);
-        } else {
-            v.getBackground().clearColorFilter();
-            verificadores.put(v.getTag().toString(), false);
-            atualizaTotalNomeacao(false);
+        if(!isFinalizado) {
+            if (!verificadores.get(v.getTag().toString())) {
+                v.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                verificadores.put(v.getTag().toString(), true);
+                atualizaTotalNomeacao(true);
+            } else {
+                v.getBackground().clearColorFilter();
+                verificadores.put(v.getTag().toString(), false);
+                atualizaTotalNomeacao(false);
+            }
         }
     }
 
@@ -550,13 +565,7 @@ public class MemoriaEpisodicaPrimeiraFaseActivity extends AppCompatActivity {
         final int itemId = item.getItemId();
 
         if (itemId == android.R.id.home) {
-            Intent intentFromList = getIntent();
-            if (intentFromList != null) {
-                final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
-                Intent intent = new Intent(this, BaleLobbyActivity.class);
-                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
-                startActivity(intent);
-            }
+            this.onBackPressed();
             return true;
         }
 
