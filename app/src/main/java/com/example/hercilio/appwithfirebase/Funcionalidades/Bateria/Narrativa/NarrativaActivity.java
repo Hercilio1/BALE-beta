@@ -73,6 +73,9 @@ public class NarrativaActivity extends AppCompatActivity {
     //Botao continuar:
     private Button mBtnContinuar;
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +129,7 @@ public class NarrativaActivity extends AppCompatActivity {
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            isFinalizado = participante.isFinalizado();
 
             if (participante.getNarrativaObject() != null && participante.getNarrativaObject().getVerificadores() != null) {
                 verificadores = participante.getNarrativaObject().getVerificadores();
@@ -135,7 +139,8 @@ public class NarrativaActivity extends AppCompatActivity {
             mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    registrar(participante);
+                    if(!isFinalizado)
+                        registrar(participante);
                     if(!validaRadioButtons) {
                         Intent intent = new Intent(getBaseContext(), BaleLobbyActivity.class);
                         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
@@ -437,74 +442,76 @@ public class NarrativaActivity extends AppCompatActivity {
     }
 
     public void onClickRadio(View v) {
-        //Estrutura:
-        if(v.getId() == mRadioEstruturaQuest1.getChildAt(0).getId()
-                || v.getId() == mRadioEstruturaQuest1.getChildAt(1).getId()
-                || v.getId() == mRadioEstruturaQuest1.getChildAt(2).getId())
-            somaValoresTotais(11, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest1, 1));
+        if(!isFinalizado) {
+            //Estrutura:
+            if (v.getId() == mRadioEstruturaQuest1.getChildAt(0).getId()
+                    || v.getId() == mRadioEstruturaQuest1.getChildAt(1).getId()
+                    || v.getId() == mRadioEstruturaQuest1.getChildAt(2).getId())
+                somaValoresTotais(11, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest1, 1));
 
-        else if(v.getId() == mRadioEstruturaQuest2.getChildAt(0).getId()
-                || v.getId() == mRadioEstruturaQuest2.getChildAt(1).getId()
-                || v.getId() == mRadioEstruturaQuest2.getChildAt(2).getId())
-            somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest2, 1));
+            else if (v.getId() == mRadioEstruturaQuest2.getChildAt(0).getId()
+                    || v.getId() == mRadioEstruturaQuest2.getChildAt(1).getId()
+                    || v.getId() == mRadioEstruturaQuest2.getChildAt(2).getId())
+                somaValoresTotais(12, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest2, 1));
 
-        else if(v.getId() == mRadioEstruturaQuest3.getChildAt(0).getId()
-                || v.getId() == mRadioEstruturaQuest3.getChildAt(1).getId()
-                || v.getId() == mRadioEstruturaQuest3.getChildAt(2).getId())
-            somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest3, 1));
+            else if (v.getId() == mRadioEstruturaQuest3.getChildAt(0).getId()
+                    || v.getId() == mRadioEstruturaQuest3.getChildAt(1).getId()
+                    || v.getId() == mRadioEstruturaQuest3.getChildAt(2).getId())
+                somaValoresTotais(13, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest3, 1));
 
-        else if(v.getId() == mRadioEstruturaQuest4.getChildAt(0).getId()
-                || v.getId() == mRadioEstruturaQuest4.getChildAt(1).getId()
-                || v.getId() == mRadioEstruturaQuest4.getChildAt(2).getId())
-            somaValoresTotais(14, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest4, 1));
+            else if (v.getId() == mRadioEstruturaQuest4.getChildAt(0).getId()
+                    || v.getId() == mRadioEstruturaQuest4.getChildAt(1).getId()
+                    || v.getId() == mRadioEstruturaQuest4.getChildAt(2).getId())
+                somaValoresTotais(14, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest4, 1));
 
-        else if(v.getId() == mRadioEstruturaQuest5.getChildAt(0).getId()
-                || v.getId() == mRadioEstruturaQuest5.getChildAt(1).getId()
-                || v.getId() == mRadioEstruturaQuest5.getChildAt(2).getId())
-            somaValoresTotais(15, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest5, 1));
+            else if (v.getId() == mRadioEstruturaQuest5.getChildAt(0).getId()
+                    || v.getId() == mRadioEstruturaQuest5.getChildAt(1).getId()
+                    || v.getId() == mRadioEstruturaQuest5.getChildAt(2).getId())
+                somaValoresTotais(15, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest5, 1));
 
-        else if(v.getId() == mRadioEstruturaQuest6.getChildAt(0).getId()
-                || v.getId() == mRadioEstruturaQuest6.getChildAt(1).getId()
-                || v.getId() == mRadioEstruturaQuest6.getChildAt(2).getId())
-            somaValoresTotais(16, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest6, 1));
+            else if (v.getId() == mRadioEstruturaQuest6.getChildAt(0).getId()
+                    || v.getId() == mRadioEstruturaQuest6.getChildAt(1).getId()
+                    || v.getId() == mRadioEstruturaQuest6.getChildAt(2).getId())
+                somaValoresTotais(16, (int) onFrequenciaRadioButtonClicked(mRadioEstruturaQuest6, 1));
 
-        //Desempenho Linguistico I:
-        else if(v.getId() == mRadioDesempling1Quest1.getChildAt(0).getId()
-                || v.getId() == mRadioDesempling1Quest1.getChildAt(1).getId()
-                || v.getId() == mRadioDesempling1Quest1.getChildAt(2).getId())
-            somaValoresTotais(21, (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest1, 2));
+                //Desempenho Linguistico I:
+            else if (v.getId() == mRadioDesempling1Quest1.getChildAt(0).getId()
+                    || v.getId() == mRadioDesempling1Quest1.getChildAt(1).getId()
+                    || v.getId() == mRadioDesempling1Quest1.getChildAt(2).getId())
+                somaValoresTotais(21, (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest1, 2));
 
-        else if(v.getId() == mRadioDesempling1Quest2.getChildAt(0).getId()
-                || v.getId() == mRadioDesempling1Quest2.getChildAt(1).getId()
-                || v.getId() == mRadioDesempling1Quest2.getChildAt(2).getId())
-            somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest2, 2));
+            else if (v.getId() == mRadioDesempling1Quest2.getChildAt(0).getId()
+                    || v.getId() == mRadioDesempling1Quest2.getChildAt(1).getId()
+                    || v.getId() == mRadioDesempling1Quest2.getChildAt(2).getId())
+                somaValoresTotais(22, (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest2, 2));
 
-        else if(v.getId() == mRadioDesempling1Quest3.getChildAt(0).getId()
-                || v.getId() == mRadioDesempling1Quest3.getChildAt(1).getId()
-                || v.getId() == mRadioDesempling1Quest3.getChildAt(2).getId())
-            somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest3, 2));
+            else if (v.getId() == mRadioDesempling1Quest3.getChildAt(0).getId()
+                    || v.getId() == mRadioDesempling1Quest3.getChildAt(1).getId()
+                    || v.getId() == mRadioDesempling1Quest3.getChildAt(2).getId())
+                somaValoresTotais(23, (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest3, 2));
 
-        else if(v.getId() == mRadioDesempling1Quest4.getChildAt(0).getId()
-                || v.getId() == mRadioDesempling1Quest4.getChildAt(1).getId()
-                || v.getId() == mRadioDesempling1Quest4.getChildAt(2).getId()
-                || v.getId() == mRadioDesempling1Quest4.getChildAt(3).getId())
-            somaValoresTotais(24, (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest4, 0));
+            else if (v.getId() == mRadioDesempling1Quest4.getChildAt(0).getId()
+                    || v.getId() == mRadioDesempling1Quest4.getChildAt(1).getId()
+                    || v.getId() == mRadioDesempling1Quest4.getChildAt(2).getId()
+                    || v.getId() == mRadioDesempling1Quest4.getChildAt(3).getId())
+                somaValoresTotais(24, (int) onFrequenciaRadioButtonClicked(mRadioDesempling1Quest4, 0));
 
-        //Desempenho Linguistico II:
-        else if(v.getId() == mRadioDesempling2Quest1.getChildAt(0).getId()
-                || v.getId() == mRadioDesempling2Quest1.getChildAt(1).getId()
-                || v.getId() == mRadioDesempling2Quest1.getChildAt(2).getId())
-            somaValoresTotais(31, (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest1, 2));
+                //Desempenho Linguistico II:
+            else if (v.getId() == mRadioDesempling2Quest1.getChildAt(0).getId()
+                    || v.getId() == mRadioDesempling2Quest1.getChildAt(1).getId()
+                    || v.getId() == mRadioDesempling2Quest1.getChildAt(2).getId())
+                somaValoresTotais(31, (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest1, 2));
 
-        else if(v.getId() == mRadioDesempling2Quest2.getChildAt(0).getId()
-                || v.getId() == mRadioDesempling2Quest2.getChildAt(1).getId()
-                || v.getId() == mRadioDesempling2Quest2.getChildAt(2).getId())
-            somaValoresTotais(32, (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest2, 2));
+            else if (v.getId() == mRadioDesempling2Quest2.getChildAt(0).getId()
+                    || v.getId() == mRadioDesempling2Quest2.getChildAt(1).getId()
+                    || v.getId() == mRadioDesempling2Quest2.getChildAt(2).getId())
+                somaValoresTotais(32, (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest2, 2));
 
-        else if(v.getId() == mRadioDesempling2Quest3.getChildAt(0).getId()
-                || v.getId() == mRadioDesempling2Quest3.getChildAt(1).getId()
-                || v.getId() == mRadioDesempling2Quest3.getChildAt(2).getId())
-            somaValoresTotais(33, (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest3, 2));
+            else if (v.getId() == mRadioDesempling2Quest3.getChildAt(0).getId()
+                    || v.getId() == mRadioDesempling2Quest3.getChildAt(1).getId()
+                    || v.getId() == mRadioDesempling2Quest3.getChildAt(2).getId())
+                somaValoresTotais(33, (int) onFrequenciaRadioButtonClicked(mRadioDesempling2Quest3, 2));
+        }
     }
 
     public void alteraDadosFirebase(Participante participante) {
@@ -589,6 +596,9 @@ public class NarrativaActivity extends AppCompatActivity {
                     final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
                     String[] strings = new String[1];
                     strings[0] = "NarrativaActivity";
+
+                    if (!isFinalizado)
+                        registrar(participante);
 
                     Intent intent = new Intent(this, ObservacoesActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
