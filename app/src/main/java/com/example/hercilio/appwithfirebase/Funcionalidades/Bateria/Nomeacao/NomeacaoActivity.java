@@ -36,6 +36,9 @@ public class NomeacaoActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private Button mBtnContinuar;
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
+
     private String[] strings = {"a1_chave_de_fenda", "a2_esquilo", "a3_regador", "a4_rinocerounte"
             , "b1_chaved_e_fenda", "b2_pinguim", "b3_escova_de_dentes", "b4_aguia"
             , "c1_serrote", "c2_avestruz", "c3_alicate", "c4_canguru"
@@ -77,11 +80,13 @@ public class NomeacaoActivity extends AppCompatActivity {
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            isFinalizado = participante.isFinalizado();
 
             mBtnContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    registrar(participante);
+                    if(!isFinalizado)
+                        registrar(participante);
                     Intent intent = new Intent(getBaseContext(),  BaleLobbyActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);

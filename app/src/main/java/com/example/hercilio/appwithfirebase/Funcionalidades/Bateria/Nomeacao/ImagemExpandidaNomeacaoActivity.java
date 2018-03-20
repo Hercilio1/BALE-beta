@@ -31,6 +31,9 @@ public class ImagemExpandidaNomeacaoActivity extends AppCompatActivity {
     private EditText mEditText;
     private Map<String, String> verificadores;
 
+    //Variável que auxilia na verificacao se o teste já está finalizado
+    private boolean isFinalizado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,7 @@ public class ImagemExpandidaNomeacaoActivity extends AppCompatActivity {
             final Integer[] ref = (Integer[]) intentFromList.getSerializableExtra(IMAGEM_EXPANDIDA);
             final String[] refKey = (String[]) intentFromList.getSerializableExtra(KEY_IMAGEM_EXPANDIDA);
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
+            isFinalizado = participante.isFinalizado();
 
             if(participante.getNomeacaoObject() != null
                     && participante.getNomeacaoObject().getVerificadores() != null)
@@ -65,19 +69,22 @@ public class ImagemExpandidaNomeacaoActivity extends AppCompatActivity {
             mBtnRegistrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    NomeacaoObject nomeacaoObject;
-                    if(participante.getNomeacaoObject() == null)
-                        nomeacaoObject = new NomeacaoObject();
-                    else
-                        nomeacaoObject = participante.getNomeacaoObject();
+                    if(!isFinalizado) {
+                        NomeacaoObject nomeacaoObject;
+                        if (participante.getNomeacaoObject() == null)
+                            nomeacaoObject = new NomeacaoObject();
+                        else
+                            nomeacaoObject = participante.getNomeacaoObject();
 
-                    verificadores.put(refKey[0], mEditText.getText().toString());
-                    nomeacaoObject.setVerificadores(verificadores);
-                    participante.setNomeacaoObject(nomeacaoObject);
+                        verificadores.put(refKey[0], mEditText.getText().toString());
+                        nomeacaoObject.setVerificadores(verificadores);
+                        participante.setNomeacaoObject(nomeacaoObject);
+                    }
 
                     Intent intent = new Intent(getBaseContext(),  NomeacaoActivity.class);
                     intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
                     startActivity(intent);
+
                 }
             });
         }
