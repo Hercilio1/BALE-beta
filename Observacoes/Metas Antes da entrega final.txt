@@ -2,14 +2,22 @@
 1 - Fazer lobby para normal users 					1- COMPLETO
 2 - Atualizar dados de quantos participantes um user tem 		2- COMPLETO
 3 - Atualzar porcentagem - Olhas classe de app-bale-master Pesquisa	3- COMPLETO
-4 - Fazer pesquisas finalizadas
+4 - Fazer pesquisas finalizadas						4- COMPLETO
 5 - Terminar Bateria 							5- COMPLETO
 6 - Criar uma página para mostrar resultados finais
-7 - Corrigir Botao home para normal users
+7 - Corrigir Botao home para normal users				6- COMPLETO
 8 - Criar ampliacao de foto do relogio
 
 
 9 - Faazer último teste da bateria (PALAVRAS).
 10 - adicionar botao de retorno nos testes faltando			10 - COMPLETO
 11 - criar tela com dados do usuário
+12 - Alterar tratamento de erro de idade		
+13 - Criar um tirador de '.' e '-' do cpf, pois ele é key no firebase.
+14 - Layout de loading para login
+15 - Não listar o usuário que está logado
+16 - dar um jeito de listar pesquisas em andamento e finalizadas.
+
+Complementares:
+1- Layout de loading para carregamento do relógio no banco.
 
