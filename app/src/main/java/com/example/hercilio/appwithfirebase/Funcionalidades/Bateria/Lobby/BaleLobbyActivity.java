@@ -59,8 +59,8 @@ public class BaleLobbyActivity extends AppCompatActivity {
                 isComplete = true;
             if(participante.isFinalizado())
                 isFinalizado = true;
-
-            atualizaPorcentagem(participante);
+            else
+                atualizaPorcentagem(participante);
 
             if (savedInstanceState == null) {
                 getSupportFragmentManager()
@@ -68,6 +68,27 @@ public class BaleLobbyActivity extends AppCompatActivity {
                         .add(R.id.fragment_container_bale_lobby, BaleLobbyFragment.newInstance(participante), "BaleLobby")
                         .commit();
             }
+
+
+            //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
+            FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            DatabaseReference mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("UserDados");
+
+
+            ValueEventListener valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    UserDados userDados = dataSnapshot.getValue(UserDados.class);
+                    if(userDados.isAdmin())
+                        intentHome[0] = new Intent(getBaseContext(), AdminActivity.class);
+                    else
+                        intentHome[0] = new Intent(getBaseContext(), UsersActivity.class);
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {}
+            };
+            mParticipanteDatabaseReference.addListenerForSingleValueEvent(valueEventListener);
         }
     }
 
@@ -112,35 +133,12 @@ public class BaleLobbyActivity extends AppCompatActivity {
 
         participante.setPorcentagem(porcentagem);
 
-        FirebaseDatabase mFirebaseDatabase;
-        final DatabaseReference mParticipanteDatabaseReference;
-
         //Cria o caminho que garantirá o acesso somente aos participantes do usuário logado
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        final FirebaseAuth auth = FirebaseAuth.getInstance();
-        mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        DatabaseReference mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
 
         mParticipanteDatabaseReference.child(participante.getCpf()).setValue(participante);
-
-        DatabaseReference mParticipanteDatabaseReference2 = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("UserDados");
-
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                UserDados userDados = dataSnapshot.getValue(UserDados.class);
-                if(userDados.isAdmin())
-                    intentHome[0] = new Intent(getBaseContext(), AdminActivity.class);
-                else
-                    intentHome[0] = new Intent(getBaseContext(), UsersActivity.class);
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        };
-        mParticipanteDatabaseReference2.addListenerForSingleValueEvent(valueEventListener);
-
-
-
     }
 
     @Override

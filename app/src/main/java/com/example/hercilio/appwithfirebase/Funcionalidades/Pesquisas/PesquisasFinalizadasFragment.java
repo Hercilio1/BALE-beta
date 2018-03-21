@@ -75,11 +75,9 @@ public class PesquisasFinalizadasFragment extends Fragment {
                     (UsuariosFragment.IdWithUserDados) intentFromList.getSerializableExtra(UsuariosFragment.EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT);
             if(keyIdUsuarioListado != null) {
                 mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(keyIdUsuarioListado.getIdUser()).child("participantes");
-                btnCadastrarParticipante.setVisibility(View.INVISIBLE);
                 intentFromList.removeExtra(UsuariosFragment.EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT);
             } else {
                 mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid()).child("participantes");
-                btnCadastrarParticipante.setVisibility(View.VISIBLE);
             }
         }
 

@@ -118,26 +118,23 @@ public class UsuariosFragment extends Fragment {
             }
         });
 
-
         ValueEventListener eventListener = new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        if(ds.getKey().equals(auth.getCurrentUser().getUid()))
+                            continue;
                         UserDados userDados = ds.child("UserDados").getValue(UserDados.class);
                         IdWithUserDados idWithUserDados = new IdWithUserDados(ds.getKey(), userDados);
                         items.add(idWithUserDados);
-
                     }
                     mUsuarioAdapter = new UsuariosAdapter(getActivity(), items);
                     mUsuarioAdapter.setListener(selecionarItemView);
                     mRecyclerView.setAdapter(mUsuarioAdapter);
             }
-
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onCancelled(DatabaseError databaseError) {}
         };
         mUsuarioDatabaseReference.addValueEventListener(eventListener);
     }

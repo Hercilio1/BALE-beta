@@ -56,8 +56,8 @@ public class AdminActivity extends AppCompatActivity
                     (UsuariosFragment.IdWithUserDados) intentFromList.getSerializableExtra(UsuariosFragment.EXTRA_USER_FRAGMENT_FOR_PESQUISA_FRAGMENT);
             if(userFragForPesquisaFrag != null) {
 //                displayView(3);
-                Fragment fragment = new PesquisasFragment();
-                String title = "Pesquisas - " + userFragForPesquisaFrag.getUserDados().getNome();
+                Fragment fragment = new PesquisasFinalizadasFragment();
+                String title = "Pesquisas Finalizadas - " + userFragForPesquisaFrag.getUserDados().getNome();
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame_menu, fragment, title);

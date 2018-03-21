@@ -8,15 +8,20 @@
 7 - Corrigir Botao home para normal users				6- COMPLETO
 8 - Criar ampliacao de foto do relogio
 
-
 9 - Faazer último teste da bateria (PALAVRAS).
+
 10 - adicionar botao de retorno nos testes faltando			10 - COMPLETO
+
 11 - criar tela com dados do usuário
 12 - Alterar tratamento de erro de idade		
 13 - Criar um tirador de '.' e '-' do cpf, pois ele é key no firebase.
 14 - Layout de loading para login
-15 - Não listar o usuário que está logado
-16 - dar um jeito de listar pesquisas em andamento e finalizadas.
+15 - Não listar o usuário que está logado 				15 - COMPLETO
+16 - Implementar pesquisa
+
+17 - usuários listado:
+	17.1 - alterar toda a estrutura do programa para não mexer no banco de dados.
+	17.2 - verificar se quer listar só pesquisas finalizadas ou normais também.
 
 Complementares:
 1- Layout de loading para carregamento do relógio no banco.
