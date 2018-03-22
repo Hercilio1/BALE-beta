@@ -4,7 +4,9 @@
 3 - Atualzar porcentagem - Olhas classe de app-bale-master Pesquisa	3- COMPLETO
 4 - Fazer pesquisas finalizadas						4- COMPLETO
 5 - Terminar Bateria 							5- COMPLETO
+
 6 - Criar uma página para mostrar resultados finais
+
 7 - Corrigir Botao home para normal users				6- COMPLETO
 8 - Criar ampliacao de foto do relogio
 
@@ -13,6 +15,7 @@
 10 - adicionar botao de retorno nos testes faltando			10 - COMPLETO
 
 11 - criar tela com dados do usuário
+
 12 - Alterar tratamento de erro de idade				12 - COMPLETO	
 13 - Criar um tirador de '.' e '-' do cpf, pois ele é key no firebase.  13 - COMPLETO
 14 - Layout de loading para login					14 - COMPLETO
@@ -24,8 +27,13 @@
 	17.2 - verificar se quer listar só pesquisas finalizadas ou normais também.
 
 18 - Fazer esqueceu senha
+19 - caso haja um cpf no sistema, informar.
+20 - Controle de erro para nome no registrarParticipante.
+21 - msg de confirmacao no cadastro.
+
 
 Complementares:
-1- Layout de loading para carregamento do relógio no banco.
-2- Excluir participante
+1 - Layout de loading para carregamento do relógio no banco.
+2 - Excluir participante
+3 - Pesquisa ser indiferentes com letras maiusculas e minusculas.
 

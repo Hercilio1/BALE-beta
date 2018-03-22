@@ -1,5 +1,7 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -7,8 +9,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -24,6 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import android.support.v7.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -31,7 +37,7 @@ import java.util.ArrayList;
  * Created by Hercilio on 14/12/2017.
  */
 
-public class PesquisasFragment extends Fragment {
+public class PesquisasFragment extends Fragment implements SearchView.OnQueryTextListener{
 
     //Responsavel pela recyclerView
     private PesquisasAdapter mPesquisasAdapter;
@@ -53,6 +59,7 @@ public class PesquisasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_pesquisas, container, false);
     }
 
@@ -85,14 +92,7 @@ public class PesquisasFragment extends Fragment {
             }
         }
 
-        final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
-            @Override
-            public void onListFragmentInteraction(Participante item) {
-                Intent intent = new Intent(getActivity(), BaleLobbyActivity.class);
-                intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, (item));
-                startActivity(intent);
-            }
-        };
+
 
         //Realiza função de cadastrar participante
         btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +128,44 @@ public class PesquisasFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {}
         };
         mParticipanteDatabaseReference.addChildEventListener(mChildEventListener);
+    }
+
+    private final OnListFragmentInteractionListener selecionarItemView = new OnListFragmentInteractionListener() {
+        @Override
+        public void onListFragmentInteraction(Participante item) {
+            Intent intent = new Intent(getActivity(), BaleLobbyActivity.class);
+            intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, (item));
+            startActivity(intent);
+        }
+    };
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.search_view, menu);
+
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+        searchView.setOnQueryTextListener(this);
+        super.onCreateOptionsMenu(menu,inflater);
+
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(final String newText) {
+        mPesquisasAdapter.getFilter().filter(newText);
+        return false;
     }
 
 }

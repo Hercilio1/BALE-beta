@@ -5,6 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
@@ -20,10 +23,11 @@ import at.grabner.circleprogress.CircleProgressView;
  * Created by Hercilio on 15/12/2017.
  */
 
-public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.PesquisaItemView> {
+public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.PesquisaItemView> implements Filterable{
 
     private Activity activity;
     private List<Participante> items = new ArrayList<>();
+    private List<Participante> mFilteredList;
     private OnListFragmentInteractionListener mListener;
 
     public void setListener(OnListFragmentInteractionListener onListener) {
@@ -39,6 +43,7 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
     public PesquisasAdapter(Activity activity, ArrayList<Participante> items) {
         this.activity = activity;
         this.items = items;
+        this.mFilteredList = items;
     }
 
     /**
@@ -62,9 +67,9 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
      */
     @Override
     public void onBindViewHolder(final PesquisaItemView holder, int position) {
-        holder.mItem = items.get(position);
-        holder.mIdView.setText(items.get(position).getNomeCompleto());
-        String cpf = items.get(position).getCpf();
+        holder.mItem = mFilteredList.get(position);
+        holder.mIdView.setText(mFilteredList.get(position).getNomeCompleto());
+        String cpf = mFilteredList.get(position).getCpf();
         if(cpf.length() == 11) {
             StringBuffer sb = new StringBuffer(cpf);
             sb.insert(3, '.');
@@ -73,13 +78,44 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
             cpf = sb.toString();
         }
         holder.mContentView.setText(cpf);
-        holder.mCircleProgressView.setValue(items.get(position).getPorcentagem());
+        holder.mCircleProgressView.setValue(mFilteredList.get(position).getPorcentagem());
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return mFilteredList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    mFilteredList = items;
+                } else {
+                    ArrayList<Participante> filteredList = new ArrayList<>();
+                    for (Participante participante : items) {
+                        if (participante.getNomeCompleto().toString().contains(charString) || participante.getCpf().toString().contains(charString)) {
+                            filteredList.add(participante);
+                        }
+                    }
+                    mFilteredList = filteredList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mFilteredList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                mFilteredList = (ArrayList<Participante>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
 
     /**
      * Classe que irá criar o visual da recyclerview
@@ -98,14 +134,6 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
             mContentView = (TextView) view.findViewById(R.id.content);
             mCircleProgressView = (CircleProgressView) view.findViewById(R.id.circleView);
 
-//            btnFavoritar.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Menor menorItem = items.get(getAdapterPosition());
-//                    mOnMenorCancelarAdocaoListener.OnMenorItemSelected(menorItem, getAdapterPosition());
-//                }
-//            });
-//
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -120,6 +148,8 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
             return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
+
+
 
 
 }

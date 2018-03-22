@@ -125,9 +125,9 @@ public class LoginFragment extends Fragment {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         //Caso o usuário seja admin ele deve preencher o cabeçalho de login tada vez
-        if(currentUser != null) {
-            adminLoginConfirm = true;
-        }
+//        if(currentUser != null) {
+//            adminLoginConfirm = true;
+//        }
 
         //Rotina para recuperar senha:
         if(currentUser == null) {

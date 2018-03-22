@@ -63,10 +63,12 @@ public class UsersActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
-        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
-        FirebaseAuth.getInstance().signOut();
-        startActivity(intent);
+        if(item.getItemId() == R.id.action_settings) {
+            finish();
+            Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+            FirebaseAuth.getInstance().signOut();
+            startActivity(intent);
+        }
         return true;
     }
 
