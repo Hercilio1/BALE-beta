@@ -3,13 +3,10 @@ package com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Compreensao
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +28,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 
 /**
  * Created by 14202151 on 18/05/2017.
@@ -50,7 +46,7 @@ public class CompreensaoDeFrasesRelogioActivity extends AppCompatActivity {
     private byte [] bImg;
 
     private static final int CAMERA_REQUEST = 1888;
-    ImageView mimageView;
+    ImageView mImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +62,9 @@ public class CompreensaoDeFrasesRelogioActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseStorage = FirebaseStorage.getInstance();
 
-        mimageView = (ImageView) this.findViewById(R.id.image_from_camera);
+        mImageView = (ImageView) this.findViewById(R.id.image_from_camera);
         mBtnContinuar = (Button) findViewById(R.id.btn_continuarRelogio);
+
         Intent intentFromList = getIntent();
         if (intentFromList != null) {
             final Participante participante = (Participante) intentFromList.getSerializableExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE);
@@ -101,18 +98,41 @@ public class CompreensaoDeFrasesRelogioActivity extends AppCompatActivity {
                 }
             });
 
+            mImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(participante.getCompFrasesObject().getFotoRelogio() != null) {
+                        Intent intent = new Intent(getBaseContext(), ImagemExpandidaCompFrasesActivity.class);
+                        intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
+                        startActivity(intent);
+                    } else {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
+
+                        alert.setTitle("Atenção");
+                        alert.setMessage("A imagem não foi armazena no Banco de Dados. Por favor, espere mais alguns instantes e continue!");
+
+                        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        });
+
+                        AlertDialog dialog = alert.create();
+                        alert.show();
+                    }
+                }
+            });
+
         }
     }
 
     public void autoComplete(Participante participante) {
-        Glide.with(mimageView.getContext()).load(participante.getCompFrasesObject().getFotoRelogio()).into(mimageView);
+        Glide.with(mImageView.getContext()).load(participante.getCompFrasesObject().getFotoRelogio()).into(mImageView);
     }
 
     public void registrar(Participante participante) {
         Intent intent = new Intent(this, BaleLobbyActivity.class);
         intent.putExtra(BaleLobbyActivity.EXTRA_PARTICIPANTE, participante);
         startActivity(intent);
-
     }
 
     public void takeImageFromCamera(View view) {
@@ -123,7 +143,7 @@ public class CompreensaoDeFrasesRelogioActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap mphoto = (Bitmap) data.getExtras().get("data");
-            mimageView.setImageBitmap(mphoto);
+            mImageView.setImageBitmap(mphoto);
             //Transforma a imagem em vetor de byte
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             mphoto.compress(Bitmap.CompressFormat.PNG, 0, outputStream);

@@ -64,6 +64,11 @@
             android:screenOrientation="userLandscape" >
         </activity>
         <activity
+            android:name=".Funcionalidades.Bateria.CompreensaoFrases.ImagemExpandidaCompFrasesActivity"
+            android:label="Compreensão de Frases"
+            android:screenOrientation="userLandscape" >
+        </activity>
+        <activity
             android:name=".Funcionalidades.Bateria.CompreensaoVerbal.CompreensaoVerbalLobbyActivity"
             android:label="Compreensão Verbal"
             android:screenOrientation="userLandscape" >

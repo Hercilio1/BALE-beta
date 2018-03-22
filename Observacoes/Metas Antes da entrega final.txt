@@ -36,4 +36,5 @@ Complementares:
 1 - Layout de loading para carregamento do relógio no banco.
 2 - Excluir participante
 3 - Pesquisa ser indiferentes com letras maiusculas e minusculas.
+	3.1 - Pesquisas q aceitam pesquisar o cpf com '.' e '-'.
 
