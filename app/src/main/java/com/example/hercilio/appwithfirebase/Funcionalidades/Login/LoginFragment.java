@@ -1,7 +1,17 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Login;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +24,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +63,8 @@ public class LoginFragment extends Fragment {
 
     private boolean adminLoginConfirm;
 
+    private ProgressBar progressBar;
+    private ProgressDialog mProgress;
 
 
     @Override
@@ -92,7 +106,13 @@ public class LoginFragment extends Fragment {
         senhaEditText = (EditText) view.findViewById(R.id.password);
         entrarButton = (Button) view.findViewById(R.id.email_sign_in_button);
         esqueceuSenhaTextView = (TextView) view.findViewById(R.id.text_forgotten_password);
+        progressBar = (ProgressBar) view.findViewById(R.id.login_progress);
 
+        mProgress = new ProgressDialog(getContext());
+        mProgress.setTitle("Processando...");
+        mProgress.setMessage("Por favor, espere...");
+        mProgress.setCancelable(false);
+        mProgress.setIndeterminate(true);
 
 
         entrarButton.setOnClickListener(new View.OnClickListener() {
@@ -104,9 +124,10 @@ public class LoginFragment extends Fragment {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-//        if(currentUser != null) {
-//            adminLoginConfirm = true;
-//        }
+        //Caso o usuário seja admin ele deve preencher o cabeçalho de login tada vez
+        if(currentUser != null) {
+            adminLoginConfirm = true;
+        }
 
         //Rotina para recuperar senha:
         if(currentUser == null) {
@@ -126,9 +147,7 @@ public class LoginFragment extends Fragment {
         try {
             final String email = emailEditText.getText().toString();
             final String senha = senhaEditText.getText().toString();
-
-
-
+            mProgress.show();
             if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha)) {
                 mAuth.signInWithEmailAndPassword(email, senha)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -138,12 +157,14 @@ public class LoginFragment extends Fragment {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+
                                     updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(getActivity(), "Authentication failed.",
+                                    Toast.makeText(getActivity(), "Falha no Login.",
                                             Toast.LENGTH_SHORT).show();
+                                    mProgress.dismiss();
                                     updateUI(null);
                                 }
                             }
@@ -153,6 +174,9 @@ public class LoginFragment extends Fragment {
             e.printStackTrace();
         }
     }
+
+
+
 
     /**
      * Realiza recuperação de senha.
@@ -176,20 +200,16 @@ public class LoginFragment extends Fragment {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            Toast.makeText(getActivity(), "User ID: " + user.getUid(), Toast.LENGTH_SHORT).show();
-            //Transição para página inicial do aplicativo
+            mProgress.show();
             verificaAdmin();
-        } else {
-            Toast.makeText(getActivity(), "Error in sign in", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     public void verificaAdmin(){
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         DatabaseReference mParticipanteDatabaseReference = mFirebaseDatabase.getReference().child("users").child(auth.getCurrentUser().getUid());
-
-        final boolean verificador[] = new boolean[1];
 
         mParticipanteDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
@@ -201,6 +221,20 @@ public class LoginFragment extends Fragment {
                         if(adminLoginConfirm) {
                             adminLoginConfirm = false;
                             mAuth.signOut();
+                            mProgress.dismiss();
+
+                            AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+
+                            alert.setTitle("Atenção");
+                            alert.setMessage("Este dispositivo estava conectado a uma conta Admin. Por favor, faça o Login novamente!");
+
+                            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
+
+                            AlertDialog dialog = alert.create();
+                            alert.show();
                             return;
                         }
                         String[] auxKeyAdmin = new String[1];
