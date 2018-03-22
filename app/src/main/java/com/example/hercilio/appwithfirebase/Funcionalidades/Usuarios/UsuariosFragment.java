@@ -1,5 +1,7 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -8,8 +10,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -33,7 +38,7 @@ import java.util.Set;
  * Created by Hercilio on 19/02/2018.
  */
 
-public class UsuariosFragment extends Fragment {
+public class UsuariosFragment extends Fragment implements SearchView.OnQueryTextListener {
     public static class IdWithUserDados implements Serializable{
         private String idUser;
         private UserDados userDados;
@@ -59,7 +64,7 @@ public class UsuariosFragment extends Fragment {
     private UsuariosAdapter mUsuarioAdapter;
     private ArrayList<UsuariosFragment.IdWithUserDados> items = new ArrayList<>();
     private RecyclerView mRecyclerView;
-    //private OnListFragmentInteractionListener mListener;
+
     //Responsavel pelo btn de cadastro de participante
     private FloatingActionButton btnCadastrarUsuario;
     private FirebaseDatabase mFirebaseDatabase;
@@ -74,9 +79,9 @@ public class UsuariosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_usuarios, container, false);
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -137,5 +142,34 @@ public class UsuariosFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {}
         };
         mUsuarioDatabaseReference.addValueEventListener(eventListener);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.search_view, menu);
+
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+        searchView.setOnQueryTextListener(this);
+        super.onCreateOptionsMenu(menu,inflater);
+
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(final String newText) {
+        mUsuarioAdapter.getFilter().filter(newText);
+        return false;
     }
 }

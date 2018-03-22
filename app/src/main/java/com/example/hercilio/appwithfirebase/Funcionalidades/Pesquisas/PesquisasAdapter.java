@@ -23,7 +23,7 @@ import at.grabner.circleprogress.CircleProgressView;
  * Created by Hercilio on 15/12/2017.
  */
 
-public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.PesquisaItemView> implements Filterable{
+public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.PesquisaItemView> implements Filterable {
 
     private Activity activity;
     private List<Participante> items = new ArrayList<>();
@@ -116,7 +116,6 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
         };
     }
 
-
     /**
      * Classe que irá criar o visual da recyclerview
      */
@@ -148,8 +147,4 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
             return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
-
-
-
-
 }

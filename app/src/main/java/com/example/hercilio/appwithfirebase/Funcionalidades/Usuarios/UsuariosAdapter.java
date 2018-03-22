@@ -5,8 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
+import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.Objetos.UserDados;
 import com.example.hercilio.appwithfirebase.R;
 
@@ -19,10 +22,11 @@ import at.grabner.circleprogress.CircleProgressView;
  * Created by Hercilio on 19/02/2018.
  */
 
-public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDadosItemView> {
+public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDadosItemView> implements Filterable {
 
     private Activity activity;
     private List<UsuariosFragment.IdWithUserDados> items = new ArrayList<>();
+    private List<UsuariosFragment.IdWithUserDados> mFilteredList;
     private com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.OnListFragmentInteractionListener mListener;
 
     public void setListener(com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.OnListFragmentInteractionListener onListener) {
@@ -38,6 +42,7 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDa
     public UsuariosAdapter(Activity activity, ArrayList<UsuariosFragment.IdWithUserDados> items) {
         this.activity = activity;
         this.items = items;
+        this.mFilteredList = items;
     }
 
     /**
@@ -61,26 +66,46 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDa
      */
     @Override
     public void onBindViewHolder(final UsuariosAdapter.UserDadosItemView holder, int position) {
-        holder.mItem = items.get(position).getUserDados();
-        holder.mIdView.setText(items.get(position).getUserDados().getNome());
-        //holder.mContentView.setText(mValues.get(position).nomeExaminador);
-        holder.mContentView.setText(items.get(position).getUserDados().getNroDeParticipantesEntrevistados() + " Entrevistado(s)");
+        holder.mItem = mFilteredList.get(position).getUserDados();
+        holder.mIdView.setText(mFilteredList.get(position).getUserDados().getNome());
+        holder.mContentView.setText(mFilteredList.get(position).getUserDados().getNroDeParticipantesEntrevistados() + " Entrevistado(s)");
 
-//        holder.mView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (null != mListener) {
-//                    // Notify the active callbacks interface (the activity, if the
-//                    // fragment is attached to one) that an item has been selected.
-//                    mListener.onListFragmentInteraction(holder.mItem);
-//                }
-//            }
-//        });
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return mFilteredList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    mFilteredList = items;
+                } else {
+                    ArrayList<UsuariosFragment.IdWithUserDados> filteredList = new ArrayList<>();
+                    for (UsuariosFragment.IdWithUserDados idWithUserDados : items) {
+                        String nroDeParticipantes = ""+idWithUserDados.getUserDados().getNroDeParticipantesEntrevistados();
+                        if (idWithUserDados.getUserDados().getNome().toString().contains(charString) || nroDeParticipantes.contains(charString)) {
+                            filteredList.add(idWithUserDados);
+                        }
+                    }
+                    mFilteredList = filteredList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mFilteredList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                mFilteredList = (ArrayList<UsuariosFragment.IdWithUserDados>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     /**
@@ -98,14 +123,6 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDa
             mIdView = (TextView) view.findViewById(R.id.usuario_name);
             mContentView = (TextView) view.findViewById(R.id.usuario_content);
 
-//            btnFavoritar.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Menor menorItem = items.get(getAdapterPosition());
-//                    mOnMenorCancelarAdocaoListener.OnMenorItemSelected(menorItem, getAdapterPosition());
-//                }
-//            });
-//
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -119,6 +136,4 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.UserDa
             return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
-
-
 }
