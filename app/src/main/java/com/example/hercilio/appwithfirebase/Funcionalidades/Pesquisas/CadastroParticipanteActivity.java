@@ -1,7 +1,9 @@
 package com.example.hercilio.appwithfirebase.Funcionalidades.Pesquisas;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -112,9 +114,19 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
         if(dobDate != null)
             dataNasc = databaseFormat.format(dobDate);
         else {
-            Toast.makeText(this, "OPA: deu certo", Toast.LENGTH_SHORT);
-            Log.d("ERRO: ", "DEU CERTO");
-            dataNasc = "DEU RUIM";
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+            alert.setTitle("Atenção");
+            alert.setMessage("A data inserida é invalida. Por favor seleicone outra!");
+
+            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    return;
+                }
+            });
+            AlertDialog dialog = alert.create();
+            alert.show();
+            return;
         }
         //---------------------------
         //Pegar o radiobutton do sexc

@@ -25,4 +25,5 @@
 
 Complementares:
 1- Layout de loading para carregamento do relógio no banco.
+2- Excluir participante
 
