@@ -20,6 +20,7 @@ import com.example.hercilio.appwithfirebase.Funcionalidades.Bateria.Lobby.BaleLo
 import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosFragment;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
+import com.example.hercilio.appwithfirebase.UsersActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -134,7 +135,6 @@ public class PesquisasFinalizadasFragment extends Fragment implements SearchView
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.search_view, menu);
 
-
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
@@ -142,6 +142,9 @@ public class PesquisasFinalizadasFragment extends Fragment implements SearchView
                 (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+        if(getActivity() instanceof UsersActivity)
+            menu.getItem(0).setIcon(R.drawable.ic_search_white_24dp);
 
         searchView.setOnQueryTextListener(this);
         super.onCreateOptionsMenu(menu,inflater);

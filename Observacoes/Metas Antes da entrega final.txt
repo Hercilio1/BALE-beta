@@ -20,7 +20,7 @@
 13 - Criar um tirador de '.' e '-' do cpf, pois ele é key no firebase.  13 - COMPLETO
 14 - Layout de loading para login					14 - COMPLETO
 15 - Não listar o usuário que está logado 				15 - COMPLETO
-16 - Implementar pesquisa
+16 - Implementar pesquisa						16 - COMPLETO
 
 17 - usuários listado:
 	17.1 - alterar toda a estrutura do programa para não mexer no banco de dados.

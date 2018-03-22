@@ -7,6 +7,6 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Pesquisar"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="collapseActionView|ifRoom"/>
+        app:showAsAction="collapseActionView|ifRoom" />
 
 </menu>

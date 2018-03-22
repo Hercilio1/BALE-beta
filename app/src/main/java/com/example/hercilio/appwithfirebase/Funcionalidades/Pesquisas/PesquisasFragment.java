@@ -23,6 +23,7 @@ import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.CadastraUsu
 import com.example.hercilio.appwithfirebase.Funcionalidades.Usuarios.UsuariosFragment;
 import com.example.hercilio.appwithfirebase.Objetos.Participante;
 import com.example.hercilio.appwithfirebase.R;
+import com.example.hercilio.appwithfirebase.UsersActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -90,6 +91,7 @@ public class PesquisasFragment extends Fragment implements SearchView.OnQueryTex
             }
         }
 
+
         //Realiza função de cadastrar participante
         btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +147,9 @@ public class PesquisasFragment extends Fragment implements SearchView.OnQueryTex
                 (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+        if(getActivity() instanceof UsersActivity)
+            menu.getItem(0).setIcon(R.drawable.ic_search_white_24dp);
 
         searchView.setOnQueryTextListener(this);
         super.onCreateOptionsMenu(menu,inflater);
