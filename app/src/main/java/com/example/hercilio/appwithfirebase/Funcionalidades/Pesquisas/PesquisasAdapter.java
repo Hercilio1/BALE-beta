@@ -64,7 +64,15 @@ public class PesquisasAdapter extends RecyclerView.Adapter<PesquisasAdapter.Pesq
     public void onBindViewHolder(final PesquisaItemView holder, int position) {
         holder.mItem = items.get(position);
         holder.mIdView.setText(items.get(position).getNomeCompleto());
-        holder.mContentView.setText(items.get(position).getCpf());
+        String cpf = items.get(position).getCpf();
+        if(cpf.length() == 11) {
+            StringBuffer sb = new StringBuffer(cpf);
+            sb.insert(3, '.');
+            sb.insert(7, '.');
+            sb.insert(11, '-');
+            cpf = sb.toString();
+        }
+        holder.mContentView.setText(cpf);
         holder.mCircleProgressView.setValue(items.get(position).getPorcentagem());
     }
 

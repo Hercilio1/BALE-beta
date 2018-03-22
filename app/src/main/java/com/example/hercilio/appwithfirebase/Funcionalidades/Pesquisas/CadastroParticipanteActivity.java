@@ -108,6 +108,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
     private void cadatrarParticipante(){
         String nomeCompleto = mNomeCompleto.getText().toString();
         String cpf = mCpf.getText().toString();
+        cpf = cpf.replaceAll("[^0-9]", "");
         //Adapta a data de nascimento
         SimpleDateFormat databaseFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dataNasc;
@@ -150,11 +151,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
         Participante participante = new Participante(nomeCompleto, cpf, dataNasc, sexo, celular, escolaridade,
                 dinamicaManual, profissao, ehAposentado, linguaMaterna, outrosIdiomas);
 
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("participantes");
-//        myRef.push().setValue(participante);
 
-        //Cadastra o participante no como filho do usuário no banco de dados.
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         DatabaseReference userRef = rootRef.child("users/" + auth.getCurrentUser().getUid() + "/participantes");
