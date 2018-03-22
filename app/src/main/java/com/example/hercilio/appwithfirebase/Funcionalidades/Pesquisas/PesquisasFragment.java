@@ -43,7 +43,6 @@ public class PesquisasFragment extends Fragment implements SearchView.OnQueryTex
     private PesquisasAdapter mPesquisasAdapter;
     private ArrayList<Participante> items = new ArrayList<>();
     private RecyclerView mRecyclerView;
-//    private OnListFragmentInteractionListener mListener;
     //Responsavel pelo btn de cadastro de participante
     private FloatingActionButton btnCadastrarParticipante;
     private FirebaseDatabase mFirebaseDatabase;
@@ -62,7 +61,6 @@ public class PesquisasFragment extends Fragment implements SearchView.OnQueryTex
         setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_pesquisas, container, false);
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -92,16 +90,12 @@ public class PesquisasFragment extends Fragment implements SearchView.OnQueryTex
             }
         }
 
-
-
         //Realiza função de cadastrar participante
         btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(getActivity(), CadastroParticipanteActivity.class);
                 startActivity(intent);
-
             }
         });
 
