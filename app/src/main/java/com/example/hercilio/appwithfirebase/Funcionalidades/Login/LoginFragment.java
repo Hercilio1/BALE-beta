@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -125,9 +126,9 @@ public class LoginFragment extends Fragment {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         //Caso o usuário seja admin ele deve preencher o cabeçalho de login tada vez
-//        if(currentUser != null) {
-//            adminLoginConfirm = true;
-//        }
+        if(currentUser != null) {
+            adminLoginConfirm = true;
+        }
 
         //Rotina para recuperar senha:
         if(currentUser == null) {
@@ -159,6 +160,7 @@ public class LoginFragment extends Fragment {
                                     FirebaseUser user = mAuth.getCurrentUser();
 
                                     updateUI(user);
+                                    mProgress.dismiss();
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -175,9 +177,6 @@ public class LoginFragment extends Fragment {
         }
     }
 
-
-
-
     /**
      * Realiza recuperação de senha.
      */
@@ -187,14 +186,25 @@ public class LoginFragment extends Fragment {
         dialogForgotPassword.setCancelable(true);
         dialogForgotPassword.setContentView(R.layout.dialog_esqueceu_senha);
 
+        final EditText recuperarSenhaEditText = (EditText)  dialogForgotPassword.findViewById(R.id.esqueceu_senha_editText);
         Button recuperarSenhaButton = (Button) dialogForgotPassword.findViewById(R.id.recuperar_senha_button);
+
         recuperarSenhaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Adicionar chamada backend
+                FirebaseAuth.getInstance().sendPasswordResetEmail(recuperarSenhaEditText.getText().toString())
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "Email sent.");
+                                }
+                            }
+                        });
                 dialogForgotPassword.dismiss();
             }
         });
+
         dialogForgotPassword.show();
     }
 
